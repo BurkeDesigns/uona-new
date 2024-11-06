@@ -1,0 +1,56 @@
+.icon{
+    display: grid;
+    --size: 24px;
+    height:var(--size);
+    width:var(--size);
+    transition: 0.2s;
+    cursor: pointer;
+}
+.icon.sm{
+    --size: 20px;
+}
+.icon svg{
+    width: 100%;
+    height: 100%;
+}
+.icon.disabled{
+    color: var(--gray-1);
+}
+
+
+.circleIcon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:40px;
+    width:40px;
+    user-select:none;
+    -webkit-user-select: none;
+    border: 1px solid var(--gray-1);
+    border-radius: 100%;
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--gray-1);
+}
+.circleIcon:hover{
+    color: var(--kc-black);
+    border: 1px solid var(--kc-black);
+}
+.circleIcon.outline-white{
+    color: var(--gray-1);
+}
+.circleIcon.outline-white:hover{
+    color: var(--kc-white);
+    border: 1px solid var(--kc-white);
+}
+.circleIcon.black{
+    color: var(--kc-white);
+    background-color: hsla(0, 0%, 0%, 0.5);
+    border: 0;
+}
+.circleIcon.black .icon{
+    opacity: 0.5;
+}
+.circleIcon.black:hover .icon{
+    opacity:1;
+}

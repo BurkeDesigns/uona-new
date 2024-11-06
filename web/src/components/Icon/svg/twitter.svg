@@ -1,0 +1,18 @@
+<svg
+	version="1.1"
+	id="twitter-icon"
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	x="0px"
+	y="0px"
+	width="100px"
+	height="100px"
+	viewBox="0 0 100 100"
+	xml:space="preserve"
+>
+	<title>Twitter (X) icon</title>
+	<path
+		fill="currentColor"
+		d="M77.6,6.5h14.723l-32.16,36.852L98,93.5H68.378L45.175,63.08L18.625,93.5H3.896l34.398-39.42L2,6.5h30.378 l20.97,27.798L77.606,6.5H77.6z M72.441,84.668h8.16L27.938,14.87h-8.749L72.441,84.668z"
+	/>
+</svg>

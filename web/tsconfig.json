@@ -1,0 +1,34 @@
+{
+  "extends": "./node_modules/astro/tsconfigs/strict.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "es2017",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "types": ["react","bun"],
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@blocks": ["src/components/BlockMapper/_BlockList.tsx"],
+      "@theme/*": ["src/theme/*"],
+      "@assets": ["src/assets/*"],
+      "@blockmapper": ["src/components/BlockMapper"],
+      "@util/*": ["src/util/*"],
+      "@data/*": ["src/data/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"],
+      "@sanityStudio/*": ["../sanity/*"],
+      "@config": ["config"],
+      "sanity:client": ["@sanity/client"],
+      // preact stuff
+      "react": ["./node_modules/preact/compat/"],
+      "react/jsx-runtime": ["./node_modules/preact/jsx-runtime"],
+      "react-dom": ["./node_modules/preact/compat/"],
+      "react-dom/*": ["./node_modules/preact/compat/*"]
+    },
+  },
+  "include": ["src", "src/custom-attributes.d.ts"]
+}

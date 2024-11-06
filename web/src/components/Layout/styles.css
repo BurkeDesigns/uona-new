@@ -1,0 +1,111 @@
+/*----- Core Layout Styles -----*/
+[el^="layout"] {
+    --layout-columns: [header-start aside footer-start] 250px [main] 1fr [section]
+      200px [header-end footer-end];
+    --layout-rows: [header] minmax(80px, max-content) [aside main section] 1fr
+      [footer] minmax(80px, max-content);
+    display: grid;
+    width: 100%;
+    background: transparent;
+    grid-template-columns: var(--layout-columns);
+    grid-template-rows: var(--layout-rows);
+    min-height: 100vh;
+  }
+  
+  /*--- Layout States ---*/
+  [el^="layout"][el*="fixed"] {
+    max-height: 100vh;
+  }
+
+  [el^="layout"][el*="fixed"] > [el^="main"],
+  [el^="layout"][el*="fixed"] > [el^="section"],
+  [el^="layout"][el*="fixed"] > [el^="aside"] {
+    overflow-y: auto;
+  }
+  
+  /*--- Website Layouts ---*/
+  [el^="layout-hm"] {
+    --layout-columns: [header main] 1fr;
+    --layout-rows: [header] minmax(80px, max-content) [main] 1fr;
+  }
+  [el^="layout-hmf"] {
+    --layout-columns: [header main footer] 1fr;
+    --layout-rows: [header] minmax(80px, max-content) [main] 1fr [footer]
+      minmax(80px, max-content);
+  }
+  
+  /*--- Application Layouts ---*/
+  [el^="layout-am"] {
+    --layout-columns: [aside] minmax(50px, max-content) [main] 1fr;
+    --layout-rows: [aside main] 1fr;
+  }
+  [el^="layout-asm"] {
+    --layout-columns: [aside] minmax(50px, max-content) [section] max-content
+      [main] 1fr;
+    --layout-rows: [aside section main] 1fr;
+  }
+  [el^="layout-ams"] {
+    --layout-columns: [aside] max-content [main] 1fr [section] max-content;
+    --layout-rows: [aside main section] 1fr;
+  }
+  [el^="layout-aham"] {
+    --layout-columns: [aside] max-content [header main] 1fr;
+    --layout-rows: [aside-start header] minmax(66px, max-content) [main] 1fr
+      [aside-end];
+  }
+  [el^="layout-ahams"] {
+    --layout-columns: [aside] max-content [header-start main] 1fr [section]
+      max-content [header-end];
+    --layout-rows: [header aside-start] minmax(66px, max-content) [main section]
+      1fr [aside-end];
+  }
+  [el^="layout-ham"] {
+    --layout-columns: [header-start aside] 250px [main] 1fr [header-end];
+    --layout-rows: [header] minmax(80px, max-content) [aside main] 1fr;
+  }
+  [el^="layout-ahms"] {
+  }
+  
+  /*--- Layout Elements ---*/
+  [el^="layout"] > [el^="header"] {
+    grid-area: header;
+    z-index: 4;
+  }
+  
+  [el^="layout"] > [el^="aside"] {
+    grid-area: aside;
+    z-index: 3;
+  }
+  
+  [el^="layout"] > [el^="section"] {
+    grid-area: section;
+    z-index: 3;
+  }
+  
+  [el^="layout"] > [el^="main"] {
+    grid-area: main;
+    z-index: 1;
+  }
+  
+  [el^="layout"] > [el^="footer"] {
+    grid-area: footer;
+    z-index: 2;
+  }
+  
+  [el^="layout"] > * {
+    height: auto;
+  }
+  
+  /*--- Mobile Layouts ---*/
+  @media (max-width:800px) {
+    [el^="layout"][el*="fixed"] {
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+    [el*="mobile-row"] {
+      --layout-columns: [header aside main section footer] 1fr;
+      --layout-rows: [header] minmax(80px, max-content) [aside] 100px [main] 1fr
+        [section] 200px [footer] minmax(80px, max-content);
+    }
+  }
+  

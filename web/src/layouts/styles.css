@@ -1,0 +1,177 @@
+:root {
+  /* header height */
+  --headerHeightDesktop: 114px;
+  --headerHeightMobile: 60px; 
+
+  /* The following should eventually be replaced with actual variables from theme ../theme/kmc/var.css */
+  --space-marginMobile: 16px; 
+  --space-mobileXs: 8px;
+  --space-mobileSm: 12px;
+  --space-mobileMd: 24px;
+  --space-mobileLg: 32px;
+  --space-desktopSm: 40px;
+  --space-desktopLg: 48px;
+  --breakpoint-max: 1200px;
+}
+
+/* generic styles */
+body {
+  margin: 0;
+  padding: 0;
+  /* background: var(--kc-gray); */
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+.listReset {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.buttonReset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.hideOnDesktop {
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.hideOnMobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+/* layout styles */
+.layout--base,
+.layout--withBackground,
+.layout--noBackground {
+  padding-left: var(--space-marginMobile);
+  padding-right: var(--space-marginMobile);
+}
+
+@media (min-width: 576px) {
+  .layout--base,
+  .layout--withBackground,
+  .layout--noBackground {
+    padding-left: var(--space-mobileXs);
+    padding-right: var(--space-mobileXs);
+  }
+}
+
+@media (min-width: 768px) {
+  .layout--base,
+  .layout--withBackground,
+  .layout--noBackground {
+    padding-left: var(--space-desktopSm);
+    padding-right: var(--space-desktopSm);
+  }
+}
+
+/* min width of 1050 + --space-desktopLg (48px) padding on each side */
+@media (min-width: 1250px) { 
+  .layout--base,
+  .layout--withBackground,
+  .layout--noBackground  {
+    padding-left: calc(var(--space-desktopLg) + max(0px, 50% - var(--breakpoint-max) / 2));
+    padding-right: calc(var(--space-desktopLg) + max(0px, 50% - var(--breakpoint-max) / 2));
+  }
+}
+
+.layout--noBackground {
+  margin-top: var(--space-mobileMd);
+  margin-bottom: var(--space-mobileMd);
+}
+
+@media (min-width: 768px) {
+  .layout--noBackground {
+    margin-top: var(--space-mobileLg);
+    margin-bottom: var(--space-mobileLg);
+  }
+}
+
+@media (min-width: 1050px) {
+  .layout--noBackground {
+    margin-top: var(--space-desktopLg);
+    margin-bottom: var(--space-desktopLg);
+  }
+}
+
+.layout--withBackground {
+  padding-top: var(--space-mobileMd);
+  padding-bottom: var(--space-mobileMd);
+}
+
+@media (min-width: 768px) {
+  .layout--withBackground {
+    padding-top: var(--space-mobileLg);
+    padding-bottom: var(--space-mobileLg);
+  }
+}
+
+@media (min-width: 1050px) {
+  .layout--withBackground {
+    padding-top: var(--space-mobileLg);
+    padding-bottom: var(--space-mobileLg);
+  }
+}
+
+@media (max-width: 768px) {
+  .layout--fullWidthOnMobile {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.layout--backgroundInner {
+  background: var(--kc-white);
+  width: 100%;
+  padding: var(--space-mobileXs) var(--space-marginMobile);
+}
+
+@media (min-width: 768px) {
+  .layout--backgroundInner {
+    padding: var(--space-mobileSm) var(--space-mobileMd);
+  }
+}
+
+@media (min-width: 1050px) {
+  .layout--backgroundInner {
+    padding: var(--space-mobileMd) var(--space-mobileLg);
+  }
+}
+
+hr {
+  height: 1px;
+  background-color: var(--color-accentSecondary);
+  width: 44px;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  hr {
+    width: 60px;
+  }
+}

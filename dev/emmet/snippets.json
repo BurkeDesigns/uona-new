@@ -1,0 +1,49 @@
+{
+  "html": {
+    "snippets": {
+      "el-layout-hmf": "div[el=layout-hmf]>el-header+main[el=main]+footer[el=footer]",
+      "el-layout-hm": "div[el=layout-hm]>el-header+main[el=main]",
+      "el-layout-am": "div[el=layout-am]>aside[el=aside]+main[el=main]",
+      "el-layout-asm": "div[el=layout-asm]>aside[el=aside]+section[el=section]+main[el=main]",
+      "el-layout-ams": "div[el=layout-asm]>aside[el=aside]+main[el=main]+section[el=section]",
+      "el-layout-aham": "div[el=layout-aham]>aside[el=aside]+el-header+main[el=main]",
+      "el-layout-ahams": "div[el=layout-ahams]>aside[el=aside]+el-header+main[el=main]+section[el=section]",
+      "el-layout-ham": "div[el=layout-ham]>el-header+aside[el=aside]+main[el=main]",
+      "el-header": "header[el=header]{${1:Header}}",
+      "el-list": "div[el='list xsm']",
+      "el-p": "p[el=p]{${1:Paragraph}}",
+      "el-h1": "h1[el=h1]{${1:Heading}}",
+      "el-h2": "h2[el=h2]{${1:Heading}}",
+      "el-h3": "h3[el=h3]{${1:Heading}}",
+      "el-h4": "h4[el=h4]{${1:Heading}}",
+      "el-h5": "h5[el=h5]{${1:Heading}}",
+      "el-btn": "div[el=btn]{${1:Button}}",
+      "el-accordian": "div[el=accordion-active]>(div[el='list-column-between xsm']>el-h4+span.material-icons)+el-list>el-p",
+
+      "layout-hmf": "Layout[el=hmf]>header+main[el=main]+footer[el=footer]",
+      "layout-hm": "Layout[el=hm]>header+main[el=main]",
+      "layout-am": "Layout[el=am]>aside[el=aside]+main[el=main]",
+      "layout-asm": "Layout[el=asm]>aside[el=aside]+section[el=section]+main[el=main]",
+      "layout-ams": "Layout[el=asm]>aside[el=aside]+main[el=main]+section[el=section]",
+      "layout-aham": "Layout[el=aham]>aside[el=aside]+header+main[el=main]",
+      "layout-ahams": "Layout[el=ahams]>aside[el=aside]+header+main[el=main]+section[el=section]",
+      "layout-ham": "Layout[el=ham]>header+aside[el=aside]+main[el=main]",
+      "header": "Header{${1:Header}}",
+      "list": "List[el='xsm']",
+      "text": "Text{${1:Paragraph}}",
+      "p": "Text[as=p]{${1:Paragraph}}",
+      "h1": "Text[as=h1]{${1:Heading}}",
+      "h2": "Text[as=h2]{${1:Heading}}",
+      "h3": "Text[as=h3]{${1:Heading}}",
+      "h4": "Text[as=h4]{${1:Heading}}",
+      "h5": "Text[as=h5]{${1:Heading}}",
+      "btn": "Btn{${1:Button}}",
+      "modal": "Modal[title='Modal Component' ref='modal']>(List>text)+List[el='column xxsm' style='justify-content: end;']>btn[@click='\\$refs.modal.toggle()']",
+      "alert": "Alert{info alert}",
+
+      "icon": "<Icon name=\"${1:file}\" />",
+      "accordian": "Accordion[label='${1:Accordion}']{${2}}",
+      "input": "<Input label=\"${1:Input}\" />"
+    }
+  }
+}

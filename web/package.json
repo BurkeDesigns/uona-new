@@ -1,0 +1,37 @@
+{
+  "name": "web",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "syncBlocks": "bun scripts/watchComponents.bun.js",
+    "start": "astro dev",
+    "build": "bun run preBuildScript && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "clearBunGlobalCache": "bun pm cache rm",
+    "clean": "rm -rf node_modules bun.lockb .astro .netlify",
+    "preBuildScript": "bun run src/util/preBuildScript/index.ts"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/netlify": "^5.5.1",
+    "@astrojs/react": "^3.6.2",
+    "@portabletext/react": "^3.1.0",
+    "@preact/signals-react": "^2.2.0",
+    "@sanity/astro": "^3.1.4",
+    "@sanity/client": "^6.21.3",
+    "@sanity/types": "^3.54.0",
+    "@types/react": "^18.3.3",
+    "astro": "4.15.3",
+    "chokidar": "^3.6.0",
+    "gsap": "^3.12.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sanity": "^3.54.0",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.6"
+  }
+}

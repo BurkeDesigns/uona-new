@@ -1,0 +1,44 @@
+---
+import Page from "@layouts/page.astro";
+// import { KawasakiCommercial } from "@theme";
+import { Text, Button, Aside } from "@blocks";
+
+export const prerender = true;
+---
+
+<Page title="404: Page Not Found" layout="am fixed">
+	<Aside client:only="react" />
+	<main el="main">
+		<div class="section">
+			<Text as="h2" color="currentColor">404: Page Not Found</Text>
+			<Text as="p" color="currentColor">
+				We couldn't find the page you requested. It might have been
+				moved, renamed, or deleted. Please check your spelling and try
+				again.
+			</Text>
+			<div>
+				<Button url="/" label="Go Back Home" />
+			</div>
+		</div>
+	</main>
+</Page>
+
+<style>
+	.section {
+		display: grid;
+		max-width: 85ch;
+		height: 100%;
+		width: 100%;
+		margin: auto;
+		padding: 0 23px;
+		padding-top: 100px;
+		text-align: center;
+		gap: 64px;
+		color: white;
+		padding-top: 64px;
+		align-content: center;
+	}
+	.section * {
+		margin-bottom: 0;
+	}
+</style>

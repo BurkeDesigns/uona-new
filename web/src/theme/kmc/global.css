@@ -1,0 +1,22 @@
+/*--- Global padding ---*/
+[el~="p-xxlg"] {
+    padding: var(--space-xxlg);
+  }
+  [el~="p-xlg"] {
+    padding: var(--space-xlg);
+  }
+  [el~="p-lg"] {
+    padding: var(--space-lg);
+  }
+  [el~="p-md"] {
+    padding: var(--space-md);
+  }
+  [el~="p-sm"] {
+    padding: var(--space-sm);
+  }
+  [el~="p-xsm"] {
+    padding: var(--space-xsm);
+  }
+  [el~="p-xxsm"] {
+    padding: var(--space-xxsm);
+  }

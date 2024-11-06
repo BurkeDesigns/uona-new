@@ -1,0 +1,104 @@
+.bilateralTextImageBlock{
+    display: grid;
+    padding:80px 0;
+    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+}
+hr{
+    height: 3px;
+    background-color: var(--kc-red, currentColor);
+    width: 64px;
+    border: 0;
+}
+.bilateralTextImageBlock img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 3 / 2;
+}
+.bilateralTextImageBlock .content{
+    padding: 32px;
+
+}
+@media (max-width: 800px) {
+    .bilateralTextImageBlock{
+        grid-template-columns: 1fr;
+        padding:60px 0;
+    }
+    .bilateralTextImageBlock img{
+        grid-row: 1;
+        height:auto;
+    }
+    .bilateralTextImageBlock .content{
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+    }
+}
+
+
+
+
+
+
+.staggeredTextImageBlock {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 300px;
+    grid-template-rows: 225px 1fr 1fr 133px;
+    padding:80px 0;
+}
+
+.staggeredTextImageBlock img {
+    width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    height: 588px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.staggeredTextImageBlock .content {
+    grid-column-start: 2;
+    grid-column-end: -1;
+    grid-row-start: 2;
+    grid-row-end: -1;
+    padding: 60px;
+    z-index: 2;
+    background: #e9e5e2;
+}
+
+.staggeredTextImageBlock.right img{
+    grid-column-start: 2;
+    grid-column-end: -1;
+}
+
+.staggeredTextImageBlock.right .content {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+@media (max-width: 800px) {
+    .staggeredTextImageBlock{
+        grid-template-columns: 20px 1fr 20px;
+        grid-template-rows: 225px 1fr;
+        padding:60px 0;
+    }
+    .staggeredTextImageBlock img{
+        grid-row: 1;
+        grid-column-start: 2;
+        grid-column-end: 3 !important;
+        
+        height: 100%;
+    }
+    .staggeredTextImageBlock .content{
+        grid-column-start: 1;
+        grid-column-end: -1 !important;
+        grid-row-start: 2;
+        grid-row-end: -1;
+        padding: 32px 20px;
+    }
+}

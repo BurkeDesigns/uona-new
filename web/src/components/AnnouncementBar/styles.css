@@ -1,0 +1,18 @@
+.announcementBar{
+    padding: 20px;
+    width:100%;
+    display: grid;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background: var(--kc-black);
+    user-select: none;
+    -webkit-user-select: none;
+    color: white;
+    grid-auto-flow: column;
+    gap: 20px;
+}
+.fullWidth {
+    width:100%;
+}

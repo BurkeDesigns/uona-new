@@ -1,0 +1,17 @@
+---
+import Page from "@layouts/page.astro";
+import Aside from "@components/Aside";
+import List from "@components/List";
+import Text from "@components/Text";
+import Btn from "@components/Button";
+import Accordion from "@components/Accordion";
+---
+
+<Page layout="am fixed">
+	<Aside client:only="react" />
+	<main el="main">
+		<List el="xsm p-lg" style={{ paddingLeft: 16 }}>
+			<Text as="h3" color="white">Settings</Text>
+		</List>
+	</main>
+</Page>

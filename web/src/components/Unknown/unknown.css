@@ -1,0 +1,40 @@
+.unknown{
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 60px;
+    padding: 64px 32px;
+    background-color: antiquewhite;
+    outline: 2px dashed hsl(0deg 0% 0% / 35%);
+    outline-offset: -15px;
+    text-align: center;
+    color: hsl(0deg 0% 0% / 65%);
+    width:100%;
+}
+.unknown.error{
+    background-color: #f3b8b8;
+}
+
+b {
+    font-weight: bold;
+}
+
+pre {
+    text-align: start;
+    background: hsl(0deg 0% 100% / 90%);
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin: auto;
+    border-left: 5px solid;
+    box-shadow: 0 3px 10px hsl(0deg 0% 0% / 13%);
+    overflow: auto;
+    width:100%;
+    max-width:1200px;
+    max-height:500px;
+}
+.unknown.error pre{
+    border-left:5px solid darkred;
+    color: darkred;
+}
+pre code{
+    overflow: auto;
+}

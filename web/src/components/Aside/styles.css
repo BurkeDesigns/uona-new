@@ -1,0 +1,12 @@
+aside{
+  background-color: transparent;
+  width: 124px;
+  padding:32px 0;
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  color: var(--gray-2);
+}
+aside .icon:hover{
+  color: white;
+}

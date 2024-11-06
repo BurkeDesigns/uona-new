@@ -1,0 +1,8 @@
+.link{
+    text-decoration: none;
+    width: max-content;
+    color: inherit;
+}
+.link:visited{
+    color: initial;
+}

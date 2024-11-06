@@ -1,0 +1,8 @@
+{
+    "emmet.includeLanguages": {
+        "astro": "html",
+        "typescriptreact": "html"
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.extensionsPath": ["dev/emmet/"]
+}
