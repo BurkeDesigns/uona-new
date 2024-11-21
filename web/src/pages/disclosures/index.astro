@@ -1,0 +1,99 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    height: 300px;
+    background: url(https://images.pexels.com/photos/247787/pexels-photo-247787.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .custom li {
+    background: #fff;
+    margin: 20px;
+    padding: 40px;
+    text-align: center;
+  }
+
+  @media (max-width: 800px) {
+    video {
+      width: auto;
+      height: 300px;
+      transform: translate(-50%, 0%);
+      left: 50%;
+      position: absolute;
+    }
+
+    #video {
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      overflow: hidden;
+    }
+  }
+</style>
+
+<Page layout="hm fixed" title="Disclosures | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Disclosures</div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <!--       <h1 class="heading">Tuition and Student Performance</h1>-->
+          <div class="paddingReg"></div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/tuition/FY23-21806046-Tuition_&_Fees 2023.pdf"
+              style="--box-shadow:0 0 0 2px var(--color);"
+              target="_blank">tuition</a
+            >
+            <a
+              class="button"
+              href="/files/uploads/disclosures/CAR Disclosure.pdf"
+              style="--box-shadow:0 0 0 2px var(--color);"
+              >student performance</a
+            >
+            <a
+              href="/files/uploads/disclosures/Student Grievance Policy.pdf"
+              class="button"
+              style="--box-shadow:0 0 0 2px var(--color);"
+              >STUDENT GRIEVANCE POLICY</a
+            >
+          </div>
+        </div>
+      </ul>
+      <!--
+<ul class="section">
+  <div>
+     <h1 class="heading">UoNA Policy</h1>
+      <div class="paddingReg">
+      </div>
+    <div class="flex">
+      <a class="button" href="Student_Grievance_Policy.pdf" style="--box-shadow:0 0 0 2px var(--color);">STUDENT GRIEVANCE POLICY</a>
+    </div>
+  </div>
+</ul>
+-->
+    </section>
+    <Footer />
+  </main>
+</Page>

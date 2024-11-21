@@ -1,0 +1,279 @@
+/* header CSS */
+@import url("./theme-var.css");
+/* 
+var(--accent-color)
+*/
+header{
+    position: relative;
+    width: 100%;
+    background:#4067b1 !important;
+    border-top:10px solid #fbd504;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.04), 0 6px 30px 5px rgba(0, 0, 0, 0.02), 0 8px 10px -5px rgba(0, 0, 0, 0.1);
+}
+    .maintitle{
+        /*background-image: linear-gradient(hsla(0,0%,0%,.5), transparent) !important;*/
+    }
+    .maintitle p {
+        font-size: 40px !important;
+        border-top: 0 !important;
+    }
+header *{
+    box-sizing: border-box;
+    outline:none;
+}
+header section{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	padding:0px;
+	align-items: center;
+    /* box-shadow: 0 5px 20px rgba(0,0,0,.2); */
+}
+header > a{
+    
+}
+header a{
+    margin:0;
+}
+header .logo{
+    height:140px;
+    display: block;
+    padding:20px;
+}
+header nav{
+	display:flex;
+	justify-content: space-around;
+	float:right;
+	/*background: hsla(0, 0%, 0%, 0.7);*/
+}
+header .lock{
+    background-image: url(/images/lock.svg) !important;
+    background-size: 50px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+}
+header .dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+header .main-btn {
+    font-family: 'Oswald', sans-serif;
+    font-weight:normal;
+    border: 0;
+    padding: 20px;
+    color: hsla(0,0%,100%,1);
+    font-size: 20px;
+    background:transparent;
+    cursor:pointer;
+    border-bottom:5px solid transparent;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    position:relative;
+}
+
+header .dropdown:hover > .main-btn,
+header .dropdown:focus > .main-btn{
+	color:var(--accent-color, "#000");
+}
+
+header .main-btn:after{
+	content:"";
+	height:5px;
+	position:absolute;
+	width:0;
+	bottom:-5px;
+	left:0;
+	background:var(--accent-color, "#000");
+	box-sizing: inherit;
+	transition:.3s;
+    opacity:0;
+    border-radius:0px;
+}
+header .dropdown:hover > .main-btn:after,
+header .dropdown:focus > .main-btn:after{
+	width:100%;
+    opacity:1;
+}
+
+header .dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    min-width: 220px;
+    z-index: 1;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, .2);
+    padding-bottom:10px;
+    text-transform: capitalize;
+    background:#fff;
+    opacity:0;
+    transition:.3s;
+    overflow: hidden;
+}
+
+header .dropdown:hover > .dropdown-menu,
+header .dropdown:focus > .dropdown-menu{
+    display:block !important;
+    animation: menu .3s forwards;
+}
+@keyframes menu {
+    from {opacity:0;}
+    to {opacity:1;}
+}
+
+header .dropdown-menu button,
+header .dropdown-menu a{
+    font-family: 'Roboto', sans-serif;
+    border: 0;
+    padding: 10px 15px;
+    cursor:pointer;
+    text-align:left;
+    text-transform: capitalize;
+    text-decoration: none;
+    display: block;
+    color:#000;
+}
+
+header .dropdown-menu button:hover,
+header .dropdown-menu a:hover{
+    background: rgba(0,0,0,.05);
+    color:#000;
+    /*color:var(--accent-color, "#000");*/
+}
+
+header .hide {
+  display: none !important;
+}
+header .mobile-menu,
+header .mobile-submenu{
+    display:none;
+}
+header .close{
+    display:none;
+}
+
+@media (max-width: 800px){
+    header{
+        overflow: auto;
+    }
+    header nav{
+        display:none;
+    }
+    header .lock{
+        background-image: url(/images/lock.svg) !important;
+        background-size: 40px !important;
+        background-repeat: no-repeat !important;
+        background-position: center right 20px !important;
+    }
+    header section:nth-child(1){
+        margin-top:100px;
+    }
+    header .main-btn{
+        padding: 15px 25px;
+    }
+    header .dropdown{
+        display: inline-block;
+        position: relative;
+        width: 80vw;
+        background-color: hsla(0, 0%, 0%, 0.1);
+        border-radius: 0px;
+        margin: 5px 0;
+    }
+    header .dropdown-menu{
+        width:100%;
+    }
+    header .dropdown-menu a{
+        padding:20px 25px;
+    }
+    header .mobile-menu{
+        position: relative;
+        top: 0;
+        right: 0;
+        padding: 0 48px;
+        width: 100%;
+        background-color: rgba(0,0,0,.5);
+        height: 80px;
+        color: #fff;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        justify-content: space-between;
+        font-size:20px;
+        list-style-type: none;
+        font-family: sans-serif;
+    }
+    header .menu-icon {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      width: 50px;
+      height: 30px;
+      display: flex;
+      flex-flow: row wrap;
+      align-content: space-between; 
+      position:relative;
+      transition:.3s;
+      float:right;
+    }
+
+    header .menu-icon > *{
+      background: #fff;
+      width: 100%;
+      height: 5px;
+      border-radius:50px;
+    }
+    header .menu-icon > *:nth-child(2){
+        /*margin-left:-30%;*/
+    }
+    header .mobile-submenu{
+		width:100vw;
+		min-height:100vh;
+		background-color:#4067b1;
+		position:fixed;
+		top:0;
+		left:0;
+		display:flex;
+        z-index: 3;
+        flex-direction: column;
+        align-items: center;
+	}
+    header .close{
+        height: 80px;
+        background: #000;
+        position: fixed;
+        z-index: 3;
+        right: 0;
+        top: calc(100% - 80px);
+        width: 100vw;
+        display: flex;
+        text-transform: uppercase;
+        color: #fff;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+    header .mobile-submenu-scroll{
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+        height: calc(100vh - 80px);
+        width: 100vw;
+        align-items: center;
+        padding-bottom:250px;
+            padding-top: calc(10vw - 5px);
+    }
+
+}
+@media (max-width: 500px){
+    header .logo{
+        height:120px;
+    }
+    .maintitle p {
+        font-size: 25px !important;
+        border-top: 0 !important;
+    }
+}

@@ -1,0 +1,98 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let background = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/certificate/esol/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style>
+  #video {
+    background-image: url(/images/graduate.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .info {
+    margin: 20px 0;
+  }
+</style>
+
+<Page
+  layout="hm fixed"
+  title="Certificate Programs | University of North America"
+>
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle content"><div>Certificate<p>ESOL</p></div></div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">certificate Programs Overview</h1>
+          <div class="paddingReg content">
+            To ensure English language proficiency and academic support for a
+            diverse body of students, the University of North America has
+            established a comprehensive English for Speakers of Other Languages
+            (ESOL) certificate program.
+          </div>
+          <div class="flex">
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Certificate Programs</h1>
+          <div class="paddingReg">
+            <ul class="flex column">
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${background.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    English for Speakers of Other Languages (ESOL)
+                  </h1>
+                  <p class="content">
+                    The main objective of the UoNA ESOL program is to bolster
+                    the academic, English language proficiency of our students
+                    by developing meaningful English language courses based on
+                    content relating to their diverse backgrounds and
+                    experiences. Students at our university come from a wide
+                    range of different communities, countries, and educational
+                    backgrounds. For many of our students, English is not their
+                    first language.
+                  </p>
+                  <a href="/certificate/esol" class="button">learn more</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

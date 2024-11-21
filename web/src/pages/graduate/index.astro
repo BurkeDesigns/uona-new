@@ -1,0 +1,348 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+let msafBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/msaf/*.{jpg,png,gif}"
+  )
+)[0];
+
+let mscysBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mscys/*.{jpg,png,gif}"
+  )
+)[0];
+
+let msmdaBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/msmda/*.{jpg,png,gif}"
+  )
+)[0];
+
+let mssaeBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mssae/*.{jpg,png,gif}"
+  )
+)[0];
+
+let mseitBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mseit/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style>
+  #video {
+    background-image: url(/images/graduate.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .info {
+    margin: 20px 0;
+  }
+</style>
+
+<Page layout="hm fixed" title="Graduate Programs | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div class="content">
+          Graduate<p>
+            Master of Science Degrees in Technology, Business, and Management
+          </p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">Graduate Programs Overview</h1>
+          <div class="paddingReg content">
+            UoNA offers a select group of focused master’s degree programs
+            designed to provide a high quality, practitioner-oriented education
+            to students from around the world. Courses within the master’s
+            degree programs are delivered on-ground and online. Each program has
+            multiple specializations to choose from.<br /><br />Applied learning
+            is an integral part all master’s programs offered at UoNA. Success
+            in the academic programs relies on students having access to a work
+            environment that allows them to apply the course content and
+            activities. Concurrent work experience provides a direct link
+            between the knowledge gained in the courses and the application of
+            that knowledge in practice.
+          </div>
+          <div class="flex">
+            <a
+              href="/files/uploads/documents/masters%20course%20descriptions/masters%20course%20descriptions.pdf"
+              class="button"
+              style="--box-shadow:0 0 0 2px var(--color);"
+              >view course descriptions</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Master's Programs</h1>
+          <div class="paddingReg">
+            <ul class="flex column">
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/mscs.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Master of Science in Computer Science (MSCS)
+                  </h1>
+                  <p class="content">
+                    The goal of the Master of Science in Computer Science (MSCS)
+                    is to prepare technical computing specialists. As such, the
+                    program provides students with a solid background in
+                    computing and technology in order to prepare them to work
+                    within business enterprises.
+                  </p>
+                  <a href="/graduate/mscs" class="button">learn more</a>
+                </div>
+              </li>
+
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/msit.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Master of Science in Information Technology (MSIT)
+                  </h1>
+                  <p class="content">
+                    The goal of the Master of Science in Information Technology
+                    is to produce graduates that are prepared to meet the
+                    technology and operations needs of modern businesses. As
+                    such, the program provides students with a solid background
+                    in both business and information technology in order to
+                    prepare them to work within business enterprises.
+                  </p>
+                  <a href="/graduate/msit" class="button">learn more</a>
+                </div>
+              </li>
+
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/mba.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Master of Business Administration (MBA)
+                  </h1>
+                  <p class="content">
+                    The goal of the MBA program is to prepare students to become
+                    managers in leadership positions for industry, government,
+                    and the not-for-profit sector and to provide them with a
+                    breadth and depth of knowledge that is supported by the
+                    ability to effectively address real world issues. The
+                    program has an international focus, and themes and cases
+                    drawn from all parts of the world are interwoven throughout.
+                  </p>
+                  <a href="/graduate/mba" class="button">learn more</a>
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${msafBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Master of Science in Accounting and Finance (MSAF)
+                  </h1>
+                  <p class="content">
+                    The goal of the MSAF program is to prepare managers to make
+                    sound accounting and financial decisions. Accounting and
+                    financial analysts who are able to identify and create
+                    solutions based on accurate quantitative analysis and
+                    compliance with current accounting and finance regulations.
+                    Topics include preparation of tax documents, auditing
+                    methods, budgeting, cost analysis, investment forecasting,
+                    and financial reporting. The integrated curriculum includes
+                    accounting and finance concepts and applications that enable
+                    graduates to become efficient managers of effective monetary
+                    transactions and investment leaders to support nation and
+                    international businesses and institutions.
+                  </p>
+                  <a href="/graduate/msaf" class="button">learn more</a>
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${mscysBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Master of Science in Cyber Security (MSCYS)
+                  </h1>
+                  <p class="content">
+                    The goal of the MSCYS program is to equip technologists with
+                    the competencies to develop, implement and maintain an
+                    effective cyber defense strategy for a range of
+                    organizations. Topics include network and systems security,
+                    identity management, network defense, information assurance
+                    compliance, strategic planning, organizational leadership,
+                    disaster recovery, business continuation and cybersecurity
+                    ethics. With emphases on governance, leadership, and
+                    responsibilities, the strong analytical and ethical concepts
+                    and applications will provide technology specialists with
+                    the tools to create and monitor business and enterprise
+                    security in an ever-connected cyber world.
+                  </p>
+                  <a href="/graduate/mscys" class="button">learn more</a>
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${msmdaBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Master of Science in Management and Data Analytics (MSMDA)
+                  </h1>
+                  <p class="content">
+                    The goal of the MSMDA program is to prepare analysts who are
+                    able to identify and frame business decisions, including
+                    acquisition, management, and utilization of big and
+                    fast-moving streams of data. Objectives emphasize the
+                    creation, analysis, solution, interpretation, and
+                    presentation of models using appropriate mathematical
+                    approaches and analytical tools by providing an integration
+                    of these concepts and skills. The breadth and depth of
+                    management and data analytics theories and applications
+                    support the ability of graduates to become future industry
+                    leaders who can effectively design and manage decision
+                    models that can be utilized in the global marketplace.
+                  </p>
+                  <a href="/graduate/msmda" class="button">learn more</a>
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${mssaeBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Master of Science in System and Application Engineering
+                    (MSSAE)
+                  </h1>
+                  <p class="content">
+                    The goal of the System and Application Engineering program
+                    is to advance the knowledge and competency of engineers and
+                    IT specialists in current and emerging technology and
+                    applications, including cloud infrastructures and mobile
+                    computing. System and application architecture are examined
+                    to enable graduates to design, operate, and maintain
+                    systems, networks and applications for a range of
+                    enterprises and organizations. Complex systems and
+                    applications are investigated within current operational and
+                    security issues. Exercises in data analytics, virtual
+                    machines, artificial intelligence, and specialized system
+                    solutions are applied for optimizing operational efficiency.
+                  </p>
+                  <a href="/graduate/mssae" class="button">learn more</a>
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${mseitBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Master of Science in Educational/Instructional Technology
+                    (MSEIT)
+                  </h1>
+                  <p class="content">
+                    The goal of the Educational/Instructional Technology program
+                    is to enrich the ability of educators to adapt teaching
+                    methods by including technologies to promote active
+                    learning. The accessibility of technology and digitalization
+                    of resources for all students are explored. Applications
+                    include enhancing instruction, curriculum, and assessment
+                    with data- and technology-driven approaches. Topics in
+                    individualized and out-come based learning utilizing
+                    technologies are investigated. Emphases on leadership,
+                    innovation, and ethical considerations will provide
+                    educators with the fluency to develop and manage
+                    instructional technology in the classroom and system-wide
+                    initiatives.
+                  </p>
+                  <a href="/graduate/mseit" class="button">learn more</a>
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/leader.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Certificate in Organizational Leadership (OL)
+                  </h1>
+                  <p class="content">
+                    The intent of the Organizational Leadership certificate is
+                    to prepare executives to develop and analyze management
+                    strategies that can be utilized in private businesses,
+                    government agencies, and other professional environments.
+                    Managerial leaders who are able to identify and create
+                    solutions based on analyses to improve organizational
+                    effectiveness that advance operations and systems. Graduates
+                    from a self-selected area who have the tools to improve
+                    performance and outcomes by providing leadership within an
+                    organization or a department within an organization.
+                    Managers with the competencies to lead local, national, and
+                    global organizations by clearly presenting and implementing
+                    effective strategies and applications.
+                  </p>
+                  <a
+                    href="/graduate/Certificate in Organizational Leadership.docx"
+                    class="button">learn more</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

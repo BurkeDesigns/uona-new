@@ -1,0 +1,192 @@
+---
+let data = {
+  img: "calendar.jpg",
+  files: [
+    {
+      file: "UoNA 2018.pdf",
+    },
+    {
+      file: "UoNA 2021.pdf",
+    },
+    {
+      file: "UoNA 2016.pdf",
+    },
+    {
+      file: "UoNA 2017.pdf",
+    },
+    {
+      file: "UoNA.Calender.SUM24-FALL25.pdf",
+    },
+    {
+      file: "UoNA 2022.pdf",
+    },
+    {
+      file: "UoNA 2025.pdf",
+    },
+    {
+      file: "UoNA 2023.pdf",
+    },
+    {
+      file: "UoNA 2024.pdf",
+    },
+    {
+      file: "UoNA 2020.pdf",
+    },
+  ],
+};
+
+function getMostRecentCalendar(data) {
+  return data.files.reduce(
+    (latest, fileObj) => {
+      const years = (fileObj.file.match(/\b\d{4}\b/g) || []).map(Number);
+      const year = Math.max(...years, 0);
+      return year > latest.year ? { file: fileObj.file, year } : latest;
+    },
+    { file: null, year: 0 }
+  ).file;
+}
+
+const mostRecentCalendar = getMostRecentCalendar(data);
+---
+
+<style>
+  .catalogcurrent,
+  .catalogpast {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    overflow-x: hidden;
+    justify-content: center;
+  }
+
+  .catalogpast > * {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    text-decoration: none;
+    font-family: sans-serif;
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 1);
+    border: 1px solid rgba(0, 0, 0, 1);
+    color: #fff;
+  }
+
+  .catalogcurrent figure {
+    position: relative;
+    height: 388px;
+    width: 300px;
+    margin: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 1);
+    border: 1px solid rgba(0, 0, 0, 1);
+  }
+
+  .catalogpast > * {
+  }
+
+  .catalogcurrent img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .catalogcurrent figcaption {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: hsla(0, 0%, 0%, 1);
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+
+  .catalogBtns {
+    width: 100%;
+    padding: 5px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .catalogBtns > * {
+    text-transform: uppercase;
+    outline: none;
+    background: transparent;
+    transition: 0.3s;
+    border-radius: 0px;
+    padding: 10px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    cursor: pointer;
+  }
+
+  .catalogBtns button:hover,
+  .optionSelected {
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: #fff !important;
+  }
+</style>
+<div class="catalog">
+  <div class="catalogBtns">
+    <button
+      onclick="showcatalogSection('current')"
+      class="optionSelected"
+      id="currentBtn">current</button
+    >
+    <button onclick="showcatalogSection('past')" id="pastBtn">other</button>
+  </div>
+  <div class="catalogcurrent">
+    <a href={`/files/uploads/calendars/${mostRecentCalendar}`}>
+      <figure>
+        <img src={`/images/${data.img}`} alt="Calendar Background" />
+        <figcaption>{mostRecentCalendar}</figcaption>
+      </figure>
+    </a>
+  </div>
+  <div class="catalogpast hidden">
+    {
+      data.files.map((item) => (
+        <a href={`/files/uploads/calendars/${item.file}`}>{item.file}</a>
+      ))
+    }
+  </div>
+</div>
+<script is:inline>
+  var catalogData,
+    defaultPath = "/files/uploads/calendars/",
+    catalog = document.querySelector(".catalog"),
+    catalogcurrent = catalog.querySelector(".catalogcurrent"),
+    catalogpast = catalog.querySelector(".catalogpast"),
+    currentBtn = catalog.querySelector("#currentBtn"),
+    pastBtn = catalog.querySelector("#pastBtn");
+
+  //displaycatalog();
+
+  function showcatalogSection(t) {
+    switch (t) {
+      case "current":
+        pastBtn.classList.remove("optionSelected");
+        currentBtn.classList.add("optionSelected");
+        catalogcurrent.classList.remove("hidden");
+        catalogpast.classList.add("hidden");
+        break;
+      case "past":
+        pastBtn.classList.add("optionSelected");
+        currentBtn.classList.remove("optionSelected");
+        catalogcurrent.classList.add("hidden");
+        catalogpast.classList.remove("hidden");
+        break;
+    }
+  }
+</script>

@@ -1,0 +1,109 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/web/building.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  .round,
+  .roundAll > * {
+    overflow: hidden;
+    border-radius: 100%;
+    background-size: cover;
+
+    background-position: center;
+  }
+
+  .roundAll img {
+    display: block;
+  }
+
+  .paddingReg * {
+    line-height: 1.5em;
+  }
+</style>
+
+<Page
+  layout="hm fixed"
+  title="Educational Outcomes | University of North America"
+>
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Educational Outcomes</div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">
+            Educational Outcome: "Practical Competence for Real-World Success"
+          </h1>
+          <div class="paddingReg">
+            The educational outcome reflects the University of North America's
+            emphasis on applied learning and the integration of practical skills
+            necessary for real-world success. It encompasses the intentional
+            recruitment of highly qualified faculty members with academic
+            expertise and active careers in high-tech industries, business, and
+            government to create a dynamic and engaging learning environment.
+            <br /><br />
+            "Practical Competence" signifies the university's commitment to equipping
+            students with the necessary skills, knowledge, and competencies that
+            are directly applicable to their work environments. The focus is on ensuring
+            that students acquire practical, hands-on experience and develop the
+            ability to effectively apply their learning in real-world settings.
+            <br /><br />
+            &quot;For Real-World Success&quot; highlights the ultimate goal of the
+            educational experience at UoNA. The university aims to prepare students
+            to thrive and succeed in their chosen careers by providing coursework
+            and applied learning assignments that are relevant and aligned with professional
+            expectations. By integrating real-world scenarios and practical applications
+            into the curriculum, UoNA ensures that students are well-prepared to
+            meet the challenges and demands of their future work environments.
+            <br /><br />
+            Overall, the educational outcome, &quot;Practical Competence for Real-World
+            Success,&quot; emphasizes UoNA&#39;s commitment to applied learning and
+            its dedication to preparing students with the practical skills and competencies
+            needed to excel in their chosen fields. It signifies the university&#39;s
+            focus on bridging the gap between theory and practice, enabling students
+            to confidently navigate and succeed in their professional journeys.
+          </div>
+        </div>
+      </ul>
+      <!-- <ul class="section" style="--bg-color:#fff;">
+        <div>
+            <h1 class="heading">Institutional Objectives</h1>
+            <div class="paddingReg">
+                <p>The institutional objectives of the University are:</p>
+                <ul>
+                    <li>To provide academic quality through rigorous academic standards with a commitment to interactive, effective learning for adults;</li>
+                    <li>To create a student-centered environment accessible to individuals of diverse ages, cultures, and socioeconomic backgrounds;</li>
+                    <li>To enable students to achieve their career and professional goals by providing a relevant and supportive learning environment including on-campus, hybrid, and online delivery formats;</li>
+                    <li>To develop educational programs that join theory and practice and instill in students the spirit of applied learning;</li>
+                    <li>To promote globally responsible perspectives in the curriculum and among students and faculty;</li>
+                    <li>To educate diverse student populations locally, regionally, nationally, and internationally.</li>
+                </ul>
+            </div>
+        </div>
+    </ul> -->
+    </section>
+    <Footer />
+  </main>
+</Page>

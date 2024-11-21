@@ -1,4 +1,4 @@
-import type { Colors } from "./kmc/types/colors";
+import type { Colors } from "./uona/types/colors";
 
 // Default theme
 export type { Colors };

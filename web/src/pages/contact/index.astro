@@ -1,0 +1,189 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(https://cdn-e9de.kxcdn.com/images/contact.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  .full {
+    width: 100%;
+  }
+
+  .button {
+    margin: 5px;
+  }
+</style>
+
+<Page layout="hm fixed" title="Contact | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Contact Us</div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Know More About Us</h1>
+          <div class="paddingReg">
+            We are committed to helping students find success in their careers.
+            If you are looking for an excellent education that will boost your
+            career and is innovative and affordable, look no further. Our proven
+            record in student success is your best assurance. Contact us and let
+            us show you why.
+          </div>
+          <div class="flex">
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?service&page=InformationRequest"
+              class="button"
+              style="--box-shadow:0 0 0 2px var(--color);"
+              >Request Information</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+
+      <ul class="section">
+        <div>
+          <h1 class="heading">Admissions Department</h1>
+          <div class="paddingReg flex">
+            <p style="padding:30px;">
+              <span class="bold">Z.J. Peng, Director of Admissions</span><br
+              />(703) 712-8268<br />zhongjie.peng@uona.edu
+            </p>
+          </div>
+          <div style="text-align:center;">
+            <a
+              href="/staff"
+              class="button"
+              style="--box-shadow:0 0 0 2px var(--color);"
+              >Regional Outreach Directors</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Military Student Services</h1>
+          <div class="paddingReg flex">
+            <!-- <p style="padding:30px;"><span class="bold">Glenn Garcia, Director of Military Student Services</span><br>(703) 827-3686<br>glenn.garcia@uona.edu</p> -->
+            <p style="padding:30px;">
+              <span class="bold"
+                >Jennifere Clayton, Military Student Services
+                Specialist/Education Business Developer</span
+              ><br />(703) 827-3671<br />jennifere.clayton@uona.edu
+            </p>
+          </div>
+        </div>
+      </ul>
+      <!--
+      {
+                  name: 'Glenn Garcia',
+                  title: 'Education Business Developer',
+                  email: 'glenn.garcia@uona.edu',
+                  img: '',
+                  order: 20,
+                  type: 'campus',
+                  desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x123</a></p>'
+              }
+-->
+      <ul class="section">
+        <div>
+          <h1 class="heading">Academic Department</h1>
+          <div class="paddingReg flex">
+            <!-- <p style="padding:30px;"><span class="bold">Peter C. West, Ed.D., VP of Academic Affairs</span><br>(571) 633-9651x112, D: (703) 827-3661<br>peter.west@uona.edu</p> -->
+            <p style="padding:30px;">
+              <span class="bold"
+                >Dr. Jason Chao/Faculty, Director of Academic Administration</span
+              ><br />571-633-9651x502<br />jason.chao@uona.edu
+            </p>
+            <p style="padding:30px;">
+              <span class="bold"
+                >James Moses, Director of Education/Faculty</span
+              ><br />(703) 489-9944<br />james.moses@uona.edu
+            </p>
+            <!-- <p style="padding:30px;"><span class="bold">Tony Wu, PhD, Educational Operations Assistant</span><br>(571) 633-9651x503<br>tony.wu@uona.edu</p> -->
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Degree Verification</h1>
+          <div class="paddingReg flex">
+            <p style="padding:30px;">
+              <span class="bold">Jason Koo, VP of Campus Operations</span><br
+              />571-633-9651x501<br />jason.koo@uona.edu
+            </p>
+            <!-- <p style="padding:30px;"><span class="bold">Jimmy Chang-lung Tsai, PhD, Academic Manager</span><br>(571) 633-9651x502, D: (703) 965-7200<br>jimmy.tsai@uona.edu</p>
+                  <p style="padding:30px;"><span class="bold">James Moses, Education Manager/Faculty</span><br>(703) 489-9944<br>james.moses@uona.edu</p> -->
+            <!-- <p style="padding:30px;"><span class="bold">Tony Wu, PhD, Educational Operations Assistant</span><br>(571) 633-9651x503<br>tony.wu@uona.edu</p> -->
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Student Services</h1>
+          <div class="paddingReg flex">
+            <p style="padding:30px;">
+              <span class="bold"
+                >Culver Fortna, Director of Student Services/International
+                Student Office (ISO)/DSO</span
+              ><br />(703) 827-3662<br />culver.fortna@uona.edu
+            </p>
+            <!-- <p style="padding:30px;"><span class="bold">Kirit Udeshi, Director of Regional Development -- South Asia</span><br>703-989-9392<br>kirit.udeshi@uona.edu</p> -->
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Accounting Department</h1>
+          <div class="paddingReg flex">
+            <p style="padding:30px;">
+              <span class="bold">Betty Bektesh, Accounting Specialist</span><br
+              />(571) 633-9651x552, D: (703) 827-3695<br
+              />betty.bektesh@uona.edu
+            </p>
+          </div>
+        </div>
+      </ul>
+
+      <!--
+  <p style="padding:30px;"><span class="bold">Susan Boslaugh, Executive Administrative Assistant</span><br>(571) 633-9651x751 D: (703) 827-3673<br>susan.boslaugh@uona.edu</p>
+  
+  <p style="padding:30px;"><span class="bold">Joshua D Khosrofian, Student Services / ESOL Instructor</span><br>(571) 633-9651x453 D: (703) 827-3615<br>joshua.khosrofian@live.uona.edu</p>
+  
+  <p style="padding:30px;"><span class="bold">Andrea Olson, Ph.D., VP of Startegic Planning</span><br>(571) 633-9651x701 D: (651) 398-1005<br>andrea.olson@uona.edu</p>
+  <p style="padding:30px;"><span class="bold">Omar E Akchurin, Librarian</span><br>(571) 633-9651x352 D: (703) 827-3686<br>omar.akchurin@uona.edu</p>
+  <p style="padding:30px;"><span class="bold">Wesley Burke, WebMaster & Facility Coordinator</span><br>(571) 633-9651x112 D: (571) 232-7661<br>wesley.burke@uona.edu</p>
+  <p style="padding:30px;"><span class="bold">John Hsu, Instructional Technology</span><br>(571) 633-9651x502 D: (703) 827-3668<br>John.hsu@uona.edu</p>
+  <p style="padding:30px;"><span class="bold">Miguel Angel Moreno, Director of Outreach</span><br> (202) 644-1133 D: (703) 827-3671<br>miguel.moreno@uona.edu</p>
+  <p style="padding:30px;"><span class="bold">Zhongquan Wang, Regional Manager - China</span><br>(571) 633-9651x D: (703) 870-2050<br>zhongquan.wang@uona.edu</p>
+  <p style="padding:30px;"><span class="bold">Kirit Udeshi, Director of Regional Development - South Asia</span><br>(571) 633-9651x D: (703) 989-9392<br>kirit.udeshi@uona.edu</p>
+-->
+    </section>
+    <Footer />
+  </main>
+</Page>

@@ -1,0 +1,13 @@
+/* theme variables CSS */
+:root {
+	--accent-color: #fbd504;
+    --p-color: hsla(0,0%,0%,.6);
+}
+/* 
+red - #d42a1d
+var(--accent-color)
+var(--p-color)
+var()
+var()
+var()
+*/

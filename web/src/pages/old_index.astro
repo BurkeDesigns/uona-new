@@ -1,0 +1,21 @@
+---
+import Page from "@layouts/page.astro";
+import Aside from "@components/Aside";
+import List from "@components/List";
+import Text from "@components/Text";
+import Btn from "@components/Button";
+import Accordion from "@components/Accordion";
+import ContactForm from "@components/ContactForm";
+---
+
+<Page layout="am fixed">
+	<Aside client:only="react" />
+	<main el="main">
+		<List el="xsm p-lg">
+			<Text as="h1" color="white">Home</Text>
+		</List>
+		<List el="xsm p-lg" style={{ background: "#ccc" }}>
+			<ContactForm client:only="react" />
+		</List>
+	</main>
+</Page>

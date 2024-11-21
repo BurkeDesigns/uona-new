@@ -1,0 +1,326 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let mssaeBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mssae/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style>
+  #video {
+    /* background-image: url(<?php echo $background; ?>); */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .course p {
+    margin: 0;
+  }
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+  .full {
+    box-sizing: border-box;
+  }
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+  #catagory div {
+    background: transparent;
+    max-width: inherit;
+    color: #4067b1;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="MSSAE | University of North America">
+  <Header />
+  <main el="main">
+    <section
+      id="video"
+      style={{ backgroundImage: `url(${mssaeBG.default.src})` }}
+    >
+      <div class="maintitle content">
+        <div><p>System &amp; Application Engineering</p></div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">
+            Master of Science in System and Application Engineering (MSSAE)
+          </h1>
+          <div class="paddingReg content">
+            <span class="bold">CIP Code: 11.0202</span><br /><br />
+            <span class="bold"
+              >This program qualifies for the STEM designation.</span
+            ><br /><br />
+            The goal of the System and Application Engineering program is to advance
+            the knowledge and competency of engineers and IT specialists in current
+            and emerging technology and applications, including cloud infrastructures
+            and mobile computing. System and application architecture are examined
+            to enable graduates to design, operate, and maintain systems, networks
+            and applications for a range of enterprises and organizations. Complex
+            systems and applications are investigated within current operational
+            and security issues. Exercises in data analytics, virtual machines, artificial
+            intelligence, and specialized system solutions are applied for optimizing
+            operational efficiency.<br />
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/graduate"
+              style="--box-shadow:0 0 0 2px var(--color);">More Programs</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Program Objectives</h1>
+          <div class="paddingReg content">
+            <span class="bold"
+              >Together, the 12 MSSAE courses provide the knowledge and skills
+              that enable graduates to advance in, and become leaders of, IT
+              systems engineering career fields. Specifically, each group of
+              courses in the MSSAE curriculum measure a student’s ability to:</span
+            ><br /><br />
+            <ul>
+              <li>
+                Apply fundamental concepts and methodologies for information
+                systems and applications engineering, which is demonstrated by
+                successful completion of the exercises and projects required in
+                the common- and program-core courses, and capstone course;&nbsp;
+              </li><li>
+                Consolidate knowledge in the latest technology advances in big
+                data analytics, artificial intelligence, deep learning, and
+                blockchain technology, which is covered by completion of program
+                core and elective courses.&nbsp;
+              </li><li>
+                &nbsp;Analyze enterprise IT systems’ engineering and development
+                issues by successful completion of analyses and creation of
+                models required in the program core and elective courses;&nbsp;
+              </li><li>
+                Evaluate a variety of IT systems including networks, data
+                systems, applications, and securities with the ability to
+                propose solutions utilizing advanced technologies which are
+                required in the program core and electives courses; and
+              </li><li>
+                Build and develop system engineering project plans and
+                approaches for solving specific enterprise or corporate IT
+                challenges which are required in the program core and electives
+                courses, and capstone course.&nbsp;<br />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Program Length</h1>
+          <div class="paddingReg content">
+            It is expected that students will take two courses per term
+            throughout their programs. Since many students take one approved
+            quarter-off (vacation term) per year during their program, the
+            normal program length is 2 years (24 months) with the expectation
+            that students will complete in this length of time. Students are
+            given 3 years (36 months) to complete their programs as long as they
+            are making satisfactory academic progress.
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Curriculum</h1>
+          <div class="paddingReg">
+            <h1 class="subtitledesc">Common Core (2 Courses)</h1>
+            <ul class="course">
+              <li id="catagory"><div>Course</div><div>Credit Hrs</div></li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold">MGMT515</span> - Management that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold">TECH515</span> - Technology that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Program Core (5 Courses)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <b>CMSC 509</b>&nbsp;- Software Methodology
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content"><b>CMSC 512</b> - Computer Architecture</p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>DATA 521</b> - Tackling Big Data Challenge
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>INST 534</b> - Computer and Information Networking
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>CMSC 580</b> - System Architecture and Security Design
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Elective (4 Courses)</h1>
+            <ul class="flex">
+              <p>
+                A minimum of 4 elective courses (18 credit hours) are required,
+                which include at least one course from Elective Group 1 and one
+                course from Elective Group 2.
+              </p>
+            </ul>
+            <ul class="flex">
+              <p>Elective Group 1</p>
+            </ul>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> CMSC 583</b> - Software Programming
+                    Testing and Integration
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> CMSC 589</b> - JAVA Programming
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> MSAE 530</b> - Cloud and Mobile
+                    Computing
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <ul class="flex">
+              <p>Elective Group 2</p>
+            </ul>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> DATA 523</b> - Big Data Technologies
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> INST 518</b> - Technology and Operations
+                    Management
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> MSAE 550</b> - Emerging Systems
+                    and Technologies
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Capstone (1 Course)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p><span class="bold">CAPS600</span> - Graduate Capstone</p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

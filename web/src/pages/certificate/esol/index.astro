@@ -1,0 +1,299 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let background = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/certificate/esol/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style>
+  #video {
+    /* background-image: url(<?php echo $background; ?>); */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .course p {
+    margin: 0;
+  }
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+  .full {
+    box-sizing: border-box;
+  }
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+  #catagory div {
+    background: transparent;
+    max-width: inherit;
+    color: #4067b1;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="ESOL | University of North America">
+  <Header />
+  <main el="main">
+    <section
+      id="video"
+      style={{ backgroundImage: `url(${background.default.src})` }}
+    >
+      <div class="maintitle content"><div><p>ESOL</p></div></div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">Overview</h1>
+          <div class="paddingReg content">
+            The main objective of the UoNA ESOL program is to bolster the
+            academic English language proficiency of our students by developing
+            meaningful English language courses based on content relating to
+            their diverse backgrounds and experiences.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/certificate"
+              style="--box-shadow:0 0 0 2px var(--color);">More Programs</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Program Objectives</h1>
+          <div class="paddingReg content">
+            Competency skills will be developed and practiced in each of the
+            ESOL courses through learning the processes of reading, writing,
+            researching, and presenting ideas in English.&nbsp;<div>
+              <br />
+            </div><div>
+              Reading short academic articles, summarizing information, taking
+              notes, asking questions, gathering ideas, discussing the writing
+              process, organizing projects, researching topics, building
+              vocabulary, formulating a topic sentence, outlining, editing,
+              revising, rewriting, orally presenting, and sharing quality
+              projects and essays; are all part of the academic process.&nbsp;<br
+              />
+            </div>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Program Length</h1>
+          <div class="paddingReg content">
+            The minimum time for ESOL certificate program students to finish the
+            program is 4 terms. However, students have the option to take only
+            some courses within the program without completing the entire
+            program.<div>
+              <span style='color: var(--color, "#4067b1");'><br /></span>
+            </div><div>
+              <span style='color: var(--color, "#4067b1");'
+                >Program students may repeat courses within the requirements
+                stated in this section of the catalog. Six (6) terms is
+                considered the normal program length. Students can take a
+                maximum of 9 terms (1.5 times of normal program length) to
+                complete the ESOL certificate program.</span
+              ><span style='color: var(--color, "#4067b1");'
+                >&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span
+              ><div>
+                <div><br /></div><div>
+                  Students who are enrolled in the <b
+                    >ESOL certificate program</b
+                  >, complete all 4 courses, and pass the English language
+                  proficiency exit exam with a minimum score of 75% on all
+                  components are awarded an ESOL Program Certificate. The ESOL
+                  proficiency exit exam is a cumulative post-test that mirrors
+                  the placement test given at the time of admission as an ESOL
+                  certificate program applicant.&nbsp;<br />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Admission Requirements</h1>
+          <div class="paddingReg content">
+            The process for admission to the university as an ESOL certificate
+            program student is designed to assist applicants who want to advance
+            their English skills to meet personal or employment goals.&nbsp;<div
+            >
+              <br />
+            </div><div>
+              The university is authorized by the Student Exchange and Visitor
+              Program (SEVP) to enroll nonimmigrant (F1-Visa) students in its
+              ESOL certificate program.&nbsp;
+            </div><div><br /></div><div>
+              Each candidate for admission to the ESOL certificate program, will
+              receive a personal assessment of his or her background with a
+              focus on providing the guidance necessary for a sound
+              selection.&nbsp;<div><br /></div><div>
+                <b>For the ESOL program, applicants must submit:&nbsp;</b><div>
+                  <br /><div>
+                    <ol>
+                      <li>Completed Application Form</li><li>
+                        Application Fee of $50.00
+                      </li><li>
+                        Proof of High School Graduation or its equivalent
+                      </li><li>Government issued photo ID 120</li><li>
+                        Take the ESOL English proficiency exam on arrival to
+                        UoNA prior to registering for courses.<br />
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Curriculum</h1>
+          <div class="paddingReg">
+            <p>
+              The ESOL (English for Speakers of Other Languages) program is
+              designed to help non-native speakers of English develop their
+              language skills in order to communicate effectively in English.
+              The program is structured into four levels: Beginner,
+              Intermediate, Intermediate/Advanced, and Advanced, each catering
+              to learners with different levels of proficiency in English. The
+              program provides a range of language learning opportunities,
+              including reading, writing, listening, and speaking activities,
+              and aims to help learners build a solid foundation in the English
+              language. Whether you&#39;re new to the language or looking to
+              improve your existing skills, the ESOL program can help you
+              achieve your language goals.
+            </p>
+            <ul class="course">
+              <li id="catagory">
+                <div>Program Courses</div><div>Credit Hrs</div>
+              </li>
+              <li>
+                <div><p class="content"><b>ESOL 001</b> - Beginner</p></div><div
+                >
+                  <p>18</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="content"><b>ESOL 002</b>&nbsp;- Intermediate</p>
+                </div><div><p>18</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>ESOL 003</b>&nbsp;- Intermediate/Advanced
+                  </p>
+                </div><div><p>18</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content"><b>ESOL 004</b>&nbsp;- Advanced</p>
+                </div><div><p>18</p></div>
+              </li>
+            </ul>
+            <ul class="course">
+              <li id="catagory">
+                <div>Advanced Professional Program Courses</div><div>
+                  Credit Hrs
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="content"><b>ESOL 100</b> - Writing Workshop</p>
+                </div><div><p>18</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>ESOL 200</b>&nbsp;- American Culture&nbsp;
+                  </p>
+                </div><div><p>18</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>ESOL 300</b>&nbsp;- Patterns of American
+                    Immigration&nbsp;
+                  </p>
+                </div><div><p>18</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>ESOL 400</b>&nbsp;- Northern Virginia Business&nbsp;
+                  </p>
+                </div><div><p>18</p></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

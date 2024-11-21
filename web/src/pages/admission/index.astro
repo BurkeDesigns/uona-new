@@ -1,0 +1,927 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .course p {
+    margin: 0;
+  }
+
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 50px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .full {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+
+  #catagory div {
+    background: transparent;
+    color: #000;
+    max-width: inherit;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+
+  #video {
+    background-image: url(/images/web/building.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  table {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    border-spacing: 0px 10px;
+    font-family: sans-serif;
+    font-size: 12pt;
+  }
+
+  table tr:not(:first-child) {
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  table td {
+    padding: 15px;
+  }
+
+  table th:not(:first-child),
+  table td:not(:first-child) {
+    text-align: center;
+  }
+
+  table td:nth-child(even) {
+    background-color: #4067b1;
+    color: #fff;
+  }
+  .paddingReg * {
+    line-height: 1.5em;
+  }
+</style>
+
+<Page layout="hm fixed" title="Admission | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Admission</div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Admission Process</h1>
+          <div class="paddingReg">
+            The process for admission to the university is designed to assist
+            students in making the entrance into graduate study as smooth as
+            possible. Each candidate for admission will receive a personal
+            assessment of his or her background with a focus on providing the
+            guidance necessary for a sound selection.
+            <br /><br />
+            Call our admissions department at (703) 712-8268 or email us at zhongjie.peng@uona.edu
+          </div>
+          <div class="flex">
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+            <a
+              class="button"
+              href="/forms/admission/"
+              style="--box-shadow:0 0 0 2px var(--color);">Application Forms</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">
+            UNDERGRADUATE / BACHELOR’S PROGRAM APPLICATION
+          </h1>
+          <div class="paddingReg">
+            <p>
+              Aligned with the mission of the university, UoNA’s undergraduate
+              programs are designed for students to attain the essential
+              knowledge and skills necessary to meet today’s challenges in the
+              areas of business administration and technology. Whether you are
+              applying as a first-year or transfer student, we are here to
+              support you in every step of the admission process.
+            </p>
+            <h2>College of Business and Management</h2>
+            <ul>
+              <li>Bachelor of Science in Business Administration (BSBA)</li>
+            </ul>
+            <h2>College of Technology</h2>
+            <ul>
+              <li>Bachelor of Science in Information Technology (BSIT)</li>
+            </ul>
+            <p>
+              To help you with your application, UoNA’s Admissions Office
+              provides detailed information about the admission requirements and
+              processes.
+            </p>
+            <br />
+            <h2>Take The Next Step: Easy Admission Process</h2>
+            <p>Bachelor’s Degree Program Admission Requirements</p>
+            <p>
+              To be admitted to a bachelor’s degree program at UoNA, applicants
+              must submit:
+            </p>
+            <ul>
+              <li>
+                Completed UoNA Application for Admission form submitted with the
+                $100 Application Fee (non-refundable) by electronic payment,
+                cashier/bank checks, or money order payable to “The University
+                of North America” in US currency.
+              </li>
+              <li>
+                Completed UoNA Bachelor’s Program Education &amp; Career form.
+              </li>
+              <li>
+                Copy of a valid government-issued form of identification (a
+                current passport or birth certificate, or government-issued ID,
+                or, for Permanent Residents, a copy of the Green Card).
+              </li>
+              <li>
+                Official transcripts from a US high school or document verifying
+                a US GED, or evaluated, equivalent non-US institution transcript
+                (minimum credential level).
+                <ul>
+                  <li>
+                    Copies of transcripts or high school equivalency documents
+                    may be submitted for academic department review during the
+                    acceptance process.
+                  </li>
+                  <li>
+                    An official transcript issued by the US institution or an
+                    evaluated international credential from all institutions
+                    which awarded the applicant’s high school diploma is
+                    required prior to students starting classes.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h2>To Transfer Bachelor’s-level Credits to UoNA</h2>
+            <p>
+              At UoNA, we recognize college credits that you have earned from
+              other institutions. UoNA will review your transcripts from other
+              universities and colleges and assess the eligibility of these
+              credits to be transferred toward your bachelor’s degree.
+            </p>
+            <p>
+              A minimum of 30 percent (54 quarter-hour credits) of the total
+              required bachelor’s program 180 quarter-hour credits must be
+              completed at UoNA. The remaining 70 percent (126 quarter- hour
+              credit maximum) may be requested to be earned through a
+              combination of transfer credits, military transfer, or advanced
+              standing that meet the requirements defined by UoNA as published
+              in the catalog, p.121-122 (<a href="/catalogs">UoNA Catalog</a>).
+              A capstone course must be taken at UoNA as part of each bachelor’s
+              program sequence. Transfer credits, military transfer, and
+              advanced standing may not be submitted for any bachelor’s program
+              capstone.
+            </p>
+            <p>
+              If you are requesting transfer credits from a non-US institution,
+              the university or college transcripts must be evaluated by an
+              approved external evaluator to determine US equivalency.
+            </p>
+
+            <div class="flex">
+              <a
+                href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+                class="button"
+                style="--box-shadow:0 0 0 2px var(--bg-color);">apply today</a
+              >
+            </div>
+          </div>
+        </div>
+      </ul>
+
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Graduate Applicants</h1>
+          <div class="paddingReg">
+            Applicants are evaluated individually based on their professional
+            experience, academic credentials from accredited institutions,
+            required documents as specified in the catalog, and an admissions
+            interview, which assesses their potential for successfully
+            completing a relevant academic program.
+          </div>
+          <div class="flex">
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+            <a
+              class="button"
+              href="/forms/admission/"
+              style="--box-shadow:0 0 0 2px var(--color);">Application Forms</a
+            >
+          </div>
+        </div>
+      </ul>
+
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">GRADUATE / MASTER’S PROGRAM APPLICATION</h1>
+          <div class="paddingReg">
+            <p>
+              The University offers master’s degree programs in business and
+              management, and technology, to provide practitioner-oriented
+              education to students from around the world. The programs are
+              offered through the College of Business and Management or College
+              of Technology.
+            </p>
+            <h2>College of Business and Management</h2>
+            <ul>
+              <li>Master of Science in Accounting and Finance (MSAF)</li>
+              <li>Master of Business Administration (MBA)</li>
+              <li>
+                Master of Science in Educational/Instructional Technology
+                (MSEIT)
+              </li>
+            </ul>
+            <h2>College of Technology</h2>
+            <ul>
+              <li>Master of Science in Computer Science (MSCS)</li>
+              <li>Master of Science in Cyber Security (MSCYS)</li>
+              <li>Master of Science in Information Technology (MSIT)</li>
+              <li>
+                Master of Science in Management and Data Analytics (MSMDA)
+              </li>
+              <li>
+                Master of Science in System and Application Engineering (MSSAE)
+              </li>
+            </ul>
+            <p>
+              UoNA’s rigorous curriculum helps you fulfill your true passion as
+              you take the next step forward. Our graduate programs are designed
+              to fit your busy life schedule, each program is delivered in a
+              hybrid (blended) format, featuring on-site, online, and hybrid
+              courses.
+            </p>
+            <p>Learn more about Graduate Admissions.</p>
+
+            <h2>Take The Next Step: Easy Admission Process</h2>
+            <p>
+              Master’s Program Admissions Checklist To be admitted to a master’s
+              degree program, all applicants must submit:
+            </p>
+            <ul>
+              <li>
+                Completed UoNA Application for Admission form submitted with the
+                $100 Application Fee (one-time, non-refundable) in U.S. currency
+                by electronic payment online.
+              </li>
+              <li>
+                An official academic transcript issued by an accredited U.S.
+                institution or a certified copy of international credentials
+                from all institutions which awarded the applicant’s
+                bachelor&#39;s degrees/coursework (minimum credential level) is
+                required prior to students starting class.
+                <ul>
+                  <li>
+                    A copy of an unofficial transcript for an earned bachelor’s
+                    degree from an accredited U.S. institution or documentation
+                    of a bachelor’s degree from a non-U.S. institution may be
+                    submitted for the academic department’s acceptance review.
+                  </li>
+                </ul>
+              </li>
+              <li>UoNA Master’s Program Education and Career Goals Form.</li>
+              <li>
+                Copy of a valid government-issued form of identification, such
+                as a government-issued picture ID, current passport or birth
+                certificate, or Green Card.
+              </li>
+              <li>
+                One (1) completed, signed UoNA Recommendation Form from a
+                professional associate or an academic advisor/instructor.
+              </li>
+            </ul>
+            <p>
+              OPTIONAL: Graduate Management Admissions Test (GMAT), Graduate
+              Record Exam (GRE), and English Proficiency test scores are not
+              required for admission; however, an applicant may submit such
+              scores in support of their application.
+            </p>
+            <h2>To Transfer Master-level Credits to UoNA</h2>
+            <p>
+              At UoNA, we recognize college credits that you have earned from
+              other institutions, and your professional experiences. UoNA will
+              review your master-level transcripts from other universities and
+              colleges, professional certifications and experiences, and assess
+              the eligibility of these credits to be transferred toward your
+              master’s degree.
+            </p>
+            <h2>To Transfer Master-level Credits</h2>
+            <p>
+              A minimum of 58 percent, 31.5 quarter-hour credits of the total
+              required master’s degree program 54 quarter-hour credits must be
+              completed at UoNA. The remaining 22.5 quarter-hour credit maximum
+              may be requested to be granted through a combination of transfer
+              credits, military transfer, advanced standing, or professional
+              work experience that meet the requirements defined by UoNA as
+              published in the catalog, p.84-85. (<a href="/catalogs"
+                >UoNA Catalog</a
+              >)
+            </p>
+            <p>
+              No greater than 30 percent of the combined transfer credits may be
+              awarded for professional work experience. Transfer credits or
+              other experiences may not be submitted for any master’s program
+              capstone course. A capstone course must be taken at UoNA as part
+              of each master’s degree program.
+            </p>
+            <p>
+              If you are requesting transfer credits from a non-US institution,
+              the university or college transcripts must be evaluated by an
+              approved external evaluator to determine US equivalency.
+            </p>
+
+            <div class="flex">
+              <a
+                href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+                class="button"
+                style="--box-shadow:0 0 0 2px var(--bg-color);">apply today</a
+              >
+            </div>
+          </div>
+        </div>
+      </ul>
+
+      <ul class="section">
+        <div>
+          <h1 class="heading">International Students</h1>
+          <div class="paddingReg">
+            The University of North America values the diversity of our student
+            body. We welcome students from across the globe to join our campus
+            community in Fairfax, Virginia. <br /><br />
+
+            The University is authorized by Federal Law to issue I-20s to
+            international students admitted to one of its academic programs. An
+            I-20 Shipping and Handling Fee will be required to mail the
+            acceptance letter and I-20 documentation to all international
+            applicants. <br /><br />
+
+            International applicants who hold an F1 Visa must submit proof of
+            financial ability per SEVP regulations, including original or
+            notarized copies of documents from the last 90 days at the time of
+            application, which include a Financial Affidavit of Support or
+            financial bank/credit statements. <br /><br />
+
+            International applicants who are accepted to UoNA and applying for
+            an F1 Visa or are requesting a Change of Status (COS) may defer
+            enrollment for 1 term at no additional fee. Applicants are required
+            to pay a $100 non-refundable fee each term if applying for a
+            deferral for a 2nd, 3rd, or 4th time. Deferrals cannot be requested
+            for greater than 4 terms. After 4 terms, a new application must be
+            submitted.
+            <br /><br />
+            <div class="flex">
+              <a
+                href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+                class="button"
+                style="--box-shadow:0 0 0 2px var(--bg-color);">apply today</a
+              >
+            </div>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">International Credentials</h1>
+          <div class="paddingReg">
+            Transcripts sent from any school, college, or university that is
+            recorded in a language other than English must be accompanied by a
+            certified translation. All documents must be originals or certified
+            copies. If an applicant requests the international transcripts be
+            reviewed for determining eligible transfer credit, the transcripts
+            must be reviewed by an approved educational credential evaluation
+            agency—AACRAO International Education Services (prior to 2016), or a
+            member of the Association of International Evaluators (AICE) or
+            National Association of Credential Evaluation Services to confirm
+            equivalency to a degree from an accredited U.S. institution.
+
+            <h2>English Language Proficiency Policy</h2>
+            <p>
+              All international students are admitted to UoNA based on their
+              potential to successfully complete their selected program. All
+              accepted students whose native language is not English must
+              fulfill one of the following requirements:
+            </p>
+            <ul>
+              <li>
+                Take the Pearson English Level Test (PTE) on arrival to UoNA
+                prior to registering for courses.
+                <ul>
+                  <li>
+                    If a score of greater than or equal to ≥ 45 is achieved, the
+                    student may proceed directly into their selected degree
+                    program courses.
+                  </li>
+                  <li>
+                    If a score of less than &lt; 45 is achieved, the student
+                    will be required to transfer to the ESOL certificate
+                    program, and allowed to enter a degree program after the
+                    student has demonstrated adequate English proficiency by
+                    achieving a scores of ≥ 45. The PTE is administrated at the
+                    end of each ESOL course.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                OR during the admissions process, an applicant may have elected
+                to provide one of the following documents that fulfills the UoNA
+                English proficiency requirement:
+                <ul>
+                  <li>
+                    Documentation of an earned degree in which English is the
+                    principle language of instruction from an accredited
+                    institution recognized by the U.S. Dept. of Education or a
+                    non-U.S. institution that is recognized by its government’s
+                    higher education authority.
+                  </li>
+                  <li>
+                    Verification from a non-U.S. post-secondary institution in
+                    which English is the principle language of instruction and
+                    evidence that certifies the applicant successfully completed
+                    a minimum of two years of study at the institution.
+                  </li>
+                  <li>
+                    Acceptable test score from an English proficiency test that
+                    is recognized by UoNA: TEST TOEFL-IBT TOEFL Computer Based
+                    TOEFL Paper Based iTEP IELTS PTE Acceptable Score ≥ 57 ≥ 189
+                    ≥ 500 ≥ 3.5 ≥ 5.5 ≥ 45.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <!-- <ul class="section">
+          <div>
+              <h1 class="heading">Credit Transfer from Other Institutions</h1>
+              <div class="paddingReg">
+                  A maximum of 135 quarter credits may be transferred into a bachelor’s degree program, with no more than 54 credits of transfer credit applied to core courses. The University does not award academic credit for non-academic experience.<br><br>
+                  <b>To receive transfer credit for a course, the following criteria must be met:</b><br><br>
+                  <ul>
+                      <li>The student must have taken the course for graduate credit as part of a degree from an
+                          accredited institution or equivalent;</li>
+                      <li>The course taken was equivalent to the University of North America course in content,
+                          level, and credit hours; and</li>
+                      <li>The student earned at least a grade of “C” (courses taken on a pass/fail basis may not
+                          be eligible for transfer)</li>
+                  </ul>
+              </div>
+          </div>
+      </ul> -->
+
+      <!--<h1 class=subtitle>Instructions</h1>
+<ul class=flex>
+  <div class="full shadow"><span class=bold>Attach required information and submit through email to <a href="mailto:admissions@uona.edu?Subject=New%20Student%20Admission" target="_top">admissions@uona.edu</a> or in-person at the Admissions Office</span><br><br>
+  <ol>
+    <li>
+              
+              or in-person <br>
+      
+    </li>
+          <li>Download and complete all <a href="/forms/admission.zip" download>required forms</a> and bring to the Admissions Office or submit required information to <a href="mailto:admissions@uona.edu?Subject=New%20Student%20Admission" target="_top">admissions@uona.edu</a></li>
+    <li>Our Admissions Office will review your application once all documents and fees have been received.</li>
+  </ol>
+  </div>
+</ul>-->
+
+      <!-- <ul class="section">
+          <div>
+              <h1 class="heading">Credit Transfer from Other Institutions</h1>
+              <div class="paddingReg">
+                  A maximum of 22.5 quarter credits may be transferred into a master’s degree program, with no
+                  more than 13.5 credits of transfer credit applied to core courses. The University does not
+                  award academic credit for non-academic experience.<br><br>
+                  <b>To receive transfer credit for a course, the following criteria must be met:</b><br><br>
+                  <ul>
+                      <li>The student must have taken the course for graduate credit as part of a degree from an
+                          accredited institution or equivalent;</li>
+                      <li>The course taken was equivalent to the University of North America course in content,
+                          level, and credit hours; and</li>
+                      <li>The student earned at least a grade of “B” (courses taken on a pass/fail basis may not
+                          be eligible for transfer)</li>
+                  </ul>
+              </div>
+          </div>
+      </ul> -->
+      <ul
+        class="section"
+        style="--bg-color:#4067b1;--color:#fff;"
+        id="tuitionRates"
+      >
+        <div>
+          <h1 class="heading">ADMISSION FAQs</h1>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;" id="tuitionRates">
+        <div>
+          <div class="paddingReg">
+            <h2>How do I apply for admission?</h2>
+            <p>
+              Interested applicants may submit an application online at any time
+              (<a
+                href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+                >apply online</a
+              >). UoNA is on the quarter system and new enrollees may begin at
+              the start of each quarter: Winter, Spring, Summer, or Fall. (<a
+                href="/calendar">UoNA Calendar</a
+              >) On receipt of your application, the admissions office will
+              reach out to you by email to help you complete the process.
+            </p>
+
+            <h2>How do I submit the required admission documents?</h2>
+            <p>
+              All documents should be submitted to the Office of Admissions
+              admissions@uona.edu, or by US mail to the address below. Please
+              ensure that your full name appears on all documents.
+            </p>
+            <p>
+              <b>Mail to:</b><br />
+              The Office of Admissions<br />
+              University of North America<br />
+              12750 Fair Lakes Circle<br />
+              Fairfax, Virginia 22033<br />
+              United States of America
+            </p>
+
+            <h2>How can I check the status of my application?</h2>
+            <p>
+              Contacting the Office of Admissions at 571-633-9651, Ext. 202<br
+              />
+              Emailing us at admissions@uona.edu.
+            </p>
+
+            <h2>When do I get to register for classes?</h2>
+            <p>
+              During the new student orientation session, required orientation
+              sessions are conducted before each quarter's start date.
+            </p>
+
+            <h2>How much will my program cost?</h2>
+            <p>
+              Please view our <a
+                href="/files/uploads/documents/tuition%20and%20policies/tuition%20and%20policies.pdf"
+                target="_blank">tuition and fee page</a
+              >
+            </p>
+
+            <h2>How can I pay my bill?</h2>
+            <p>
+              You may pay your tuition with your Campus Café ID OR contact the
+              UoNA accounting office.
+            </p>
+
+            <h2>For International Student Questions:</h2>
+            <p>
+              You may contact the International Student Office (ISO) Manager:
+              Mr. Culver Fortna, culver.fortna@uona.edu, for guidance.
+            </p>
+          </div>
+        </div>
+      </ul>
+
+      <ul
+        class="section"
+        style="--bg-color:#4067b1;--color:#fff;"
+        id="tuitionRates"
+      >
+        <div>
+          <h1 class="heading">Tuition Rates</h1>
+          <div class="paddingReg">
+            Learn more about our <a
+              href="/files/uploads/documents/tuition%20and%20policies/tuition%20and%20policies.pdf"
+              target="_blank">tuition</a
+            >.
+          </div>
+        </div>
+      </ul>
+      <!-- <ul class="section" style="--bg-color:#fff;">
+          <div>
+              <h1 class="heading">Tuition Rates</h1>
+              <div class="paddingReg">
+                  
+          <h1 class="subtitledesc">Programs</h1>
+          <ul class="course">
+              <li id="catagory"><div>Course</div><div>Per Credit Rate</div></li>
+              <li><div><p>Master’s Degree Programs 54 credits</p></div><div><p>$ 390</p></div></li>
+              <li><div><p>Bachelor’s Degree Programs 180 credits </p></div><div><p>$ 300</p></div></li>
+              <li><div><p>ESOL Certificate Program </p></div><div><p>$ 100</p></div></li>
+              
+          </ul>
+      
+                  <table style="width:100%">
+                      <tr>
+                          <th>Program</th>
+                          <th>Tuition Rate
+                              Per Credit Hour</th>
+                          <th>Tuition Per
+                              Course</th>
+                          <th>Total Program
+                              Tuition Cost</th>
+                      </tr>
+                      <tr>
+                          <td>Master’s Degree Programs 54 credits; (MSAF, MBA, MSEIT, MSCS, MSCYS, MSMDA, MSIT, MSSAE)</td>
+                          <td>$ 390</td>
+                          <td>$ 1,755</td>
+                          <td>$ 21,060</td>
+                      </tr>
+                      <tr>
+                          <td>Post-Bachelor’s Certificate Programs 27 credits; (OL)</td>
+                          <td>$ 390</td>
+                          <td>$ 1,755</td>
+                          <td>$ 10,530</td>
+                      </tr>
+                      <tr>
+                          <td>Bachelor’s Degree Programs 180 credits, (BSBA,
+                              BSIT)</td>
+                          <td>$ 390</td>
+                          <td>$ 1,755</td>
+                          <td>$ 63,000</td>
+                      </tr>
+                      <tr>
+                          <td>Occupational Associate’s Degree Program 90 credits (OASPM)</td>
+                          <td>$ 350</td>
+                          <td>variable</td>
+                          <td>$ 31,500</td>
+                      </tr>
+                      <tr>
+                          <td>Operations Mgt for Technical Industries 31.5 Credits (OMTI)</td>
+                          <td>$ 350</td>
+                          <td>variable</td>
+                          <td>$ 11,025</td>
+                      </tr>
+                      <tr>
+                          <td>ESOL Certificate Program (ESOL)</td>
+                          <td>$ 100</td>
+                          <td>$ 1,800</td>
+                          <td>$ 7,200</td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+      </ul> -->
+      <!-- <ul class="section">
+          <div>
+              <h1 class="heading">Fees</h1>
+              <h1 class="subtitledesc">Mandatory</h1>
+              <div class="paddingReg">
+                  <ul class="course">
+                      <li id="catagory">
+                          <div>Description</div>
+                          <div>Amount</div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Application Fee for Degree programs, one-time, non-refundable</p>
+                          </div>
+                          <div>
+                              <p>$ 100</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Application Fee for ESOL Certificate program, one-time, non-refundable</p>
+                          </div>
+                          <div>
+                              <p>$ 50</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Registration Fee, per course, non-refundable</p>
+                          </div>
+                          <div>
+                              <p>$ 50</p>
+                          </div>
+                      </li>
+                  </ul>
+                  <h1 class="subtitledesc">As-Incurred Fees (non-refundable)</h1>
+                  <ul class="course">
+                      <li>
+                          <div>
+                              <p>Returned Check Fee, per occurrence</p>
+                          </div>
+                          <div>
+                              <p>$ 50</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>I-20 Shipping & Handling Charge (Express international shipping)</p>
+                          </div>
+                          <div>
+                              <p>$ 100</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Regular international shipping (non-express)</p>
+                          </div>
+                          <div>
+                              <p>$ 50</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Transcript Fee, does not include international shipping costs if applicable</p>
+                          </div>
+                          <div>
+                              <p>$ 10</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Expedited Transcript Fee, for requests received before 12:00 PM (noon) EST, for processing same day, does not include international shipping costs if applicable</p>
+                          </div>
+                          <div>
+                              <p>$ 25</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Replacement Student ID Card Fee</p>
+                          </div>
+                          <div>
+                              <p>$ 10</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Practical Training Maintenance Fee</p>
+                          </div>
+                          <div>
+                              <p>$ 585</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Graduation Fee, per degree</p>
+                          </div>
+                          <div>
+                              <p>$ 300</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Budget Plan Fee</p>
+                          </div>
+                          <div>
+                              <p>$ 200</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Supporting Documentation Fee (per document)</p>
+                          </div>
+                          <div>
+                              <p>$ 50</p>
+                          </div>
+                      </li>
+                  </ul>
+
+                  <h1 class="subtitledesc">Late Fees</h1>
+                  <ul class="course">
+                      <li>
+                          <div>
+                              <p>Late Registration Fee, per course</p>
+                          </div>
+                          <div>
+                              <p>$ 100</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Late Installment Plan Payment Fee, 1 - 7 days late</p>
+                          </div>
+                          <div>
+                              <p>$ 50</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Late Installment Plan Payment Fee, 8 -14 days late</p>
+                          </div>
+                          <div>
+                              <p>$ 150</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Late Installment Plan Payment Fee, 15 – 21 days late</p>
+                          </div>
+                          <div>
+                              <p>$ 250</p>
+                          </div>
+                      </li>
+                      <li>
+                          <div>
+                              <p>Late Manual Processing Fee</p>
+                          </div>
+                          <div>
+                              <p>$ 200</p>
+                          </div>
+                      </li>
+                      Note: New students registering for the first time are not assessed Late Registration Fees. Late Manual Processing Fee is incurred in addition to the Late Registration Fee
+                      after the late registration period.
+
+                  </ul>
+              </div>
+          </div>
+      </ul> -->
+
+      <!--<h1 class=subtitle>Instructions</h1>
+<ul class=flex>
+  <div class="full shadow"><span class=bold>Attach required information and submit through email to <a href="mailto:admissions@uona.edu?Subject=New%20Student%20Admission" target="_top">admissions@uona.edu</a> or in-person at the Admissions Office</span><br><br>
+  <ol>
+    <li>
+              or in-person <br>
+      
+    </li>
+          <li>Download and complete all <a href="/forms/admission.zip" download>required forms</a> and bring to the Admissions Office or submit required information to <a href="mailto:admissions@uona.edu?Subject=New%20Student%20Admission" target="_top">admissions@uona.edu</a></li>
+    <li>Our Admissions Office will review your application once all documents and fees have been received.</li>
+  </ol>
+  </div>
+</ul>-->
+    </section>
+    <Footer />
+  </main>
+</Page>

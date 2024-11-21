@@ -1,0 +1,145 @@
+/* Typography */
+:root {
+    --fontStackCondensed: 'Oswald', sans-serif;
+    --fontStack: trade-gothic-next, sans-serif;
+}
+:where(.h1, .h2, .h3, .h4, .h5){
+    font-family: var(--fontStackCondensed);
+    font-weight: 800;
+    font-size: var(--size);
+    line-height: var(--size);
+    color: var(--h-color);
+    margin:0;
+}
+:where(.sub1, .sub2, .sub3, .sub4, .eyebrow, .button, .bodyLBold, .bodyL, .bodyMBold, .bodyM, .bodySBold, .bodyS, .bodyXSBold, .bodyXS){
+    font-family: var(--fontStack);
+    font-weight: 800;
+    font-size: var(--size);
+    line-height: var(--size);
+    color: var(--h-color);
+    margin:0;
+}
+:where(.bodyLBold, .bodyL, .bodyMBold, .bodyM, .bodySBold, .bodyS, .bodyXSBold, .bodyXS){
+    color: var(--body-color);
+}
+.h1{
+    --size: 120px;
+    --mobile-size: 80px;
+}
+.h2{
+    --size: 80px;
+    --mobile-size: 60px;
+}
+.h3{
+    --size: 64px;
+    --mobile-size: 40px;
+}
+.h4{
+    --size: 40px;
+    --mobile-size: 28px;
+    letter-spacing: 0.02em;
+}
+.h5{
+    --size: 28px;
+    --mobile-size: 24px;
+    line-height: 30.8px;
+    letter-spacing: 0.02em;
+}
+
+:where(.sub1, .sub2, .sub3, .sub4, .eyebrow, .button){
+    color: var(--sub-color);
+    letter-spacing: 0.01em;
+}
+.sub1{
+    --size: 32px;
+    --mobile-size: 24px;
+    line-height: 1.2em;
+}
+.sub2{
+    --size: 24px;
+    --mobile-size: 20px;
+    line-height: 1.2em;
+}
+.sub3{
+    --size: 20px;
+    --mobile-size: 18px;
+    line-height: 1.2em;
+}
+.sub4{
+    --size: 18px;
+    --mobile-size: 16px;
+    line-height: 1.2em;
+}
+.eyebrow{
+    --size: 14px;
+    --mobile-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.button{
+    --size: 16px;
+    --mobile-size: 15px;
+    line-height: 1.3em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.bodyLBold{
+    --size: 20px;
+    --mobile-size: 18px;
+    font-weight: 700;
+    line-height: 1.5em;
+}
+.bodyL{
+    --size: 20px;
+    --mobile-size: 18px;
+    font-weight: 400;
+    line-height: 1.5em;
+}
+.bodyMBold{
+    --size: 18px;
+    --mobile-size: 16px;
+    font-weight: 700;
+    line-height: 1.5em;
+}
+.bodyM{
+    --size: 18px;
+    --mobile-size: 16px;
+    font-weight: 400;
+    line-height: 1.5em;
+}
+.bodySBold{
+    --size: 16px;
+    --mobile-size: 14px;
+    font-weight: 700;
+    line-height: 1.5em;
+}
+.bodyS{
+    --size: 16px;
+    --mobile-size: 14px;
+    font-weight: 400;
+    line-height: 1.5em;
+}
+.bodyXSBold{
+    --size: 14px;
+    --mobile-size: 12px;
+    font-weight: 700;
+    line-height: 1.5em;
+}
+.bodyXS{
+    --size: 14px;
+    --mobile-size: 12px;
+    font-weight: 400;
+    line-height: 1.5em;
+}
+
+@media (max-width: 800px){
+    :where(.h1, .h2, .h3, .h4, .h5, .sub1, .sub2, .sub3, .sub4){
+        font-size: var(--mobile-size, --size);
+        line-height: var(--mobile-size, --size);
+    }
+    .h3{
+        letter-spacing: 0.02em;
+    }
+}

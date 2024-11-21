@@ -1,0 +1,309 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/web/mbamain.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .course p {
+    margin: 0;
+  }
+
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+
+  .full {
+    box-sizing: border-box;
+  }
+
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+
+  #catagory div {
+    background: transparent;
+    color: #4067b1;
+    max-width: inherit;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="MBA | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>
+          <p>Business Administration</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Master of Business Administration (MBA)</h1>
+          <div class="paddingReg">
+            The goal of the Master of Business Administration program is to
+            prepare students to become managers in leadership positions for
+            industry, government, and the not-for-profit sector and to provide
+            them with a breadth and depth of knowledge that is supported by the
+            ability to effectively address real world issues. The program has an
+            international focus, and themes and cases drawn from all parts of
+            the world are interwoven throughout.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/graduate"
+              style="--box-shadow:0 0 0 2px var(--color);">More Programs</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Program Objectives</h1>
+          <div class="paddingReg">
+            <span class="bold"
+              >Upon completion of this degree program, students will be able to:</span
+            ><br /><br />
+            <ul>
+              <li>
+                Compile, analyze, and assess the applicability of best practices
+                in addressing enterprise management issues
+              </li>
+              <li>
+                Integrate principles and techniques of problem solving, critical
+                thinking, and business ethics in the development of business
+                strategies
+              </li>
+              <li>
+                Demonstrate mastery of theory, concepts and skills in addressing
+                specialized aspects of business management
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Credit Requirements</h1>
+          <div class="paddingReg">
+            It is expected that full-time students will take two courses per
+            term throughout their programs. Due to the fact that most students
+            opt to take one vacation term per year during their program, the
+            normal program length is 24 months, and the maximum time students
+            are given to complete the program is 36 months.
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Curriculum</h1>
+          <div class="paddingReg">
+            <h1 class="subtitledesc">Common Core (2 Courses)</h1>
+            <ul class="course">
+              <li id="catagory">
+                <div>Course</div>
+                <div>Credit Hrs</div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">MGMT515</span> - Management that Transforms
+                  </p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">TECH515</span> - Technology that Transforms
+                  </p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Program Core (5 Courses)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">ACCT520</span> - Accounting for Decision Making
+                  </p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">ECON520</span> - Managerial Economics
+                  </p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">FINS520</span> - Finance for Decision Making
+                  </p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">MKTG571</span> - Marketing Management
+                  </p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">QANT510</span> - Statistics for Decision Making
+                  </p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Elective (4 Courses)</h1>
+            <ul class="flex">
+              <p>
+                Students may choose from the various graduate level core or
+                elective courses offered in this and other programs. A sample
+                selection of electives is listed as follows.
+              </p>
+            </ul>
+            <ul class="course">
+              <li>
+                <div>
+                  <p><span class="bold"></span> - Elective 1</p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p><span class="bold"></span> - Elective 2</p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p><span class="bold"></span> - Elective 3</p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p><span class="bold"></span> - Elective 4</p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Capstone (1 Course)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p><span class="bold">CAPS600</span> - Graduate Capstone</p>
+                </div>
+                <div>
+                  <p>4.5</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

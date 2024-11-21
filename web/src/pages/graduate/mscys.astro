@@ -1,0 +1,438 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let mscysBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mscys/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style>
+  #video {
+    /* background-image: url(<?php echo $background; ?>); */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .course p {
+    margin: 0;
+  }
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+  .full {
+    box-sizing: border-box;
+  }
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+  #catagory div {
+    background: transparent;
+    max-width: inherit;
+    color: #4067b1;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="MSCYS | University of North America">
+  <Header />
+  <main el="main">
+    <section
+      id="video"
+      style={{ backgroundImage: `url(${mscysBG.default.src})` }}
+    >
+      <div class="maintitle content"><div><p>cyber security</p></div></div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">
+            Master of Science in Cyber Security (MSCYS)
+          </h1>
+          <div class="paddingReg content">
+            <span class="bold">CIP Code: 11.1003</span><br /><br />
+            <span class="bold"
+              >This program qualifies for the STEM designation.</span
+            ><br /><br />
+            The goal of the MSCYS program is to equip technologists with the competencies
+            to develop, implement and maintain an effective cyber defense strategy
+            for a range of organizations. Topics include network and systems security,
+            identity management, network defense, information assurance compliance,
+            strategic planning, organizational leadership, disaster recovery, business
+            continuation and cybersecurity ethics. With emphases on governance, leadership,
+            and responsibilities, the strong analytical and ethical concepts and
+            applications will provide technology specialists with the tools to create
+            and monitor business and enterprise security in an ever-connected cyber
+            world.<br />
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/graduate"
+              style="--box-shadow:0 0 0 2px var(--color);">More Programs</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Program Objectives</h1>
+          <div class="paddingReg content">
+            <span class="bold"
+              >Together, the 12 MSCYS courses provide the knowledge and skills
+              that enable graduates to advance in, and become leaders of, cyber
+              security career fields. Specifically, each group of courses in the
+              MSCYS curriculum measure a student’s ability to:</span
+            ><br /><br />
+            <ul>
+              <li>
+                Apply concepts and terminologies for management of cyber
+                security systems and applications, which is demonstrated by
+                successful completion of the exercises and projects required in
+                the common- and program-core courses, and capstone course;
+              </li><li>
+                Analyze cyber security threats, trends, and strategies on a
+                national security level, which is demonstrated by successful
+                completion of analyses and creation of models required in the
+                program core and elective courses;
+              </li><li>
+                Evaluate computer networks and systems for cyber security with
+                the ability to apply techniques that test potential threats,
+                which are required in the program core and electives courses;
+              </li><li>
+                Build organizational and technological structures to protect
+                digital assets, which are required in the program core and
+                electives courses, and capstone course; and
+              </li><li>
+                Develop models for technology disaster recovery plans that are
+                aligned with business operations utilizing appropriate systems,
+                tools, and ethical considerations, which are required in the
+                program core, electives courses, and capstone course.&nbsp;<br
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Program Length</h1>
+          <div class="paddingReg content">
+            It is expected that students will take two courses per term
+            throughout their programs. Since many students take one approved
+            quarter-off (vacation term) per year during their program, the
+            normal program length is 2 years (24 months) with the expectation
+            that students will complete in this length of time. Students are
+            given 3 years (36 months) to complete their programs as long as they
+            are making satisfactory academic progress.
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Curriculum</h1>
+          <div class="paddingReg">
+            <h1 class="subtitledesc">Common Core (2 Courses)</h1>
+            <ul class="course">
+              <li id="catagory"><div>Course</div><div>Credit Hrs</div></li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold">MGMT515</span> - Management that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold">TECH515</span> - Technology that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Program Core (5 Courses)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <b>INST 540</b>&nbsp;- Principles of Information Security
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>INST 541</b>&nbsp;- Information Security Policy
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>INST 542</b>&nbsp;- Information Security Risk and
+                    Vulnerability Assessment
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>INST 569</b>&nbsp;- Data and System Security
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>INST 570</b>&nbsp;- Information Security Ethics and Legal
+                    Aspects
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Elective (4 Courses)</h1>
+            <ul class="flex">
+              <p>
+                Students may choose from the various graduate core or elective
+                courses offered in this and other programs. A sample selection
+                of electives is listed as follows.
+              </p>
+            </ul>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> CYBR 501</b> - Cloud and Security
+                    Control (Certification prep for Cloud+)
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> CYBR 502</b> - System Defense and
+                    Network Security (Certification prep for Security+)
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> CYBR 550</b> - Cybersecurity Range
+                    Lab Simulations and Training&nbsp;
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> CMSC 530</b> - Operating System
+                    Internals
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> CMSC 580</b> - System Architecture
+                    and Security Design
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> INST 543</b> - Forensics and Incident
+                    Response
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Capstone (1 Course)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p><span class="bold">CAPS600</span> - Graduate Capstone</p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>
+
+<script
+  src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
+  is:inline></script>
+<script is:inline>
+  particlesJS("video", {
+    particles: {
+      number: {
+        value: 80,
+        density: {
+          enable: true,
+          value_area: 800,
+        },
+      },
+      color: {
+        value: "#ffffff",
+      },
+      shape: {
+        type: "circle",
+        stroke: {
+          width: 0,
+          color: "#000000",
+        },
+        polygon: {
+          nb_sides: 5,
+        },
+        image: {
+          src: "img/github.svg",
+          width: 100,
+          height: 100,
+        },
+      },
+      opacity: {
+        value: 0.5,
+        random: false,
+        anim: {
+          enable: false,
+          speed: 1,
+          opacity_min: 0.1,
+          sync: false,
+        },
+      },
+      size: {
+        value: 3,
+        random: true,
+        anim: {
+          enable: false,
+          speed: 40,
+          size_min: 0.1,
+          sync: false,
+        },
+      },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#ffffff",
+        opacity: 0.4,
+        width: 1,
+      },
+      move: {
+        enable: true,
+        speed: 6,
+        direction: "none",
+        random: false,
+        straight: false,
+        out_mode: "out",
+        bounce: false,
+        attract: {
+          enable: false,
+          rotateX: 600,
+          rotateY: 1200,
+        },
+      },
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: {
+          enable: false,
+          mode: "repulse",
+        },
+        onclick: {
+          enable: false,
+          mode: "push",
+        },
+        resize: true,
+      },
+      modes: {
+        grab: {
+          distance: 400,
+          line_linked: {
+            opacity: 1,
+          },
+        },
+        bubble: {
+          distance: 400,
+          size: 40,
+          duration: 2,
+          opacity: 8,
+          speed: 3,
+        },
+        repulse: {
+          distance: 200,
+          duration: 0.4,
+        },
+        push: {
+          particles_nb: 4,
+        },
+        remove: {
+          particles_nb: 2,
+        },
+      },
+    },
+    retina_detect: true,
+  });
+</script>

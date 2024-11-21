@@ -1,0 +1,25 @@
+:root{
+    --uona-blue: #4067b1;
+    --kc-red: #E60012;
+    --kc-white: #FFFFFF;
+    --kc-gray: #CCD2D5;
+    --kc-black: #000000;
+    --gray-1: #878C8E;
+    --gray-2: #585D5F;
+    --gray-3: #414546;
+
+    --h-color: var(--kc-black);
+    --sub-color: #0D0D0D;
+    --body-color: var(--kc-black);
+    --button-color: #1a73e8;
+
+      /*----- Layout -----*/
+  --space-xxxsm: 4px;
+  --space-xxsm: 8px;
+  --space-xsm: 16px;
+  --space-sm: 24px;
+  --space-md: 32px;
+  --space-lg: 48px;
+  --space-xlg: 64px;
+  --space-xxlg: 96px;
+}

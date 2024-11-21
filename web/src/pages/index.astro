@@ -1,15 +1,28 @@
 ---
-import Page from "@layouts/page.astro";
-import Aside from "@components/Aside";
-import List from "@components/List";
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+import Calendar from "@components/Calendars/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
 import Text from "@components/Text";
-import Btn from "@components/Button";
-import Accordion from "@components/Accordion";
-import ContactForm from "@components/ContactForm";
+import { Image } from "astro:assets";
+let esolImage = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/certificate/esol/*.{jpg,png,gif}"
+  )
+)[0];
+
+let uonaWorld = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/uonaworld/*.{jpg,png,gif}"
+  )
+)[0];
 ---
 
-<Page layout="am fixed">
-	<Aside client:only="react" />
+<Page layout="hm fixed">
+  <!-- <Aside client:only="react" />
 	<main el="main">
 		<List el="xsm p-lg">
 			<Text as="h1" color="white">Home</Text>
@@ -17,5 +30,226 @@ import ContactForm from "@components/ContactForm";
 		<List el="xsm p-lg" style={{ background: "#ccc" }}>
 			<ContactForm client:only="react" />
 		</List>
-	</main>
+	</main> -->
+
+  <Header />
+
+  <main el="main">
+    <section id="video">
+      <div class="imgs"></div>
+      <div class="maintitle">
+        <div>
+          <!-- <p class="">QUALITY, AFFORDABILITY, employability</p> -->
+          <p class=""></p>
+          <!--
+			  <p>QUALITY, AFFORDABILITY, employability</p>
+			  <button class="button" onclick="buttonLink('https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application')">apply today</button>
+			  -->
+        </div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <Text as="h4" color="white" style={{ textAlign: "center" }}
+            >GO ABOVE AND <b style="color: #fbd504;">BEYOND!</b></Text
+          >
+          <div class="paddingReg">
+            <Text color="white">
+              <b style='color: var(--color, "#4067b1");'
+                >University of North America (UoNA)</b
+              > is an accredited institution with quality education that links the
+              latest academic theory with real-world applications. Our focus on Applied
+              Learning enables students to excel both in their education and their
+              careers. Our tuition is one of the most affordable in the region among
+              accredited institutions. Courses are available online and on-campus;
+              in the evenings and on weekends. Apply today to advance your career
+              with UoNA!
+            </Text>
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="tel:+15716339651"
+              style="--box-shadow:0 0 0 2px var(--color);">Call now!</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <Text as="h4" color="currentColor" style={{ textAlign: "center" }}
+            >BOOST <b>YOUR CAREER</b></Text
+          >
+          <h1 class="subtitledesc">
+            Take your career to the next level with our in-demand IT & BUSINESS
+            programs.
+          </h1>
+          <div class="paddingReg">
+            <ul class="flex items tools" id="programs">
+              <li class="shadow flex column margin">
+                <a href="/services/esports">
+                  <div
+                    class="bg"
+                    style="background-image: url(/images/esports@400.jpg);"
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">Esports</h3>
+                  <!-- <List el="column xsm center">
+                    <Text as="h3" font="sub3">Esports</Text>
+                  </List> -->
+                </a>
+              </li>
+              <li class="shadow flex column margin">
+                <a href="/services/careers">
+                  <div
+                    class="bg"
+                    style="background-image: url(https://cdn-e9de.kxcdn.com/images/careers.jpg);"
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">Career Services</h3>
+                </a>
+              </li>
+              <li class="shadow flex column margin">
+                <a href="/undergraduate">
+                  <div
+                    class="bg"
+                    style="background-image: url(https://cdn-e9de.kxcdn.com/images/bach.jpg);"
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">Undergraduate Programs</h3>
+                </a>
+              </li>
+              <li class="shadow flex column margin">
+                <a href="/graduate">
+                  <div
+                    class="bg"
+                    style="background-image: url(https://cdn-e9de.kxcdn.com/images/mast.jpg);"
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">Master's Programs</h3>
+                </a>
+              </li>
+              <li class="shadow flex column margin">
+                <a href="/certificate/esol">
+                  <div
+                    class="bg"
+                    style={`background-image: url(${esolImage.default.src});`}
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">ESOL</h3>
+                </a>
+              </li>
+              <li class="shadow flex column margin">
+                <a href="/admission">
+                  <div
+                    class="bg"
+                    style="background-image: url(https://cdn-e9de.kxcdn.com/checklist.jpg);"
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">Admission Requirements</h3>
+                </a>
+              </li>
+              <li class="shadow flex column margin">
+                <a href="/uonaworld">
+                  <div
+                    class="bg"
+                    style={`background-image: url(${uonaWorld.default.src});`}
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">UoNA World</h3>
+                </a>
+              </li>
+              <li class="shadow flex column margin">
+                <a href="/hatch">
+                  <div
+                    class="bg"
+                    style="background-image: url(/images/pexels-photo-3183150.jpeg);"
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">Hatch</h3>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">university news</h1>
+          <div class="paddingReg">
+            <ul class="flex items tools" id="programs">
+              <li class="shadow flex column margin" style="height:168px;">
+                <a href="/news">
+                  <div
+                    class="bg"
+                    style="background-image: url(https://cdn-e9de.kxcdn.com/images/news.jpg);"
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">News</h3>
+                </a>
+              </li>
+
+              <li class="shadow flex column margin" style="height:168px;">
+                <a href="https://jasonkoo3.wixsite.com/mysite">
+                  <div
+                    class="bg"
+                    style="background-image: url(https://cdn-e9de.kxcdn.com/images/chinese_students.jpg);"
+                  >
+                  </div>
+                  <div class="hiddenBG"></div>
+                  <h3 class="h3">北美大学中文网</h3>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">quick access</h1>
+          <div class="paddingReg">
+            <Tools />
+          </div>
+          <!-- <div class="flex">
+						  <a href="/students/calculator.html" class="button" style="--box-shadow:0 0 0 2px var(--bg-color);">Estimate Tuition</a>
+					  </div> -->
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">gallery</h1>
+          <!-- <Gallery /> -->
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">calendar</h1>
+          <Calendar />
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Facility Rental</h1>
+          <p style="text-align:center;">Call 703-981-1345</p>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
 </Page>

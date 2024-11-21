@@ -1,0 +1,136 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/diversity.webp);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  .round,
+  .roundAll > * {
+    overflow: hidden;
+    border-radius: 100%;
+    background-size: cover;
+
+    background-position: center;
+  }
+
+  .roundAll img {
+    display: block;
+  }
+
+  .paddingReg * {
+    line-height: 1.5em;
+  }
+</style>
+
+<Page layout="hm fixed" title="Diversity | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Dive into Diversity at UoNA</div>
+      </div>
+    </section>
+
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">A Snapshot of Our Student Population</h1>
+          <!-- <div class="paddingReg"></div> -->
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <!-- <h1 class="heading">A Snapshot of Our Student Population</h1> -->
+          <div class="paddingReg">
+            <p>
+              In the Fall Quarter of 2022, the University of North America
+              (UoNA) was teeming with a diverse community of 565 eager learners.
+              Our academic degree programs, including eight master’s and two
+              bachelor’s, welcomed 507 students, thus forming the backbone of
+              our academic community.
+            </p>
+
+            <h2>The UoNA Family Spans a Myriad of Credentials:</h2>
+            <ul>
+              <li>Master’s Degree Programs (8): 431 students (76%)</li>
+              <li>Bachelor’s Degree Programs (2): 76 students (13%)</li>
+              <li>
+                Occupational Associate’s Degree Program (1): 39 students (7%)
+              </li>
+              <li>Technical Diploma*: 3 students (&lt;1%)</li>
+              <li>ESOL Certificate Program*: 10 students (2%)</li>
+              <li>
+                Individual Interest /Single-subject students*: 6 students (1%)
+              </li>
+            </ul>
+
+            <h2>Our Mission at UoNA: Empowering Adult Learners</h2>
+            <p>
+              In Fall 2022, our master’s and bachelor’s program enrollees
+              comprised a robust 81% of students aged 25 years or older. We're
+              proud to cater to learners from diverse generations, with 70%
+              Millennials (aged 27-42), 26% Gen Z (aged 11-26), and 5% Gen X
+              (aged 43-58).
+            </p>
+
+            <h2>
+              As a Global University, UoNA Embraces Students from All Corners of
+              the World
+            </h2>
+            <p>
+              Our Fall 2022 student body in the master’s and bachelor’s programs
+              represented 48 different countries, with a remarkable 95%
+              identifying as non-US citizens. A majority self-identified as
+              Asian and male, and no students identified as transgender.
+            </p>
+
+            <h2>
+              Our American Students Play a Vital Role in the UoNA Community
+            </h2>
+            <p>
+              Notably, 67% (14 out of 21) of the US bachelor’s program students
+              were US Military/Veterans, with a median age of 36. These students
+              began enrolling in 2020 when UoNA was approved to offer GI-Bill®
+              educational benefits. All of our Fall 2022 military/veteran
+              students are recipients of this funding.
+            </p>
+
+            <h2>Enrollment Trends at UoNA</h2>
+            <p>
+              However, UoNA has seen a slight decrease in non-US master’s and
+              bachelor’s degree program enrollees from 2020 to 2022. This trend
+              corresponds with the rise of US citizens in the bachelor’s
+              programs, which increased from 6 in Fall 2020 to 21 in Fall 2022.
+            </p>
+
+            <h2>At UoNA, We Cherish Diversity</h2>
+            <p>
+              At UoNA, we cherish the cultural, geographic, and generational
+              diversity of our student population. We believe this blend of
+              experiences and perspectives enriches the learning environment and
+              prepares our graduates to excel in a global marketplace.
+            </p>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

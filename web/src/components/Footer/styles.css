@@ -1,333 +1,78 @@
-/* Logo Styles */
-.logo-footer {
-    height: 74px;
-  }
-  
-  /* Base Styles */
-  footer {
-    --logo-tag: white;
-    --logo-name: red;
-    color: gray;
-    background-color: black;
-    padding-top: 80px; /* Example padding for desktopMd */
-    padding-bottom: 60px; /* Example padding for padding */
-  }
-  
-  
-  footer p {
-    padding: 0;
-  }
-  
-  /* Container */
-  .footerContainer {
-    display: flex;
+/* footer CSS */
+footer{
+	background: #f1f1f1;
+    overflow: hidden;
+}
+footer *{
+	box-sizing: border-box;
+	outline: none;
+}
+footer section{}
+footer ul{
+    display:flex;
     flex-wrap: wrap;
-    row-gap: 40px;
-    margin: auto;
-    grid-auto-flow: column;
-    justify-content: space-between;
-    align-items: start;
-    padding-bottom: 75px; 
-  }
-  
-  /* Footer Logo Address Social */
-  .footerLogoAddressSocial {
-    display: flex;
+    align-content: center;
     justify-content: center;
-  }
-  
-  .footerLogoAddressSocial > a {
-    margin-bottom: 40px; /* Example space for mobileSm */
-    display: block;
-  }
-  
-  .footerLogoAddressSocial > ul {
-    margin-top: 16px; /* Example space for mobileXss */
-  }
-  
-  /* Footer Pages */
-  .footerPages {
-    flex: 0 0 auto;
-    width: auto;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footerPages a {
-    display: block;
-    margin-bottom: 24px; /* Example space for mobileXs */
-    border-bottom: 1px solid black;
-  }
-  
-  /* Footer Heatherwood Mention */
-  .footerHeatherwoodMention {
-    flex: 0 0 100%;
-    width: 100%;
-  }
-  
-  footer .footerHeatherwoodMention a {
-    text-decoration: underline;
-  }
-  
-  /* Footer Legal */
-  .footerLegal {
-    border-top: 1px solid white;
-    flex: 0 0 100%;
-    width: 100%;
+    width:100vw;
+    list-style-type: none;
+    margin:0;
+    padding:36px;
+}
+footer ul li{
     display: flex;
-    flex-wrap: wrap;
-    font-size: 14px;
-    row-gap: 10px; /* Example space for unitNav */
-  }
-  
-  .footerLegal p {
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-  
-  .footerLegal p, .footerLegal li {
-    line-height: 1.9;
-  }
-  
-  footer hr {
-    flex-shrink: 0;
-    width: 100%;
-    height: 1px;
-    background-color: black;
-  }
-  
-  footer a {
-    color: gray;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  
-  footer a:visited {
-    color: gray;
-    text-decoration: none;
-  }
-  
-  footer a:hover {
-    color: white;
-  }
-  
-  footer nav {
-    color: white;
-  }
-  
-  footer img, footer svg {
-    width: 100%;
-    height: auto;
-  }
-  
-  footer .logo-wrapper {
-    display: block;
-    width: 175px;
-    height: 47px;
-  }
-  
-  
-  footer .logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: 0 0;
-  }
-  
-  /* Footer Socials */
-  .footerSocials {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .socialLink {
-    width: 20px;
-    display: inline-block;
-    margin-right: 16px; /* Example space for mobileXss */
-    text-transform: uppercase;
-  }
-  
-  .socialLink a:hover svg path {
-    fill: white;
-  }
-  
-  /* Legal Links */
-  .legalLinks {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
+    align-content: center;
     justify-content: center;
-  }
-  
-  
-  .legalLinks a {
-    display: inline-block;
-    margin-right: 16px; /* Example space for mobileXss */
-    font-size: 14px;
-    border-bottom: 1px solid black;
-  }
-  
-  .legalLinks a:visited, .footerPages a:visited {
-    color: gray;
-  }
-  
-  .legalLinks a:hover, .footerPages a:hover {
-    color: lightgray; /* Example color for hover state */
-  }
-  
-  /* Legal Icons */
-  .legalIcons {
-    list-style: none;
-    padding: 0;
+    list-style-type: none;
     margin: 0;
-  }
-  
-  .legalIcon {
-    width: 20px;
-    margin-right: 16px; /* Example space for mobileXss */
-    display: inline-block;
-  }
-  
-  /* Title */
-  .title {
-    color: white !important;
-    font-size: 16px;
-    font-weight: 800;
-  }
-  
-  /* SVG Wrapper */
-  .svgWrapper {
-    display: inline-block;
-    line-height: 0;
-    width: 130px;
-    z-index: 15;
+    padding: 20px;
+    padding-left: 60px;
+    margin: 12px;
+    border-radius: 3px;
+    cursor: pointer;
     position: relative;
-  }
-  
-  /* Mobile Styling */
-  .mobileVersion {
-    display: none;
-  }
-  
-  .mobileTitle {
-    color: white !important;
-    font-size: 16px;
-    font-weight: 800;
-    padding: 24px 0; /* Example space for mobileXs */
-    border-bottom: 1px solid white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* Ul Container */
-  .ulContainer {
-    margin: 40px 0; /* Example space for paddingVertical */
-  }
-  
-  /* Modal Item */
-  .modalItem {
-    padding: 16px 0; /* Example space for mobileXss */
-  }
-  
-  /* Footer Top */
-  .footerTop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  /* Title With Icon */
-  .titleWithIcon {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .titleWithIcon svg {
-    margin-left: 5px; /* Example space for subNavMobile */
-    width: 16px;
-    height: 16px;
-  }
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: 20px center;
+}
+footer .phone{
+    background-image: url(/assets/img/phone.svg);
+}
+footer .email{
+    background-image: url(/assets/img/email.svg);
+}
+footer .author{
+    padding: 48px;
+    background: #000;
+    color:#fff;
+    font-weight: normal !important;
+    text-align: left;
+        line-height: 30px;
+}
+footer .author a{
+    color: #fff !important;
+    font-weight: normal !important;
+}
+footer .author a:after{
+    background-color:#fff !important;
+}
 
-  @media (max-width: 1050px) {
-    .logo-footer {
-      height: 74px;
-    }
-    footer {
-        padding-top: 80px; /* Example padding for desktopMd */
-        padding-bottom: 40px; /* Example padding for mobileSm */
-    }
-    footer p {}
-  }
 
-  @media (min-width: 1050px) {
-    .svgWrapper {
-      width: 180px;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .logo-footer {
-      height: 74px;
-    }
-    footer {
-        padding-bottom: 40px; /* Example padding for mobileSm */
-      }
-      footer p {}
-      .footerContainer {
-        display: none;
-        min-height: 60px;
-        flex-direction: column;
-      }
-      .footerLegal {
-        flex-direction: column;
-        font-size: 12px;
-      }
-      .mobileVersion {
-        display: block;
-      }
-  }
 
-  @media (min-width: 768px) {
-    .footerLogoAddressSocial {
-      flex: 1 0 0%;
-      width: 100%;
-      justify-content: flex-start;
-    }
-    .footerLegal p {
-        margin-right: auto;
-      }
-      footer .logo-wrapper {
-        height: 80px;
-      }
-      .socialLink {
-        font-size: 18px;
-      }
-      .legalLinks {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-      }
-      .legalLinks a {
-        font-size: 14px;
-      }
-      .footerTop {
-        justify-content: space-between;
-        flex-direction: row;
-      }
-  }
-  
-  @media (max-width: 576px) {
-    .logo-footer {
-      height: 74px;
-    }
-  }
-  
+
+@media (max-width: 800px){
+    
+}
+
+footer .social-media{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  grid-gap: 20px;
+  background: #fff !important;
+}
+footer .social-media img{
+  width:50px;
+  height:50px;
+  object-fit:contain;
+  object-position:center;
+}

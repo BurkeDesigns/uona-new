@@ -142,3 +142,5 @@ bun.lockb
 
 api/data/photos
 api/data/cache
+
+web/public/files/uploads/video.mp4

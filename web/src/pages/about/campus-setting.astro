@@ -1,0 +1,137 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/web/building.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  .round,
+  .roundAll > * {
+    overflow: hidden;
+    border-radius: 100%;
+    background-size: cover;
+
+    background-position: center;
+  }
+
+  .roundAll img {
+    display: block;
+  }
+
+  .paddingReg * {
+    line-height: 1.5em;
+  }
+</style>
+
+<Page layout="hm fixed" title="Campus Setting | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Campus Setting</div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <!-- <h1 class="heading">Location, Facility, and Learning Approach</h1> -->
+          <h1 class="heading">Explore, Engage, & Excel: UoNA in Fair Lakes!</h1>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <!-- <h1 class="heading">Institutional Objectives</h1> -->
+          <div class="paddingReg">
+            <p>
+              Immerse yourself in the vibrant and thriving ecosystem of the
+              University of North America (UoNA), nestled in the heart of the
+              prestigious 6.92-acre Fair Lakes complex. This dynamic location is
+              home to leading global corporations in technology and accounting,
+              providing our students with a wellspring of employment and
+              internship opportunities right on their doorstep.
+            </p>
+
+            <p>
+              Rub shoulders with industry giants like Alion Science and
+              Technology, CACI, CGI Group, General Dynamics, and ManTech
+              International, all integral parts of our diverse business
+              landscape. These major enterprises not only shape the pulse of
+              local industry but also pave the way for enriching real-world
+              experiences for our students.
+            </p>
+
+            <p>
+              Just a stone's throw away is the Fairfax County Government Center,
+              the hub of the county's services and official business. This
+              proximity to the nerve center of local governance offers a unique
+              perspective and practical understanding of public service
+              operations.
+            </p>
+
+            <p>
+              UoNA's strategic location in the Washington, DC metropolitan area
+              puts you in the company of influential world organizations. We're
+              a short 22-mile journey from the US Capitol and the White House,
+              landmarks that symbolize the nation's power and history. At UoNA,
+              you're not just part of a university, but an interconnected world
+              of opportunities waiting for you to seize.
+            </p>
+
+            <p>
+              The campus is located at the intersection of the Fairfax County
+              Parkway (Route 286) and Interstate 66, which offers accessibility
+              to major routes throughout Washington DC and its surrounding
+              areas. There is ample parking adjacent to the building, including
+              a covered ramp, to accommodate those who choose to drive to
+              campus. The WMATA Metro bus lines provide public transportation
+              from the campus to the nearest Metro Station.
+            </p>
+
+            <p>
+              The campus occupies space on the second and third floor of the
+              96,600 square foot (SF), 4-story commercial building located at
+              12750 Fair Lakes Circle, Fairfax, Virginia. These two floors,
+              beyond the reception area, are exclusively dedicated to the
+              campus, including 20 classrooms, the learning resource center
+              (library), and administrative offices. The remaining areas on the
+              first and fourth floors are utilized for campus events and rented
+              or leased to other businesses.
+            </p>
+
+            <p>
+              The campus has dedicated, private IT servers equipped with
+              powerful technology to ensure ample and secure computing service
+              for UoNA. A virtual lab was established in 2015 to provide an
+              advanced computing environment that can be accessed from anywhere
+              at any time. All classrooms are comfortably furnished and equipped
+              with modern technology, including dry erase boards, projectors and
+              screens. The entire campus is Wi-Fi accessible, which enables
+              instructors and students to utilize online materials for
+              educational purposes, and allows faculty, students, and
+              administrators to access the university’s online library, Learning
+              Management System (Moodle) and Campus Information System (Campus
+              Café).
+            </p>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

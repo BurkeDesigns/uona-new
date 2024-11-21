@@ -53,6 +53,7 @@ const DynamicTag = ({
 	let colorValue: any = color;
 	// if(colorValue?.startsWith('--')) colorValue = `var(--${color})`;
 	switch (color) {
+		case "uona-blue":
 		case "kc-red":
 		case "kc-white":
 		case "kc-black":

@@ -1,0 +1,150 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/web/building.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+</style>
+
+<Page
+  layout="hm fixed"
+  title="Domestic Admission | University of North America"
+>
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Domestic Students</div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Domestic Students</h1>
+          <div class="paddingReg">
+            Admission representatives and the academic department work with each
+            applicant to ensure every student is guided into a program that will
+            best meet his/her academic and career goals. Professional
+            development of our students is achieved as students interact with
+            expert faculty and introduced to local employers. Leaders in
+            international business and technology will help guide our students
+            professionally. Practical training builds confidence and, as
+            networking opportunities develop; the potential for our students'
+            connections with global business, innovation, and technology is
+            realized. Contact us now!
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Applicants</h1>
+          <div class="paddingReg">
+            Applicants are evaluated individually based on their professional
+            experience, academic credentials, and the result of the admissions
+            interview. The purpose of the evaluation is to assess the
+            applicant’s potential for successfully completing a relevant
+            academic program.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/admission"
+              style="--bg-color:transparent;--color:#4067b1;--box-shadow:0 0 0 2px var(--color);"
+              >Learn More</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#4067b1;--color:#fff;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+            <a
+              class="button"
+              href="/forms"
+              style="--box-shadow:0 0 0 2px var(--color);">Application Forms</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Testimonial</h1>
+          <div class="paddingReg">
+            <ul class="flex column">
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/testimonials3.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle">
+                    "UoNA fits the need of business executives."
+                  </h1>
+                  <p>
+                    The University of North America is not your typical
+                    institution. They work well with students like me who have a
+                    career and a family and can’t just stop working for two or
+                    more years to complete a Doctorate or Master’s degree.
+                  </p>
+                  <p>
+                    UoNA understands that business executives, military officers
+                    and working people who want an advanced degree cannot go to
+                    classes when it is convenient for the professors… we need
+                    and want classes that are offered when we are not at work,
+                    like during the weekends or weekday nights.
+                  </p>
+                  <p>
+                    Unlike many small institutions, the University of North
+                    America is accredited. Its accreditation by the New England
+                    Commission of Higher Education (NECHE) is proof that this
+                    institution invests in its professors, curriculum, student
+                    services, and most importantly its smaller class sizes
+                    necessary to help their students succeed.
+                  </p>
+                  <p>
+                    As a fifty year old father of five, going back to school to
+                    obtain a doctoral degree was no easy task. I’m convinced if
+                    it were not for the professors, administrators, and my
+                    fellow students at UoNA, I would have dropped out of the
+                    program.
+                  </p>
+                  <p>
+                    If you are a military officer or business executive like I
+                    am, with very limited time, this is the university for you.
+                  </p>
+                  <p>
+                    <span class="bold"
+                      >William E. Yaglou, Senior Vice President, Sodexo, program
+                      graduate</span
+                    >
+                  </p><br />
+                  <a class="button" href="/testimonials"
+                    >view more testimonials</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

@@ -1,0 +1,322 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+let msafBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/msaf/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style>
+  #video {
+    /* background-image: url(<?php echo $background; ?>); */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .course p {
+    margin: 0;
+  }
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+  .full {
+    box-sizing: border-box;
+  }
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+  #catagory div {
+    background: transparent;
+    max-width: inherit;
+    color: #4067b1;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="MSAF | University of North America">
+  <Header />
+  <main el="main">
+    <section
+      id="video"
+      style={{ backgroundImage: `url(${msafBG.default.src})` }}
+    >
+      <div class="maintitle content">
+        <div><p>Accounting &amp; Finance</p></div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">
+            Master of Science in Accounting and Finance (MSAF)
+          </h1>
+          <div class="paddingReg content">
+            <span class="bold">CIP Code: 52.0304</span><br /><br />
+            <!--<span class="bold">This program qualifies for the STEM designation.</span><br><br>-->
+            The goal of the MSAF program is to prepare managers to make sound accounting
+            and financial decisions. Accounting and financial analysts who are able
+            to identify and create solutions based on accurate quantitative analysis
+            and compliance with current accounting and finance regulations. Topics
+            include preparation of tax documents, auditing methods, budgeting, cost
+            analysis, investment forecasting, and financial reporting. The integrated
+            curriculum includes accounting and finance concepts and applications
+            that enable graduates to become efficient managers of effective monetary
+            transactions and investment leaders to support nation and international
+            businesses and institutions.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/graduate"
+              style="--box-shadow:0 0 0 2px var(--color);">More Programs</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Program Objectives</h1>
+          <div class="paddingReg content">
+            <span class="bold"
+              >Together, the 12 MSAF courses provide the knowledge and skills
+              that enable graduates to advance in accounting and finance career
+              fields. Specifically, each group of courses in the curriculum
+              measure a student’s ability to:</span
+            ><br /><br />
+            <ul>
+              <li>
+                Apply foundational theories of accounting and financial
+                reporting, which is demonstrated by successful completion of the
+                exercises and projects required in the common- and program-core
+                courses, and capstone course;
+              </li>
+              <li>
+                Formulate financial and fiscal problems to be solved using
+                accepted accounting practices and financial forecasting, which
+                is demonstrated by successful completion of analyses and
+                creation of models required in the program core and elective
+                courses;
+              </li>
+              <li>
+                Represent data and inform through effective reporting, written
+                and oral communication, and representation of visual analytics,
+                which are required in the program core and electives courses;
+                and
+              </li>
+              <li>
+                Develop models using numerical data and accounting and financial
+                reports from multiple sources, appropriate analyses, and ethical
+                considerations, which are required in the program core and
+                electives courses, and capstone course.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Program Length</h1>
+          <div class="paddingReg content">
+            It is expected that students will take two courses per term
+            throughout their programs. Since many students take one approved
+            quarter-off (vacation term) per year during their program, the
+            normal program length is 2 years (24 months) with the expectation
+            that students will complete in this length of time. Students are
+            given 3 years (36 months) to complete their programs as long as they
+            are making satisfactory academic progress.
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Curriculum</h1>
+          <div class="paddingReg">
+            <h1 class="subtitledesc">Common Core (2 Courses)</h1>
+            <ul class="course">
+              <li id="catagory"><div>Course</div><div>Credit Hrs</div></li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold">MGMT515</span> - Management that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold">TECH515</span> - Technology that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Program Core (5 Courses)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <b>ACCT 520</b> - Accounting for Decision Making
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>ACCT 521</b>&nbsp;- Advanced Accounting
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content"><b>ECON 520</b> - Managerial Economics</p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>FINS 520</b>&nbsp;- Finance for Decision Making
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>QANT 510</b>&nbsp;- Statistics for Decision Making
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Elective (4 Courses)</h1>
+            <ul class="flex">
+              <p>
+                A minimum of 4 elective courses (18 credit hours) are required,
+                which include at least one course from Elective Group 1 and one
+                course from Elective Group 2.
+              </p>
+            </ul>
+            <ul class="flex">
+              <p>Elective Group 1</p>
+            </ul>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b>ACCT 522</b> - Principles of Taxation
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> ACCT523</b> - Auditing
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> ACCT524</b> - International Accounting
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <ul class="flex">
+              <p>Elective Group 2</p>
+            </ul>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b>FINS 530</b> - Financial Data /
+                    Statistics Management
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> FINS 540</b> - Investment Portfolio
+                    Management
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold"></span><b> FINS 550</b> - Case Studies in
+                    Financial Analysis and Reporting
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Capstone (1 Course)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content"><b>CAPS600</b>&nbsp;- Graduate Capstone</p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

@@ -1,0 +1,105 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-size: cover;
+    background-position: top;
+    height: 400px;
+    background-attachment: unset;
+  }
+
+  .card {
+    display: inline-grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 20px;
+    align-content: flex-start;
+    grid-auto-flow: column;
+  }
+
+  .card img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 300px;
+  }
+
+  .list {
+    display: grid;
+    grid-gap: 20px;
+  }
+
+  .sm-list {
+    display: grid;
+    grid-gap: 10px;
+  }
+
+  .flat-btn {
+    display: grid;
+    grid-gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    grid-auto-flow: column;
+  }
+
+  .fullImg {
+    width: 100%;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .gallery > * {
+    width: 100%;
+    object-fit: cover;
+
+    min-height: 250px;
+    background-color: black;
+  }
+
+  @media (max-width: 800px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      grid-template-columns: 1fr;
+      grid-auto-flow: row;
+    }
+  }
+</style>
+
+<Page layout="hm fixed" title="Hatch | University of North America">
+  <Header />
+  <main el="main">
+    <Footer />
+  </main>
+</Page>

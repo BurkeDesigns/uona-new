@@ -1,0 +1,321 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let mseitBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mseit/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style>
+  #video {
+    /* background-image: url(<?php echo $background; ?>); */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .course p {
+    margin: 0;
+  }
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+  .full {
+    box-sizing: border-box;
+  }
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+  #catagory div {
+    background: transparent;
+    max-width: inherit;
+    color: #4067b1;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="MSEIT | University of North America">
+  <Header />
+  <main el="main">
+    <section
+      id="video"
+      style={{ backgroundImage: `url(${mseitBG.default.src})` }}
+    >
+      <div class="maintitle content">
+        <div><p>EDUCATIONAL/INSTRUCTIONAL TECHNOLOGY</p></div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">
+            Master of Science in Educational/Instructional Technology (MSEIT)
+          </h1>
+          <div class="paddingReg content">
+            <span class="bold">CIP Code: 13.0501 </span><br /><br />
+            <span class="bold"
+              >This program qualifies for the STEM designation.</span
+            ><br /><br />
+            The goal of the Educational/Instructional Technology program is to enrich
+            the ability of educators to adapt teaching methods by including technologies
+            to promote active learning. The accessibility of technology and digitalization
+            of resources for all students are explored. Applications include enhancing
+            instruction, curriculum, and assessment with data- and technology-driven
+            approaches. Topics in individualized and out-come based learning utilizing
+            technologies are investigated. Emphases on leadership, innovation, and
+            ethical considerations will provide educators with the fluency to develop
+            and manage instructional technology in the classroom and system-wide
+            initiatives.<br />
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/graduate"
+              style="--box-shadow:0 0 0 2px var(--color);">More Programs</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Program Objectives</h1>
+          <div class="paddingReg content">
+            <span class="bold"
+              >Together, the 12 MSEIT courses provide the knowledge and skills
+              that enable graduates to advance in educational and training
+              career fields. Specifically, each group of courses in the
+              curriculum measure a student’s ability to:</span
+            ><br /><br />
+            <ul>
+              <li>
+                Utilize contemporary theories of education and training through
+                the integration of technology, which is demonstrated by
+                successful completion of the exercises and projects required in
+                the common- and program-core courses, and capstone course;
+              </li><li>
+                Create solutions to the challenges of teaching / learning in a
+                technology-driven world using best practices and adaptive
+                methods, which is demonstrated by successful completion of
+                analyses and creation of models required in the program core and
+                elective courses;&nbsp;<br />
+              </li><li>
+                Present innovative classroom and system-wide approaches through
+                effective reporting, written and oral communication, and
+                relevant technologies, which are required in the program core
+                and electives courses; and&nbsp;<br />
+              </li><li>
+                Develop or adapt models using technologies and digital resources
+                for specific educational environments and levels of learning,
+                including ethical considerations, which are required in the
+                program core and electives courses, and capstone course.&nbsp;<br
+                />
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Program Length</h1>
+          <div class="paddingReg content">
+            It is expected that students will take two courses per term
+            throughout their programs. Since many students take one approved
+            quarter-off (vacation term) per year during their program, the
+            normal program length is 2 years (24 months) with the expectation
+            that students will complete in this length of time. Students are
+            given 3 years (36 months) to complete their programs as long as they
+            are making satisfactory academic progress.
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Curriculum</h1>
+          <div class="paddingReg">
+            <h1 class="subtitledesc">Common Core (2 Courses)</h1>
+            <ul class="course">
+              <li id="catagory"><div>Course</div><div>Credit Hrs</div></li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold">MGMT515</span> - Management that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <span class="bold">TECH515</span> - Technology that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Program Core (5 Courses)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE510</b> - Principles of Learning/Teaching Strategies and
+                    Methods
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE520</b> - Transformational Education/Instruction
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE530</b>&nbsp; -Contemporary Classroom Approaches
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE540</b> - Integrating Technology in the Classroom
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE550</b> - Ethical Considerations for Educational/ Instructional
+                    Technologies
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Elective (4 Courses)</h1>
+            <ul class="flex">
+              <p>
+                A minimum of 4, 4.5 credit elective courses are required from
+                the following electives.
+              </p>
+            </ul>
+            <ul class="course">
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE 505</b> - Adaptive Teaching and Learning Approaches<span
+                      class="bold"></span>
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE 515</b> - Tools for Digital-Age Learning Strategies<span
+                      class="bold"></span>
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE 525</b> - Data-Driven Instruction for Individualized
+                    Learning<span class="bold"></span>
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE 535</b> - Outcome-Based Instructional Applications<span
+                      class="bold"></span>
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE 545</b> - Active Learning in the Collaborative Classroom<span
+                      class="bold"></span>
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p class="content">
+                    <b>EITE 555</b> - Strategies for Adapting System-Wide Technologies<span
+                      class="bold"></span>
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Capstone (1 Course)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p><span class="bold">CAPS600</span> - Graduate Capstone</p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

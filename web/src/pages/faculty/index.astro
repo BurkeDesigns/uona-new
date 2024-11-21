@@ -1,0 +1,641 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+var team = {
+  faculty: [
+    {
+      name: "Ahmed Mustafa",
+      teachingArea: "Accounting, Finance, Lead Faculty",
+      img: "",
+      order: "",
+      degrees: [
+        "MS, Accounting, Strayer University, Washington, DC",
+        "BS, Accountancy, University of Illinois, Urbana-Champaign, IL",
+        "CPA License, State of Illinois",
+      ],
+    },
+
+    {
+      name: "Xue (Peter) Bai",
+      teachingArea: "Computer Science; Data Analytics",
+      img: "",
+      order: "",
+      degrees: ["PhD, Industrial Management, Clemson University, Clemson, SC"],
+    },
+    {
+      name: "Rosalyn Bryant",
+      teachingArea: "Quantitative Sciences",
+      img: "",
+      order: "",
+      degrees: [
+        "PhD, Measurement, Statistics & Evaluation, University of Maryland, MD",
+        "MA, Teaching, University of Maryland University College, MD",
+        "MS, Mathematics, Virginia Tech, VA",
+      ],
+    },
+
+    {
+      name: "Shirley Chen ",
+      teachingArea: "Accounting, Finance ",
+      img: "",
+      order: "",
+      degrees: [
+        "MBA, Finance & investments, The George Washington University, DC ",
+        "CPA License, Virginia Board of Accountancy, VA",
+      ],
+    },
+
+    {
+      name: "Dex Curi",
+      teachingArea: "ESOL, ESOL Administrator",
+      img: "",
+      order: "",
+      degrees: [
+        "Certificate in Teaching English as a Foreign Language and in Teaching English to Speakers of Other Languages, International TEFL Academy",
+      ],
+    },
+
+    {
+      name: "Jorge L. Daly",
+      teachingArea: "Economics; Social Sciences",
+      img: "",
+      order: "",
+      degrees: [
+        "PhD, Economics, American University, DC",
+        "MBA, State University of New York at Binghamton, NY",
+      ],
+    },
+
+    {
+      name: "Adolfo (Al) Gorriaran ",
+      teachingArea:
+        "Information Technology; Management; Business; Lead Faculty",
+      img: "",
+      order: "",
+      degrees: [
+        "DBA, Business Administration, Nova Southeastern University, FL",
+        "MSIM, Information Systems Management, Keller Graduate School, IL ",
+        "MPA, Public Administration, Troy University, AL ",
+        "MA, Business Administration Management, Webster University, MO ",
+      ],
+    },
+
+    {
+      name: "David O. Harper ",
+      teachingArea: "Research Methods; Technology; Management ",
+      img: "",
+      order: "",
+      degrees: [
+        "EdD, Human Resource Development, The George Washington University, DC ",
+        "MS, Business Information Technology Mgt., Johns Hopkins University, MD ",
+        "BS, Business Administration, Columbia Union University, MD",
+      ],
+    },
+
+    {
+      name: "Tien-Chen (John) Hsu",
+      teachingArea: "Computer Science; Information Technology ",
+      img: "",
+      order: "",
+      degrees: ["MS, Computer Science, Southeastern University, DC "],
+    },
+    // { name: 'Douglas Keevers', teachingArea: 'Instructional Technology; Management', img: '', order: '', degrees: [ 'EdD, e-learning, Northcentral University, La Jolla, CA ', 'MA, Information Technology Management, Webster University, St. Louis, MO ', 'BS, Psychology, Slippery Rock University, Slippery Rock, PA', ] },
+
+    {
+      name: "Aliakbar Jalali",
+      teachingArea: "Computer Science; Information Technology",
+      img: "",
+      order: "",
+      degrees: [
+        "PhD, Electrical Engineering-Control, West Virginia University, Morgantown, WV",
+        "MSc, Electrical Engineering-Control, University of Oklahoma, Norman, OK",
+      ],
+    },
+
+    {
+      name: "Chung-yin (Betty) Koo ",
+      teachingArea: "Computer Science; Programming ",
+      img: "",
+      order: "",
+      degrees: [
+        "MS, Information Systems, George Mason University, VA ",
+        "BS, Information Technology, George Mason University, VA",
+      ],
+    },
+
+    {
+      name: "John W. Link",
+      teachingArea: "Information Security; General Education",
+      img: "",
+      order: "",
+      degrees: [
+        "MS, Conflict Management & Resolution, George Mason University, VA",
+        "BA, English Language and Literature, University of Virginia, VA",
+      ],
+    },
+
+    {
+      name: "Ali Mehrabi ",
+      teachingArea: "Computer Science; Information Technology; Lead Faculty ",
+      img: "",
+      order: "",
+      degrees: [
+        "PhD, Engineering Science, University of Mississippi, MS ",
+        "MS, Electrical Engineering, Oklahoma State University, OK",
+        "BS, Electrical Engineering, University of Oklahoma, OK ",
+      ],
+    },
+
+    {
+      name: "Andrew Molnar",
+      teachingArea: "Management; General Education",
+      img: "",
+      order: "",
+      degrees: [
+        "MS, Military Operational Art & Science, Air University, AL",
+        "MS, Administration, Central Michigan University, MI",
+        "BS, Natural Sciences & Applied Mathematics, University of Akron, OH",
+      ],
+    },
+
+    {
+      name: "James Moses",
+      teachingArea: "Management; Director of Education",
+      img: "",
+      order: "",
+      degrees: [
+        "MS, Japanese Business Studies, Chaminade University of Honolulu, HI ",
+        "MA, Public Administration, Madras Christian College, Madras, India ",
+      ],
+    },
+
+    {
+      name: "Mohammad K. Moussavi ",
+      teachingArea: "Computer Science; Information Technology ",
+      img: "",
+      order: "",
+      degrees: [
+        "DS, Communications, The George Washington University – School of Engineering and Applied Science, DC ",
+        "MS, Communications, The George Washington University, DC ",
+      ],
+    },
+
+    {
+      name: "Gary A. Rucker ",
+      teachingArea: "Information Technology; Systems, Finance; Mgmt.",
+      img: "",
+      order: "",
+      degrees: [
+        "MS, Information Security Management, University of Fairfax, VA",
+        "MBA, Jones International University, CO ",
+        "BBA, Accounting, University of the District of Columbia, DC",
+      ],
+    },
+
+    // { name: 'Raj Shah', teachingArea: 'Information Technology', img: '', order: '', degrees: [ 'MS, Information & Telecommunication Systems, Johns Hopkins University, MD', ] },
+    {
+      name: "Farzan Soroushi ",
+      teachingArea: "Computer Science; Information Technology ",
+      img: "",
+      order: "",
+      degrees: ["MS, Computer Science, University of Oklahoma, OK "],
+    },
+    // { name: 'Tasha Troy', teachingArea: 'General Education; ESOL', img: '', order: '', degrees: [ 'MA, Education-TESL, Oral Roberts University, OK', 'BA, Spanish, Oral Roberts University, OK', 'AA, Communication Arts-Foreign Language, St. Louis Community College, MO', ] },
+
+    {
+      name: "Diane Waters",
+      teachingArea: "Accounting; Finance; Director of Finance",
+      img: "",
+      order: "",
+      degrees: [
+        "MBA, University of Maryland, MD",
+        "BBA, Accounting, John Marshall University, WV",
+      ],
+    },
+
+    // { name: 'Peter West', teachingArea: 'Instructional Technology; Director of Distance Ed', img: '', order: '', degrees: [ 'PhD, Instructional Technology, Northern Illinois University, IL', 'MA, Library Science, University of Wisconsin-Milwaukee, WI', 'BS, English, University of Wisconsin-Whitewater, WI', ] },
+
+    {
+      name: "Ann Marie Bunce",
+      teachingArea: "History; Communications; General Education",
+      img: "",
+      order: "",
+      degrees: [
+        "MA, History, Long Island University, Brookville, NY",
+        "BA, History and Education, Long Island University, Brookville, NY",
+      ],
+    },
+    {
+      name: "Arthur Joseph Bunce",
+      teachingArea: "Technology; Information System",
+      img: "",
+      order: "",
+      degrees: [
+        "MS, Educational and Informational Technology, University of North America, VA",
+        "BA, English Literature, SUNY Stony Brook University, NY",
+      ],
+    },
+    // { name: 'Chia-lin Chang', teachingArea: 'Quantitative Sciences; Education; Public Health; Library and Information Studies', img: '', order: '', degrees: [ 'Ph.D., Educational Foundation and Research, University of North Dakota', 'MA, Public Health, University of North Dakota', 'MA, Library and Information Studies, National Taiwan University'] },
+    {
+      name: "Frank DiVito",
+      teachingArea:
+        "Law, Ethics, Political Science; Management; General Education.",
+      img: "",
+      order: "",
+      degrees: [
+        "J.D., University of Illinois at Chicago-John Marshall School of Law, IL",
+        "BA, Political Science, University of Illinois, Urbana-Champaign",
+      ],
+    },
+    // { name: 'Kelley Dunne', teachingArea: 'Information and Communications', img: '', order: '', degrees: [ 'MS, Information and Communications Science, Ball State University, IN', 'BS, Communications Systems Management, Ohio University, OH'] },
+    {
+      name: "Ramon Moran",
+      teachingArea: "Management",
+      img: "",
+      order: "",
+      degrees: [
+        "Ph.D., Organizational Management, Regent University, VA",
+        "MA, Education, Regent University, VA",
+      ],
+    },
+    {
+      name: "Xiaofeng (Sheldon) Peng",
+      teachingArea: "Accounting",
+      img: "",
+      order: "",
+      degrees: [
+        "Ph.D., Accounting, Kent State University, OH",
+        "MS, Professional Accounting, Michigan State University, East Lansing, MI",
+        "MS, Accounting, Kent State University, OH",
+        "CPA, Ohio",
+      ],
+    },
+    {
+      name: "Chialin Chang",
+      teachingArea: "Statistics; Data Analysis; General Education",
+      img: "",
+      order: "",
+      degrees: [
+        "PhD, Educational Foundation and Research, University of North Dakota",
+        "MA, Public Health, University of North Dakota",
+        "MA, Library and Information Studies, National Taiwan University",
+      ],
+    },
+    {
+      name: "Ching-sung Chin",
+      teachingArea: "Information Sciences",
+      img: "",
+      order: "",
+      degrees: [
+        "PhD, Civil Engineering, University of Maryland – College Park, MD",
+      ],
+    },
+    {
+      name: "Robert Cavanaugh",
+      teachingArea: "ESOL; General Education",
+      img: "",
+      order: "",
+      degrees: [
+        "EdD, Teaching English to Speakers of Other Languages, Anaheim University, CA",
+        "MA, International Relations, Schiller University, London, England",
+        "BA, International Studies, Randolph-Macon College, VA",
+      ],
+    },
+    {
+      name: "Mahsa Doosthosseini",
+      teachingArea: "Data Analytics; Quantitative Sciences; General Education",
+      img: "",
+      order: "",
+      degrees: ["PhD, Mechanical Engineering, University of Maryland, MD"],
+    },
+    {
+      name: "Derek Smith",
+      teachingArea:
+        "Information Technology - Information Assurance, Management, Lead Faculty",
+      img: "",
+      order: "",
+      degrees: [
+        "MS, Information Technology-Information Assurance, University of Maryland Global Campus, MD",
+        "MBA, University of Phoenix, AZ",
+      ],
+    },
+    {
+      name: "Geoffrey VanderPal",
+      teachingArea: "Accounting, Finance, Management",
+      img: "",
+      order: "",
+      degrees: [
+        "DBA, Finance, Nova Southeastern University, FL",
+        "MBA, Webster University, MO",
+        "BS, Business Administration, Columbia College, MO",
+      ],
+    },
+    //    {
+    //         name: 'Shirley Chen',
+    //         teachingArea: 'Accounting, Finance',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'MBA, Finance & Investments, The George Washington University, DC',
+    //             'CPA, VA',
+    //             'Certified Fraud Examiner (CFE)'
+    //         ]
+    //     }, { name: 'Dr. Adolfo Gorriaran (CS/IT Co-Lead)', teachingArea: 'Information Technology, Management, Human Resources', img: '', order: '', degrees: [ 'DBA, Human Resource Management, Nova Southeastern University, FL MSIM, Information System Management, DeVry University, IL', 'MPA, Public Administration, Troy University, AL', 'MA, Business Administration Management, Webster University, MO', ] },
+    //     //                {
+    //     //                    name: 'Ken Fang',
+    //     //                    teachingArea: 'Technology innovation, Computer Science, Entrepreneurship',
+    //     //                    img: '',
+    //     //                    order: '',
+    //     //                    degrees: [
+    //     //                        'MBA, University of Maryland, MD',
+    //     //                        'MS, Computer Science, Pennsylvania State University',
+    //     //                        'Certificate in Bioinformatics, Stanford University'
+    //     //                    ]
+    //     //                },
+    //     {
+    //         name: 'John W. Link',
+    //         teachingArea: 'Information Security, Project Management',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'MS, Conflict Management & Resolution, George Mason University, VA',
+    //             'BA, English Language and Literature, University of Virginia, VA',
+    //         ]
+    //     },
+    //     //                      {
+    //     // name: 'P Kelley Dunne',
+    //     // teachingArea: 'Telecommunication',
+    //     // img: '',
+    //     // order: '',
+    //     // degrees: [
+    //     // 'MS, Information Communications Sciences, Ball State University, IN ',
+    //     // 'BS, Communications Systems Management, Ohio University, OH'
+    //     // ]
+    //     // },
+    //     {
+    //         name: 'Dr. David O. Harper (Business Lead)',
+    //         teachingArea: 'Research Methods, Technology, Management',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'EdD, Human Resource Development, The George Washington University, DC',
+    //             'MS, Business Information Technology Management, Johns Hopkins University, MD'
+    //         ]
+    //     }, {
+    //         name: 'John T. Hsu',
+    //         teachingArea: 'Computer Science, Information Technology',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'MS, Computer Science, Southeastern University, DC',
+    //             'Splunk Enterprise Certified Admin'
+    //         ]
+    //     }, {
+    //         name: 'Chung-yin (Betty) Koo',
+    //         teachingArea: 'Computer Science, Programming',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'MS, Information Systems, George Mason University, VA'
+    //         ]
+    //     }, {
+    //         name: 'Dr. Ali Mehrabi',
+    //         teachingArea: 'Computer Science, Information Technology',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'PhD, Engineering Science, University of Mississippi, MS',
+    //             'MS, Electrical Engineering, Oklahoma State University, OK'
+    //         ]
+    //     }, {
+    //         name: 'James Moses',
+    //         teachingArea: 'Management',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'MS, Japanese Business Studies, Chaminade University, HI',
+    //             'MA, Public Administration, Madras Christian College, Madras, India'
+    //         ]
+    //     }, {
+    //         name: 'Dr. Mohammad Moussavi',
+    //         teachingArea: 'Computer Science, Information Technology',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'DS, Communications, The George Washington University, DC',
+    //             'MS, Engineering and Applied Science, The George Washington University, DC'
+    //         ]
+    //     }, {
+    //         name: 'Gary Rucker',
+    //         teachingArea: 'Computer Systems/IT/Finance',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'MS, Information Security Management, University of Fairfax, VA',
+    //             'MBA, Jones International University, CO'
+    //         ]
+    //     }, {
+    //         name: 'Farzan Soroushi',
+    //         teachingArea: 'Computer Science, Information Technology',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'MS, Computer Science, University of Oklahoma, OK'
+    //         ]
+    //     }, {
+    //         name: 'Dex Curi',
+    //         teachingArea: 'ESOL',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'BA, Psychology, GEORGE MASON UNIVERSITY, VA',
+    //         ],
+    //         certifications: [
+    //             'Teaching English As A Foreign Language (TEFL) And Teaching English to Speakers of Other Languages (TESOL/CELTA), INTERNATIONAL TEFL ACADEMY',
+    //         ],
+    //     },
+    //     //                      {
+    //     //                name: 'Dr. Jason Chao',
+    //     //                teachingArea: 'General Education, Business',
+    //     //                img: '',
+    //     //                order: '',
+    //     //                degrees: [
+    //     //                    'PhD, Government and Politics, University of Maryland, MD',
+    //     //                    'MA, International Policy Studies, Monterey Institute of International Studies, CA',
+    //     //                    'MA, International Relations, University of Southern California, CA'
+    //     //                ]
+    //     //            },
+    //     {
+    //         name: 'Dr. Jorge L. Daly',
+    //         teachingArea: 'Social Sciences/Economics',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'PhD, Political Economy, American University, DC',
+    //             'MBA, State University of New York at Binghamton, NY'
+    //         ]
+    //     }, {
+    //         name: 'Dr. Roslyn Bryant',
+    //         teachingArea: 'Quantitative Science',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'PhD, Measurement, Statistics & Evaluation, University of Maryland, MD',
+    //             'MA, Teaching, University of Maryland – University College, MD',
+    //             'MS, Mathematics, Virginia Tech, VA'
+    //         ]
+    //     },
+    //     {
+    //         name: 'Gregory V.D. Smith, JD',
+    //         teachingArea: 'Law/Social Sciences/Communications; Instructional Technology; Computer Systems',
+    //         img: '',
+    //         order: '',
+    //         degrees: [
+    //             'JD, MA, LLM, Law, American University, DC',
+    //             'MSIS, IMBA, Stratford University, VA',
+    //             'BA, Government and Politics, University of Maryland, MD'
+    //         ]
+    //     },
+  ],
+};
+
+team.faculty.sort(function (a, b) {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+});
+---
+
+<style>
+  .full {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .full > div:not(.infoImg) {
+    padding: 30px;
+    padding-top: 0;
+  }
+
+  .infoImg {
+    min-width: 200px;
+    margin: 0;
+  }
+
+  .infoTitle {
+    color: #4067b1;
+    margin-top: 0;
+  }
+
+  .hideImg .infoImg {
+    display: none;
+  }
+
+  #video {
+    /* background-image: url(<?php echo $background; ?>); */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  @media (max-width: 520px) {
+    .full > div:not(.infoImg) {
+      padding: 30px 0;
+    }
+
+    #video {
+      height: 300px;
+    }
+  }
+
+  #faculty > *,
+  .border {
+    border: 2px solid;
+    padding: 30px !important;
+  }
+
+  #faculty > * > *,
+  .border > * {
+    padding: 0 !important;
+  }
+
+  .border h2 {
+    margin: 0 !important;
+  }
+</style>
+
+<Page layout="hm fixed" title="Faculty | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>
+          <p>faculty</p>
+        </div>
+      </div>
+    </section>
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+        <h1 class="heading">our team</h1>
+        <div class="paddingReg content">
+          To ensure that the University of North America accomplishes its
+          mission to provide high quality practitioner-oriented graduate
+          programs, the University utilizes an expert professional faculty who
+          have exceptional academic credentials and are senior practitioners in
+          their fields.&nbsp;<br /><br />
+          These experienced professionals help students remain current with accelerating
+          trends and evolving issues in enterprise management and information technology
+          so they may rapidly apply what they learn to their jobs and continue to
+          advance their careers.
+        </div>
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading">faculty</h1>
+        <div class="paddingReg">
+          <ul class="flex column hideImg" id="faculty">
+            {
+              team.faculty.map((item) => (
+                <li class="full info">
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    <p>
+                      <span class="bold">Teaching Area:</span>
+                      <br />
+                      {item.teachingArea}
+                    </p>
+                    <p>
+                      <span class="bold">Applicable Degrees Held:</span>
+                      <br />
+                      <Fragment set:html={item.degrees.join("<br />")} />
+                    </p>
+                    {/* {item.certifications != null && } */}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </ul>
+    <Footer />
+  </main>
+</Page>

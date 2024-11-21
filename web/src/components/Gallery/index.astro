@@ -1,0 +1,233 @@
+---
+import { Image } from "astro:assets";
+let imageFiles = await Astro.glob(
+  "/public/files/uploads/gallery/**/*.{jpg,png,gif}"
+);
+let obj = {};
+imageFiles = imageFiles.filter((image) => {
+  let key = image.default.src.split("/gallery/")[1].split("?")[0].split("/")[0];
+
+  if (obj[key]) {
+    return false;
+  } else {
+    obj[key] = true;
+    return true;
+  }
+});
+---
+
+<style>
+  .galleryPhotos {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    overflow-x: hidden;
+    justify-content: center;
+  }
+  .galleryPhotos > * {
+    width: 300px;
+    height: 168px;
+    margin: 5px;
+    background-color: #fff;
+  }
+  .galleryPhotos > * {
+    position: relative;
+  }
+  .galleryPhotos img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+  .galleryPhotos figcaption {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: hsla(0, 0%, 0%, 0.5);
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+</style>
+<div class="gallery">
+  <div class="galleryPhotos">
+    <iframe
+      width="300"
+      height="168"
+      src="https://www.youtube.com/embed/0FKJci_BtNM?list=PLof0jyH48z1NCnvrd2yO5HNXKGrvUAkGq"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen></iframe>
+
+    {
+      imageFiles.map((image) => (
+        <figure
+          onclick={`openAlbum(${
+            image.default.src.split("/gallery/")[1].split("?")[0].split("/")[0]
+          })`}
+        >
+          <Image src={image.default} alt="Description of image" width="300" />
+          <figcaption>
+            {
+              image.default.src
+                .split("/gallery/")[1]
+                .split("?")[0]
+                .split("/")[0]
+            }
+          </figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</div>
+<script>
+  function openAlbum(a) {
+    localStorage.showAlbum = a;
+    window.location.href = "/gallery";
+  }
+</script>
+<!-- <script>
+  //https://cdn-e9de.kxcdn.com
+  var galleryData;
+
+  var galleryUrls,
+    gallery = document.querySelector(".gallery"),
+    galleryPhotos = gallery.querySelector(".galleryPhotos");
+
+  //console.log(galleryUrls);
+
+  postData("/files/createurls.php", "", function (reply) {
+    console.log(reply);
+    galleryData = reply;
+    galleryUrls = galleryData["files"];
+    galleryUrls = galleryUrls.sort(function (a, b) {
+      return a.timestamp - b.timestamp;
+    });
+    displayGallery();
+  });
+
+  function displayGallery() {
+    var albums = {};
+
+    galleryUrls.forEach(function (item, itemIndex) {
+      var fileExt = item["url"].split(".")[1];
+      var fileType = "img";
+
+      switch (fileExt) {
+        case "png":
+          //alert(fileExt);
+          fileType = "img";
+          //galleryPhotos.innerHTML+='<img src="'+item['url']+'">';
+          break;
+        case "jpg":
+          fileType = "img";
+          //galleryPhotos.innerHTML+='<img src="'+item['url']+'">';
+          //galleryPhotos.innerHTML+='<figure><img src="'+item['url']+'"><figcaption>'+item['folder']+'</figcaption></figure>';
+          if (albums[item["folder"]] == item["folder"]) {
+          } else {
+            albums[item["folder"]] = item["url"];
+            console.log(albums);
+          }
+          break;
+        case "jpeg":
+          fileType = "img";
+          //galleryPhotos.innerHTML+='<img src="'+item['url']+'">';
+          break;
+        case "svg":
+          fileType = "img";
+          //galleryPhotos.innerHTML+='<img src="'+item['url']+'">';
+          break;
+        case "gif":
+          fileType = "img";
+          //galleryPhotos.innerHTML+='<img src="'+item['url']+'">';
+          break;
+        case "ico":
+          fileType = "img";
+          //galleryPhotos.innerHTML+='<img src="'+item['url']+'">';
+          break;
+        case "mp4":
+          fileType = "video";
+          galleryVideos.innerHTML +=
+            '<video src="' + item["url"] + '" controls></video>';
+          break;
+        case "pdf":
+          fileType = "pdf";
+          break;
+        default:
+          fileType = "doc";
+      }
+    });
+
+    for (var key in albums) {
+      // /files/thumbnail.php?src=&w=600
+      galleryPhotos.innerHTML +=
+        '<figure onclick="openAlbum(' +
+        "'" +
+        key +
+        "'" +
+        ')"><img src="https://cdn-e9de.kxcdn.com/files/thumbnail.php?src=' +
+        albums[key] +
+        '&w=600"><figcaption>' +
+        key +
+        "</figcaption></figure>";
+    }
+  }
+
+  function showGallerySection(t) {
+    switch (t) {
+      case "photos":
+        videoBtn.classList.remove("optionSelected");
+        photoBtn.classList.add("optionSelected");
+        galleryPhotos.classList.remove("hidden");
+        galleryVideos.classList.add("hidden");
+        break;
+      case "videos":
+        videoBtn.classList.add("optionSelected");
+        photoBtn.classList.remove("optionSelected");
+        galleryPhotos.classList.add("hidden");
+        galleryVideos.classList.remove("hidden");
+        break;
+    }
+  }
+
+  function postData(
+    url,
+    d,
+    func = function (reply) {
+      console.log(reply);
+    }
+  ) {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+      },
+      body: "data=" + JSON.stringify(d),
+    })
+      .then(function (response) {
+        if (response.status !== 200) {
+          alert(
+            "Looks like there was a problem. Status Code: " + response.status
+          );
+          return;
+        }
+
+        // Examine the text in the response
+        response.json().then(func);
+      })
+      .catch(function (err) {
+        console.log("Fetch Error: " + err);
+      });
+  }
+  function openAlbum(a) {
+    localStorage.showAlbum = a;
+    window.location.href = "/gallery";
+  }
+</script> -->

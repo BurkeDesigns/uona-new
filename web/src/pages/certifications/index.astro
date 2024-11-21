@@ -1,0 +1,310 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let msafBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/msaf/*.{jpg,png,gif}"
+  )
+)[0];
+
+let mscysBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mscys/*.{jpg,png,gif}"
+  )
+)[0];
+
+let msmdaBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/msmda/*.{jpg,png,gif}"
+  )
+)[0];
+
+let mssaeBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mssae/*.{jpg,png,gif}"
+  )
+)[0];
+
+let mseitBG = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/graduate/mseit/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style>
+  #video {
+    background-image: url(https://cdn.pixabay.com/photo/2017/08/01/00/38/laptop-2562325_1280.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: unset;
+    height: 500px;
+  }
+  .info {
+    margin: 20px 0;
+  }
+</style>
+
+<Page layout="hm fixed" title="Certifications | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div class="content">
+          Certifications<!-- <p>Masters in IT &amp; Business</p> -->
+        </div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">Certificate Programs Overview</h1>
+          <div class="paddingReg content">
+            Certificates offered by UoNA can help enhance a current degree you
+            may already have, or can help expand your professional opportunities
+            while working around your schedule. These certificates will help you
+            learn how to help businesses function better and help enhance your
+            overall career opportunities. You will be able to learn about
+            improving processes, apply data analytics and use technologies more
+            effectively in a business and organizational environment.
+            <br /><br />
+            <i
+              >Note: "Certificate, Training, & Exam Preparation (CTEP) courses
+              are offered for the sole purpose of professional development or
+              industry-exam preparation."</i
+            >
+          </div>
+          <div class="flex">
+            <a
+              href="https://secure.rightsignature.com/templates/8c649248-2d79-4799-9af6-38b44822ce41/template-signer-link/073f993725bea69a45e6cd5c636b0598"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply now</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Our Certifications</h1>
+          <div class="paddingReg">
+            <ul class="flex column">
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/mscs.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">CompTIA A+ Core 1 & 2</h1>
+                  <p class="content">
+                    This CompTIA A+ training course provides foundational
+                    knowledge of today’s most relevant technologies, so you can
+                    confidently conduct the tasks necessary to maintain your
+                    organization’s IT environment. This course prepares you for
+                    the CompTIA A+ Core 1 (220-1001) and Core 2 (220-100-2)
+                    exams — required for CompTIA A+ Certification — this
+                    training provides the skills to install, configure, and
+                    optimize personal computer hardware and operating systems.
+                    In addition, to providing you with a CompTIA A+ eBook,
+                    practice assessment questions, short video clips and
+                    examples and exam vouchers.
+                  </p>
+                  <!--                    <a href="/graduate/mscs" class=button>learn more</a>-->
+                </div>
+              </li>
+
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/msit.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">CompTIA Network+</h1>
+                  <p class="content">
+                    CompTIA Network+ Certification Prep (N10-007) is intended
+                    for entry-level computer support professionals with a basic
+                    knowledge of computer hardware, software, and operating
+                    systems who wish to increase their knowledge and
+                    understanding of networking concepts and acquire the
+                    required skills to prepare for a career in network support
+                    or administration
+                  </p>
+                  <!--                    <a href="/graduate/msit" class=button>learn more</a>-->
+                </div>
+              </li>
+
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/mba.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">CompTIA Security+</h1>
+                  <p class="content">
+                    The Security+ certification training course provides the
+                    basic knowledge needed to plan, implement, and maintain
+                    information security in a vendor-neutral format. This
+                    includes risk management, host and network security,
+                    authentication, and access control systems, cryptography,
+                    and organizational security. This course maps to the CompTIA
+                    Security+ certification exam (SY0-601). Objective coverage
+                    is marked throughout the course.
+                  </p>
+                  <!--                    <a href="/graduate/mba" class=button>learn more</a>-->
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${msafBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Certified Network Defender (CND)
+                  </h1>
+                  <p class="content">
+                    Certified Network Defender (CND) certification training
+                    course focuses on evaluating network and Internet
+                    cybersecurity issues, designing, implementing successful
+                    security policies and firewall strategies, exposing the
+                    system and network vulnerabilities, and defending against
+                    them. Topics include network protocols, network attacks,
+                    intrusion detection systems, packet filtering, and proxy
+                    servers, Bastion host and honey pots, hardening routers,
+                    hardening security, E-Mail security, virtual private
+                    networks, and creating fault tolerance.
+                  </p>
+                  <!--                    <a href="/graduate/msaf" class=button>learn more</a>-->
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${mscysBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Certified Ethical Hacker (CEH)
+                  </h1>
+                  <p class="content">
+                    Certified Ethical Hacker (CEH v10) training, you are
+                    provided with the foundational knowledge needed to pass the
+                    EC-Council Certified Ethical Hacker exam (312-50). Through
+                    hands-on labs which mimic real-time scenarios, gain an
+                    in-depth understanding of how to deploy the tools and
+                    techniques needed to protect your network.
+                  </p>
+                  <!--                    <a href="/graduate/mscys" class=button>learn more</a>-->
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${msmdaBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">CompTIA Project +</h1>
+                  <p class="content">
+                    CompTIA Project+ is ideal for professionals who need to
+                    manage smaller, less complex projects as part of their other
+                    job duties but still have foundational project management
+                    skills. Project+ is more versatile than other certifications
+                    because it covers essential project management concepts
+                    beyond the scope of just one methodology or framework.
+                  </p>
+                  <!--                    <a href="/graduate/msmda" class=button>learn more</a>-->
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${mssaeBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Information Technology Infrastructure Library (ITIL)
+                  </h1>
+                  <p class="content">
+                    The ITIL Foundation course provides IT leaders,
+                    practitioners, support staff and staff interfacing with the
+                    organization’s digital and information systems functions
+                    with a practical understanding of the key concepts, common
+                    language, principles, and practices that enable successful
+                    management of modern IT-enabled services. It also prepares
+                    delegates for the ITIL Foundation Certificate Examination.
+                    The course is based on the ITIL 4 best practice service
+                    value system featured in the latest 2019 guidelines.
+                  </p>
+                  <!--                    <a href="/graduate/mssae" class=button>learn more</a>-->
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style={{ backgroundImage: `url(${mseitBG.default.src})` }}
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Certified Associate in Project Management (CAPM)
+                  </h1>
+                  <p class="content">
+                    The CAPM is an entry-level certification for project
+                    practitioners. Designed for those with less project
+                    experience, the CAPM is intended to demonstrate candidates'
+                    understanding of the fundamental knowledge, terminology, and
+                    processes of effective project management.
+                  </p>
+                  <!--                    <a href="/graduate/mseit" class=button>learn more</a>-->
+                </div>
+              </li>
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle content">
+                    Project Management Professional (PMP)
+                  </h1>
+                  <p class="content">
+                    This course provides project management training and A Guide
+                    to the Project Management Body of Knowledge (PMBOK® Guide)
+                    - Sixth Edition, Project Management Institute, Inc., to
+                    life, combining theory and best practices with hands-on,
+                    real-world exercises taught by experienced Project
+                    Management Professional (PMP)®-certified instructors. Learn
+                    how to improve the quality of your products and services by
+                    delivering projects on time, to specification, and within
+                    budget with project management training.
+                  </p>
+                  <!--                    <a href="/graduate/mseit" class=button>learn more</a>-->
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

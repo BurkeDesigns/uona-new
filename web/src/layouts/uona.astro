@@ -1,0 +1,301 @@
+---
+const { title, schema, description, layout } = Astro.props;
+// import Footer from "@components/Footer";
+import { ViewTransitions } from "astro:transitions";
+import "../theme/uona/styles.css";
+import "./styles.css";
+import "./uona.css";
+import Layout from "@components/Layout";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="website" content="UoNA" />
+    <meta name="Author" content="University of North America" />
+    <meta
+      name="Description"
+      content="This is the official website of the University of North America (UoNA). UoNA is a nationally accredited institution which welcomes both domestic and international students from all cultures. UoNA offers quality education that is flexible and affordable. Our focus on Applied Learning allows students to combine theory with real world experience."
+    />
+    <meta
+      name="Keywords"
+      content="university of north america, uona, education, affordable, CPT, Applied Learning, MBA, MSIT, MSCS, Fairfax, near Washingto DC, american education, university in north america, uona cpt, master degree, degree, accredited, accreditation, work in the us, i20"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://cdn-e9de.kxcdn.com/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cdn-e9de.kxcdn.com/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://cdn-e9de.kxcdn.com/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="mask-icon"
+      href="https://cdn-e9de.kxcdn.com/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#2b5797" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>{title || "University of North America"}</title>
+
+    <style>
+      #video {
+        /* background-image: url(https://cdn-e9de.kxcdn.com/images/web/building.jpg?v=1); */
+        background-image: unset !important;
+        background-size: cover;
+        background-position: center;
+        background-attachment: unset;
+        background-color: #0f0f0f;
+      }
+
+      .imgs {
+        width: 100%;
+        height: 600px;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .imgs * {
+        min-width: 100%;
+        position: absolute;
+        object-fit: cover;
+        min-height: 100%;
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .hiddenVisibility {
+        visibility: visible;
+      }
+
+      iframe {
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      iframe body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .tools > * {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0px;
+      }
+
+      .tools .bg {
+        background-image: url(https://cdn-e9de.kxcdn.com/images/book.jpeg);
+        height: 168px;
+        width: 300px;
+        object-fit: cover;
+      }
+
+      .tools h3 {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        box-shadow: 0 -95px 26px -46px rgba(0, 0, 0, 0.8) inset;
+        color: #fff;
+        text-shadow: 0 3px 10px rgba(0, 0, 0, 1);
+      }
+
+      .hiddenBG {
+        width: 300px;
+        height: 168px;
+        background-image: linear-gradient(
+          to bottom right,
+          rgba(0, 0, 0, 0.5),
+          yellow
+        );
+        opacity: 0;
+        transition: 0.4s;
+        position: absolute;
+        top: 0;
+      }
+
+      .hiddenBG:hover {
+        opacity: 1;
+      }
+
+      .heading {
+        font-size: 40px;
+      }
+
+      @media (max-width: 800px) {
+        #video video {
+          width: auto;
+          height: 320px;
+          transform: translate(-50%, 0%);
+          left: 50%;
+          position: absolute;
+        }
+
+        .imgs {
+          height: 100%;
+        }
+
+        #video {
+          background-image: url(https://cdn-e9de.kxcdn.com/images/web/building.jpg?v=1);
+          background-size: cover;
+          background-position: center;
+          height: 320px;
+          overflow: hidden;
+        }
+
+        .heading {
+          font-size: 40px;
+        }
+      }
+
+      #notification {
+        height: 50px;
+        /* background-color: #b91212; */
+        background-color: #0f0f0f;
+        position: relative;
+        transition: 0.3s;
+        cursor: pointer;
+      }
+
+      canvas {
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+      }
+
+      .hide {
+        display: none;
+      }
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script
+      type="text/javascript"
+      async=""
+      src="https://www.google-analytics.com/analytics.js"></script>
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=UA-123830503-1"></script>
+
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-123830503-1");
+    </script> -->
+  </head>
+
+  <body>
+    <div id="notification" class="hide">
+      <canvas></canvas>
+    </div>
+    <ul class="floatingBar">
+      <li></li>
+      <li>
+        <a
+          href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+          >apply now</a
+        >
+        <a href="/contact">contact us</a>
+        <a href="#" onclick="scrollToPrograms()">programs</a>
+        <a href="/calendar">calendar</a>
+        <a href="/military">military</a>
+      </li>
+    </ul>
+
+    <Layout el={layout}><slot /></Layout>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "University of North America",
+        "url": "https://uona.edu",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+1-571-633-9651",
+            "contactType": "customer service"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/uona.edu/",
+          "https://www.youtube.com/channel/UCu6_DQ8Z0K_AuwJTt1va7_Q?view_as=subscriber"
+        ]
+      }
+    </script>
+  </body>
+</html>
+
+<!-- <html lang="en">
+	<head>
+		<link rel="preconnect" href="https://www.googletagmanager.com" />
+		<link rel="preconnect" href="sanity.io" />
+		<link rel="preconnect" href="https://cdn.sanity.io" />
+		{schema && <script type="application/ld+json" set:html={schema} />}
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<link rel="stylesheet" href="https://use.typekit.net/ljg3jjb.css" />
+		<style is:global>
+			html,
+			body {
+				font-family: system-ui;
+				margin: 0;
+				padding: 0;
+				color: #2f2f2f;
+			}
+			body {
+				background-color: #0e0f10;
+			}
+			body * {
+				box-sizing: border-box;
+			}
+			main {
+				width: 100%;
+				min-height: 100svh;
+				overflow: visible;
+			}
+			/* main > *:not(.fullWidth) {
+				max-width: 1200px;
+				width: 100%;
+				margin: auto;
+			} */
+		</style>
+		<ViewTransitions />
+	</head>
+	<body>
+		<Layout el={layout}><slot /></Layout>
+		<script>
+			import gsap from "gsap";
+			import ScrollToPlugin from "gsap/ScrollToPlugin";
+			import ScrollTrigger from "gsap/ScrollTrigger";
+			gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+		</script>
+	</body>
+</html> -->

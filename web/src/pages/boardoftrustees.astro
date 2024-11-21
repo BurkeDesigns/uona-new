@@ -1,0 +1,332 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let background = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/boardoftrustees/*.{jpg,png,gif}"
+  )
+)[0];
+
+let team = {
+  staff: [
+    //  {
+    //     name: 'Jorge Lozano',
+    //     title: 'CEO',
+    //     email: 'jlozano@condortech.com',
+    //     company:'Condortech Services, Inc',
+    //     phone:'703-916-9200',
+    //     term:{
+    //         start:'9/1/2018',
+    //         end:'8/31/2024'
+    //     },
+    //     degrees:[],
+    //     img: '',
+    //     order: 1,
+    //     type: 'trustee',
+    //     desc: ''
+    // },
+    {
+      firstname: "Jie",
+      lastname: "Liu",
+      title: "Chief",
+      email: "liudr@outlook.com",
+      company: "Lab of Infectious Diseases and Vaccine, Sichuan, China",
+      phone: "301-742-4822",
+      term: {
+        start: "9/1/2022",
+        end: "8/31/2024",
+      },
+      degrees: [
+        {
+          type: "MD, PhD",
+          university: "Yamanashi University, Japan",
+        },
+      ],
+      img: "",
+      order: 2,
+      type: "trustee",
+      desc: "",
+    },
+    {
+      firstname: "Alan",
+      lastname: "Krishnan",
+      title: "President",
+      email: "alank@teamupcorp.com",
+      company: "BSDC, Inc.",
+      phone: "+1 (703) 463-9463",
+      term: {
+        start: "9/1/2020",
+        end: "8/31/2024",
+      },
+      degrees: [
+        {
+          university: "Indian Institute of Mgmt Bangalore",
+        },
+      ],
+      img: "",
+      order: 3,
+      type: "trustee",
+      desc: "",
+    },
+    {
+      firstname: "Rod",
+      lastname: "Woodruff",
+      title: "IT Manager",
+      email: "rwcbcmail@gmail.com",
+      company: "Exxon/Mobile",
+      phone: "703 266 5379",
+      term: {
+        start: "9/1/2018",
+        end: "8/31/2024",
+      },
+      degrees: [
+        {
+          university: "Penn State University",
+        },
+      ],
+      img: "",
+      order: 4,
+      type: "trustee",
+      desc: "",
+    },
+    {
+      firstname: "Yu-li",
+      lastname: "Liu",
+      title: "Head of Dept of Media and Communication",
+      email: "yuliliu@cityu.edu.hk",
+      company: "City University of Hong Kong",
+      phone: "",
+      term: {
+        start: "9/1/2022",
+        end: "8/31/2024",
+      },
+      degrees: [
+        {
+          type: "PhD",
+          university: "Indiana University",
+        },
+      ],
+      img: "",
+      order: 5,
+      type: "trustee",
+      desc: "",
+    },
+    {
+      firstname: "Jerry",
+      lastname: "Brown - Chair of BOT",
+      title: "President",
+      email: "jbrown@aditechnologies.com",
+      company: "ADIT Solutions Inc.",
+      phone: "(703) 850-9207",
+      term: {
+        start: "9/1/2018",
+        end: "8/31/2024",
+      },
+      degrees: [
+        {
+          type: "BA",
+          university: "The Citadel",
+        },
+        {
+          type: "MS",
+          university: "Florida Institute of Technology",
+        },
+        {
+          type: "", // MA
+          university: "Army War College",
+        },
+        {
+          type: "",
+          university: "Defense University",
+        },
+      ],
+      img: "",
+      order: 6,
+      type: "trustee",
+      desc: "",
+    },
+    {
+      firstname: "John",
+      lastname: "Colantoni",
+      title: "EVP – Chief Risk Officer",
+      email: "",
+      company: "PRIMIS",
+      phone: "",
+      term: {
+        start: "9/1/2022",
+        end: "8/31/2024",
+      },
+      degrees: [
+        {
+          type: "BA",
+          university: "Suffolk University, Boston, MA",
+        },
+        {
+          type: "",
+          university: "New England School of Banking",
+        },
+        {
+          type: "",
+          university:
+            "Senior Executive Fellows Program <br>Harvard University – JFK School of Government",
+        },
+      ],
+      img: "",
+      order: 7,
+      type: "trustee",
+      desc: "",
+    },
+  ],
+};
+
+// team.staff.sort(function(a, b) {
+//     return a.lastname - b.lastname;
+// });
+team.staff = team.staff.sort((a, b) => a.lastname.localeCompare(b.lastname));
+team.staff = team.staff.filter((item) => item.type == "trustee");
+---
+
+<style>
+  .full {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .full > div:not(.infoImg) {
+    padding: 30px;
+    padding-top: 0;
+  }
+
+  .infoImg {
+    min-width: 200px;
+    margin: 0;
+  }
+
+  .infoTitle {
+    color: #4067b1;
+    margin-top: 0;
+  }
+
+  .hideImg .infoImg {
+    display: none;
+  }
+
+  #video {
+    /* background-image: url({background.default.src}); */
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  @media (max-width: 520px) {
+    .full > div:not(.infoImg) {
+      padding: 30px 0;
+    }
+
+    #video {
+      height: 300px;
+    }
+  }
+
+  #faculty > *,
+  .border {
+    border: 2px solid;
+    padding: 30px !important;
+  }
+
+  #faculty > * > *,
+  .border > * {
+    padding: 0 !important;
+  }
+
+  .border h2 {
+    margin: 0 !important;
+  }
+</style>
+
+<Page layout="hm fixed" title="Board of Trustees | University of North America">
+  <Header />
+  <main el="main">
+    <section
+      id="video"
+      style={{ backgroundImage: `url(${background.default.src})` }}
+    >
+      <div class="maintitle">
+        <div>
+          <!-- <p>Board of Trustees</p> -->
+        </div>
+      </div>
+    </section>
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+        <h1 class="heading">Board of Trustees</h1>
+        <!-- <div class="paddingReg content">
+              To ensure that the University of North America accomplishes its mission to provide high quality practitioner-oriented graduate programs, the University utilizes an expert professional faculty who have exceptional academic credentials and are senior practitioners in their fields.&nbsp;<br><br>
+              These experienced professionals help students remain current with accelerating trends and evolving issues in enterprise management and information technology so they may rapidly apply what they learn to their jobs and continue to advance their careers.
+          </div> -->
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#fff;">
+      <div id="team">
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              team.staff.map((item) => (
+                <li class={`full info ${item.img === "" ? "border" : ""}`}>
+                  {item.img && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img});`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">
+                      {item.firstname} {item.lastname}
+                    </h2>
+                    <p>
+                      <i>
+                        {item.company} - {item.title}
+                      </i>
+                    </p>
+                    {item.desc && <div set:html={item.desc} />}
+                    {item.degrees && item.degrees.length > 0 && (
+                      <div>
+                        <p>
+                          <b>Degrees:</b>
+                        </p>
+                        <ul>
+                          {item.degrees.map((degree) => (
+                            <li>
+                              {degree.type && <span>{degree.type} - </span>}
+                              {degree.university && (
+                                <span set:html={degree.university} />
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </ul>
+    <Footer />
+  </main>
+</Page>

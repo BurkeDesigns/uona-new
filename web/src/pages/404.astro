@@ -1,44 +1,55 @@
 ---
-import Page from "@layouts/page.astro";
+import Page from "@layouts/uona.astro";
 // import { KawasakiCommercial } from "@theme";
 import { Text, Button, Aside } from "@blocks";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
 
 export const prerender = true;
 ---
 
-<Page title="404: Page Not Found" layout="am fixed">
-	<Aside client:only="react" />
-	<main el="main">
-		<div class="section">
-			<Text as="h2" color="currentColor">404: Page Not Found</Text>
-			<Text as="p" color="currentColor">
-				We couldn't find the page you requested. It might have been
-				moved, renamed, or deleted. Please check your spelling and try
-				again.
-			</Text>
-			<div>
-				<Button url="/" label="Go Back Home" />
-			</div>
-		</div>
-	</main>
+<Page title="404: Page Not Found" layout="hm fixed">
+  <Header />
+  <main el="main">
+    <div class="section">
+      <Text as="h2" color="currentColor">404: Page Not Found</Text>
+      <Text as="p" color="currentColor">
+        We couldn't find the page you requested. It might have been moved,
+        renamed, or deleted. Please check your spelling and try again.
+      </Text>
+      <div>
+        <!-- <Button url="/" label="Go Back Home" /> -->
+        <a
+          href="/"
+          class="button"
+          style="--bg-color:#4067b1;--color:#fff;--box-shadow:0 0 0 2px var(--bg-color);"
+          >Go Back Home</a
+        >
+      </div>
+    </div>
+    <Footer />
+  </main>
 </Page>
 
 <style>
-	.section {
-		display: grid;
-		max-width: 85ch;
-		height: 100%;
-		width: 100%;
-		margin: auto;
-		padding: 0 23px;
-		padding-top: 100px;
-		text-align: center;
-		gap: 64px;
-		color: white;
-		padding-top: 64px;
-		align-content: center;
-	}
-	.section * {
-		margin-bottom: 0;
-	}
+  main {
+    background: #222 !important;
+  }
+  .section {
+    display: grid;
+    max-width: 85ch;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding: 0 23px;
+    padding-top: 100px;
+    text-align: center;
+    gap: 64px;
+    color: white;
+    padding-top: 64px;
+    align-content: center;
+  }
+  .section * {
+    margin-bottom: 0;
+  }
 </style>
