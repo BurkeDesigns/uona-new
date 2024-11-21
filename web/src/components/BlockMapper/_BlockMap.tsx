@@ -15,7 +15,7 @@ import Accordion from '@components/Accordion'
 import Input from '@components/Input'
 import ContactForm from '@components/ContactForm'
 import Box from '@components/Box'
-import Footer from '@components/Footer'
+// import Footer from '@components/Footer'
 import Pagination from '@components/Pagination'
 
 const blockMap = {
@@ -36,7 +36,7 @@ const blockMap = {
     Input,
     ContactForm,
     Box,
-    Footer,
+    // Footer,
     Pagination
 };
 
