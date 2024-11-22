@@ -1,0 +1,110 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+export const prerender = false;
+
+const title = Astro.url.searchParams.get("title") || "Online Payment";
+const amount = Astro.url.searchParams.get("p");
+---
+
+<style>
+  #video {
+    background-image: url(https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-attachment: unset;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+</style>
+
+<Page layout="hm fixed" title="Payment | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <!-- <div class="maintitle"><div>International Student</div></div> -->
+    </section>
+    <section id="app">
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">
+            <span>{title}</span>
+          </h1>
+          <div class="paddingReg content" style="text-align:center;">
+            Submit your online payment by clicking the button below. After
+            payment submission, please check your email to view your receipt.
+          </div>
+          <div class="flex">
+            <!-- <a class="button" href="/services" style="--box-shadow:0 0 0 2px var(--color);">more services</a> -->
+            <button
+              class="button"
+              id="checkout-button-sku_GZbBonhuXg9CtY"
+              role="link"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >Pay ${amount}</button
+            >
+            <div id="error-message"></div>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" is:inline></script>
+
+<!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3" is:inline></script>
+
+<script is:inline define:vars={{ title, amount }}>
+  window.onload = function () {
+    console.log("AMOUNT", amount);
+    (function () {
+      var stripe = Stripe("pk_live_4KH8TGiK6TpQvGnH5TP9jRmW");
+
+      var checkoutButton = document.getElementById(
+        "checkout-button-sku_GZbBonhuXg9CtY"
+      );
+      checkoutButton.addEventListener("click", function () {
+        // When the customer clicks on the button, redirect
+        // them to Checkout.
+        stripe
+          .redirectToCheckout({
+            items: [{ sku: "sku_GZbBonhuXg9CtY", quantity: amount * 100 }],
+
+            // Do not rely on the redirect to the successUrl for fulfilling
+            // purchases, customers may not always reach the success_url after
+            // a successful payment.
+            // Instead use one of the strategies described in
+            // https://stripe.com/docs/payments/checkout/fulfillment
+            successUrl: "https://uona.edu/payment/success",
+            cancelUrl: `https://uona.edu/payment/charge?title=${title}&p=${amount}`,
+          })
+          .then(function (result) {
+            if (result.error) {
+              // If `redirectToCheckout` fails due to a browser or network
+              // error, display the localized error message to your customer.
+              var displayError = document.getElementById("error-message");
+              displayError.textContent = result.error.message;
+            }
+          });
+      });
+    })();
+  };
+
+  var app = new Vue({
+    el: "#app",
+    data: {},
+  });
+</script>

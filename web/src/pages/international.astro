@@ -1,0 +1,204 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+import { Image } from "astro:assets";
+import thumbnail from "@public/files/uploads/gallery/Campus Snapshots/20200630_153039[1].jpg";
+---
+
+<style>
+  #video {
+    background-image: url(/images/world-paint.jpg);
+    background-attachment: unset;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+  }
+  .gallery {
+    display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .gallery img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  @media (max-width: 800px) {
+    .gallery {
+      grid-template-columns: 1fr 1fr;
+    }
+    .gallery img {
+      height: 150px;
+    }
+  }
+</style>
+
+<Page
+  layout="hm fixed"
+  title="International Admission | University of North America"
+>
+  <Header />
+  <main el="main">
+    <section id="video">
+      <!-- <div class="maintitle"><div>International Student</div></div> -->
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">We Are International.</h1>
+          <div class="paddingReg">
+            Going to a new country to study can be intimidating. Don't worry. We
+            will do everything to ensure that your experience is pleasant and
+            extraordinary!
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/admission"
+              style="--box-shadow:0 0 0 2px var(--color);">Learn More</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+            <a
+              class="button"
+              href="/forms"
+              style="--box-shadow:0 0 0 2px var(--color);">Application Forms</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Gallery</h1>
+          <div class="paddingReg">
+            <div class="gallery">
+              <img
+                src="/images/182f0a43-e04f-4e01-bca7-47c83a826c1f.JPG"
+                alt="img"
+                loading="lazy"
+              />
+              <img
+                src="/images/thumbnail_199a6713-0db4-4769-bf08-68fcb9977c00.jpg"
+                alt="img"
+                loading="lazy"
+              />
+              <img
+                src="/images/PHOTO-2022-05-12-17-27-59.jpg"
+                alt="img"
+                loading="lazy"
+              />
+              <img
+                src="/images/thumbnail_IMG_0470.jpg"
+                alt="img"
+                loading="lazy"
+              />
+              <Image src={thumbnail} width={600} alt="img" loading="lazy" />
+              <img
+                src="/images/thumbnail_IMG_8257_edited.jpg"
+                alt="img"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">What We Do</h1>
+          <div class="paddingReg">
+            UoNA's experienced admission representatives will work with you to
+            guide you through the admissions process. UoNA staff are personable
+            and approachable, providing guidelines for F-1 students to improve
+            communications and maintain status. Furthermore, documentation is
+            done quickly and efficiently; in compliance with all state and
+            federal rules and regulations. Contact us now: we'll help you choose
+            the best program that suits your academic and career goals.
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">APPLIED LEARNING (OPT/CPT)</h1>
+          <div class="paddingReg">
+            UoNA is authorized to issue I-20s for non-immigrant F1 Visa
+            students, whose learning requires integrated applications through
+            work experience by utilizing OPT or CPT. UoNA's applied learning
+            curriculum is aligned with and meets the requirements as authorized
+            through U.S. CIS and SEVP. A master’s student practical training
+            experience may be paid or unpaid, and the position may be part- or
+            full-time. The location of employment must be at the client’s
+            premises or the company for which the student is employed. Given the
+            knowledge learned from colleagues, managers, and coworkers and the
+            possibility of mentorships, students are not allowed to work in any
+            capacity from home. You may contact the international student office
+            for more information concerning Applied Learning at UoNA.
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Testimonial</h1>
+          <div class="paddingReg">
+            <ul class="flex column">
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/Jingsheng.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle">
+                    "Enrich myself both academically and professionally"
+                  </h1>
+                  <p>
+                    I first heard about University of North American from my
+                    friend. After acquiring some basic information, I knew this
+                    is the university I have been looking for.
+                  </p>
+                  <p>
+                    I received a Bachelor's degree in International Trade and
+                    Business Communication from the University of Portsmouth in
+                    England last year. After that, I came to the United States
+                    to search for a university that could provide me with an
+                    opportunity to enhance my real-world experience.
+                  </p>
+                  <p>
+                    University of North American is my best choice! I am able to
+                    pursue a Master’s degree and still have the flexibility to
+                    explore career and social experiences. I am able to enrich
+                    myself both academically and professionally at UoNA.
+                  </p>
+                  <p>
+                    <span class="bold"
+                      >Jingsheng (Jason) Xu, MBA program graduate</span
+                    >
+                  </p><br />
+                  <a class="button" href="/testimonials"
+                    >view more testimonials</a
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

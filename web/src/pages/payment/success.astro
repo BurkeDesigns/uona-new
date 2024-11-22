@@ -1,0 +1,49 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<Page layout="hm fixed" title="Payment Success | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <!-- <div class="maintitle"><div>International Student</div></div> -->
+    </section>
+    <section id="app">
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">Thank you</h1>
+          <div class="paddingReg content" style="text-align:center;">
+            Your payment was successfully completed. A UoNA staff member will
+            contact you regarding your request soon. Please check your email to
+            view your receipt.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/services"
+              style="--box-shadow:0 0 0 2px var(--color);">more services</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

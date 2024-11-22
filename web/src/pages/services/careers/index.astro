@@ -1,0 +1,123 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/careers.jpg);
+    background-attachment: unset;
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+</style>
+
+<Page layout="hm fixed" title="Career Services | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <!-- <div class="maintitle"><div>International Student</div></div> -->
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">Career Services</h1>
+          <div class="paddingReg content">
+            Student career is our top priority!&nbsp;<div><br /></div><div>
+              We support our students with collaborative networking experiences.
+              Our faculty cultivate our students in developing practical skills
+              for the future. Students learn to become active, life-long,
+              working professionals. They are encouraged to take on
+              responsibility at the work place, to be innovative learners in
+              their profession, and interact with employers to solve real-world
+              problems.
+            </div>
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/services"
+              style="--box-shadow:0 0 0 2px var(--color);">more services</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Applied Learning</h1>
+          <div class="paddingReg content">
+            Applied Learning curriculum is an integral part of all master’s
+            programs offered at the University of North America.&nbsp;Concurrent
+            work experience provides a direct link between the knowledge gained
+            in the courses and the application of that knowledge in practice.<div
+            >
+              <br />
+            </div><div>
+              The academic curriculum prepares students for professional
+              experience in the work place and this practical training combines
+              practical skills with academic knowledge. Success in the academic
+              programs relies on students having access to a work environment
+              that allows them to apply the course content and activities. Both
+              domestic and international students are required to obtain
+              professional experiences while pursuing their academic
+              degrees.&nbsp;
+            </div>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Professional Development</h1>
+          <div class="paddingReg content">
+            Professional Development is achieved as students interact with
+            professional experts and local employers. Our students find great
+            success by immersing themselves in the professional environment
+            provided at UoNA.&nbsp;&nbsp;<div><br /></div><div>
+              Employer partners of UoNA are prominent leaders in international
+              business and technology who help guide our students
+              professionally. Practical training builds confidence, and as
+              networking opportunities flourish; the potential to be more
+              involved with the local community in global business, innovation,
+              and technology is forged.&nbsp;
+            </div>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">networking events</h1>
+          <div class="paddingReg content">
+            UoNA hosts Job Fairs and Networking Events throughout the year. In
+            these highly interactive events, students interact face-to-face with
+            leaders in the field and learn what skills they need to develop for
+            their future.<div><br /></div><div>
+              Students meet with local employers to discuss opportunities and
+              openings at their companies. Expert speakers present the
+              innovative areas of interest their companies are looking into, or
+              skills they are looking for. These opportunities are extremely
+              helpful for students to find success in their career development.
+            </div>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

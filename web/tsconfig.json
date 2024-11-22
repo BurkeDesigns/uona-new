@@ -22,6 +22,7 @@
       "@pages/*": ["src/pages/*"],
       "@sanityStudio/*": ["../sanity/*"],
       "@config": ["config"],
+      "@public/*": ["public/*"],
       "sanity:client": ["@sanity/client"],
       // preact stuff
       "react": ["./node_modules/preact/compat/"],

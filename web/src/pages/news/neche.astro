@@ -1,0 +1,211 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/news/neche_accred.webp?v=1);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  .round,
+  .roundAll > * {
+    overflow: hidden;
+    border-radius: 100%;
+    background-size: cover;
+
+    background-position: center;
+  }
+
+  .roundAll img {
+    display: block;
+  }
+  .headerImg {
+    width: 100%;
+    display: block;
+  }
+  .paddingReg {
+    line-height: 1.5rem;
+  }
+</style>
+
+<Page layout="hm fixed" title="NEWS | NECHE | University of North America">
+  <Header />
+  <main el="main">
+    <!-- <section id="video">
+        <div class="maintitle">
+            <div>About UoNA <p>APPLIED LEARNING AT ITS BEST</p>
+            </div>
+        </div>
+    </section> -->
+    <img
+      src="/news/neche_accred.webp"
+      alt="background image"
+      class="headerImg"
+    />
+    <section>
+      <!-- <ul class="section" style="--bg-color:#fbd504;--color:hsl(51 97% 15% / 1);">
+            <div>
+                <h1 class="heading">UoNA earned NECHE Accreditation!</h1>
+            </div>
+        </ul> -->
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">
+            UoNA Achieves Prestigious NECHE Regional Accreditation
+          </h1>
+          <div class="paddingReg">
+            The University of North America (UoNA) has reached a significant
+            milestone in its academic journey by securing accreditation from the
+            New England Commission of Higher Education (NECHE) on September 22,
+            2023.
+          </div>
+        </div>
+      </ul>
+      <!-- <ul class="section" style="--bg-color:#fff;">
+            <div>
+                <h1 class="heading">UoNA is...</h1>
+                <div class="paddingReg">
+                    <b>Accredited;</b> UoNA is accredited by the Accrediting Council of Independent Schools (ACICS). <br><br>
+                    <b>Focused;</b> UoNA offers selected graduate and undergraduate programs that are in high demand by students, and employers. <br><br>
+                    <b>Innovative;</b> UoNA has adopted the latest academic innovations, including quality curriculum, advanced campus technology, and comprehensive student and career services. <br><br>
+                    <b>Affordable;</b> Our tuition is one of the most affordable among accredited higher education institutions in the Metro Washington DC Area. Classes are available in the evenings, on weekends, and online.
+                </div>
+            </div>
+        </ul> -->
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">A Recognition of Excellence</h1>
+          <div class="paddingReg">
+            Accreditation by NECHE is a testament to an institution's commitment
+            to maintaining and enhancing the quality of its educational
+            offerings. NECHE is one of the seven regional accrediting agencies
+            in the United States, recognized by the U.S. Department of
+            Education. By earning this accreditation, UoNA joins a select group
+            of institutions that have met the rigorous standards set forth by
+            NECHE, emphasizing its dedication to providing top-notch education
+            to its students.
+          </div>
+        </div>
+      </ul>
+
+      <!-- <ul class="section">
+            <div>
+                <h1 class="heading">The Accreditation Process</h1>
+                <div class="paddingReg">
+                    <p>The process to gain NECHE accreditation is intensive. It involved a thorough self-study by the institution, followed by an on-site evaluation by a team of peer reviewers. The reviewers then make a recommendation to NECHE's board, which makes the final decision.</p>
+                    <p>For UoNA, the journey towards accreditation involved significant introspection, evaluation, and improvement. The university's faculty, administration, and staff worked collaboratively to align the institution's mission, resources, and educational outcomes with the high standards set by NECHE.</p>
+                </div>
+            </div>
+        </ul> -->
+
+      <!-- <ul class="section">
+            <div>
+                <h1 class="heading">A Recognition of Excellence</h1>
+                <div class="paddingReg">
+                Accreditation by NECHE is a testament to an institution's commitment to maintaining and enhancing the quality of its educational offerings. NECHE is one of the seven regional accrediting agencies in the United States, recognized by the U.S. Department of Education. By earning this accreditation, UoNA joins a select group of institutions that have met the rigorous standards set forth by NECHE, emphasizing its dedication to providing top-notch education to its students.
+                </div>
+            </div>
+        </ul> -->
+
+      <ul class="section">
+        <div>
+          <h1 class="heading">Implications for Students and Faculty</h1>
+          <div class="paddingReg">
+            <p>
+              With NECHE regional accreditation, current and prospective
+              students of UoNA can be assured of the quality and value of their
+              education. Accreditation often plays a pivotal role in the
+              transferability of credits, eligibility for federal financial aid,
+              and the recognition of the degree by employers and other
+              institutions.
+            </p>
+            <p>
+              For faculty and staff, this recognition affirms the quality of
+              their work and offers opportunities for further professional
+              development and collaboration with other accredited institutions.
+            </p>
+          </div>
+        </div>
+      </ul>
+
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Looking Forward</h1>
+          <div class="paddingReg">
+            <p>
+              The University of North America's achievement is not the end but a
+              new beginning. Accreditation is not a one-time event but a
+              continuous process of self-assessment and improvement. UoNA will
+              be subject to periodic reviews by NECHE to ensure it continues to
+              uphold the standards of excellence.
+            </p>
+            <p>
+              Achieving NECHE regional accreditation is a testament to our
+              unwavering commitment to academic excellence. We are proud of this
+              recognition and remain dedicated to further enhancing the
+              educational experience for all our students.
+            </p>
+          </div>
+        </div>
+      </ul>
+
+      <!--
+        <ul class="section" style="--bg-color:#fff;">
+            <div>
+                <h1 class="heading">Our Organization</h1>
+                <div class="paddingReg">
+                    <p>The University of North America (UoNA) is a prestigious for-profit educational institution that prides itself on its commitment to academic excellence, educational accessibility, and student achievements. With a mission to provide a well-rounded education, UoNA offers a diverse range of degree programs primarily centered around computer science, information technology, and business disciplines.</p>
+                    <p>At UoNA, the pursuit of academic quality is paramount. The university maintains high standards in its curriculum, faculty selection, and teaching methodologies to ensure that students receive a rigorous and comprehensive education. Faculty members at UoNA are experts in their respective fields, with extensive industry experience and a dedication to fostering an intellectually stimulating learning environment.</p>
+                    <p>One of the key values at UoNA is educational access. The university believes that every individual, regardless of their background or circumstances, should have the opportunity to pursue higher education. UoNA strives to provide flexible learning options, including online courses and part-time programs, to accommodate students who may have work or personal commitments. This commitment to accessibility enables a diverse student body, fostering an inclusive and vibrant campus community.</p>
+                    <p>UoNA is deeply committed to student success. The university recognizes that education goes beyond the classroom, and it aims to equip students with the skills and knowledge needed for professional and personal growth. UoNA provides robust support services, such as career counseling, internships, and networking opportunities, to empower students to excel in their chosen fields and achieve their career goals. The institution values a holistic approach to education, emphasizing the importance of critical thinking, problem-solving, and interpersonal skills.</p>
+                    <p>While UoNA&#39;s current degree programs primarily focus on computer science, information technology, and business disciplines, the university also emphasizes the development of a broad understanding of the cultures in which these disciplines operate. UoNA recognizes the global nature of today&#39;s interconnected world and seeks to prepare its students to thrive in diverse professional environments. By integrating cultural awareness and global perspectives into its curriculum, UoNA nurtures students&#39; ability to adapt and succeed in an increasingly interconnected and multicultural society.</p>
+                    <p>The University of North America is a for-profit institution dedicated to upholding the core values of academic quality, educational access, and student success. Through its specialized degree programs, UoNA equips students with the necessary skills and knowledge to excel in computer science, information technology, and business disciplines while fostering an appreciation for cultural diversity. UoNA&#39;s commitment to excellence and inclusive education makes it a standout choice for individuals aspiring to thrive in their professional careers.</p>
+                </div>
+            </div>
+        </ul> -->
+
+      <!-- <ul class="section" style="--bg-color:#fff;">
+            <div>
+                <h1 class="heading">Institutional Objectives</h1>
+                <div class="paddingReg">
+                    <p>The institutional objectives of the University are:</p>
+                    <ul>
+                        <li>To provide academic quality through rigorous academic standards with a commitment to interactive, effective learning for adults;</li>
+                        <li>To create a student-centered environment accessible to individuals of diverse ages, cultures, and socioeconomic backgrounds;</li>
+                        <li>To enable students to achieve their career and professional goals by providing a relevant and supportive learning environment including on-campus, hybrid, and online delivery formats;</li>
+                        <li>To develop educational programs that join theory and practice and instill in students the spirit of applied learning;</li>
+                        <li>To promote globally responsible perspectives in the curriculum and among students and faculty;</li>
+                        <li>To educate diverse student populations locally, regionally, nationally, and internationally.</li>
+                    </ul>
+                </div>
+            </div>
+        </ul> -->
+
+      <!-- <ul class="section">
+            <div>
+                <h1 class="heading">Institutional Goals</h1>
+                <div class="paddingReg">
+                    <p>The University of North America mission-driven values of high-quality education and diversity in a student-centered, inclusive community are the foundation for the institutional goals. Currently, UoNA’s degree programs focus on computer science, information technology, and business disciplines and support the development of a broad understanding of the cultures in which these disciplines function.</p>
+                    <p>The focus of the University is applied learning. UoNA intentionally brings highly qualified faculty members that have solid academic credentials along with active careers in high tech industries, business, and government to create a stimulating learning environment. Coursework is designed to provide students the opportunity to explore and develop course-related competencies relevant to their work environment through applied learning assignments in each course of the curriculum.</p>
+                    <p>The University emphasizes high quality education that is accessible to learners in the global community, regardless of background, to enable them to succeed in their careers. This goal is achieved as the University provides an advanced education that cultivates growth and development in the professional and personal lives of our students. With its teaching focused on the principles of applied learning, UoNA bridges the gap between the theoretical learning of traditional disciplines and the applied knowledge required to provide graduates with a comprehensive understanding and a competitive advantage in today’s global society.</p>
+                </div>
+            </div>
+        </ul> -->
+    </section>
+    <Footer />
+  </main>
+</Page>

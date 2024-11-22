@@ -1,0 +1,270 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  .full {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .full > div:not(.infoImg) {
+    padding: 30px;
+    padding-top: 0;
+  }
+
+  .infoImg {
+    min-width: 200px;
+    margin: 0;
+  }
+
+  .infoTitle {
+    color: #4067b1;
+    margin-top: 0;
+  }
+
+  .hideImg .infoImg {
+    display: none;
+  }
+
+  #video {
+    background-image: url("https://cdn.pixabay.com/photo/2015/11/23/02/23/couples-1057638_1280.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    background-attachment: unset;
+  }
+
+  @media (max-width: 520px) {
+    .full > div:not(.infoImg) {
+      padding: 30px 0;
+    }
+
+    #video {
+      height: 300px;
+    }
+  }
+</style>
+
+<Page
+  layout="hm fixed"
+  title="Military Spouse Benefits | University of North America"
+>
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>
+          <p>Military Spouse Benefits</p>
+        </div>
+      </div>
+    </section>
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+        <h1 class="heading">MyCAA Military Spouse Benefits</h1>
+        <div class="paddingReg content">
+          University of North America (UoNA) is an approved school for the
+          Military Spouse Career Advancement Accounts (MyCAA) program, a career
+          development and employment assistance program sponsored by the
+          Department of Defense.<br /><br />
+          Through MyCAA, military spouses can receive financial assistance for licenses,
+          certificates, certifications, or associate degrees necessary for gainful
+          employment in high-demand, high-growth portable career fields.
+        </div>
+        <!--
+          <div class="flex">
+              <a class="button" href="tel:+17038273686" style="--box-shadow:0 0 0 2px var(--color);">Call now!</a>
+              <a href="https://forms.gle/MdY2T9mnXPUuauxU6" class="button" style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);">Contact Us</a>
+          </div>
+-->
+      </div>
+    </ul>
+    <!--
+  <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+      <h1 class="heading">Legends & Leaders</h1>
+          <div class="paddingReg">
+          <p>
+          Legends & Leaders (L2) is an integrated career pathway that combines professional certifications with a degree. The objective is to have students with a focus on active service members, veterans, and military spouses ready to transition into a marketable and competitive career after completion. L2 combines high-demand, industry skills; strong alliances with leading veteran service organizations and private sector companies that help students gain comprehensive field experience while earning their degree.
+</p>
+<p>
+L2 is designed to provide a combination of methodology and applied learning to help students maximize their learning and performance as they complete their degrees. The University of North America and its employer collaboratives are committed to providing flexible work and school schedules that balance school and work responsibilities, creating a comprehensive workforce development ecosystem.
+</p>
+<p>
+L2 promotes an industry-focused, career pathway to connect transitioning service members and active-duty military spouses to high-demand careers in Telecommunication; Information Technology; and Cyber Security. The pathway is designed to help bridge the gap between military-connected individuals with high-demand workplace skills.
+</p>
+         <p>
+             L2 is designed to build soft and technical skills necessary to succeed in different industries while students make an initial connection with employers who are eager to hire veterans. This program benefits employers by allowing them to network with transitioning military- and military spouse-talent early in the workforce pipeline.
+         </p>
+          </div>
+      </div>
+  </ul>
+-->
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading">Eligibility for military spouse benefits</h1>
+        <div class="paddingReg">
+          To qualify, you must:
+          <ul>
+            <li>
+              Be the spouse of an active-duty servicemember at a pay grade of
+              E-1 to E-5, W-1 to W-2, or O-1 to O-2
+            </li>
+            <li>
+              Complete your education coursework while your spouse is on
+              active-duty Title 10 orders
+            </li>
+          </ul>
+          This includes spouses of activated National Guard and Reserve components
+          in the appropriate pay grades.
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+        <h1 class="heading">How does MyCAA work?</h1>
+        <div class="paddingReg">
+          <p>
+            Prior to requesting MyCAA financial assistance, military spouses are
+            required to develop an education and training plan (ETP) and upload
+            it to their MyCAA account for approval by a MyCAA career and
+            education consultant.
+          </p>
+          <h2>Required course information includes:</h2>
+          <p>Correct name of school and campus location</p>
+          <ul>
+            <li>
+              • All courses (Or the block of study) for which MyCAA financial
+              assistance will be used (Include course name/title/codes)
+            </li>
+          </ul>
+          <p>
+            Your University of North America Military Service Team will help you
+            complete all required documents.
+          </p>
+        </div>
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading">What does MyCAA provide?</h1>
+        <h2>Training and education financial assistance</h2>
+        <div class="paddingReg">
+          <p>
+            Prior to requesting MyCAA financial assistance, military spouses are
+            required to develop an education and training plan (ETP) and upload
+            it to their MyCAA account for approval by a MyCAA career and
+            education consultant.
+          </p>
+        </div>
+        <ul>
+          <li>Maximum educational benefit is $4,000</li>
+          <li>
+            There is an annual fiscal year cap of $2,000 to assist eligible
+            military spouses.
+          </li>
+          <li>
+            Annual cap waivers are available if there is an up-front tuition
+            cost greater than $2,000 (up to the maximum benefit of $4,000).
+          </li>
+          <li>
+            Covers tuition costs for education and training courses leading to
+            an associate degree (excluding General Studies and Liberal Arts),
+            license, certificate, or certification at accredited schools.
+          </li>
+        </ul>
+        <h2>Employment readiness counseling</h2>
+        <ul>
+          <li>
+            Counseling services are available to all spouses of active duty
+            servicemembers, regardless of:
+          </li>
+          <ul>
+            <li>Rank</li>
+            <li>Eligibility to receive MyCAA financial assistance</li>
+          </ul>
+          <li>Counseling services help military spouses identify:</li>
+          <ul>
+            <li>Federal, state, and local financial assistance</li>
+            <li>Expanded career choices</li>
+            <li>Support resources to attend school</li>
+          </ul>
+        </ul>
+        <div class="flex" style="margin-top:32px;">
+          <!--                <a class="button" href="" style="--box-shadow:0 0 0 2px var(--color);">Call now!</a>-->
+          <a
+            href="https://mycaa.militaryonesource.mil/mycaa/schools/profile?SchoolName=University%20of%20North%20America&CampusName=&Id=14189&PersistSearchCriteria=true"
+            class="button"
+            target="_blank"
+            rel="nofollow noopener">MyCAA Programs</a
+          >
+        </div>
+        <!--
+          <p>
+              Your University of North America Military Service Team will help you complete all required documents.
+          </p>
+-->
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+        <h1 class="heading">How to get started</h1>
+        <div class="paddingReg">
+          <p>
+            You can establish a MyCAA account by visiting the <a
+              href="https://mycaa.militaryonesource.mil/mycaa"
+              target="_blank">MyCAA website</a
+            >
+          </p>
+          <p>
+            Once your profile information is provided, MyCAA will verify
+            eligibility through a real-time DEERS eligibility check. If you are
+            eligible, you can create your education and training plan and
+            request financial assistance when you are within 60–15 days of your
+            course start date.
+          </p>
+          <p>
+            Contact the UoNA Military Service Team at 703-827-3686 or
+            military@uona.edu to help you complete all required documents.
+          </p>
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <div class="paddingReg">
+          <b>NOTES AND CONDITIONS - PLEASE READ</b><br /><br />
+          This institution is approved to offer GI Bill® educational benefits by
+          the Virginia State Approving Agency.<br /><br />
+          1 GI Bill® is a registered trademark of the U.S. Department of Veterans
+          Affairs (VA). More information about education benefits offered by VA is
+          available at the official U.S. government website at www.benefits.va.gov/gibill.
+        </div>
+      </div>
+    </ul>
+    <Footer />
+  </main>
+</Page>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11" is:inline></script>
+<script is:inline>
+  var app = new Vue({
+    el: "#app",
+  });
+</script>

@@ -1,0 +1,302 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+import { Image, getImage } from "astro:assets";
+import { map } from "astro:schema";
+let images = await Astro.glob(
+  "/public/files/uploads/backgrounds/hatch/*.{jpg,png,gif}"
+);
+
+console.log(images);
+---
+
+<style>
+  #video {
+    background-image: url(/images/test_center.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    background-attachment: unset;
+  }
+
+  .card {
+    display: inline-grid;
+    grid-template-columns: 150px 1fr;
+    grid-gap: 20px;
+    align-content: flex-start;
+    grid-auto-flow: column;
+  }
+
+  .card img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 300px;
+  }
+
+  .list {
+    display: grid;
+    grid-gap: 20px;
+  }
+
+  .sm-list {
+    display: grid;
+    grid-gap: 10px;
+  }
+
+  .flat-btn {
+    display: grid;
+    grid-gap: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    grid-auto-flow: column;
+  }
+
+  .fullImg {
+    width: 100%;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .gallery > * {
+    width: 100%;
+    object-fit: cover;
+
+    min-height: 250px;
+    background-color: black;
+  }
+
+  #map {
+    height: 300px;
+    width: 100%;
+  }
+
+  .logo-list {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-gap: 20px;
+  }
+
+  .logo-list > * {
+    height: 40px;
+    margin: 10px;
+  }
+
+  @media (max-width: 800px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      grid-template-columns: 1fr;
+      grid-auto-flow: row;
+    }
+
+    .logo-list {
+      grid-auto-flow: row;
+    }
+  }
+</style>
+
+<Page layout="hm fixed" title="Test Center | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <!--            <div>Domestic Students</div>-->
+      </div>
+    </section>
+    <section id="app">
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">UoNA Test Center</h1>
+          <div class="paddingReg">
+            <p>
+              University of North America, Inc. (UoNA) is an authorized Pearson
+              VUE & CLEP testing center. UoNA is located in Fairfax, VA across
+              the Hilton Regency Fairfax Hotel. It is accessible from Route 286
+              exit Fair Lakes Parkway and from I-66 W, take exit 55B to Route
+              286. The Vienna Metro Station is 15 minutes away. For any
+              questions or navigation contact 703-827-3686.
+            </p>
+            <p>
+              The newly built test center offers spacious and ergonomic stations
+              in a comfortable environment. All desktops feature the latest
+              integrated hardware and have access to hi-speed internet
+              connectivity. Softkey keyboards reduce noise and distraction.
+            </p>
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="https://clep.collegeboard.org/test-center-search#
+"
+              style="--box-shadow:0 0 0 2px var(--color);">CLEP Exams</a
+            >
+            <a
+              href="https://home.pearsonvue.com/Test-takers.aspx"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >PearsonVue Exams</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#f1f1f1;">
+        <div class="logo-list">
+          <img src="/images/pearson_logo_white_bg.png" alt="pearson logo" />
+          <img src="/images/clep.jfif" alt="CLEP logo" />
+        </div>
+      </ul>
+      <ul class="flex">
+        <div id="map"></div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Additional information</h1>
+          <div class="paddingReg">
+            <p>
+              <b>Hours Of Operation</b>
+            </p>
+            <ul>
+              <li>Days: Monday – Saturdays</li>
+              <li>Time: 10 am to 5 pm, closed Sundays.</li>
+              <li>
+                Free parking around the building and/or at the parking garage in
+                front of the building.
+              </li>
+            </ul>
+            <p>
+              Once you have entered through the front of the building you will
+              see the registration and check-in station. For additional
+              navigation assistance please call 703-827-3686.
+            </p>
+            <p>
+              The testing center is taking COVID19 precautions and have limited
+              testing workstations to allow social distancing. In addition, each
+              workstation is sanitized after each individual exam. We highly
+              recommend candidates to bring PPE, such as a mask to the testing
+              center.
+            </p>
+          </div>
+
+          <!--
+              <div class="flex">
+                  <a class="button" href="/admission" style="--bg-color:transparent;--color:#4067b1;--box-shadow:0 0 0 2px var(--color);">Learn More</a>
+                  <a href="https://home.pearsonvue.com/Test-takers.aspx" class="button" style="--bg-color:#4067b1;--color:#fff;--box-shadow:0 0 0 2px var(--bg-color);">View Tests</a>
+                  <a class="button" href="/forms" style="--box-shadow:0 0 0 2px var(--color);">Application Forms</a>
+              </div>
+-->
+        </div>
+      </ul>
+
+      <ul class="section">
+        <!-- <div>
+              <h1 class="heading">Floor Plan & Pricing</h1>
+              <div class="paddingReg">
+                  <img src="/images/hatch_map.jpg" class="fullImg" alt="">
+              </div>
+          </div> -->
+
+        <div>
+          <h1 class="heading">Our Test Center</h1>
+          <div class="paddingReg">
+            <div class="gallery">
+              {
+                images.map((img) => (
+                  <img
+                    src={img.default.src}
+                    width={600}
+                    alt="hatch image"
+                    loading="lazy"
+                  />
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </ul>
+
+      <!-- <ul class="section" style="--bg-color:#fff;">
+          <div>
+              <h1 class="heading">HATCH Contacts</h1>
+              <div class="paddingReg">
+                  <div class="list">
+                      <div class="card" v-for="item in hatch.contacts">
+                          <div><img :src="item.profileImgURL" alt="Profile Image"></div>
+                          <div class="list">
+                              <b>{{item.name}}</b>
+                              <div>{{item.description}}</div>
+                              <div class="sm-list">
+                                  <div class="flat-btn"><i class="material-icons">phone</i><span>{{item.phone}}</span></div>
+                                  <div class="flat-btn"><i class="material-icons">email</i><span>{{item.email}}</span></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </ul> -->
+    </section>
+
+    <Footer />
+  </main>
+</Page>
+
+<script is:inline>
+  function initMap() {
+    var map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: {
+        lat: 38.859409,
+        lng: -77.385674,
+      },
+    });
+    marker = new google.maps.Marker({
+      map: map,
+      draggable: false,
+      animation: google.maps.Animation.DROP,
+      position: {
+        lat: 38.859409,
+        lng: -77.385674,
+      },
+    });
+
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+  }
+</script>
+<script
+  is:inline
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJU_JRwX3YRYs6ChDNoIe6-5jAZHaIg1U&callback=initMap"
+></script>

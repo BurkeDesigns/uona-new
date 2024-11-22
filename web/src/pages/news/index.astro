@@ -1,0 +1,291 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let data = {
+  news: {
+    length: 5,
+    list: [
+      {
+        id: 1,
+        author: "",
+        updated: "Sept 22, 2023",
+        created: "Sept 22, 2023",
+        label: "UoNA Achieves NECHE Regional Accreditation!",
+        description:
+          "We are excited to announce that the University of North America just recieved NECHE accreditation!",
+        img: "neche_accred.webp?v=1",
+        tags: ["accreditation"],
+        linkTo: "/news/neche",
+        blocks: [],
+      },
+      {
+        id: 2,
+        author: "",
+        updated: "Jan 27, 2021",
+        created: "Jan 27, 2021",
+        label:
+          "Monumental Sports & Entertainment Announces an Innovative Esports Partnership between University of North America and Monumental’s Esports Teams, Wizards District Gaming and Caps Gaming",
+        description:
+          "UoNA becomes the official esports university partner of Wizards District Gaming and Caps Gaming to develop educational programming and career opportunities for next generation gamers Monumental Sports & Entertainment today announced a first-of- its-kind student-centered…",
+        img: "monumental.webp",
+        tags: ["esports"],
+        linkTo:
+          "https://monumentalsports.com/2021/01/monumental-sports-entertainment-announces-an-innovative-esports-partnership-between-university-of-north-america-and-monumentals-esports-teams-wizards-district-gaming-and-caps-gaming/",
+        blocks: [],
+      },
+      //                            {
+      // id: 2,
+      // author: '',
+      // updated: 'January 28, 2021',
+      // created: 'January 28, 2021',
+      // label: 'Title',
+      // description: 'Decription…',
+      // img: 'https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2018/06/cat-217679.jpg?h=c4ed616d&itok=3qHaqQ56',
+      // tags: ['esports'],
+      // linkTo: '',
+      // blocks: [],
+      // }
+    ],
+  },
+};
+---
+
+<style>
+  .full {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .full > div:not(.infoImg) {
+    padding: 30px;
+    padding-top: 0;
+  }
+
+  .infoImg {
+    min-width: 200px;
+    margin: 0;
+  }
+
+  .infoTitle {
+    color: #4067b1;
+    margin-top: 0;
+  }
+
+  .hideImg .infoImg {
+    display: none;
+  }
+
+  #video {
+    background-image: url("https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    background-attachment: unset;
+  }
+
+  .checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin: 20px;
+    font-size: 20px;
+  }
+
+  .checklist > * {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-gap: 8px;
+    align-items: center;
+  }
+
+  @media (max-width: 520px) {
+    .full > div:not(.infoImg) {
+      padding: 30px 0;
+    }
+
+    #video {
+      height: 300px;
+    }
+
+    .checklist {
+      grid-template-columns: 1fr;
+    }
+
+    .checklist > * {
+      justify-content: left;
+    }
+  }
+</style>
+<style>
+  #news .article:not(:last-child) {
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .article {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    justify-content: center;
+    /*            border-bottom: 5px solid #ccc;*/
+    padding: 16px 0;
+    grid-template-areas: "bg title desc";
+  }
+
+  .article-bg {
+    grid-area: bg;
+  }
+
+  .article-title {
+    grid-area: title;
+  }
+
+  .article-description {
+    grid-area: desc;
+  }
+
+  .article img {
+    display: block;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+  }
+
+  .article .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .article .tags > * {
+    display: flex;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.07);
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px;
+  }
+
+  @media (max-width: 900px) {
+    .article {
+      grid-template-columns: 250px 1fr;
+      grid-template-areas:
+        "bg title"
+        ". desc";
+    }
+  }
+
+  @media (max-width: 600px) {
+    .article {
+      grid-template-columns: 1fr;
+      grid-template-areas: "bg" "title" "desc";
+      /*
+          padding: 16px;
+          border: 1px solid rgba(0, 0, 0, 0.13);
+          border-radius: 5px;
+*/
+    }
+
+    /*
+      #news .article:not(:last-child) {
+          border-bottom: none;
+      }
+*/
+  }
+</style>
+
+<Page layout="hm fixed" title="News | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>
+          <p>UoNA News</p>
+        </div>
+      </div>
+    </section>
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+        <h1 class="heading">Our Latest News</h1>
+        <!--
+          <div class="paddingReg content">
+              Stay up-to-date with the latest on UoNA.
+          </div>
+-->
+        <!--
+          <div class="flex">
+              <a class="button" href="tel:+17038273686" style="--box-shadow:0 0 0 2px var(--color);">Call now!</a>
+              <a href="/contact" class="button" style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);">Contact Us</a>
+          </div>
+-->
+      </div>
+    </ul>
+    <!--
+  <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+      <h1 class="heading">Legends To Leaders</h1>
+          <div class="paddingReg">
+          <p>
+          Legends & Leaders (L2) is an integral degree pathway to obtain both paid apprenticeship and a degree. You will obtain professional certification training and a college-level curriculum while using your military education benefits. The objective is to have service members, veterans and military spouses employee-ready to transition into a marketable and competitive paying career after completion. L2 combines industry-validated curricula, strong partnerships with leading veteran service organizations and private sector companies that help students gain comprehensive field experience while earning your degree.
+</p>
+<p>
+L2 is designed to provide a combination of methodology and experiential learning to help students maximize their learning and performance while obtaining degree plan branded as “Earn while you Learn”. The University of North America and it’s hiring partner companies commit in tailoring a flexible work and school schedule to balance school part-time or full time, while working. Creating a comprehensive workforce development ecosystem.
+</p>
+<p>
+L2 is an industry-focused and validated career skills curriculum that connects transitioning service members and active duty military spouses to high-demand careers in; Telecommunication; Information Technology; Program and project management, and Cyber Security. The training is designed help bridge the gap between the military-connect population and skills the employers are seeking.
+</p>
+         <p>
+             L2 is designed to build awareness of the soft and hard skills necessary to succeed in different industries while also making the crucial first connection with employers in these industries that are eager to hire veterans. This program benefits employer partners by engaging transitioning military and spouse talent earlier in the recruitment pipeline that's trained to meet their skills need.
+         </p>
+          </div>
+      </div>
+  </ul>
+-->
+    <ul class="section" style="--bg-color:#fff;" id="news" class="news">
+      {
+        data.news.list.map((item) => (
+          <div class="article">
+            <img
+              src={`/news/${item.img}`}
+              alt="image"
+              loading="lazy"
+              class="article-bg"
+            />
+            <div class="article-title">
+              <a href={item.linkTo}>
+                <h4>{item.label}</h4>
+              </a>
+              <p>
+                <b>NEWS</b> {item.created}
+              </p>
+              <div class="tags">
+                {item.tags.map((tag) => (
+                  <div>{tag}</div>
+                ))}
+              </div>
+            </div>
+            <div class="article-description">{item.description}</div>
+          </div>
+        ))
+      }
+    </ul>
+    <Footer />
+  </main>
+</Page>

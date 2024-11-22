@@ -1,0 +1,84 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style is:inline>
+  /*
+  #video {
+      background-image: url(/images/careers.jpg);
+      background-attachment: unset;
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+  }
+  */
+  [v-cloak] {
+    display: none !important;
+  }
+
+  .grid-list {
+    display: grid;
+    grid-gap: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+  }
+
+  .button {
+    margin: 0;
+  }
+</style>
+
+<Page layout="hm fixed" title="Graduation Fee | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <!-- <div class="maintitle"><div>International Student</div></div> -->
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">Graduation Fee</h1>
+          <br />
+          <div class="paddingReg content" style="text-align:center;">
+            Make sure to use your <b>UoNA student email</b> for all payments.
+          </div>
+          <div class="grid-list">
+            <!--                        <p>Make sure to use your UoNA student email for all payments.</p>-->
+            <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+            <button
+              class="button"
+              v-if="!loading"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              @click="generateStripeSession"
+            >
+              Next
+            </button>
+            <button
+              class="button"
+              v-else
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              @click="generateStripeSession"
+            >
+              Securing Request...
+            </button>
+
+            <div id="error-message"></div>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

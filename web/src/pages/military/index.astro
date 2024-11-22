@@ -1,0 +1,1111 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  .full {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .full > div:not(.infoImg) {
+    padding: 30px;
+    padding-top: 0;
+  }
+
+  .infoImg {
+    min-width: 200px;
+    margin: 0;
+  }
+
+  .infoTitle {
+    color: #4067b1;
+    margin-top: 0;
+  }
+
+  .hideImg .infoImg {
+    display: none;
+  }
+
+  #video {
+    background-image: url("https://images.pexels.com/photos/40546/soldiers-military-attention-salute-40546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    background-attachment: unset;
+  }
+
+  .checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+    margin: 20px;
+    font-size: 20px;
+  }
+
+  .checklist > * {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    grid-gap: 8px;
+    align-items: center;
+  }
+
+  .imgList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    grid-gap: 32px;
+    padding: 0;
+    margin: 0;
+    padding-top: 32px;
+    background: transparent;
+  }
+  .imgList > * {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .mus {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+  }
+
+  .mus li {
+    width: 100%;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .mus a {
+    display: block;
+    height: 100%;
+    text-align: center;
+    line-height: 30px;
+    background: #4067b1;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 15px;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  .paddingReg {
+    line-height: 1.5em;
+  }
+
+  @media (max-width: 800px) {
+    .mus {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 520px) {
+    .imgList {
+      grid-template-columns: 1fr;
+    }
+    .full > div:not(.infoImg) {
+      padding: 30px 0;
+    }
+
+    #video {
+      height: 300px;
+    }
+
+    .checklist {
+      grid-template-columns: 1fr;
+    }
+
+    .checklist > * {
+      justify-content: left;
+    }
+  }
+
+  .timeline {
+    padding-left: 8px;
+    line-height: 1.5em;
+  }
+  .timeline h4 {
+    font-size: 18px;
+  }
+  .timeline > * {
+    padding-left: 40px;
+    position: relative;
+  }
+  .timeline > *:not(:last-child):after {
+    content: "";
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.15);
+    left: 0;
+    bottom: 0;
+    height: calc(100% - 60px);
+    border-radius: 10px;
+    position: absolute;
+  }
+  .timeline > *:before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    border: 2px solid #4067b1;
+    background-color: #4067b1;
+    left: 0;
+    top: 8px;
+    position: absolute;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    box-shadow: 0 0 0 17.5px rgba(55, 85, 190, 0.05);
+    z-index: 1;
+  }
+</style>
+<style>
+  /* FAQs */
+  summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #30353b;
+    border-radius: 5px;
+  }
+
+  summary::after {
+    content: "";
+    width: 18px;
+    height: 10px;
+    background: url("https://uploads.sitepoint.com/wp-content/uploads/2023/10/1697699669arrow.svg")
+      no-repeat;
+    background-size: cover;
+    transition: 0.2s;
+  }
+
+  details[open] > summary::after {
+    transform: rotate(180deg);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] summary {
+    border-radius: 5px 5px 0 0;
+  }
+
+  details {
+    /*   background-color: #e792e7;
+  background-image: linear-gradient(45deg, #e792e7 0%, #6eb7f1 100%); */
+    background: rgb(64 103 177 / 11%);
+    border-radius: 5px;
+  }
+
+  /* extra styles */
+  article > *:first-child {
+    margin: 0;
+    background: #fff;
+    padding: 1em;
+    border-radius: 5px;
+  }
+
+  article > * + * {
+    margin: 0.75em 0 0 0;
+  }
+
+  article {
+    padding: 10px;
+    margin: 0;
+  }
+</style>
+
+<Page layout="hm fixed" title="Military | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>
+          <p>Military Services</p>
+        </div>
+      </div>
+    </section>
+    <!-- <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+          <h1 class="heading">Military & Veteran Student Services</h1>
+          <div class="paddingReg content">
+          To support our men and women who proudly served in the U.S.
+Military the University of North America has dedicated a military
+lounge. Veterans can use our latest state of the art computers,
+watch television, do homework or just relax between classes.
+<br><br>
+UoNA is very proud to support our veterans for their service to our
+great country U.S.A.
+<br><br>
+For additional information call Arthur J. Bunce at our University Military Student Services: 631-875-6897.
+
+          </div>
+          <div class="flex">
+              <a class="button" href="tel:+16318756897" style="--box-shadow:0 0 0 2px var(--color);">Call now!</a>
+              <a href="https://una-web.scansoftware.com/cafeweb/tapestry?service&page=InformationRequest" class="button" style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);">Request Information</a>
+          </div>
+          <div class="imgList">
+                  <img src="/images/military10622.jpg" alt="picture" loading="lazy">
+                  <img src="/images/military20622.jpg" alt="picture" loading="lazy">
+              </div>
+      </div>
+  </ul> -->
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+        <h1 class="heading">Military & Veteran Student Services</h1>
+        <div class="paddingReg content">
+          Welcome Veterans! Here at UoNA, we recognize the commitment our
+          veterans have made to our country, keeping us safe and defending our
+          freedoms. We, in turn are committed to assisting veterans in the
+          pursuit of higher education. We help enable you to succeed
+          academically and transition from higher education to successful,
+          rewarding careers. Applied Learning at Its Best!
+          <br /><br />
+          Why are we different than other schools? Because we go the extra mile!
+          As you plan your transition to campus, we’ll be here to help every step
+          of the way. From submitting appropriate forms to confirming eligibility,
+          to certifying your enrollment, we’ll work to simplify the process for you.
+          <br /><br />
+          Once enrolled, we make sure you have a robust student orientation experience
+          and are comfortable on our learning platform. Our veteran students have
+          easy access to our faculty and enjoy one on one tutoring when needed.
+          <br /><br />
+          We are proud that you have chosen The University of North America. Our
+          goal is to provide comprehensive support for veteran students to succeed
+          at UoNA, from the point of inquiry through graduation and ultimately on
+          to a productive career. The Military Services Team, the Staff and all faculty
+          welcome and support you. One team-One fight!
+          <br /><br />
+          For additional information call Arthur J. Bunce at our University Military
+          Student Services: 631-875-6897.
+        </div>
+        <div class="flex">
+          <a
+            class="button"
+            href="tel:+16318756897"
+            style="--box-shadow:0 0 0 2px var(--color);">Call now!</a
+          >
+          <a
+            href="https://una-web.scansoftware.com/cafeweb/tapestry?service&page=InformationRequest"
+            class="button"
+            style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+            >Request Information</a
+          >
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#fbd504;--color:hsl(51 97% 15% / 1);">
+      <div>
+        <h1 class="heading">Education that Transforms!</h1>
+        <div class="paddingReg content">
+          The rationale for the founding of the University is encapsulated in
+          the University motto: Education That Transforms! In essence, the motto
+          expresses that earning a University of North America degree enables
+          students and graduates to transform themselves through advancement in
+          their careers and professions, while positioning them to address the
+          demands of a changing world environment which is transforming
+          applications in business and technology.
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+        <h1 class="heading">Military Support</h1>
+        <div class="paddingReg">
+          <div class="checklist">
+            <div>
+              <i class="material-icons">business</i>
+              <span>Career-Focused Programs</span>
+            </div>
+            <div>
+              <i class="material-icons">schedule</i>
+              <span>Flexible Schedule</span>
+            </div>
+            <div>
+              <i class="material-icons">school</i>
+              <span>Miltary Education Benefits</span>
+            </div>
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/military/spouse"
+              style="--box-shadow:0 0 0 2px var(--color);"
+              >MyCAA Spouse Benefits</a
+            >
+          </div>
+          <!--                MyCAA_military_spouse_benefits.pdf-->
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading">Our Mission</h1>
+        <div class="paddingReg">
+          The mission of the University of North America is to support a diverse
+          student population by providing high quality education in business and
+          technology that is student-centered, practitioner-oriented, and
+          globally focused. The University of North America (UoNA) supports this
+          mission by developing curricula which are continually improved through
+          outcomes assessment and consultation with practitioner faculty and
+          advisory committees. UoNA delivers its programs through an accessible,
+          interactive, collaborative educational environment which strengthens
+          learning and facilitates critical thinking and problem-solving
+          competencies. Finally, it supports students with services that foster
+          academic success.
+        </div>
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+        <h1 class="heading">Institutional Objectives</h1>
+        <div class="paddingReg">
+          The institutional objectives of the University are: • To provide
+          academic quality through rigorous academic standards with a commitment
+          to interactive, effective learning for adults; • To create a
+          student-centered environment accessible to individuals of diverse
+          ages, cultures, and socioeconomic backgrounds; • To enable students to
+          achieve their career and professional goals by providing a relevant
+          and supportive learning environment including on-campus, hybrid, and
+          online delivery formats; • To develop educational programs that join
+          theory and practice and instill in students the spirit of applied
+          learning; • To promote globally responsible perspectives in the
+          curriculum and among students and faculty; • To educate diverse
+          student populations locally, regionally, nationally, and
+          internationally.
+        </div>
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading">Philosophy and Goals</h1>
+        <div class="paddingReg">
+          The core values of the University of North America are academic
+          quality, educational access, and student success. Currently, UoNA’s
+          degree programs focus on computer science, information technology, and
+          business disciplines and support the development of a broad
+          understanding of the cultures in which these disciplines function.
+          <br /><br />
+          The focus of the University is applied learning. UoNA intentionally brings
+          highly qualified faculty members that have solid academic credentials along
+          with active careers in high tech industries, business, and government to
+          create a stimulating learning environment. Coursework is designed to provide
+          students the opportunity to explore and develop course-related competencies
+          relevant to their work environment through applied learning assignments
+          in each course of the curriculum.
+          <br /><br />
+          The University emphasizes high quality education that is accessible to
+          learners in the global community, regardless of background, to enable them
+          to succeed in their careers. This goal is achieved as the University provides
+          an advanced education that cultivates growth and development in the professional
+          and personal lives of our students. With its teaching focused on the principles
+          of applied learning, UoNA bridges the gap between the theoretical learning
+          of traditional disciplines and the applied knowledge required to provide
+          graduates with a comprehensive understanding and a competitive advantage
+          in today’s global society.
+        </div>
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+        <h1 class="heading">
+          Accessible Education: Location, Facility, and Learning Approach
+        </h1>
+        <div class="paddingReg">
+          From 2008 to mid-September 2017, the campus was located in a
+          commercial building in Vienna, Virginia. In September 2017, UoNA moved
+          to a campus facility located in Fairfax, Virginia, and then in May
+          2019 to its current location in Fairfax, VA.
+          <br /><br />
+          The current facility is on a 6.92-acre property in a complex with other
+          buildings that house major companies including technology and accounting
+          enterprises, bolstering opportunities for student employment and placement.
+          This area, which is known as Fair Lakes, represents a diverse mix of industries.
+          Major area enterprises include Alion Science and Technology, CACI, CGI
+          Group, General Dynamics, and ManTech International. The nearby Fairfax
+          County Government Center, houses most of the County-provided services,
+          and is where most of the County’s official business is conducted. Residing
+          in the Washington, DC metropolitan area, UoNA is among numerous world organizations
+          and is within 22 miles from the US Capitol and the White House.
+          <br /><br />
+          The campus is located at the intersection of the Fairfax County Parkway
+          (Route 286) and Interstate 66, which offers accessibility to major routes
+          throughout Washington DC and its surrounding areas. There is ample parking
+          adjacent to the building, including a covered ramp, to accommodate those
+          who choose to drive to campus. The WMATA Metro bus lines provide public
+          transportation from the campus to the nearest Metro Station.
+          <br /><br />
+          The campus occupies space on the first and second floor of the 96,600 square
+          foot (SF), 4-story commercial building located at 12750 Fair Lakes Circle,
+          Fairfax, Virginia. These two floors, beyond the reception area, are exclusively
+          dedicated to the campus, including 26 classrooms, the learning resource
+          center (library), and administrative offices. The remaining areas on the
+          third and fourth floors are utilized for campus events and rented or leased
+          to other businesses.
+          <br /><br />
+          The campus has dedicated, private IT servers equipped with powerful technology
+          to ensure ample and secure computing service for UoNA. A virtual lab was
+          established in 2015 to provide an advanced computing environment that can
+          be accessed from anywhere at any time. All classrooms are comfortably furnished
+          and equipped with modern technology, including dry erase boards, projectors,
+          and screens. The entire campus is Wi-Fi accessible, which enables instructors
+          and students to utilize online materials for educational purposes, and
+          allows faculty, students, and administrators to access the university’s
+          online library, Learning Management System (Moodle) and Campus Information
+          System (Campus Café).
+          <br /><br />
+          The academic model used by the University is designed to meet the unique
+          needs of learners, who are focused on future career objectives. Degree
+          program students complete common core courses based on credential level,
+          independent of selected programs, and program core courses, which are integrated
+          with required and student-selected electives.
+          <br /><br />
+          Classes are scheduled according to a blended program sequence of hybrid,
+          online, and ground courses. Moodle, the campus LMS, is used to deliver
+          fully online and online components or supplemental material for hybrid
+          or on-campus courses. These modalities provide students, majority of whom
+          are working professionals, the flexibility and convenience needed to easily
+          communicate with faculty members and fellow students. Library services
+          are provided 24 hours per day, seven days per week through the UoNA Virtual
+          Library which encompasses a wide range of online resources including the
+          Integrated Library System – Online Public Access Catalog, ProQuest, ACM
+          Digital Library, e-Books Academic Complete Collection, and Library Information
+          Resource Network (LIRN), a system that permits students to access resources
+          from any location in the world with internet access. The UoNA Librarian
+          oversees the development of the resources and provides training and support
+          for students, faculty, and staff.
+        </div>
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading">History</h1>
+        <div class="paddingReg">
+          <div el="list" class="timeline" style="--gap: 40px">
+            <div el="list" style="--gap: 15px">
+              <h4 el>Founded in August 2008</h4>
+              <p el>
+                The University of North America (UoNA) was founded in August
+                2008 with the goal of providing students with an outstanding,
+                integrated education that links an academic environment with
+                students’ work environments through applied learning assignments
+                and courses.
+              </p>
+            </div>
+            <div el="list" style="--gap: 15px">
+              <h4 el>First Classes Offered - 2009</h4>
+              <p el>
+                In March 2009, the University received its certificate to
+                operate as a post-secondary educational institute by the State
+                Council of Higher Education for Virginia (SCHEV) with the
+                authority to grant Master of Business Administration (MBA), and
+                Master of Science in Information Technology (MSIT) and in
+                Computer Science (MSCS) degrees; classes were first offered in
+                spring 2009.
+              </p>
+            </div>
+            <div el="list" style="--gap: 15px">
+              <h4 el>I-20 Authority Granted!</h4>
+              <p el>
+                In October 2009, the University received I-20 authority from US
+                ICE/SEVP, allowing UoNA to admit international students studying
+                under student visas, as well as providing an option to offer
+                Curricular Practical Training (CPT) as an integral component of
+                its master’s program curricula.
+              </p>
+            </div>
+            <div el="list" style="--gap: 15px">
+              <h4 el>Attained Institutional Accreditation - 2014</h4>
+              <p el>
+                In August 2014, the University attained institutional
+                accreditation from the Accrediting Council of Independent
+                Colleges and Schools (ACICS) to offer residential and hybrid
+                curricula.
+              </p>
+            </div>
+            <div el="list" style="--gap: 15px">
+              <h4 el>More Degrees!</h4>
+              <p el>
+                In 2015 and 2016, respectively, the University was approved by
+                SCHEV then by ACICS to offer Bachelor of Science in Business
+                Administration (BSBA) and Information Technology (BSIT) degrees,
+                and an English for Speakers of Other Languages (ESOL)
+                certificate.
+              </p>
+            </div>
+            <div el="list" style="--gap: 15px">
+              <h4 el>Renewed Accreditation - 2017</h4>
+              <p el>
+                In April 2017, the University received a four-year renewal grant
+                of accreditation through December 31, 2021, from ACICS, which
+                was extended to March 1, 2024.
+              </p>
+            </div>
+            <div el="list" style="--gap: 15px">
+              <h4 el>Masters Degree Approvals! - 2018</h4>
+              <p el>
+                In November and December 2018, the University received approval
+                from SCHEV then from ACICS to offer Master of Science degrees in
+                Accounting and Finance (MSAF); Cyber Security (MSCYS);
+                Educational/Instructional Technology (MSEIT); Management and
+                Data Analytics (MSMDA); and System and Application Engineering
+                (MSSAE). In October and December 2019, approval was received
+                from SCHEV and then ACICS to offer a post-bachelor’s degree
+                Certificate in Organizational Leadership (OL).
+              </p>
+            </div>
+            <div el="list" style="--gap: 15px">
+              <h4 el>New Associate Degrees - 2020</h4>
+              <p el>
+                In March and April 2020, the University received approval from
+                SCHEV then from ACICS to offer an Occupational Associate’s in
+                Supervision and Project Management (OA-SPM) degree. In March and
+                April 2021, approval was received from SCHEV then from ACICS to
+                offer a Diploma in Operations Management for Technical
+                Industries (OMTI) program.
+              </p>
+            </div>
+            <div el="list" style="--gap: 15px">
+              <h4 el>Received Regional Accreditation (NECHE) - 2023</h4>
+              <p el>
+                In 2023, approval was received for regional accreditation from
+                the New England Commission of Higher Education (NECHE). NECHE,
+                established in 1885, is recognized as an institutional
+                accreditor by the U.S. Department of Education (USDE) and serves
+                as a reliable authority and independent voice on the quality of
+                higher education.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+        <h1 class="heading content">Veteran Resources</h1>
+        <div class="paddingReg">
+          <ul class="flex">
+            <ul class="mus">
+              <li>
+                <a href="https://www.va.gov/"
+                  >U.S. Department of Veteran Affairs</a
+                >
+              </li>
+              <li>
+                <a href="https://www.va.gov/education/how-to-apply/"
+                  >Apply for the GI Bill</a
+                >
+              </li>
+              <li>
+                <a href="https://www.va.gov/education/"
+                  >GI Bill Education Hotline</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.archives.gov/veterans/military-service-records"
+                  >Request DD214</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.va.gov/careers-employment/vocational-rehabilitation/eligibility/"
+                  >Apply for Veteran Readiness and Employment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.benefits.va.gov/gibill/resources/education_resources/debt_info.asp"
+                  >GI Bill Debt Repayment Plan</a
+                >
+              </li>
+              <li>
+                <a href="https://www.archives.gov/research"
+                  >National Archives Military Records</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://studentveterans.org/?gad_source=1&gclid=CjwKCAiA_OetBhAtEiwAPTeQZ79-wMo1VzfHGI6us2s_XzopEpGjtSdH9TcA1XEUkLlUbIqa5mQpExoCaPkQAvD_BwE"
+                  >Student Veterans of America</a
+                >
+              </li>
+              <li>
+                <a href="https://www.ed.gov/">U.S. Department of Education</a>
+              </li>
+              <li>
+                <a href="https://www.acenet.edu/Pages/default.aspx"
+                  >American Council on Education</a
+                >
+              </li>
+              <li>
+                <a href="https://studentaid.gov/understand-aid/types/military"
+                  >Federal Student Aid for Military Families</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.vfw.org/assistance/student-veterans-support"
+                  >VFW Scholarships</a
+                >
+              </li>
+              <li>
+                <a href="https://www.legion.org/scholarships"
+                  >American Legion Scholarships</a
+                >
+              </li>
+              <li>
+                <a href="https://pattillmanfoundation.org/"
+                  >Pat Tillman Foundation</a
+                >
+              </li>
+              <li>
+                <a href="https://www.neche.org/"
+                  >New England Council on Higher Education</a
+                >
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading content">Careers/Jobs</h1>
+        <div class="paddingReg">
+          <ul class="flex">
+            <ul class="mus">
+              <li>
+                <a
+                  href="https://www.va.gov/careers-employment/education-and-career-counseling/"
+                  >VA Education and Career Counseling</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.careeronestop.org/JobSearch/FindJobs/state-job-banks.aspx"
+                  >DOL America’s Job Bank</a
+                >
+              </li>
+              <li>
+                <a href="https://www.careeronestop.org/Toolkit/ACINet.aspx"
+                  >DOL Career Tool Kit</a
+                >
+              </li>
+              <li>
+                <a href="https://www.indeed.com/?from=gnav-homepage"
+                  >Indeed.com</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.google.com/about/careers/applications/jobs/results/"
+                  >Google Jobs</a
+                >
+              </li>
+              <li>
+                <a href="https://www.hiringourheroes.org/">Hiring Our Heroes</a>
+              </li>
+              <li>
+                <a
+                  href="https://www.va.gov/careers-employment/veteran-resources/"
+                  >Veteran Employment Resources</a
+                >
+              </li>
+              <li><a href="https://www.usajobs.gov/">USA Jobs</a></li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+        <h1 class="heading content">Health and Families</h1>
+        <div class="paddingReg">
+          <ul class="flex">
+            <ul class="mus">
+              <li>
+                <a href="https://www.usa.gov/benefits"
+                  >U.S Government Benefits</a
+                >
+              </li>
+              <li>
+                <a href="https://www.va.gov/health/"
+                  >Veteran Health Benefits and Services</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.va.gov/healthbenefits/resources/publications/hbco/hbco_basic_eligibility.asp"
+                  >Basic Eligibility for Veteran Healthcare</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.queri.research.va.gov/centers/mh_suicide.cfm"
+                  >Veteran Mental Health and Suicide Prevention</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.va.gov/health-care/about-affordable-care-act/"
+                  >Affordable Health Care Act</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.va.gov/health-care/family-caregiver-benefits/"
+                  >Veteran Family Health Benefits</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.va.gov/education/survivor-dependent-benefits/"
+                  >Education Benefits for Veteran Dependents and Survivors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.careeronestop.org/MilitarySpouse/default.aspx?frd=true"
+                  >DOL Military Spouse Resource Center</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.va.gov/careers-employment/education-and-career-counseling/"
+                  >VA Education and Career Counseling</a
+                >
+              </li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading">Frequently Asked Questions</h1>
+        <div class="paddingReg" style="display: grid; grid-gap: 12px;">
+          <!-- <details>
+                  <summary>Title of FAQ</summary>
+                  <article>
+                      <div>FAQ answer here</div>
+                  </article>
+              </details> -->
+
+          <details>
+            <summary>Does my GI Bill pay for all of my tuition?</summary>
+            <article>
+              <div>
+                Your GI Bill pays 100% the cost of tuition. Your GI Bill also
+                pays a book stipend of $1000.00 per year while you are enrolled.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary>What is my MHA while I am enrolled in school?</summary>
+            <article>
+              <div>
+                Your Monthly Housing Allowance (MHA) is based on the zip code of
+                the address for the university. The MHA in 2024 is $2,650.00 per
+                month.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary>What number do I call to speak to someone?</summary>
+            <article>
+              <div>
+                Call the Military Services Team directly. Arthur J. Bunce at
+                631-875-6897 or Jennifere Clayton at 703-786-3775.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary>Does UoNA do Fall and Spring semesters?</summary>
+            <article>
+              <div>
+                UoNA operates on seasonal quarters rather than six-month
+                semesters. Quarters (Winter, Spring, Summer, and Fall) are ten
+                weeks or two and a half months long. There are one to two weeks
+                off between quarters.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary
+              >Can I use Veteran Readiness and Employment (VR&E) funds for
+              school?</summary
+            >
+            <article>
+              <div>
+                Yes! UoNA works closely with Veteran Readiness and Employment
+                (Formerly Vocational Rehab) counselors to facilitate the easy
+                enrollment using the funds available. VR and E pays full tuition
+                and full MHA for veterans. If you are 10% disabled or higher,
+                and have not applied for the funds, call us and we will walk you
+                through the application process.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary>What is "Hybrid" learning?</summary>
+            <article>
+              <div>
+                In a hybrid learning program, the student does most of the
+                coursework remotely with a small in-person component each
+                quarter. Beside the in-person component, students work on their
+                classes in an asynchronous fashion. That means you do your work
+                any time of day or night at your convenience. There are no
+                "Zoom" style classes you are required to attend. Professors
+                often will schedule extra help classes on weekends but they are
+                all voluntary for students.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary
+              >Am I required to submit other transcripts when I apply to UoNA?</summary
+            >
+            <article>
+              <div>
+                Yes. The university and the Veterans Administration (VA) require
+                that all students provide transcripts if they attended any other
+                college or university. Even if you received "F" grades, we are
+                still required to have them on file. It also assists us in
+                creating an educational plan for all incoming students. F grades
+                will not affect your successful enrollment in the university.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary>Do I get college credit for my military training?</summary>
+            <article>
+              <div>
+                Yes. We require all veterans to provide their JST's. We assist
+                you in getting them, it's very easy. Some, not all the training
+                you did in the military will count as college credits. We work
+                very hard to give you as many credits as possible.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary
+              >Am I required to submit my High School diploma when I apply to
+              UoNA?</summary
+            >
+            <article>
+              <div>
+                Yes. We ask all incoming students to provide high school
+                diplomas. We assist students in this process.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary>What kind of degree can I earn at UoNA?</summary>
+            <article>
+              <div>
+                We have a six-month technical diploma, Operations Management for
+                Technical Industries (OMTI) program. We have a two-year
+                Occupational Associate’s Degree in Supervision and Project
+                Management (OA-SPM). We have two Bachelor Degree programs, a
+                Bachelor of Science in Business Administration (BSBA) and a
+                Bachelor of Science in Information Technology (BSIT). We have a
+                Post Graduate Certificate Program in Operational Leadership.
+                Finally, we have eight Master’s Degree programs. (See full
+                descriptions in our UoNA website at www.uona.edu)
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary>Does my GI Bill pay for textbooks?</summary>
+            <article>
+              <div>
+                Yes. The VA will pay veterans $1000.00 (Per year) for the book
+                stipend.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary>How fast is the enrollment process?</summary>
+            <article>
+              <div>
+                The enrollment process is fast. It all depends on how fast you
+                get your documents and other paperwork completed. We’ve had
+                veterans complete it in a day.
+              </div>
+            </article>
+          </details>
+
+          <details>
+            <summary
+              >What kind of support do I receive from Military Services at UoNA?</summary
+            >
+            <article>
+              <div>
+                Our team helps in the enrollment process but we are available to
+                help throughout the entire time you are a student at UoNA. We
+                pride ourselves in our mentoring program and make it our number
+                one job to help veteran students succeed.
+              </div>
+            </article>
+          </details>
+        </div>
+      </div>
+    </ul>
+
+    <!-- <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+          <h1 class="heading">Institutional</h1>
+          <div class="paddingReg">
+              Objectives
+          </div>
+      </div>
+  </ul>
+  <ul class="section" style="--bg-color:#fff;">
+      <div>
+          <h1 class="heading">Institutional</h1>
+          <div class="paddingReg">
+              Objectives
+          </div>
+      </div>
+  </ul> -->
+
+    <!--
+  <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+      <h1 class="heading">Legends & Leaders</h1>
+          <div class="paddingReg">
+          <p>
+          Legends & Leaders (L2) is an integrated career pathway that combines professional certifications with a degree. The objective is to have students with a focus on active service members, veterans, and military spouses ready to transition into a marketable and competitive career after completion. L2 combines high-demand, industry skills; strong alliances with leading veteran service organizations and private sector companies that help students gain comprehensive field experience while earning their degree.
+</p>
+<p>
+L2 is designed to provide a combination of methodology and applied learning to help students maximize their learning and performance as they complete their degrees. The University of North America and its employer collaboratives are committed to providing flexible work and school schedules that balance school and work responsibilities, creating a comprehensive workforce development ecosystem.
+</p>
+<p>
+L2 promotes an industry-focused, career pathway to connect transitioning service members and active-duty military spouses to high-demand careers in Telecommunication; Information Technology; and Cyber Security. The pathway is designed to help bridge the gap between military-connected individuals with high-demand workplace skills.
+</p>
+         <p>
+             L2 is designed to build soft and technical skills necessary to succeed in different industries while students make an initial connection with employers who are eager to hire veterans. This program benefits employers by allowing them to network with transitioning military- and military spouse-talent early in the workforce pipeline.
+         </p>
+          </div>
+      </div>
+  </ul>
+-->
+
+    <!-- <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+          <h1 class="heading">Legends & Leaders</h1>
+          <div class="paddingReg">
+              <p>
+                  Legends & Leaders (L2) is an integrated career pathway that combines professional certifications with a degree. The objective is to have students with a focus on active service members, veterans, and military spouses ready to transition into a marketable and competitive career after completion. L2 combines high-demand, industry skills; strong alliances with leading veteran service organizations and private sector companies that help students gain comprehensive field experience while earning their degree.
+              </p>
+              <p>
+                  L2 is designed to provide a combination of methodology and applied learning to help students maximize their learning and performance as they complete their degrees. The University of North America and its employer collaboratives are committed to providing flexible work and school schedules that balance school and work responsibilities, creating a comprehensive workforce development ecosystem.
+              </p>
+              <p>
+                  L2 promotes an industry-focused, career pathway to connect transitioning service members and active-duty military spouses to high-demand careers in Telecommunication; Information Technology; and Cyber Security. The pathway is designed to help bridge the gap between military-connected individuals with high-demand workplace skills.
+              </p>
+              <p>
+                  L2 is designed to build soft and technical skills necessary to succeed in different industries while students make an initial connection with employers who are eager to hire veterans. This program benefits employers by allowing them to network with transitioning military- and military spouse-talent early in the workforce pipeline.
+              </p>
+          </div>
+      </div>
+  </ul> -->
+
+    <ul class="section" style="--bg-color:#f1f1f1;">
+      <div>
+        <h1 class="heading">VETERAN FOUNDED UNIVERSITY</h1>
+        <div class="paddingReg">
+          <img
+            src="/images/Marty.jpg"
+            alt="Founder"
+            loading="lazy"
+            style="width:200px;margin:auto;display: block;height:auto;"
+          />
+          <br /><br />
+          <p>
+            Claude C. "Marty" Martin, Founder of the University of North America
+            is a proud veteran with 12 years of service in the US Army.
+            Following his basic training at Fort Polk, Louisiana, he served as a
+            trainer at Pershing Missile School in Fort Sill, Oklahoma. He later
+            served in different capacities and stationed at bases around the
+            world. Marty was on active duty in Laos during the Vietnam War Era
+            and received two medals for his accomplishments.
+          </p>
+          <p>
+            Marty was involved in advanced technologies throughout his military
+            career. He was one of the first military personnel to be trained in
+            computer programming. While on assignment at the Pentagon
+            Communication Center, he participated in the development of DOD’s
+            Advanced Research Projects Agency Network (ARPANET), which is
+            considered “the world’s first internet.”
+          </p>
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <div class="paddingReg">
+          <b>NOTES AND CONDITIONS - PLEASE READ</b><br /><br />
+          This institution is approved to offer GI Bill® educational benefits by
+          the Virginia State Approving Agency.<br /><br />
+          1 GI Bill® is a registered trademark of the U.S. Department of Veterans
+          Affairs (VA). More information about education benefits offered by VA is
+          available at the official U.S. government website at www.benefits.va.gov/gibill.
+        </div>
+      </div>
+    </ul>
+    <Footer />
+  </main>
+</Page>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11" is:inline></script>
+<script is:inline>
+  var app = new Vue({
+    el: "#app",
+  });
+</script>

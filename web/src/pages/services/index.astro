@@ -1,0 +1,133 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/services.jpg);
+    background-attachment: unset;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+  }
+</style>
+
+<Page layout="hm fixed" title="Career Services | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <!-- <div class="maintitle"><div>International Student</div></div> -->
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">Student Services</h1>
+          <div class="paddingReg content">
+            We support our students with collaborative networking experiences.
+            Our faculty cultivate our students in developing practical skills
+            for the future. Students learn to become active, life-long, working
+            professionals. They are encouraged to take on responsibility at the
+            work place, to be innovative learners in their profession, and
+            interact with employers to solve real-world problems.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/services/careers"
+              style="--box-shadow:0 0 0 2px var(--color);">career services</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">International Student Services</h1>
+          <div class="paddingReg content">
+            International students know they are in good hands at UoNA. Our
+            Designated School Officials are personable and approachable. We
+            provide guidelines for all international students to improve
+            communications and maintain status. Moreover, documentation is done
+            quickly and efficiently; in compliance with all State and Federal
+            rules and regulations.
+          </div>
+          <div class="flex">
+            <a class="button" href="/services/iso">International services</a>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Career Services</h1>
+          <div class="paddingReg content">
+            We support our students with collaborative networking experiences.
+            Our faculty cultivate our students in developing practical skills
+            for the future. Students learn to become active, life-long, working
+            professionals. They are encouraged to take on responsibility at the
+            work place, to be innovative learners in their profession, and
+            interact with employers to solve real-world problems.
+          </div>
+          <div class="flex">
+            <a class="button" href="/services/careers">career services</a>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Document Request Portal</h1>
+          <div class="paddingReg content">
+            Access UoNA's online document request portal for common documents
+            such as transcripts, IDs, Attendance Records, and more...
+          </div>
+          <div class="flex">
+            <a class="button" href="/services/documents">Request Documents</a>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Test Center</h1>
+          <div class="paddingReg content">
+            University of North America (UoNA) is an authorized Pearson VUE &
+            CLEP testing center located in Fairfax across the Hilton Regency
+            Fairfax Hotel.
+          </div>
+          <div class="flex">
+            <a class="button" href="/services/testing">Test Center</a>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">ESports</h1>
+          <div class="paddingReg content">
+            University of North America's competitive ESports Varsity Team
+            operates on the collegiate competitive stage across various game
+            titles such as but not limited to, League of Legends, Call of Duty,
+            Valorant, Overwatch, R6 etc.
+          </div>
+          <div class="flex">
+            <a class="button" href="/services/esports">ESports Info</a>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

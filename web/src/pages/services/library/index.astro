@@ -1,0 +1,138 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(https://images.pexels.com/photos/1370298/pexels-photo-1370298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  .round,
+  .roundAll > * {
+    overflow: hidden;
+    border-radius: 100%;
+    background-size: cover;
+
+    background-position: center;
+  }
+
+  .roundAll img {
+    display: block;
+  }
+
+  .paddingReg * {
+    line-height: 1.5em;
+  }
+  .librarian {
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+    margin-top: 60px;
+    border: 2px solid;
+    outline: 8px solid;
+    outline-offset: 3px;
+  }
+</style>
+
+<Page layout="hm fixed" title="Library | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>UoNA Library</div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">
+            Unleash Your Inner Bookworm with UoNA's Exciting Library Resources!
+          </h1>
+          <!-- <div class="paddingReg"></div> -->
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <!-- <h1 class="heading">A Snapshot of Our Student Population</h1> -->
+          <div class="paddingReg">
+            <p>
+              Welcome to UoNA's library, your one-stop-shop for expanding your
+              academic horizons! Our virtual and physical libraries are designed
+              to empower your quest for knowledge and add rocket fuel to your
+              research endeavors. Even better, our virtual library is open 24/7,
+              making it a midnight owl's best friend!
+            </p>
+
+            <p>
+              Just imagine accessing over 3,000 scholarly journals, 150,000
+              e-books, 35,000 periodicals, and 75 major databases, all at your
+              fingertips. Talk about being spoilt for choice! Our library boasts
+              fantastic databases like ProQuest, Gale, EBSCO, and the
+              Association of Computing Machinery (ACM) Digital Library, a tech
+              aficionado's dream come true.
+            </p>
+
+            <p>
+              But wait, we hear you asking about an on-campus library. You bet
+              we have one! Alongside our digital treasure trove, we have a cozy
+              library space housing 300 volumes of classic titles across
+              Business, Technology, Education, Language, and General Reference.
+              Whether you're popping in for a hybrid course or just fancy a
+              quiet study session, our on-campus library is the perfect escape.
+            </p>
+
+            <p>
+              We know you're busy, and that's why we're here to help! Our
+              experienced librarian, boasting an MLIS degree, a master’s degree
+              in English, and 20 years of experience (including time at the US
+              Library of Congress), is ready to assist. You'll find him on
+              campus during scheduled class sessions and available virtually
+              during specific hours. Got a question outside those hours? No
+              problem! Shoot him an email, and you'll get a response within 48
+              hours.
+            </p>
+
+            <p>
+              Our librarian doesn't just maintain the library; he supercharges
+              your learning experience. From conducting on-site sessions to
+              posting virtual lessons about research organization, copyright,
+              and plagiarism awareness, he's your personal guide to academic
+              success. He even hosts literacy, writing, and research workshops
+              and offers tutoring for students. Talk about a library superhero!
+            </p>
+
+            <p>
+              So, whether you're an early bird or a night owl, on-campus, or
+              online, UoNA's library is ready to fuel your academic journey. Get
+              ready to dive into a world of knowledge!
+            </p>
+
+            <div style="display:grid;justify-content:center;">
+              <img
+                src="/images/Ross Taylor.webp"
+                alt="Ross Taylor"
+                loading="lazy"
+                class="librarian"
+              />
+            </div>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

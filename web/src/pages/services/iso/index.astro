@@ -1,0 +1,134 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/world-paint.jpg);
+    background-attachment: unset;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+  }
+</style>
+
+<Page
+  layout="hm fixed"
+  title="Career Services | ISO | University of North America"
+>
+  <Header />
+  <main el="main">
+    <section id="video">
+      <!-- <div class="maintitle"><div>International Student</div></div> -->
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">International Student Services</h1>
+          <div class="paddingReg content">
+            International students know they are in good hands at UoNA. Our
+            Designated School Officials are personable and approachable. We
+            provide guidelines for all international students to improve
+            communications and maintain status. Moreover, documentation is done
+            quickly and efficiently; in compliance with all State and Federal
+            rules and regulations.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/services"
+              style="--box-shadow:0 0 0 2px var(--color);">more services</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">WHAT DO WE DO?</h1>
+          <div class="paddingReg content">
+            <b>General Student Services: </b>Health and safety of our students
+            comes first! The International Student Office advises students on
+            health and safety concerns, housing, transportation, and student
+            life. The UoNA Shuttle Bus transports students to and from Vienna
+            Metro Station to campus on Saturdays, and available for special
+            events and field trips.<div><br /></div><div>
+              <b>International Student Services:</b> Supporting international students
+              to maintain status is an important function of our international student
+              office. Students are advised on F-1 student issues, VISA interviews,
+              international travel, VISA changes, US government regulations, and
+              policy issues.&nbsp;
+            </div><div><br /></div><div>
+              <b>International Career Services:</b> UoNA supports our international
+              students with collaborative networking experiences. Our faculty cultivate
+              our students in developing practical skills for the future. Students
+              learn to become active, life-long, working professionals. They are
+              encouraged to take on responsibility at the work place, to be innovative
+              learners in their profession, and interact with employers to solve
+              real-world problems.
+            </div>
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading content">
+            International student office - WHO WE ARE?
+          </h1>
+          <div class="paddingReg content">
+            Mr. Culver Fortna, International Student Office (ISO) Manager/DSO<div
+            >
+              Phone: 571-633-9651, x-451&nbsp;
+            </div><div>Email: culver.fortna@uona.edu</div><div><br /></div><div>
+              Culver is always looking for solutions to help international
+              students. As a native Northern Virginian, he maintains over 20
+              years of experience in teaching, advising, and supporting
+              international families. He earned his MA in Contemporary
+              Sociology, Lancaster University, England, and Certification in
+              Multicultural Education/TESOL at George Mason University. He has
+              completed trainings with Immigration and Customs Enforcement
+              (ICE), Customs and Border Protection (CBP), and NAFSA (Assoc. of
+              International Educators), and attended conferences at VIE
+              (Virginia International Educators), ACE (American Council on
+              Education), CIGE (Center for International and Global Engagement),
+              IIE (Institute of International Education), and OIICE
+              (Organizacion International para la Inclusion y Calidad
+              Educativa).
+            </div><div><br /></div><div>
+              Ms. Linda Lin, Enrollment Coordinator/DSO
+            </div><div>Phone:&nbsp;571-633-9651, x-452</div><div>
+              Email: linda.lin@uona.edu
+            </div><div><br /></div><div>
+              Linda has a MS Degree in Industrial Hygiene from University of
+              Central Missouri and professional experience in international
+              finance and compliance policies. Having been an international
+              student herself, she understands the challenges one faces in a new
+              country. She is a member of VIE (Virginia International
+              Educators), NAFSA (Assoc. of International Educators), and
+              received training from US ICE and US ED. Her role as DSO allows
+              her to provide students with important guidance they need to be
+              successful in USA.&nbsp;&nbsp;<br />
+            </div>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

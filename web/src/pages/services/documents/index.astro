@@ -1,0 +1,562 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style is:global>
+  #app .section {
+    position: relative;
+  }
+  #video {
+    background-image: url(https://images.pexels.com/photos/48195/document-agreement-documents-sign-48195.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+  }
+
+  .full {
+    width: 100%;
+  }
+
+  .button {
+    margin: 5px;
+  }
+
+  .documentContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px;
+    justify-items: center;
+    text-align: left;
+  }
+
+  .space-between {
+    display: grid;
+    grid-gap: var(--gap, 4px);
+    justify-content: space-between;
+  }
+
+  .list {
+    display: grid;
+    grid-gap: var(--gap, 8px);
+    grid-auto-flow: row;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: left;
+    justify-items: left;
+  }
+
+  .list-column-center {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 4px;
+    align-items: center;
+  }
+
+  .padding {
+    padding: 30px;
+  }
+
+  .row {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+
+  .documentSection > * {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
+
+  i {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .float {
+    width: 100%;
+    height: 100%;
+    inset: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    overflow: auto;
+    justify-content: center;
+    display: flex;
+    z-index: 10;
+  }
+
+  .float > * {
+    background-color: #fff;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    margin: 30px;
+  }
+
+  input {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 800px) {
+    .documentContainer {
+      grid-template-columns: 1fr;
+    }
+  }
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
+
+<Page layout="hm fixed" title="Document Requests | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <!-- <div>Document Requests</div> -->
+      </div>
+    </section>
+    <section id="app" is:raw>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;"> <div> <h1
+      class="heading">Document Requests</h1> <div class="paddingReg"> Make sure
+      to use your <b>UoNA student email</b> for all payments and fill in the
+      address where you want to recieve your document. </div> <!-- <div
+      class="flex"> <a
+      href="https://una-web.scansoftware.com/cafeweb/tapestry?service&page=InformationRequest"
+      class="button" style="--box-shadow:0 0 0 2px var(--color);">Request
+      Information</a> <a
+      href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+      class="button" style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0
+      2px var(--bg-color);">apply today</a> </div> --> </div> </ul> <ul
+      class="section" v-cloak> <div class="documentContainer"> <div>
+      <h1>Documents</h1> <div style="margin-bottom:20px;"> <input type="search"
+      v-model="searchBy" placeholder="Search..."> </div> <div v-for="item in
+      filteredDocumentRequests" :key="item.label" @click="addToCart(item)"
+      style="display:grid;grid-auto-flow:column;justify-content:flex-start;
+      align-items:center;grid-gap:8px;"> <div> <i
+      class="material-icons">add_circle_outline</i> </div>
+      <div>{{item.label}}</div> </div> </div> <div> <h1>My Cart <i
+      class="material-icons">shopping_cart</i></h1> <h1
+      style="margin-bottom:15px !important;">${{cartTotal}}</h1> <div
+      v-if="cart.length == 0"> <!-- <i class="material-icons">info</i> --> Click
+      documents to add them to your cart </div> <div v-for="(item, index) in
+      cart" :key="item.label" @click="viewDetails(item)"
+      class="list-column-center"> <span>{{item.label}} x
+      {{item.quantity}}</span> <!-- <i class="material-icons">edit</i> --> <i
+      class="material-icons" @click.stop="removeFromCart(index)">delete</i>
+      </div> <div v-if="cart.length > 0"> <button class="button" v-if="!loading"
+      style="padding: 0 20px;" @click="generateStripeSession"> Place Order
+      </button> <button class="button" v-else style="padding: 0 20px;"
+      @click="generateStripeSession"> Sending Order... </button> </div> </div>
+      <div v-if="Object.keys(dataSelected).length > 0" class="float"
+      @click="closeDetails"> <div v-if="Object.keys(dataSelected).length > 0"
+      class="list padding" @click.stop> <h1 style="margin-bottom:15px
+      !important;" class="list-column-center
+      space-between">{{dataSelected.label}} Request</h1> <b>Subtotal
+      ${{dataSelected.amount * dataSelected.quantity +
+      documentRequestFees.shippingDetails[dataSelected.selectedShipping].amount}}</b>
+      <div class="list-column-center"> <span>Quantity</span> <i
+      class="material-icons"
+      @click="updateQuantity('minus')">remove_circle_outline</i>
+      <div>{{dataSelected.quantity}}</div> <i class="material-icons"
+      @click="updateQuantity('add')">add_circle_outline</i> </div> <div>
+      Shipping Type <select v-model="dataSelected.selectedShipping"> <option
+      v-for="(item, key) in documentRequestFees.shippingDetails" :key="item"
+      :value="key">{{item.label}} - ${{item.amount}}</option> </select> </div>
+      <input type="text" placeholder="Shipping address"
+      v-model="dataSelected.toAddress" v-if="dataSelected.selectedShipping !=
+      'Digital' && dataSelected.selectedShipping != 'Pickup' &&
+      dataSelected.selectedShipping != ''"> <div> <button class="button"
+      style="padding: 0 20px;" @click="closeDetails">Add to cart</button> </div>
+      </div> </div> </div> </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.19/vue.global.prod.min.js"
+  integrity="sha512-PBWdnM+eBV/7IElvAyv6RfWeR6tv5opvnesH4lPTY7bf76+6FZl4Zirr6f60GIM+Cz6B9GBcz2JqZc0ELwrdUQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+  is:inline></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"
+  is:inline></script>
+<!-- Load Stripe.js on your website. -->
+<script src="https://js.stripe.com/v3" is:inline></script>
+<script is:inline>
+  const App = {
+    data() {
+      return {
+        loading: false,
+        cart: [],
+        searchBy: "",
+        dataSelected: {},
+        sessionID: "",
+        documentRequestFees: {
+          shipping: {
+            Digital: 30,
+            Pickup: 0,
+            Domestic: 0,
+            "Domestic Express": 30,
+            International: 100,
+          },
+          shippingDetails: {
+            Digital: {
+              label: "Digital (Not available for Official Transcript or ID)",
+              amount: 30,
+            },
+            Pickup: {
+              label: "Pickup",
+              amount: 0,
+            },
+            Domestic: {
+              label: "Domestic",
+              amount: 5,
+            },
+            "Domestic Express": {
+              label: "Domestic Express",
+              amount: 30,
+            },
+            International: {
+              label: "International",
+              amount: 100,
+            },
+          },
+        },
+        documentRequests: {
+          // transcript: {
+          //     label: 'Transcript',
+          //     amount: 10,
+          //     quantity: 1,
+          //     selectedShipping: 'Pickup',
+          // },
+
+          id: {
+            label: "ID",
+            amount: 10,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          distanceLearning: {
+            label: "Evidence for Distance Learning",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          academicProgress: {
+            label: "Academic Progress / POS",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          parking: {
+            label: "Parking Letter",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          attendanceRecord: {
+            label: "Attendance Records",
+            amount: 50, //50 for 1 term, 100 for 2+ terms
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          //                    appliedLearning: {
+          // label: 'Applied Learning',
+          // amount: 300,
+          // quantity: 1,
+          // selectedShipping: 'Pickup',
+          // },
+          "E-Library Letter": {
+            label: "E-Library Letter",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          "Copy of Applied Learning Agreement": {
+            label: "Copy of Applied Learning Agreement",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          "Copy of Employer Offer Letter": {
+            label: "Copy of Employer Offer Letter",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          "Copy of I-20s": {
+            label: "Copy of I-20s",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          "Copy of Transfer Credits Request Form": {
+            label: "Copy of Transfer Credits Request Form",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          "Applied Learning Statement Letter": {
+            label: "Applied Learning Statement Letter",
+            amount: 50,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          "Multiple Years of Practical Training Letter": {
+            label: "Multiple Years of Practical Training Letter",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          "Attendance Record": {
+            label: "Attendance Record",
+            amount: 100,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+          "Copy of Syllabus": {
+            label: "Copy of Syllabus",
+            amount: 30,
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+
+          otherRecord: {
+            id: "otherRecord",
+            label: "Custom Record/Letter Request",
+            amount: 50, //50 for 1 term, 100 for 2+ terms
+            quantity: 1,
+            selectedShipping: "Pickup",
+          },
+        },
+        Fees: {
+          diploma: {
+            label: "Graduation Fee/Diploma",
+            amount: 300,
+            quantity: 1,
+            selectedShipping: "",
+            fees: {
+              shipping: {
+                digital: 30,
+                pickup: 0,
+                domestic: 30,
+                domesticExpress: 30,
+                international: 100,
+              },
+            },
+          },
+        },
+      };
+    },
+    methods: {
+      addToCart(item) {
+        var x = this;
+        var val = _.clone(item);
+        x.cart.push(val);
+        x.searchBy = "";
+        x.viewDetails(x.cart[x.cart.length - 1]);
+      },
+      removeFromCart(key) {
+        var x = this;
+        if (x.cart[key] == x.dataSelected) {
+          x.dataSelected = {};
+        }
+        x.cart.splice(key, 1);
+      },
+      viewDetails(item) {
+        var x = this;
+        x.dataSelected = item;
+      },
+      updateQuantity(action) {
+        var val = 1;
+        switch (action) {
+          case "add":
+            val = this.dataSelected.quantity + 1;
+            break;
+          case "minus":
+            val = this.dataSelected.quantity - 1;
+            val < 1 ? (val = 1) : (val = this.dataSelected.quantity - 1);
+            break;
+        }
+        this.dataSelected.quantity = val;
+      },
+      closeDetails() {
+        var x = this;
+        x.dataSelected = {};
+        console.log(x.cart);
+      },
+      generateStripeSession() {
+        var x = this;
+        x.loading = true;
+        console.log("Data Generated: ", x.generateLineItems);
+        fetch(
+          "https://us-east4-uonaedu.cloudfunctions.net/setupOnlinePayment",
+          {
+            method: "post",
+            //mode:'no-cors',
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(x.generateLineItems),
+          }
+        )
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            console.log("Request succeeded with JSON response", data);
+            x.sessionID = data.sessionID;
+            x.loading = false;
+            x.checkout();
+          })
+          .catch(function (error) {
+            console.log("Request failed", error);
+            x.loading = false;
+            alert(
+              "We were unable to recieve your request. Please check your internet connection and try again."
+            );
+          });
+      },
+      checkout: function () {
+        var x = this;
+
+        //var stripe = Stripe('pk_test_6hEYChTs6XlWcINvgJSeOJX8');
+        var stripe = Stripe("pk_live_4KH8TGiK6TpQvGnH5TP9jRmW");
+
+        stripe
+          .redirectToCheckout({
+            sessionId: x.sessionID,
+
+            // Do not rely on the redirect to the successUrl for fulfilling
+            // purchases, customers may not always reach the success_url after
+            // a successful payment.
+            // Instead use one of the strategies described in
+            // https://stripe.com/docs/payments/checkout/fulfillment
+            //successUrl: 'https://uona.edu/payment/success',
+            //cancelUrl: 'https://uona.edu',
+            //billingAddressCollection: 'required',
+            //customerEmail: email,
+          })
+          .then(function (result) {
+            if (result.error) {
+              // If `redirectToCheckout` fails due to a browser or network
+              // error, display the localized error message to your customer.
+              var displayError = document.getElementById("error-message");
+              displayError.textContent = result.error.message;
+            }
+          });
+      },
+    },
+    computed: {
+      cartTotal() {
+        var x = this;
+        return _.sumBy(x.cart, function (item) {
+          return (
+            item.amount * item.quantity +
+            x.documentRequestFees.shippingDetails[item.selectedShipping].amount
+          );
+        });
+      },
+      filteredDocumentRequests() {
+        var x = this;
+        return _.filter(x.documentRequests, function (item) {
+          return _.startsWith(_.lowerCase(item.label), _.lowerCase(x.searchBy));
+        });
+      },
+      generateLineItems() {
+        var x = this,
+          line_items = [],
+          data = [];
+
+        _.forEach(x.cart, function (item) {
+          line_items.push({
+            name: item.label,
+            //description: 'Comfortable cotton t-shirt',
+            //images: ['https://example.com/t-shirt.png'],
+            amount: item.amount * 100,
+            currency: "usd",
+            quantity: item.quantity,
+          });
+          if (
+            x.documentRequestFees.shippingDetails[item.selectedShipping]
+              .amount > 0
+          ) {
+            line_items.push({
+              name: item.selectedShipping + " Shipping",
+              description: "For " + item.label,
+              //images: ['https://example.com/t-shirt.png'],
+              amount:
+                x.documentRequestFees.shippingDetails[item.selectedShipping]
+                  .amount * 100,
+              currency: "usd",
+              quantity: 1,
+            });
+          }
+        });
+
+        _.forEach(x.cart, function (item) {
+          data.push({
+            name: item.label,
+            //description: 'Comfortable cotton t-shirt',
+            //images: ['https://example.com/t-shirt.png'],
+            amount: item.amount * 100,
+            type: "document",
+            currency: "usd",
+            quantity: item.quantity,
+            selectedShipping: item.selectedShipping,
+            sendToAddress: item.toAddress || "",
+          });
+          if (
+            x.documentRequestFees.shippingDetails[item.selectedShipping]
+              .amount > 0
+          ) {
+            data.push({
+              name: item.selectedShipping + " Shipping",
+              description: "For " + item.label,
+              //images: ['https://example.com/t-shirt.png'],
+              amount:
+                x.documentRequestFees.shippingDetails[item.selectedShipping]
+                  .amount * 100,
+              type: "shipping fee",
+              currency: "usd",
+              quantity: 1,
+              selectedShipping: item.selectedShipping,
+              sendToAddress: item.toAddress || "",
+            });
+          }
+        });
+        return {
+          requestType: "document request",
+          lineItems: line_items,
+          cart: data,
+        };
+      },
+    },
+  };
+
+  Vue.createApp(App).mount("#app");
+</script>

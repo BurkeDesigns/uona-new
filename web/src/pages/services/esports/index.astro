@@ -1,0 +1,407 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    /*            background-image: url(/images/esports@1080.jpg);*/
+    background-image: url(/files/uploads/esports/slideshow/slide1.jpg);
+    background-attachment: unset;
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+  }
+
+  @media (max-width: 800px) {
+    #video {
+      height: 500px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    #video {
+      height: 350px;
+    }
+  }
+
+  .mus {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .mus li {
+    margin: 6px;
+    width: 100%;
+    display: inline-block;
+    max-width: 350px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .mus a {
+    display: block;
+    height: 100%;
+    text-align: center;
+    line-height: 30px;
+    background: #4067b1;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 15px;
+    text-decoration: none;
+  }
+</style>
+<style>
+  .slideshow {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-color: #000;
+    overflow: hidden;
+    perspective: 1200px;
+  }
+
+  .slideshow > *,
+  #slide4 {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #000;
+    background-image: url(https://images.pexels.com/photos/1044989/pexels-photo-1044989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .slideshow .bgslide {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #000;
+  }
+
+  .slideshow img {
+    object-fit: contain;
+    object-position: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  .social-media {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-gap: 20px;
+    background: #fff !important;
+  }
+  .social-media img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    object-position: center;
+  }
+</style>
+
+<Page layout="hm fixed" title="Esports | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="slideshow">
+        <img
+          src="/files/uploads/esports/slideshow/slide1.jpg"
+          id="slide1"
+          alt="slide1"
+          loading="lazy"
+        />
+        <!--            <img src="/files/uploads/esports/slideshow/slide2.jpg" class="slide" id="slide2" alt="slide" loading="lazy">-->
+        <!-- <div class="slide">
+              <img src="/files/uploads/esports/slideshow/State of the Art No txt.webp" class="bgslide" alt="slide" loading="lazy">
+              <img src="/files/uploads/esports/slideshow/State of the Art txt.webp" alt="slide" loading="lazy">
+          </div> -->
+        <img
+          src="/files/uploads/esports/slideshow/slide2.jpg"
+          id="slide2"
+          class="slide"
+          alt="slide2"
+          loading="lazy"
+        />
+        <img
+          src="/files/uploads/esports/slideshow/slide3.jpg"
+          id="slide3"
+          class="slide"
+          alt="slide3"
+          loading="lazy"
+        />
+        <img
+          src="/files/uploads/esports/slideshow/slide4.jpg"
+          id="slide4"
+          class="slide"
+          alt="slide4"
+          loading="lazy"
+        />
+        <!-- <img src="/files/uploads/esports/slideshow/slide3.jpg" class="slide" id="slide3" alt="slide" loading="lazy"> -->
+        <!--           <img src="/files/uploads/esports/slideshow/slide4.jpg" class="slide" id="slide4" alt="slide" loading="lazy">-->
+
+        <!-- <div class="slide">
+              <img src="/files/uploads/esports/slideshow/ScholarshipBG.webp" class="bgslide" alt="slide" loading="lazy">
+              <img src="/files/uploads/esports/slideshow/ScholarshipTXT.webp" alt="slide" loading="lazy">
+          </div>
+          <a href="https://www.eventbrite.com/e/135706217951" rel="nofollow noopener" target="_blank" id="slide4" class="slide">
+              <img src="/files/uploads/esports/slideshow/TournamentBG.webp" class="bgslide" alt="slide" loading="lazy">
+              <img src="/files/uploads/esports/slideshow/TournamentTXT.webp" alt="slide" loading="lazy">
+          </a> -->
+      </div>
+      <!--
+      <div class="maintitle">
+          <div>Esports</div>
+      </div>
+-->
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">Esports Overview</h1>
+          <div class="paddingReg content">
+            <!-- <div>
+                      University of North America's competitive Esports Varsity Team operates on the collegiate competitive stage across various game titles such as, but not limited to, League of Legends, Call of Duty, Valorant, Overwatch and R6.
+                  </div><br> -->
+            <div>
+              UoNA is among the leading institutions spearheading collegial
+              Esports on-campus. Through Esports training, events, teams, and
+              activities, players can gain skills and experiences that will
+              contribute to pursuing future Esports and other IT industry
+              opportunities.
+            </div><br />
+            <div>
+              UoNA is proud to be highly adaptive & forward thinking, allowing
+              its career-oriented technology and business students & graduates,
+              via the UoNA Esports ecosystem and/or related industries, to excel
+              and thrive after graduation.
+            </div>
+            <br />
+            <div>
+              To join our eports team and recieve additional information, please
+              contact eports@uona.edu
+            </div>
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="https://twitter.com/UoNADragons"
+              target="_blank"
+              style="--box-shadow:0 0 0 2px var(--color);">UoNA Dragons!</a
+            >
+            <!-- <a href="https://una-web.scansoftware.com/cafeweb/tapestry?service&page=InformationRequest" class="button" style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);">Scholarship Application</a> -->
+          </div>
+        </div>
+      </ul>
+      <!--
+      <ul class="section" style="--bg-color:#fff;">
+          <div>
+
+              <h1 class="heading content">Esports Scholarship Content</h1>
+              <div class="paddingReg content">
+                  <ul class="flex">
+                      <ul class="mus">
+                          <li><a href="/files/uploads/esports/ESPORTS Scholarship Flyer.pdf" target="_blank">Scholarship Flyer</a></li>
+                          <li><a href="/files/uploads/esports/ESports Scholarship Whitepaper.pdf" target="_blank">Scholarship Whitepaper</a></li>
+                      </ul>
+                      <div>
+                          <img src="" alt="">
+                      </div>
+                  </ul>
+              </div>
+          </div>
+      </ul>
+-->
+      <!-- <ul class="section" style="--bg-color:#fff;">
+          <div>
+              <h1 class="heading content">ESPORTS OPPORTUNITIES AT UoNA</h1>
+              <div class="paddingReg content">
+                  <div>
+                      It is UoNA's mission to provide the best possible environment to students, enhancing experiences, providing industry exposure, and driving students to applicable careers.
+                  </div>
+                  <br>
+                  <div>
+                      Current Students: Find out how you can join our student teams and compete against 150+ Universities located across the nation in various game titles, such as League of Legends, Overwatch, Call of Duty, Rocket League, and much more by emailing <a href="mailto:media@uona.edu" target="_blank">media@uona.edu</a>
+                  </div>
+              </div>
+          </div>
+      </ul> -->
+      <!--
+         <ul class="section">
+          <div>
+              <h1 class="heading content">Education Through Esports </h1>
+              <div class="paddingReg content">
+                  <div>
+                      Earn Your Degree while experience the Esports Industry, Participate in Esports specific work studies & integrated curriculum. Find and apply learning and education synergies in the Esports Industry through curriculum tailored to guide students into the industry.
+                  </div>
+              </div>
+          </div>
+      </ul>
+-->
+      <!-- <ul class="section">
+          <div>
+              <h1 class="heading content">Competitive Leagues</h1>
+              <div class="paddingReg content">
+                  <div>
+                      Compete against 150+ Universities located across the nation in various game titles such as but not limited to: League of Legends Overwatch Call of Duty Rocket league And Much More!
+                  </div>
+              </div>
+              <div class="flex">
+                  <a href="https://docs.google.com/spreadsheets/d/1j17RsKDwCWUYeBjUxE3D7bb6LUgr_-4W2tTE03iFwkw/edit?usp=sharing" class="button" style="--bg-color:#4067b1;--color:#fff;--box-shadow:0 0 0 2px var(--bg-color);" target="_blank">View Schedule</a>
+              </div>
+          </div>
+      </ul> -->
+
+      <!-- <ul class="section" style="--bg-color:#fff;">
+          <div>
+              <h1 class="heading content">Come join us on social media!</h1>
+              <div class="paddingReg content">
+                  <div>
+                      <div class="social-media">
+                          <a href="https://www.instagram.com/university_of_north_america/">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Instagram.svg/1200px-Instagram.svg.png" alt="instagram">
+                          </a>
+                          <a href="https://www.twitch.tv/uonadragons">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Twitch_Glitch_Logo_Purple.svg/878px-Twitch_Glitch_Logo_Purple.svg.png" alt="twitch">
+                          </a>
+                          <a href="https://twitter.com/UoNADragons">
+                              <img src="/images/twitter.svg" alt="twitter">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </ul> -->
+      <!-- <ul class="section" style="--bg-color:#fff;">
+          <div>
+              <h1 class="heading content">Content Creation </h1>
+              <div class="paddingReg content">
+                  <div>
+                      UoNA is looking for enthusiastic and dedicated students to stream various titles on behalf of the university! If you feel like your calling is streaming, content creation and management, then this is for you! UoNA offers many opportunities for students to work with fellow students to record, edit, produce, and publish content for UoNA!!
+                  </div>
+              </div>
+          </div>
+      </ul>
+      <ul class="section">
+          <div>
+              <h1 class="heading content">Broadcasting/Shoutcasting</h1>
+              <div class="paddingReg content">
+                  <div>
+                      Let your talents be seen! Assist UoNA in its production & broadcast operations for Esports events, competitions & content!
+                  </div>
+              </div>
+          </div>
+      </ul> -->
+
+      <ul class="section">
+        <div>
+          <h1 class="heading content">Internship Opportunities</h1>
+          <div class="paddingReg content">
+            <div>
+              UoNA has opportunities for its students such as real time
+              experience with a prominent sporting franchise’s Esports
+              activities . Gain real-world experience in project management,
+              event management, IT cybersecurity -marketing/advertising, content
+              creation/management, broadcast/communications.
+            </div>
+          </div>
+        </div>
+      </ul>
+
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading content">Disclaimer</h1>
+          <div class="paddingReg content">
+            <div>
+              The University of North America is an academic community built on
+              respect for all persons. The University adheres to a strict policy
+              of dignity, equality, and nondiscrimination regarding the
+              treatment of individual faculty, staff, and students. In
+              accordance with federal law and applicable Commonwealth of
+              Virginia statutes, the University does not discriminate on the
+              basis of race, color, religion, sex, national origin, age,
+              disability, or veteran status in employment or in any program or
+              activity offered or sponsored by the University.
+            </div>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>
+
+<script>
+  import gsap from "gsap";
+  import ScrollToPlugin from "gsap/ScrollToPlugin";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+
+  var slideDuration = 1;
+  var tl = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 1,
+    //            yoyo: true
+  });
+
+  tl.fromTo(
+    ".slide",
+    {
+      autoAlpha: 0,
+      scale: 1.3,
+      y: 500,
+      rotationY: 180,
+      rotationX: 90,
+    },
+    {
+      duration: slideDuration,
+      stagger: 3,
+      autoAlpha: 1,
+      delay: 2,
+      scale: 1,
+      y: 0,
+      ease: "power2.out",
+      rotationY: 0,
+      rotationX: 0,
+    }
+  )
+    .set(".slideshow .slide:not(:last-child)", {
+      autoAlpha: 0,
+    })
+    .to(".slideshow .slide:last-child", {
+      delay: 1.5,
+      autoAlpha: 0,
+      duration: slideDuration,
+    });
+
+  //    const Slideshow = {
+  //  data() {
+  //    return {
+  //      slide: 0,
+  //        duration: 0
+  //    }
+  //  }
+  //}
+  //
+  //Vue.createApp(Counter).mount('#counter')
+</script>

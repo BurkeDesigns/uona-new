@@ -11,6 +11,12 @@ import Text from "@components/Text";
 // import Btn from "@components/Button";
 // import Accordion from "@components/Accordion";
 // import ContactForm from "@components/ContactForm";
+import { Image } from "astro:assets";
+let imageFiles = await Astro.glob(
+  "/public/files/uploads/backgrounds/hatch/*.{jpg,png,gif}"
+);
+
+console.log(imageFiles);
 ---
 
 <style>
@@ -100,6 +106,177 @@ import Text from "@components/Text";
 <Page layout="hm fixed" title="Hatch | University of North America">
   <Header />
   <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <!--            <div>Domestic Students</div>-->
+      </div>
+    </section>
+    <section id="app">
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">HATCH Incubation & Innovation Center</h1>
+          <div class="paddingReg">
+            <p>
+              The challenge of starting a business is that many things need to
+              be done at once. Finding a office you can afford, creating the
+              strategic, business, and marketing plans, finding staff, legal
+              compliance, setting up a business infrastructure, and finally
+              getting access to markets and capital.
+            </p>
+            <p>
+              Hatch is there to set you up to succeed in what is a daunting
+              challenge. Hatch gives the infrastructure and additional support
+              cradled in the University of North America.
+            </p>
+            <p>
+              Hatch is a separate entity of the University of North America,
+              Inc. It is not accredited by ACICS or certified by the
+              Commonwealth of Virginia, PPE, or any other of the University’s
+              regulatory agencies.
+            </p>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Benefits of HATCH</h1>
+          <div class="paddingReg">
+            <ul>
+              <li>Private or Shared Office Space</li>
+              <li>Entrepreneurial Training</li>
+              <li>
+                Regular Networking and Pitch Sessions to Angels and Venture
+                Capital
+              </li>
+              <li>Pitch Practice Sessions</li>
+              <li>Mentors</li>
+              <li>Access to Faculty Expertise</li>
+              <li>Access to Advisory Board and Strategic Partners</li>
+              <li>Help with Accounting/financial Management</li>
+              <li>Human Resource Support</li>
+              <li>Access to Student Interns</li>
+              <li>Marketing Assistance</li>
+              <li>Onsite Recruiting</li>
+              <li>Development Environments</li>
+              <li>High-speed Internet Access</li>
+              <li>Kitchenette</li>
+              <li>Conference Rooms</li>
+              <li>Free Parking</li>
+            </ul>
+          </div>
+
+          <!--
+              <div class="flex">
+                  <a class="button" href="/admission" style="--bg-color:transparent;--color:#4067b1;--box-shadow:0 0 0 2px var(--color);">Learn More</a>
+                  <a href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application" class="button" style="--bg-color:#4067b1;--color:#fff;--box-shadow:0 0 0 2px var(--bg-color);">apply today</a>
+                  <a class="button" href="/forms" style="--box-shadow:0 0 0 2px var(--color);">Application Forms</a>
+              </div>
+-->
+        </div>
+      </ul>
+
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">
+            Where great businesses are born from great ideas. <br /> Come join Hatch
+            and make a great business!
+          </h1>
+          <div class="paddingReg">
+            <div class="flex">
+              <a
+                href="mailto:hatch@uona.edu"
+                class="button"
+                style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+                >Contact Us</a
+              >
+            </div>
+          </div>
+        </div>
+      </ul>
+
+      <ul class="section">
+        <!-- <div>
+              <h1 class="heading">Floor Plan & Pricing</h1>
+              <div class="paddingReg">
+                  <img src="/images/hatch_map.jpg" class="fullImg" alt="">
+              </div>
+          </div> -->
+
+        <div>
+          <h1 class="heading">Our Facility</h1>
+          <div class="paddingReg">
+            <div class="gallery">
+              <img
+                v-for="item in hatch.roomImages"
+                :src="'/files/uploads/backgrounds/hatch/'+item"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </ul>
+
+      <!-- <ul class="section" style="--bg-color:#fff;">
+          <div>
+              <h1 class="heading">HATCH Contacts</h1>
+              <div class="paddingReg">
+                  <div class="list">
+                      <div class="card" v-for="item in hatch.contacts">
+                          <div><img :src="item.profileImgURL" alt="Profile Image"></div>
+                          <div class="list">
+                              <b>{{item.name}}</b>
+                              <div>{{item.description}}</div>
+                              <div class="sm-list">
+                                  <div class="flat-btn"><i class="material-icons">phone</i><span>{{item.phone}}</span></div>
+                                  <div class="flat-btn"><i class="material-icons">email</i><span>{{item.email}}</span></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </ul> -->
+    </section>
     <Footer />
   </main>
 </Page>
+
+<script src="https://unpkg.com/vue@3.2.31/dist/vue.global.prod.js" is:inline
+></script>
+<script is:inline>
+  var imgs = [
+    "1.jpg",
+    "10.jpg",
+    "12.jpg",
+    "13.jpg",
+    "20200123_120346[1].jpg",
+    "20200123_120432[1].jpg",
+    "20200127_121800[1].jpg",
+    "4.jpg",
+    "6.jpg",
+    "classroom1015.jpg",
+  ];
+  console.log(imgs);
+
+  Vue.createApp({
+    data() {
+      return {
+        hatch: {
+          roomImages: imgs,
+          contacts: [
+            {
+              name: "Name",
+              title: "",
+              phone: "phone",
+              email: "email",
+              description:
+                "Curabitur fermentum mattis arcu, in faucibus est tristique a. Cras luctus turpis sit amet lectus vehicula, sit amet fermentum orci auctor. Praesent lacinia vehicula rhoncus. Morbi nec aliquet lorem. Ut sodales turpis viverra lacinia dictum. Praesent vulputate neque nisi. Curabitur elit ligula, malesuada et sem id, mollis dignissim mi. Fusce laoreet turpis eu feugiat ultrices. In vel vestibulum urna. In elementum mattis feugiat. Aliquam libero nunc, semper sed volutpat pretium, placerat ac velit.",
+              profileImgURL:
+                "https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg?auto=compress&cs=tinysrgb&dpr=1&h=500&w=500",
+            },
+          ],
+        },
+      };
+    },
+  }).mount("#app");
+</script>
