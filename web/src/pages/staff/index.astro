@@ -1,0 +1,784 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+import { getImage } from "astro:assets";
+import { groupBy } from "@util/arr";
+
+let background = (
+  await Astro.glob("/public/files/uploads/backgrounds/staff/*.{jpg,png,gif}")
+)[0];
+
+const optimizedBackground = await getImage({
+  src: background.default,
+  // options: {
+  //   width: 100,
+  // },
+  // format: "avif",
+});
+
+let team = {
+  staff: [
+    {
+      name: 'Claude C. "Marty" Martin',
+      title: "Founder/Chairman, Board of Directors",
+      // title: 'Chief Executive Officer (CEO)',
+      email: "", //'marty.martin@uona.edu',
+      img: "/images/Marty.jpg",
+      order: 0,
+      type: "ceo",
+      desc: `<p>Claude C. "Marty" Martin has over 50 years of experience providing global solutions for the broadcasting, information technology, and satellite communication industries. Marty is a proud veteran who served for 12 years in the US Army. After completing basic training at Fort Polk, Louisiana, he became a trainer at Pershing Missile School in Fort Sill, Oklahoma. Throughout his military career, Marty worked on cutting-edge technologies such as computer programming and the development of ARPANET, which is considered "the world's first internet."</p>
+                    <p>While on active duty in Laos during the Vietnam War Era, Marty received two medals for his outstanding achievements.</p>
+<p>After retiring from the military, Marty continued his career in IT leadership, joining Radio Free Europe/Radio Liberty. He then went on to become a successful business consultant, facilitating the merger and acquisition of multiple IT and telecommunication businesses.</p>
+<p>In 2008, Marty co-founded the University of North America, recognizing the critical need for innovative IT education. The institution places a strong emphasis on "applied learning" for IT and business education, and Marty has been a leader in this field.</p>`,
+    },
+    {
+      name: "Jill Martin",
+      title: "President and CEO",
+      email: "", //'jill.martin@uona.edu',
+      img: "/images/Jill.jpg",
+      order: 1,
+      type: "campus",
+      desc: `<p>Jill Martin is an accomplished educator, entrepreneur, and investor dedicated to connecting global communities through education and business development. As the leader of the University of North America, Jill has expanded its international reach and created new opportunities for students and professionals around the world.</p>
+                    <p>Jill's expertise in journalism and media production has earned her numerous awards and accolades. Her radio and TV programs have been broadcast worldwide, and she is widely recognized for her outstanding contributions to the field.</p>
+                    <p>In addition to her work in education and media, Jill is deeply committed to community service and has dedicated her time and resources to a variety of causes. Her track record has earned her numerous awards and recognitions, including the Lifetime Achievement Award from President Biden in 2022. She also received the Top Latinos award from Latinos Top Magazine, the Super 40 award from the Asian American Chamber of Commerce, and was named one of the Top 100 Minority Business Entrepreneurs by the Capital Region Minority Supplier Development Council. Women Leadership Magazine USA recognized her as a "Woman of Leadership & Excellence."</p>
+                    <p>Jill's diverse portfolio of investments includes office buildings, farmland, and residential properties, demonstrating her leadership and success in the business world. As an immigrant to the US, her achievements and dedication have made her a respected leader and advocate for global communities, inspiring countless individuals to pursue their dreams and make a positive impact in the world.</p>`,
+    },
+    //                {
+    //                    name: 'Russell Frutiger, BG(R) USA',
+    //                    title: 'VP of Corporate Business Development and Innovation',
+    //                    email: '',
+    //                    img: '/images/russell.jpg',
+    //                    order: 2,
+    //                    type: 'business',
+    //                    desc: '<p>Brigadier General Russell “Rusty” Frutiger retired from the Army in 2009, after more than 34 years of distinguished service. </p><p>BG Frutiger became the Chief of Staff, United States Army Europe in 2006. He continued to hold the role of Deputy Commanding General, US Army NATO while assigned as both the Chief of Staff and Deputy Chief of Staff, G-1. He assumed the Deputy Chief of Staff, G-1, United States Army Europe in 2002.  </p><p>Among many of his accomplishments, BG Frutiger received the Innovative Business Solution Award from the Society of Human Resource Management for his authorship and execution of USAREUR’s Blue Box, the US Army Europe’s comprehensive family support guide.  </p><p>Prior to his assignment to Europe, BG Frutiger served as the Special Assistant to the Chairman of the Joint Chiefs of Staff where he handled all General/Flag officer matters for the services prior to going to the Secretary of Defense and the President.  </p><p>Since leaving active duty, BG Frutiger has served as VP, SVP and COO of a large Information Technology company which served the Army, DoD and the Veteran’s Administration and has recently opened his own SDVOSB (Service Disabled Veteran Owned Small Business).  </p><p>BG Frutiger holds a PhD in Leadership and Organization Change from Walden University. His areas of expertise include Leadership, IT, Strategy, Training Management, and Human Resources. He is also an Adjunct professor for UMUC where he teaches strategy and leadership. </p>'
+    //                },
+    {
+      name: "Jason Koo",
+      title: "VP of Campus & Operations",
+      email: "jason.koo@uona.edu", //'jason.koo@uona.edu',
+      img: "/images/Jason.jpg",
+      order: 2,
+      type: "campus",
+      desc: "<p>Jason Koo is an experienced IT professional and university educator. He has been teaching college level courses in IT and computer science at universities in the US and abroad since 2005. He served as Associate Dean and Dean at the University of North America.</p><p>He has extensive experience in computer programming and system administration. He is a Certified Novel Engineer, Oracle Certified Professional and Sun Certified Programmer. He holds a bachelor's degree in Electrical Engineering and a master's degree in Computer Science. He is also a PhD candidate in Computer Science.</p><p><a href=\"tel:+1-571-633-9651\">571-633-9651x501</a></p>",
+    },
+    {
+      name: "Dr. Jason Chao",
+      title: "Director of Academic Administration",
+      email: "jason.chao@uona.edu", //'jason.koo@uona.edu',
+      img: "/images/jasonchao.jpg",
+      order: 3,
+      type: "campus",
+      desc: '<p>Dr. Jason Chao is a seasoned specialist on cross-cultural communications, foreign policies, and political and economic relations between the United States and the Asia-Pacific region. He worked 25 years of experience as a diplomat working with the US Congress.</p><p>Jason worked in the higher education and media industries before serving in the public sector. He was the founding Chairman and Professor of the Department of International Studies at Nanhua University in Taiwan. He also established the news department at Global TV News Channel in Taiwan, a media network that provided 24/7 news programming.</p><p>Dr. Chao earned his PhD in Government and Politics from University of Maryland, College Park; MA in International Relations from University of Southern California and MA in Policy Studies from Monterey Institute of International Studies.</p><p><a href="tel:+1-571-633-9651">571-633-9651x502</a></p>',
+    },
+    {
+      name: "James Moses",
+      title: "Director of Education",
+      email: "james.moses@uona.edu",
+      img: "/images/jamesmoses.jpg",
+      order: 4,
+      type: "campus",
+      desc: '<p>James Moses is an educator, academic leader, creative entrepreneur with more than 14 years of experience in project management, entrepreneurship, leading academic programs, advising small businesses, and developing training, marketing, and sales management programs at various institutions and companies. </p><p>James is a talented instructor who had taught both undergraduate and graduate business courses for decades at universities in Hawaii, Virginia, and Washington, DC. He successfully managed a renowned financial and law office in Honolulu helping with its business expansion. He also ran a fashion boutique which created opportunities for many young fashion designers. </p><p>He has a Master in Business Studies from Chaminade University in Honolulu, Hawaii and a Master of Public Administration from Madras Christian College.</p><p><a href="tel:+1-571-633-9651">571-633-9651x751</a></p>',
+    },
+    {
+      name: "Culver Fortna",
+      title:
+        "Director of Student Services/International Student Office (ISO)/DSO",
+      email: "culver.fortna@uona.edu",
+      img: "",
+      order: 8,
+      type: "other",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x124</a></p>',
+    },
+    {
+      name: "Jennifere Clayton",
+      title:
+        "Military Student Services Specialist/Education Business Developer/SCO",
+      email: "jennifere.clayton@uona.edu",
+      img: "",
+      order: 9,
+      type: "other",
+      desc: '<p><a href="tel:+1-703-827-3671">703-827-3671</a></p>',
+    },
+    {
+      name: "Wai Oo",
+      title: "Student Relations Coordinator",
+      email: "wai.oo@live.uona.edu",
+      img: "",
+      order: 10,
+      type: "other",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x451</a></p>',
+    },
+    {
+      name: "Arthur J Bunce",
+      title: "Military Student Specialist",
+      email: "arthur.bunce@uona.edu",
+      img: "",
+      order: 10,
+      type: "other",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x451</a></p>',
+    },
+    {
+      name: "Shuan Jennings",
+      title: "IT Support/Military Student Services",
+      email: "shaun.jennings@uona.edu",
+      img: "",
+      order: 10,
+      type: "IT",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651</a></p>',
+    },
+    {
+      name: "Robert Cavanaugh",
+      title: "ESOL Coordinator",
+      email: "robert.cavanaugh@uona.edu",
+      img: "",
+      order: 11,
+      type: "esol",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651</a></p>',
+    },
+    // {
+    //     name: 'Dr. Andrea Olson',
+    //     title: 'VP of Strategic Planning',
+    //     email: '', //'andrea.olson@uona.edu',
+    //     img: '/images/andrea.jpg',
+    //     order: 60,
+    //     type: 'campus',
+    //     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651</a></p>'
+    // },
+    //                    {
+    //                    name: 'Susan Boslaugh',
+    //                    title: 'Executive Administrative Assistant',
+    //                    email: 'susan.boslaugh@uona.edu',
+    //                    img: '',
+    //                    order: 7,
+    //                    type: 'campus',
+    //                    desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x751</a></p>'
+    //                },
+
+    {
+      name: "Amy Jiang",
+      title: "Enrollment Coordinator",
+      email: "amy.jiang@uona.edu",
+      img: "",
+      order: 11,
+      type: "other",
+      desc: '<p><a href="tel:+1-703-712-8774">703-712-8774</a></p>',
+    },
+    {
+      name: "Diane Waters",
+      title: "CFO/Director of Finance",
+      email: "diane.waters@uona.edu",
+      img: "",
+      order: 12,
+      type: "accounting",
+      desc: "",
+    },
+    {
+      name: "Betty Bektesh",
+      title: "Accounting Specialist",
+      email: "betty.bektesh@uona.edu",
+      img: "",
+      order: 13,
+      type: "accounting",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x552</a></p>',
+    },
+    // {
+    //     name: 'Glenn Garcia',
+    //     title: 'Director of Military Student Services',
+    //     email: 'glenn.garcia@uona.edu',
+    //     img: '',
+    //     order: 11,
+    //     type: 'other',
+    //     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x452</a></p>'
+    // },
+    // {
+    //     name: 'Maxwell Wood',
+    //     title: 'Director of Esports & Public Relations',
+    //     email: 'max.wood@uona.edu',
+    //     img: '',
+    //     order: 14,
+    //     type: 'other',
+    //     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x703</a></p>'
+    // },
+    {
+      name: "Joshua Khosrofian",
+      title: "Records Coordinator",
+      email: "joshua.khosrofian@uona.edu",
+      img: "",
+      order: 15,
+      type: "other",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x453</a></p>',
+    },
+    {
+      name: "Gary Rucker",
+      title: "Facility Coordinator/Faculty",
+      email: "gary.rucker@uona.edu",
+      img: "",
+      order: 16,
+      type: "IT",
+      desc: "",
+    },
+    {
+      name: "John Hsu",
+      title: "IT/Virtual Learning Lab Manager",
+      email: "john.hsu@uona.edu",
+      img: "",
+      order: 17,
+      type: "IT",
+      desc: "",
+    },
+    {
+      name: "Angel Ramos",
+      title: "IT Support",
+      email: "angel.ramos@uona.edu",
+      img: "",
+      order: 18,
+      type: "IT",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x503</a></p>',
+    },
+    {
+      name: "Ross Taylor",
+      title: "Librarian",
+      email: "ross.taylor@uona.edu",
+      img: "",
+      order: 19,
+      type: "library",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x123</a></p>',
+    },
+    {
+      name: "Wesley Burke",
+      title: "Full-stack Developer",
+      email: "wesley.burke@uona.edu",
+      img: "",
+      order: 23,
+      type: "IT",
+      desc: "",
+    },
+
+    {
+      name: "Z.J. Peng",
+      title: "Director of Admissions and Outreach",
+      email: "zhongjie.peng@uona.edu",
+      img: "",
+      order: 7,
+      type: "outreach",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x202</a></p>',
+    },
+    {
+      name: "Miguel Angel Moreno",
+      title: "Outreach Director",
+      email: "miguel.moreno@uona.edu",
+      img: "",
+      order: 20,
+      type: "outreach",
+      desc: "",
+    },
+    {
+      name: "Kirit Udeshi",
+      title: "Outreach Director - South Asia",
+      email: "kirit.udeshi@uona.edu",
+      img: "",
+      order: 21,
+      type: "outreach",
+      desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x701</a></p>',
+    },
+    {
+      name: "Pedro Rios",
+      title: "Outreach Director - Latin America",
+      email: "pedro.rios@uona.edu",
+      img: "",
+      order: 22,
+      type: "outreach",
+      desc: "",
+    },
+
+    // {
+    //     name: 'Linda Lin',
+    //     title: 'Enrollment Coordinator / DSO',
+    //     email: 'linda.lin@uona.edu',
+    //     img: '',
+    //     order: 6,
+    //     type: 'other',
+    //     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x452</a></p>'
+    // },
+    //                 {
+    //                     name: 'Joshua Khosrofian',
+    //                     title: 'Compliance Coordinator',
+    //                     email: 'joshua.khosrofian@uona.edu',
+    //                     img: '',
+    //                     order: 10,
+    //                     type: 'other',
+    //                     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x453</a></p>'
+    //                 }, {
+    //                     name: 'Betty Bektesh',
+    //                     title: 'Accounting Assistant',
+    //                     email: 'betty.bektesh@uona.edu',
+    //                     img: '',
+    //                     order: 8,
+    //                     type: 'other',
+    //                     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x552</a></p>'
+    //                 }, {
+    //                     name: 'Ross Taylor',
+    //                     title: 'Librarian',
+    //                     email: 'ross.taylor@uona.edu',
+    //                     img: '',
+    //                     order: 11,
+    //                     type: 'other',
+    //                     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x123</a></p>'
+    //                 }, {
+    //                     name: 'Wesley Burke',
+    //                     title: 'Full-stack Developer',
+    //                     email: 'wesley.burke@uona.edu',
+    //                     img: '',
+    //                     order: 13,
+    //                     type: 'business',
+    //                     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651</a></p>'
+    //                 }, {
+    //                     name: 'John Hsu',
+    //                     title: 'Instructional Technology',
+    //                     email: 'john.hsu@uona.edu',
+    //                     img: '',
+    //                     order: 13,
+    //                     type: 'other',
+    //                     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651</a></p>'
+    //                 }, {
+    //                     name: 'Miguel Angel Moreno',
+    //                     title: 'Director of Outreach',
+    //                     email: 'miguel.moreno@uona.edu',
+    //                     img: '',
+    //                     order: 13,
+    //                     type: 'business',
+    //                     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x702</a></p>'
+    //                 }, {
+    //                     name: 'Zhongquan Wang',
+    //                     title: 'Director of Regional Development - China',
+    //                     email: 'zhongquan.wang@uona.edu',
+    //                     img: '',
+    //                     order: 13,
+    //                     type: 'business',
+    //                     desc: ''
+    //                 }, {
+    //                     name: 'Kirit Udeshi',
+    //                     title: 'Director of Regional Development - South Asia',
+    //                     email: 'kirit.udeshi@uona.edu',
+    //                     img: '',
+    //                     order: 13,
+    //                     type: 'business',
+    //                     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x701</a></p>'
+    //                 }, {
+    //                     name: 'James Moses',
+    //                     title: 'Education Manager/Faculty',
+    //                     email: 'james.moses@uona.edu',
+    //                     img: '',
+    //                     order: 9,
+    //                     type: 'other',
+    //                     desc: '<p><a href="tel:+1-703-489-9944">703-489-9944</a></p>'
+    //                 },
+    //                 {
+    //                     name: 'Gary Rucker',
+    //                     title: 'Facility Coordinator/Facultly',
+    //                     email: 'gary.rucker@uona.edu',
+    //                     img: '',
+    //                     order: 9,
+    //                     type: 'other',
+    //                     desc: ''
+    //                 },
+    //                 // {
+    //                 //     name: 'Dr. Douglas Keevers',
+    //                 //     title: 'Director of Distance Education',
+    //                 //     email: 'douglas.keevers@uona.edu',
+    //                 //     img: '',
+    //                 //     order: 20,
+    //                 //     type: 'other',
+    //                 //     desc: ''
+    //                 // },
+    //                 {
+    //                     name: 'Glenn Garcia',
+    //                     title: 'Education Business Developer',
+    //                     email: 'glenn.garcia@uona.edu',
+    //                     img: '',
+    //                     order: 20,
+    //                     type: 'other',
+    //                     desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x123</a></p>'
+    //                 },
+    //                 {
+    //                     name: 'Angel Ramos',
+    //                     title: 'IT Support',
+    //                     email: 'angel.ramos@uona.edu',
+    //                     img: '',
+    //                     order: 20,
+    //                     type: 'other',
+    // //                    desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x123</a></p>'
+    //                 },
+    //                 {
+    //                     name: 'Khloe Lam',
+    //                     title: 'Academic Assistant',
+    //                     email: 'khloe.lam@uona.edu',
+    //                     img: '',
+    //                     order: 20,
+    //                     type: 'other',
+    // //                    desc: '<p><a href="tel:+1-571-633-9651">571-633-9651x123</a></p>'
+    //                 }
+  ],
+};
+
+team.staff = team.staff.sort(function (a, b) {
+  return a.order - b.order;
+});
+
+const list: any = groupBy(team.staff, "type");
+
+// const ceoList = team.staff.filter((item) => item.type == "ceo");
+const campusList = team.staff.filter((item) => item.type == "campus");
+---
+
+<style define:vars={{ background: `url(${optimizedBackground.src})` }}>
+  .full {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .full > div:not(.infoImg) {
+    padding: 30px;
+    padding-top: 0;
+  }
+
+  .infoImg {
+    min-width: 200px;
+    margin: 0;
+  }
+
+  .infoTitle {
+    color: #4067b1;
+    margin-top: 0;
+  }
+
+  .hideImg .infoImg {
+    display: none;
+  }
+
+  #video {
+    background-image: var(--background);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  @media (max-width: 520px) {
+    .full > div:not(.infoImg) {
+      padding: 30px 0;
+    }
+
+    #video {
+      height: 300px;
+    }
+  }
+
+  #faculty > *,
+  .border {
+    border: 2px solid;
+    padding: 30px !important;
+  }
+
+  #faculty > * > *,
+  .border > * {
+    padding: 0 !important;
+  }
+
+  .border h2 {
+    margin: 0 !important;
+  }
+</style>
+
+<Page layout="hm fixed" title="Staff | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>
+          <p>staff</p>
+        </div>
+      </div>
+    </section>
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+        <h1 class="heading">our team</h1>
+        <div class="paddingReg content">
+          To ensure that the University of North America accomplishes its
+          mission to provide high quality practitioner-oriented graduate
+          programs, the University utilizes an expert professional faculty who
+          have exceptional academic credentials and are senior practitioners in
+          their fields.&nbsp;<br /><br />
+          These experienced professionals help students remain current with accelerating
+          trends and evolving issues in enterprise management and information technology
+          so they may rapidly apply what they learn to their jobs and continue to
+          advance their careers.
+        </div>
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#fff;">
+      <div id="team">
+        <h1 class="heading">Board of Directors</h1>
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              list.ceo.map((item) => (
+                <li class={`full info ${item.img == "" ? "border" : ""}`}>
+                  {item.img != "" && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img})`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    <p>
+                      <i>{item.title}</i>
+                    </p>
+                    <div set:html={item.desc} />
+                    {item.email != "" && (
+                      <p>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <h1 class="heading">campus staff</h1>
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              list.campus.map((item) => (
+                <li class={`full info ${item.img == "" ? "border" : ""}`}>
+                  {item.img != "" && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img})`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    {item.title == "President" && (
+                      <p>
+                        <a href="tel:+1-571-633-9651">571-633-9651x888</a>{" "}
+                        <br />
+                        <a href="mailto:jill.martin@uona.edu">
+                          jill.martin@uona.edu
+                        </a>
+                      </p>
+                    )}
+                    <p>
+                      <i>{item.title}</i>
+                    </p>
+                    <div set:html={item.desc} />
+                    {item.email != "" && (
+                      <p>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <h1 class="heading">ADMISSIONS & OUTREACH</h1>
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              list.outreach.map((item) => (
+                <li class={`full info ${item.img == "" ? "border" : ""}`}>
+                  {item.img != "" && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img})`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    <p>
+                      <i>{item.title}</i>
+                    </p>
+                    <div set:html={item.desc} />
+                    {item.email != "" && (
+                      <p>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <h1 class="heading">student services</h1>
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              list.other.map((item) => (
+                <li class={`full info ${item.img == "" ? "border" : ""}`}>
+                  {item.img != "" && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img})`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    <p>
+                      <i>{item.title}</i>
+                    </p>
+                    <div set:html={item.desc} />
+                    {item.email != "" && (
+                      <p>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <h1 class="heading">Finance & Accounting</h1>
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              list.accounting.map((item) => (
+                <li class={`full info ${item.img == "" ? "border" : ""}`}>
+                  {item.img != "" && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img})`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    <p>
+                      <i>{item.title}</i>
+                    </p>
+                    <div set:html={item.desc} />
+                    {item.email != "" && (
+                      <p>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <h1 class="heading">Infrastructure & IT</h1>
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              list.IT.map((item) => (
+                <li class={`full info ${item.img == "" ? "border" : ""}`}>
+                  {item.img != "" && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img})`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    <p>
+                      <i>{item.title}</i>
+                    </p>
+                    <div set:html={item.desc} />
+                    {item.email != "" && (
+                      <p>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <h1 class="heading">ESOL</h1>
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              list.esol.map((item) => (
+                <li class={`full info ${item.img == "" ? "border" : ""}`}>
+                  {item.img != "" && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img})`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    <p>
+                      <i>{item.title}</i>
+                    </p>
+                    <div set:html={item.desc} />
+                    {item.email != "" && (
+                      <p>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <h1 class="heading">Library</h1>
+        <div class="paddingReg">
+          <ul class="flex column" id="staff">
+            {
+              list.library.map((item) => (
+                <li class={`full info ${item.img == "" ? "border" : ""}`}>
+                  {item.img != "" && (
+                    <div
+                      class="infoImg"
+                      style={`background-image: url(${item.img})`}
+                    />
+                  )}
+                  <div>
+                    <h2 class="infoTitle">{item.name}</h2>
+                    <p>
+                      <i>{item.title}</i>
+                    </p>
+                    <div set:html={item.desc} />
+                    {item.email != "" && (
+                      <p>
+                        <a href={`mailto:${item.email}`}>{item.email}</a>
+                      </p>
+                    )}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </ul>
+    <Footer />
+  </main>
+</Page>

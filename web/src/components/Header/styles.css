@@ -37,6 +37,7 @@ header a{
 }
 header .logo{
     height:140px;
+    width: 372.36px;
     display: block;
     padding:20px;
 }
@@ -271,6 +272,7 @@ header .close{
 @media (max-width: 500px){
     header .logo{
         height:120px;
+        width: 305.88px;
     }
     .maintitle p {
         font-size: 25px !important;
