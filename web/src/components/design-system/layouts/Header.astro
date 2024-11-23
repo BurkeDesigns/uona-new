@@ -1,0 +1,7 @@
+---
+let { el, ...attrs } = Astro.props;
+const name = "header";
+---
+<header el={el? `${name}-${el}`:name} {...attrs}>
+    <slot />
+</header>

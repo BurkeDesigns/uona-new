@@ -1,0 +1,9 @@
+---
+import { Btn } from "./types/Btn.ts";
+let { el, ...attrs }: Btn = Astro.props;
+const {label, url} = attrs;
+const name = "btn";
+---
+<a el={el? `${name}-${el}`:name} href={url} rel="noopener">
+    {label ? label : <slot />}
+</a>

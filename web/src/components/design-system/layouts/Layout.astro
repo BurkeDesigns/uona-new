@@ -1,0 +1,32 @@
+---
+import type { string } from "@tensorflow/tfjs-node-gpu";
+
+interface Props {
+  el?:
+    | "hmf"
+    | "hm"
+    | "am"
+    | "ams"
+    | "asm"
+    | "ham"
+    | "aham"
+    | "ahams"
+    | "hamsf"
+    | "hmf-fixed"
+    | "hm-fixed"
+    | "am-fixed"
+    | "ams-fixed"
+    | "asm-fixed"
+    | "ham-fixed"
+    | "aham-fixed"
+    | "ahams-fixed"
+    | "hamsf-fixed";
+  id?: string;
+}
+let { el, ...attrs } = Astro.props;
+const name = "layout";
+---
+
+<div el={el ? `${name}-${el}` : name} {...attrs}>
+  <slot />
+</div>

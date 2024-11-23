@@ -1,0 +1,7 @@
+---
+let { el, ...attrs } = Astro.props;
+const name = "section";
+---
+<section el={el? `${name}-${el}`:name} {...attrs}>
+    <slot />
+</section>

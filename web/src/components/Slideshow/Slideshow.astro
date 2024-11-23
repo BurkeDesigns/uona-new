@@ -23,7 +23,7 @@ const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
   // GSAP animation logic here seemless loop:
   //   https://www.snorkl.tv/greensock-staggers-with-seamless-loops/
 
-  let targets = document.querySelectorAll(".img");
+  let targets = document.querySelectorAll(".slideshow .img");
   let numOfTargets = targets.length;
   let pause = 1;
   let duration = 3;
@@ -33,7 +33,7 @@ const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
   const tl = gsap.timeline({ repeat: -1 });
 
   tl.fromTo(
-    ".img",
+    ".slideshow .img",
     {
       duration: duration,
       autoAlpha: 0,
@@ -61,7 +61,7 @@ const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
       },
     }
   ).to(
-    ".img",
+    ".slideshow .img",
     {
       duration: duration,
       autoAlpha: 0,
@@ -91,7 +91,7 @@ const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
     overflow: hidden;
     background: black;
   }
-  .img {
+  .slideshow .img {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -101,7 +101,7 @@ const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
     display: block;
     opacity: 0;
   }
-  .shadowGradient {
+  .slideshow .shadowGradient {
     position: absolute;
     inset: 0;
     background-image: linear-gradient(

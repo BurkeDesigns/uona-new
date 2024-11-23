@@ -1,0 +1,7 @@
+---
+let { el, to, ...attrs } = Astro.props;
+const name = "link";
+---
+<a el={el? `${name}-${el}`:name} href={to} {...attrs} rel="noopener">
+    <slot />
+</a>

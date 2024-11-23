@@ -1,0 +1,102 @@
+---
+import { List } from "@design-system/index.astro";
+import { Image } from "astro:assets";
+let imageFiles = await Astro.glob(
+  "/public/files/uploads/gallery/**/*.{jpg,png,gif,webp,avif}"
+);
+
+const { limit } = Astro.props;
+
+if (limit != null) imageFiles = imageFiles.slice(0, limit);
+---
+
+<List el="column-fill xsm" class="gallery">
+  {
+    imageFiles.map((img) => (
+      <Image
+        src={img.default}
+        width="720"
+        alt="Photo"
+        class="img"
+        loading="lazy"
+      />
+    ))
+  }
+</List>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    max-width: 2200px;
+    gap: 12px;
+    container: gallery / inline-size;
+  }
+  .gallery > *:nth-child(3n) {
+    grid-column: span 2;
+  }
+  .gallery > *:nth-child(6n + 1) {
+    grid-column: span 2;
+  }
+  .gallery .img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 8px;
+    background-color: #1d1d1b;
+  }
+  /* .gallery > *:nth-child(3n + 1) {
+    grid-column: span 2;
+  } */
+
+  /* 3 columns & 4 columns */
+  /* @media (max-width: 1829px) {
+    
+    .gallery {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .gallery > *:nth-child(3n),
+    .gallery > *:nth-child(6n + 1) {
+      grid-column: unset;
+    }
+    .gallery > *:nth-child(4n) {
+      grid-column: span 2;
+    }
+    .gallery > *:nth-child(4n + 1) {
+      grid-column: span 2;
+    }
+  } */
+  @media (max-width: 4000px) {
+    .gallery {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 1197px) {
+    /* 2 columns */
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery > *:nth-child(4n),
+    .gallery > *:nth-child(4n + 1) {
+      grid-column: unset;
+    }
+    .gallery > *:nth-child(3n) {
+      grid-column: span 2;
+    }
+  }
+  @media (max-width: 600px) {
+    .gallery .img {
+      height: 180px;
+    }
+  }
+  @media (max-width: 350px) {
+    /* 1 column */
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+    .gallery > * {
+      grid-column: unset !important;
+    }
+  }
+</style>

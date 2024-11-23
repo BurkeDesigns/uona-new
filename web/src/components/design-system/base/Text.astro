@@ -1,0 +1,95 @@
+---
+let { el, color, ...attrs } = Astro.props;
+let tag = el ? el.split(/[-\s]/).pop() : "p";
+---
+
+{
+  tag == "p" && (
+    <p
+      el
+      style={
+        color != null
+          ? `--color:var(--color-${color}); ${attrs.style}`
+          : attrs.style
+      }
+      {...attrs}
+    >
+      <slot />
+    </p>
+  )
+}
+{
+  tag == "h1" && (
+    <h1
+      el
+      style={
+        color != null
+          ? `--color:var(--color-${color}); ${attrs.style}`
+          : attrs.style
+      }
+      {...attrs}
+    >
+      <slot />
+    </h1>
+  )
+}
+{
+  tag == "h2" && (
+    <h2
+      el
+      style={
+        color != null
+          ? `--color:var(--color-${color}); ${attrs.style}`
+          : attrs.style
+      }
+      {...attrs}
+    >
+      <slot />
+    </h2>
+  )
+}
+{
+  tag == "h3" && (
+    <h3
+      el
+      style={
+        color != null
+          ? `--color:var(--color-${color}); ${attrs.style}`
+          : attrs.style
+      }
+      {...attrs}
+    >
+      <slot />
+    </h3>
+  )
+}
+{
+  tag == "h4" && (
+    <h4
+      el
+      style={
+        color != null
+          ? `--color:var(--color-${color}); ${attrs.style}`
+          : attrs.style
+      }
+      {...attrs}
+    >
+      <slot />
+    </h4>
+  )
+}
+{
+  tag == "h5" && (
+    <h5
+      el
+      style={
+        color != null
+          ? `--color:var(--color-${color}); ${attrs.style}`
+          : attrs.style
+      }
+      {...attrs}
+    >
+      <slot />
+    </h5>
+  )
+}

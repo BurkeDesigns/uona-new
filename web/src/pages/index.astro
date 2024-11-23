@@ -4,7 +4,7 @@ import Header from "@components/Header/index.astro";
 import Footer from "@components/Footer/index.astro";
 import Calendar from "@components/Calendars/index.astro";
 
-import Gallery from "@components/Gallery/index.astro";
+import Gallery from "@components/Gallery/Gallery.astro";
 import Slideshow from "@components/Slideshow/Slideshow.astro";
 import Tools from "@components/Tools/index.astro";
 import Text from "@components/Text";
@@ -23,7 +23,24 @@ let uonaWorld = (
 ---
 
 <style>
+  .tools > * {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px;
+  }
+
+  .tools .bg {
+    background-image: url(/images/book.jpeg);
+    height: 168px;
+    object-fit: cover;
+  }
+
   .tools h3 {
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 -64px 28px -20px rgba(0, 0, 0, 0.8) inset;
+    color: #fff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 1);
     font-size: 23px !important;
     line-height: 1em;
   }
@@ -244,7 +261,18 @@ let uonaWorld = (
       <ul class="section">
         <div>
           <h1 class="heading">gallery</h1>
-          <!-- <Gallery /> -->
+          <br />
+          <br />
+          <Gallery limit={6} />
+          <br />
+          <br />
+          <div class="flex">
+            <a
+              href="/gallery"
+              class="button"
+              style="--box-shadow:0 0 0 2px var(--bg-color);">View Gallery</a
+            >
+          </div>
         </div>
       </ul>
       <ul class="section" style="--bg-color:#fff;">

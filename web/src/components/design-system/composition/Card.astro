@@ -1,0 +1,10 @@
+---
+import {Btn, List, Text} from '@design-system/index.astro'
+let { el, ...attrs } = Astro.props;
+const {label, url} = attrs;
+---
+<List el="xsm">
+    <img src="https://images.pexels.com/photos/13037579/pexels-photo-13037579.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+    <Text>{label}</Text>
+    <Btn>Button</Btn>
+</List>

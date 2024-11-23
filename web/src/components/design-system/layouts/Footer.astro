@@ -1,0 +1,7 @@
+---
+let { el, ...attrs } = Astro.props;
+const name = "footer";
+---
+<footer el={el? `${name}-${el}`:name} {...attrs}>
+    <slot />
+</footer>
