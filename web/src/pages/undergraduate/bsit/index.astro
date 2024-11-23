@@ -1,0 +1,198 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/web/bsit.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .course p {
+    margin: 0;
+  }
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+  .full {
+    box-sizing: border-box;
+  }
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+  #catagory div {
+    background: transparent;
+    color: #000;
+    max-width: inherit;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="BSIT | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Undergraduate<p>Information Technology</p></div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Overview</h1>
+          <div class="paddingReg">
+            As computer systems and networks become increasingly central to
+            business, information technology professionals with the skills to
+            install, configure, and troubleshoot these systems are essential for
+            successful business operations. <br /><br />The purpose of the
+            Bachelor of Science in Information Technology (BSIT) program is to
+            prepare students to acquire knowledge in theoretical and practical
+            applications in computer hardware, software, and information
+            systems. Students participate in intensive computer laboratory
+            assignments, become skilled in solving research problems, and
+            conducting oral and written presentations.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/undergraduate"
+              style="--box-shadow:0 0 0 2px var(--color);">More Programs</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Curriculum</h1>
+          <div class="paddingReg">
+            <h1 class="subtitledesc">General Education (12 Courses)</h1>
+            <!-- <ul class=course>
+                  <li id=catagory><div>Course</div><div>Credit Hrs</div></li>
+                  <li><div><p><span class=bold>ENGL 101</span> - Oral Communication</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>ENGL 102</span> - English Composition </p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>ENGL 103</span> - Advanced Writing</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MATH 101</span> - College Algebra</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MATH102</span> - Calculus</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>QANT 301</span> - Statistics</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>SOSC 101</span> - Sociology</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>SOSC 102</span> - Psychology</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>SOSC 103</span> - Political Science</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>SOSC 201</span> - Law and Ethics</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>SOSC 202</span> - American Cultural Studies</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>SCIN 201</span> - Future Studies</p></div><div><p>4.5</p></div></li>
+  
+              </ul> -->
+            <h1 class="subtitledesc">Common Core (8 Courses)</h1>
+            <!-- <ul class=course>
+                  <li><div><p><span class=bold>TECH 101</span> - Introduction to Computers</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>ENGL 201</span> - Business Communication</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>INST 201</span> - Introduction to Information Systems</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 201</span> - Principles of Management</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 203</span> - Principles of Project Management</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>TECH 301</span> - Technology Management</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 402</span> - Business Law and Ethics</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>RESH 401</span> - Research Methods</p></div><div><p>4.5</p></div></li>
+              </ul> -->
+            <h1 class="subtitledesc">Program Core (11 Courses)</h1>
+            <!-- <ul class=course>
+                  <li><div><p><span class=bold>MATH 201</span> - Discrete Mathematics</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>CMSC 201</span> - Design and Analysis of Algorithms</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>INST 202</span> - Data Communications and Networking</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>TECH 203</span> - Network Management and Infrastructure</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>INST 301</span> - Computer Hardware and Software</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>INST 302</span> - Computer Server Environment</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>INST 401</span> - Business Intelligence</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>CMSC 301</span> - Introduction to Programming Logics</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>CMSC 302</span> - Operating Systems</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>CMSC 303</span> - JAVA Programming</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>CMSC 304</span> - Software Engineering</p></div><div><p>4.5</p></div></li>
+              </ul> -->
+            <h1 class="subtitledesc">Elective (8 Courses)</h1>
+            <!-- <ul class="flex">
+                  <p class="full shadow">Students may choose from the various undergraduate-level core or elective courses offered in this and other programs. A sample selection of electives is listed as follows.</p>
+              </ul>
+              <ul class=course>
+                  <li><div><p><span class=bold>ACCT 301</span> - Principles of Accounting I</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>CMSC 401</span> - Database Management Systems</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>CMSC 402</span> - Web Design and Development</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>CMSC 403</span> - Mobile Technology</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>ECON 201</span> - Principles of Economics</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>ECON 301</span> - Introduction to Managerial Economics</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>ECON 302</span> - Global Economy</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>ENGL 301</span> - Creative Writing</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>ENGL 302</span> - Asian American Writers</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 202</span> - Introduction to Business</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 204</span> - Human Resources Management</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 302</span> - Principles of Marketing</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 303</span> - Business Finance</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 304</span> - Leadership Theories and Practices</p></div><div><p>4.5</p></div></li>
+                  <li><div><p><span class=bold>MGMT 306</span> - Small Business Management</p></div><div><p>4.5</p></div></li>
+              </ul> -->
+            <h1 class="subtitledesc">Capstone (1 Course)</h1>
+            <!-- <ul class=course>
+                  <li><div><p><span class=bold>CAPS 490</span> - Undergraduate Capstone</p></div><div><p>4.5</p></div></li>
+              </ul> -->
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

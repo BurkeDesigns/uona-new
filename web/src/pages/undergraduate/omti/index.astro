@@ -1,0 +1,123 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/files/uploads/backgrounds/undergraduate/omti_bg.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .course p {
+    margin: 0;
+  }
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+  .full {
+    box-sizing: border-box;
+  }
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+  #catagory div {
+    background: transparent;
+    color: #000;
+    max-width: inherit;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="OMTI | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>
+          Undergraduate<p>
+            Diploma in Operations Management for Technical Industries
+          </p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Overview</h1>
+          <div class="paddingReg">
+            The intent of the Diploma in Operations Management for Technical
+            Industries (OMTI) program is to prepare students with the knowledge
+            of technical concepts, regulations, and applications for operations
+            management. Entry-level managers who are able to plan,
+            trouble-shoot, and oversee technical operations and work sites.
+            Specialists, who have essential knowledge of field operations and
+            the competencies required to transition to first-line supervisory
+            positions within a range of skilled-trades environments.
+          </div>
+          <div class="flex">
+            <!-- <a href="OccupationalAssociateCurriculum.pdf" class="button" style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);">view courses</a> -->
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+          <!-- <a href="/undergraduate" style="color:#fff;text-align:center;margin:auto;">More Programs</a> -->
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

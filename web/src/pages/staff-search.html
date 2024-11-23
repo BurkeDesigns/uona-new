@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Search - UoNA</title>
+</head>
+<style>
+* {
+  box-sizing: border-box;
+	outline:none;
+}
+	body{
+		font-family:sans-serif;
+		font-size:16px;
+		background-color:#4067b1;
+		margin:0;
+		padding:0;
+	}
+	.background{
+		background-color:#4067b1;
+		background-blend-mode: soft-light;
+		background-image: url(https://burkedesigns.biz/uona/images/web/building.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		position:absolute;
+		top:0;
+		min-height:100%;
+		min-width:100%;
+		z-index: -1;
+		box-shadow: 100px -100px 200px #4067b1 inset;
+		
+	}
+	ul{
+		display:flex;
+		flex-direction:column;
+		padding:0;
+		margin:0;
+		list-style-type: none;
+		width:100%;
+		max-width:600px;
+		
+	}
+	ul li{
+		width:100%;
+		background-color:rgba(255,255,255,.9);
+		color:#222;
+		margin:5px 0;
+		padding:15px;
+	}
+	li div{
+		display:inline-block;
+	}
+	li div:nth-child(2){
+		float:right;
+	}
+	section{
+		width:100%;
+		padding:10px;
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		background-image: url(blogo.svg);
+		background-repeat: no-repeat;
+		background-size:200px;
+		background-position: center top;
+		padding-top:200px;
+		margin-top:30px;
+	}
+	input{
+		width:100%;
+		border-radius:50px;
+		padding:10px 10px 10px 45px;
+		background-image:url(search.svg);
+		background-repeat: no-repeat;
+		background-size: 20px;
+		background-position: center left 15px;
+		background-color:rgba(255,255,255,.9);
+		color:#222;
+		border:0;
+		margin:30px 0;
+		max-width:600px;
+		font-size:16px;
+		font-family: sans-serif;
+	}
+	input:focus{
+		box-shadow: 0 5px 0 rgba(0,0,0,.3);
+	}
+	h2{
+		color:#fff;
+	}
+	section>div{
+		width:100%;
+		max-width:600px;
+	}
+	div span{
+		color:#fff;
+		padding:15px;
+		display:inline-block;
+		font-weight:bold;
+	}
+	div span:nth-child(2){
+		float:right;
+	}
+</style>
+<body>
+
+
+</head>
+<body>
+<div class=background></div>
+<section>
+
+<h2>Staff Search</h2>
+<input type="search" id=search onkeyup="myFunction()" placeholder="Search for names..">
+<div><span>Name</span><span>Office #</span></div>
+<ul></ul>
+</section>
+<script>
+	
+
+	var inputVal = document.getElementsByTagName("input")[0],
+  		ul = document.getElementsByTagName("UL")[0];
+	
+	function addLi(c,num){
+		var add="<li><div>"+c+"</div><div>"+num+"</div></li>";
+		ul.innerHTML+=add;
+	}
+
+addLi("Jill Martin", "3015");
+addLi("Marty Martin", "3005");
+addLi("Peter C. West", "3205");
+addLi("Jason Koo", "3007");
+addLi("John Hsu", "3007");
+addLi("Susan Boslaugh", "3207");
+addLi("Z.J. Peng", "3211");
+addLi("Culver Fortna", "3009");
+addLi("Linda Lin", "3209");
+addLi("Joshua D. Khosrofian", "3209");
+addLi("Betty Bektesh", "3011");
+addLi("Andrea Olson", "3019");
+addLi("Wesley Burke", "3021");
+addLi("Jeffrey Chow", "3021");
+addLi("Miguel Angel Moreno", "3025");
+addLi("Kirit Udeshi", "3023");
+addLi("Kai Zhang", "3213");
+
+	
+  var li = ul.getElementsByTagName("LI"),
+	  liLen = li.length;
+function myFunction() {
+
+  for (i = 0; i < liLen; i++) {
+    var div = li[i].getElementsByTagName("div")[0];
+      if (div.innerHTML.toUpperCase().search(inputVal.value.toUpperCase()) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }       
+  }
+}
+
+</script>
+
+</body>
+</html>
+
+</body>
+</html>

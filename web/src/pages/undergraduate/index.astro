@@ -1,0 +1,217 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/undergraduate.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .info {
+    margin: 20px 0;
+  }
+</style>
+
+<Page layout="hm fixed" title="Undergraduate | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Undergraduate<p>OMTI | OA-SPM | BSIT | BSBA</p></div>
+      </div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Undergraduate Programs Overview</h1>
+          <div class="paddingReg">
+            Aligned with the mission of the university, UoNA’s undergraduate
+            programs are designed for students to attain the essential knowledge
+            and skills to meet the needs and challenges in the areas of business
+            administration and technology throughout the world, and general
+            education that advances quality of life for all citizens.
+            <br /><br />
+
+            As an applied learning institution, the application of knowledge is
+            integrated in the design of all courses. The core courses of each
+            program center on developing career-relevant knowledge and skills.
+            Students learn from instructors who have earned academic credentials
+            as well as first-hand industry experience.
+          </div>
+          <div class="flex">
+            <a
+              href="/files/uploads/documents/bachelors%20associates%20and%20diploma%20course%20descriptions/Undergraduate-Course-Descriptions.UoNA.Catalog.2023.pdf"
+              class="button"
+              style="--box-shadow:0 0 0 2px var(--color);"
+              >view course descriptions</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Diploma Program</h1>
+          <div class="paddingReg">
+            <ul class="flex column">
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/files/uploads/backgrounds/undergraduate/omti_bg.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle">
+                    Diploma in Operations Management for Technical Industries
+                    (OMTI)
+                  </h1>
+                  <p>
+                    The intent of the Diploma in Operations Management for
+                    Technical Industries (OMTI) program is to prepare students
+                    with the knowledge of technical concepts, regulations, and
+                    applications for operations management. Entry-level managers
+                    who are able to plan, trouble-shoot, and oversee technical
+                    operations and work sites. Specialists, who have essential
+                    knowledge of field operations and the competencies required
+                    to transition to first-line supervisory positions within a
+                    range of skilled-trades environments.
+                  </p>
+                  <a href="/undergraduate/omti" class="button">learn more</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Associate's Program</h1>
+          <div class="paddingReg">
+            <ul class="flex column">
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/bsba.jpeg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle">
+                    Occupational Associate’s Degree in Supervision and Project
+                    Management (OA-SPM)
+                  </h1>
+                  <p>
+                    The intent of the Occupational associate’s degree in
+                    Supervision and Project Management program (OA-SPM) is to
+                    prepare students with the knowledge of technical concepts
+                    and regulations, and applications for supervising skilled
+                    technicians and operations. Entry-level project managers who
+                    can assess, plan, trouble-shoot, and oversee technical
+                    projects and work sites. Specialists, who have essential
+                    knowledge of field operations, and the competencies required
+                    to transition to first-line supervisory and entry-level
+                    management positions within a range of skilled-trades
+                    environments. Graduates from the program will have the tools
+                    to transition from technician to front-line supervisor
+                    and/or entry-level manager of field operations. Supervisors
+                    with the competencies to lead skilled-trades crews within
+                    technology fields. The main objective of the OA-SPM program
+                    is career-preparation. The OA-SPM degree can be earned by
+                    completing the minimum course and lab requirements of 90
+                    credit hours.
+                  </p>
+                  <!--                    <p>This program is specifically designed for individuals interested in careers in which they will be navigating a competitive global environment, whether for a multinational corporation, small-to-medium-sized enterprises looking to expand internationally or for governmental institutions that deal with international regulatory issues or foreign governmental agencies and other organizations.</p>-->
+                  <a href="/undergraduate/oaspm" class="button">learn more</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#f1f1f1;">
+        <div>
+          <h1 class="heading">Bachelor's Programs</h1>
+          <div class="paddingReg">
+            <ul class="flex column">
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/bsba.jpeg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle">
+                    Bachelor of Science in Business Administration (BSBA)
+                  </h1>
+                  <p>
+                    The BSBA program offers a comprehensive blend of theory and
+                    practical application that will allow students to apply
+                    their education towards existing career tracks and/or
+                    prepare them for entry-level positions in business and
+                    management.
+                  </p>
+                  <p>
+                    This program is specifically designed for individuals
+                    interested in careers in which they will be navigating a
+                    competitive global environment, whether for a multinational
+                    corporation, small-to-medium-sized enterprises looking to
+                    expand internationally or for governmental institutions that
+                    deal with international regulatory issues or foreign
+                    governmental agencies and other organizations.
+                  </p>
+                  <a href="/undergraduate/bsba" class="button">learn more</a>
+                </div>
+              </li>
+
+              <li class="info">
+                <div
+                  class="infoImg"
+                  style="background-image:url(/images/bsit.jpg)"
+                >
+                </div>
+                <div>
+                  <h1 class="infoTitle">
+                    Bachelor of Science in Information Technology (BSIT)
+                  </h1>
+                  <p>
+                    The BSIT program prepares students to acquire knowledge in
+                    theoretical and practical applications in computer hardware,
+                    software, and information systems. Students participate in
+                    intensive computer laboratory assignments, become skilled in
+                    solving research problems, and conducting oral and written
+                    presentations.
+                  </p>
+                  <p>
+                    As computer systems and networks become increasingly central
+                    to business, information technology professionals with the
+                    skills to install, configure, and troubleshoot these systems
+                    are essential for successful business operations.
+                  </p>
+                  <a href="/undergraduate/bsit" class="button">learn more</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Class Number Search - UoNA</title>
+</head>
+<style>
+* {
+  box-sizing: border-box;
+	outline:none;
+}
+	body{
+		font-family:sans-serif;
+		font-size:16px;
+		background-color:#4067b1;
+		margin:0;
+		padding:0;
+	}
+	.background{
+		background-color:#4067b1;
+		background-blend-mode: soft-light;
+		background-image: url(https://burkedesigns.biz/uona/images/web/building.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		position:absolute;
+		top:0;
+		min-height:100%;
+		min-width:100%;
+		z-index: -1;
+		box-shadow: 100px -100px 200px #4067b1 inset;
+		
+	}
+	ul{
+		display:flex;
+		flex-direction:column;
+		padding:0;
+		margin:0;
+		list-style-type: none;
+		width:100%;
+		max-width:600px;
+		
+	}
+	ul li{
+		width:100%;
+		background-color:rgba(255,255,255,.9);
+		color:#222;
+		margin:5px 0;
+		padding:15px;
+        transition: .28s;
+        cursor: pointer;
+	}
+    ul li:hover{
+        background-color: rgba(251, 213, 4, 0.9);
+    }
+	li div{
+		display:inline-block;
+	}
+	li div:nth-child(2){
+		float:right;
+	}
+	section{
+		width:100%;
+		padding:10px;
+		display:flex;
+		flex-direction: column;
+		align-items: center;
+		background-image: url(https://burkedesigns.biz/uona/blogo.svg);
+		background-repeat: no-repeat;
+		background-size:200px;
+		background-position: center top;
+		padding-top:200px;
+		margin-top:30px;
+	}
+	input{
+		width:100%;
+		border-radius:50px;
+		padding:10px 10px 10px 45px;
+		background-image:url(https://burkedesigns.biz/uona/search.svg);
+		background-repeat: no-repeat;
+		background-size: 20px;
+		background-position: center left 15px;
+		background-color:rgba(255,255,255,.9);
+		color:#222;
+		border:0;
+		margin:30px 0;
+		max-width:600px;
+		font-size:16px;
+		font-family: sans-serif;
+	}
+	input:focus{
+		box-shadow: 0 5px 0 rgba(0,0,0,.3);
+	}
+	h2{
+		color:#fff;
+	}
+	section>div{
+		width:100%;
+		max-width:600px;
+	}
+	div span{
+		color:#fff;
+		padding:15px;
+		display:inline-block;
+		font-weight:bold;
+	}
+	div span:nth-child(2){
+		float:right;
+	}
+    .map{
+        min-height: 2000px;
+        min-width: 100%;
+        position: absolute;
+        display:none;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgba(64, 103, 177, 0.9);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position-y: 100px;
+    }
+    .close{
+        width:60px;
+        height:60px;
+        color:#000;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        font-size:18px;
+        float:right;
+        cursor: pointer;
+        background-color:#fff;
+    }
+    #floor{
+        margin:0;
+        padding:30px;
+        color:#fff;
+    }
+    a{
+        color: #4067b1;
+        padding: 10px 25px;
+        background-color:#fff;
+        margin:5px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius:20px;
+        display:inline-block;
+    }
+</style>
+<body>
+    <div class=map>
+        <div class=close>X</div>
+        <h1 id=floor>2nd Floor</h1>
+    </div>
+<div class=background></div>
+<section>
+
+<h2>Classroom Number Search</h2>
+<input type="search" id=search onkeyup="myFunction()" placeholder="Search & CLICK on classrooms...">
+    <div><a href=/staff-search.html>Search Staff</a></div>
+<div><span>Class</span><span>Classroom #</span></div>
+<ul></ul>
+</section>
+<script>
+	
+
+	var inputVal = document.getElementsByTagName("input")[0],
+  		ul = document.getElementsByTagName("UL")[0],
+        map = document.getElementsByClassName('map')[0],
+        closeMap = document.getElementsByClassName('close')[0],
+        floor = document.getElementById('floor');
+    closeMap.onclick = function(){
+        map.style.display = 'none';
+    };
+	
+	function addLi(c,num){
+		var add="<li><div>"+c+"</div><div>"+num+"</div></li>";
+		ul.innerHTML+=add;
+	}	
+	
+	
+
+
+addLi('QANT510','3239');
+addLi('INST534','3229');
+addLi('FINS520','3000');
+addLi('TECH582','3221');
+addLi('MGMT515','3059');
+addLi('INST574','3051');
+addLi('ENGL201','3028');
+addLi('DATA523','3004');
+addLi('ACCT520','3225');
+addLi('CMSC512','3225');
+addLi('ACCT522','3221');
+addLi('ECON520','3059');
+addLi('INST569','3051');
+addLi('MGMT600','3000');
+addLi('INST600','3000');
+addLi('CMSC600','3000');
+addLi('TECH515','4000');
+addLi('INST401','3000');
+addLi('MGMT204','3000');
+addLi('ENGR003','3027');
+addLi('ENGR001','3221');
+
+
+
+    addLi('Library', 'Library');
+	
+  var li = ul.getElementsByTagName("LI"),
+	  liLen = li.length;
+function myFunction() {
+
+  for (i = 0; i < liLen; i++) {
+    var div = li[i].getElementsByTagName("div")[0];
+      if (div.innerHTML.toUpperCase().search(inputVal.value.toUpperCase()) > -1) {
+        li[i].style.display = "";
+      } else {
+        li[i].style.display = "none";
+      }       
+  }
+}
+for (i = 0; i < liLen; i++) {
+    li[i].onclick = function(){
+        var mapImg = this.getElementsByTagName("div")[1].innerHTML;
+        map.style.backgroundImage = 'url(Map/'+mapImg+'.png)';
+        map.style.display = 'block';
+        if(parseInt(mapImg.charAt(0))>2){
+            floor.innerHTML = "3rd Floor";
+        }else{
+            floor.innerHTML = "2nd Floor";
+        }
+    };
+}
+
+</script>
+
+</body>
+</html>
+
+</body>
+</html>

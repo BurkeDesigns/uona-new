@@ -5,6 +5,7 @@ import Footer from "@components/Footer/index.astro";
 import Calendar from "@components/Calendars/index.astro";
 
 import Gallery from "@components/Gallery/index.astro";
+import Slideshow from "@components/Slideshow/Slideshow.astro";
 import Tools from "@components/Tools/index.astro";
 import Text from "@components/Text";
 import { Image } from "astro:assets";
@@ -20,6 +21,13 @@ let uonaWorld = (
   )
 )[0];
 ---
+
+<style>
+  .tools h3 {
+    font-size: 23px !important;
+    line-height: 1em;
+  }
+</style>
 
 <Page layout="hm fixed">
   <!-- <Aside client:only="react" />
@@ -48,7 +56,9 @@ let uonaWorld = (
         </div>
       </div>
     </section>
+
     <section>
+      <Slideshow />
       <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
         <div>
           <Text as="h4" color="white" style={{ textAlign: "center" }}

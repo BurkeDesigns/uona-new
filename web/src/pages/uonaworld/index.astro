@@ -1,0 +1,114 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+
+let background = (
+  await Astro.glob(
+    "/public/files/uploads/backgrounds/uonaworld/*.{jpg,png,gif}"
+  )
+)[0];
+---
+
+<style define:vars={{ background: `url(${background.default.src})` }}>
+  #video {
+    background-image: var(--background);
+    background-attachment: unset;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+  }
+</style>
+
+<Page layout="hm fixed" title="UoNA World | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <!-- <div class="maintitle"><div>International Student</div></div> -->
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading content">UoNA World</h1>
+          <div class="paddingReg content">
+            Through close partnership with universities abroad, UoNA offers
+            outstanding US higher education that is affordable and accessible to
+            students around the world.
+            <br />
+            <br />
+            International students can take classes in their home countries or come
+            to the US for a life-changing experience. US students can have an instant
+            reach to the world and exponentially expand their horizon!
+            <br />
+            <br />
+
+            Be part of the UoNA global network and enjoy the best of both
+            worlds!
+          </div>
+          <div class="flex">
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <!--<h1 class="heading content">International Student Services</h1>-->
+          <div class="paddingReg">
+            Vanung University, Taiwan <a href="https://www.vnu.edu.tw/"
+              >https://www.vnu.edu.tw/</a
+            >
+            <br /><br />
+
+            Beijing Institute of Petrochemical Technology, China <a
+              href="http://www.bipt.edu.cn/">http://www.bipt.edu.cn/</a
+            >
+            <br /><br />
+            Yango University, China <a href="http://old.ygu.edu.cn/en/"
+              >http://old.ygu.edu.cn/en/</a
+            >
+
+            <br /><br />
+            Universidad de Morón, Argentina <a
+              href="http://www.unimoron.edu.ar/">http://www.unimoron.edu.ar/</a
+            >
+            <br /><br />
+            Universidad Privada Cumbre, Bolivia <a href="/WEB_UONA.pdf"
+              >https://www.cumbre.edu.bo/</a
+            >
+
+            <br /><br />
+            St. Teresa University, St. Vincent <a
+              href="http://saintteresauniversity.org/portal/master-of-business-administration-uona/"
+              >http://saintteresauniversity.org/portal/master-of-business-administration-uona/</a
+            >
+
+            <br /><br />
+            Microlink Information College, Ethiopia <a
+              href="http://microlink.edu.et/">http://microlink.edu.et/</a
+            >
+          </div>
+          <!--
+              <div class="flex">
+                  <a class="button" href="/services/iso">International services</a>
+              </div>
+              -->
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

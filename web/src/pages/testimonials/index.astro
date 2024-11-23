@@ -1,0 +1,144 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/testimonials.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+</style>
+
+<Page layout="hm fixed" title="Testimonials | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle"><div>Testimonials</div></div>
+    </section>
+    <section>
+      <h1 class="title">Testimonials</h1>
+
+      <ul class="flex column">
+        <li class="shadow full info">
+          <div
+            class="infoImg"
+            style="background-image:url(/images/testimonials2.jpg)"
+          >
+          </div>
+          <div>
+            <h1 class="infoTitle">Great Community, Incredible Support</h1>
+            <p>
+              "UoNA is a great community. I have benefited tremendously through
+              learning from my fellow classmates and the professors.
+            </p>
+            <p>
+              The staff at UoNA are incredibly supportive and responsive.
+              Whenever I have difficulties in school or at internships, they
+              always help me tackle those issues in a timely manner."
+            </p>
+            <p><span class="bold">Clara Ma, MSIT program graduate</span></p>
+          </div>
+        </li>
+
+        <li class="shadow full info">
+          <div
+            class="infoImg"
+            style="background-image:url(/images/testimonials3.jpg)"
+          >
+          </div>
+          <div>
+            <h1 class="infoTitle">
+              UoNA fits the need of business executives.
+            </h1>
+            <p>
+              The University of North America is not your typical institution. 
+              They work well with students like me who have a career and a
+              family and can’t just stop working for two or more years to
+              complete a Doctorate or Master’s degree.
+            </p>
+            <p>
+              UoNA understands that business executives, military officers and
+              working people who want an advanced degree cannot go to classes
+              when it is convenient for the professors… we need and want classes
+              that are offered when we are not at work, like during the weekends
+              or weekday nights.
+            </p>
+            <p>
+              Unlike many small institutions, the University of North America is
+              accredited. Its accreditation by the Accrediting Council of
+              Independent Colleges and Schools (ACICS) is proof that this
+              institution invests in its professors, curriculum, student
+              services, and most importantly its smaller class sizes necessary
+              to help their students succeed.
+            </p>
+            <p>
+              As a fifty year old father of five, going back to school to obtain
+              a doctoral degree was no easy task.  I’m convinced if it were not
+              for the professors,  administrators, and my fellow students at
+              UoNA, I would have dropped out of the program.
+            </p>
+            <p>
+              If you are a military officer or business executive like I am,
+              with very limited time, this is the university for you.
+            </p>
+            <p>
+              <span class="bold"
+                >William E. Yaglou <br /><br />Senior Vice President, Sodexo,
+                program graduate</span>
+            </p>
+          </div>
+        </li>
+
+        <li class="shadow full info">
+          <div
+            class="infoImg"
+            style="background-image:url(/images/testimonials4.jpg)"
+          >
+          </div>
+          <div>
+            <h1 class="infoTitle">One Course, A Job Offer</h1>
+            <p>
+              My first encounter with the Splunk software was Data 521, a course
+              I took in summer 2016. In this course, we used Splunk to determine
+              some variables on the projects, such as events, stats, charts,
+               sales analyses, Geo locations and deriving IP addresses. The
+              course gave me an in-depth knowledge of Splunk.
+            </p>
+            <p>
+              Fast forward to April 2017. I got an interview with the Splunk
+              company, the company that makes the Splunk software. They were
+              very impressed during the interview that I have a good knowledge
+              of the software. I was offered a position as a support engineer
+              for the company!
+            </p>
+            <p>
+              I would like to thank Prof. John Hsu for his awesome skills in
+              teaching the course and also the university president Mrs. Jill
+              Martin and all of the UoNA staff members for doing a tremendous
+              job in helping students grow in and out of the classroom.
+            </p>
+            <p>
+              <span class="bold"
+                >Joseph Iriogbe, MSIT program graduate<br /><br />Support
+                Engineer, Splunk</span>
+            </p>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>

@@ -18,22 +18,22 @@
     "@astrojs/check": "0.9.4",
     "@astrojs/netlify": "5.5.4",
     "@astrojs/node": "^8.3.4",
-    "@astrojs/react": "^3.6.2",
+    "@astrojs/react": "^3.6.3",
     "@portabletext/react": "^3.1.0",
     "@preact/signals-react": "^2.2.0",
-    "@sanity/astro": "^3.1.4",
-    "@sanity/client": "^6.21.3",
-    "@sanity/types": "^3.54.0",
-    "@types/react": "^18.3.3",
+    "@sanity/astro": "^3.1.6",
+    "@sanity/client": "^6.22.5",
+    "@sanity/types": "^3.64.3",
+    "@types/react": "^18.3.12",
     "astro": "4.16.10",
     "chokidar": "^3.6.0",
     "gsap": "^3.12.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "sanity": "^3.54.0",
-    "typescript": "^5.5.4"
+    "sanity": "^3.64.3",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.6"
+    "@types/bun": "^1.1.13"
   }
 }

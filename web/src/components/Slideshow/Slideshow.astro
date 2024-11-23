@@ -1,0 +1,113 @@
+---
+import { Image, Picture } from "astro:assets";
+const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
+---
+
+<div class="slideshow">
+  {
+    imageFiles.map((img) => (
+      <Picture
+        src={img.default}
+        formats={["avif"]}
+        width="1920"
+        alt="Photo"
+        class="img"
+      />
+    ))
+  }
+  <div class="shadowGradient"></div>
+</div>
+<script>
+  // import { onMount } from "svelte";
+  import { gsap } from "gsap";
+  // GSAP animation logic here seemless loop:
+  //   https://www.snorkl.tv/greensock-staggers-with-seamless-loops/
+
+  let targets = document.querySelectorAll(".img");
+  let numOfTargets = targets.length;
+  let pause = 1;
+  let duration = 3;
+  let stagger = duration + pause;
+  let repeatDelay = stagger * (numOfTargets - 1) + pause;
+
+  const tl = gsap.timeline({ repeat: -1 });
+
+  tl.fromTo(
+    ".img",
+    {
+      duration: duration,
+      autoAlpha: 0,
+      scale: 1.2,
+      ease: "power2.inOut",
+      x: "5%",
+      rotation: 3,
+      stagger: {
+        each: stagger,
+        repeat: -1,
+        repeatDelay: repeatDelay,
+      },
+    },
+    {
+      duration: duration,
+      autoAlpha: 1,
+      scale: 1,
+      ease: "power2.inOut",
+      x: "0%",
+      rotation: 0,
+      stagger: {
+        each: stagger,
+        repeat: -1,
+        repeatDelay: repeatDelay,
+      },
+    }
+  ).to(
+    ".img",
+    {
+      duration: duration,
+      autoAlpha: 0,
+      ease: "power2.inOut",
+      x: "-5%",
+      scale: 1.2,
+      rotation: -3,
+      stagger: {
+        each: stagger,
+        repeat: -1,
+        repeatDelay: repeatDelay,
+      },
+    },
+    stagger
+  );
+
+  document.addEventListener("astro:page-load", () => {});
+</script>
+<style>
+  .slideshow {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: calc(100svh - 340px);
+    width: 100%;
+    opacity: 1;
+    overflow: hidden;
+    background: black;
+  }
+  .img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    opacity: 0;
+  }
+  .shadowGradient {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      134deg,
+      hsl(0deg 0% 0% / 35%),
+      transparent
+    );
+  }
+</style>

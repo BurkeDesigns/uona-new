@@ -1,0 +1,554 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/international.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+
+  .menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: #ccc;
+    position: absolute;
+    width: 190px;
+    display: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  .show {
+    display: block;
+  }
+
+  .menu li {
+    padding: 15px 20px;
+    color: #555;
+    transition: 0.28s;
+    cursor: pointer;
+  }
+
+  .menu li:hover {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+
+  .drop {
+    font-size: 12px;
+    display: flex;
+    padding: 0 6px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    background: #555;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .dropMenu {
+    width: 100%;
+    display: inline-block;
+  }
+
+  .calc {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    font-size: 12px;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 330px;
+    margin: auto;
+    background: #fff;
+  }
+
+  .colTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 50px;
+    padding: 0 6px;
+  }
+
+  .colOne {
+    width: 100%;
+    min-width: 140px;
+  }
+
+  .colTwo {
+    background: #666;
+    color: #fff;
+    max-width: 80px;
+    width: 100%;
+  }
+
+  .colThree {
+    background: #4168af;
+    color: #fff;
+    max-width: 80px;
+    width: 100%;
+  }
+
+  .odd {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .rowTitle,
+  .rowD {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .rowTitle {
+    justify-content: left;
+    padding: 5px 0px 5px 15px;
+  }
+
+  .drop:before {
+    content: "\2630";
+    margin-top: -3px;
+    margin-right: 10px;
+  }
+
+  .rowD input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    outline: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
+
+  .warning {
+    color: #fff;
+    padding: 0 20px;
+    background: #bd0707;
+    width: 100%;
+    max-width: 330px;
+    margin: auto;
+    display: flex;
+    box-sizing: border-box;
+    font-size: 14px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tools > * {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px;
+  }
+
+  .tools .bg {
+    background-image: url(/images/book.jpeg);
+    height: 168px;
+    object-fit: cover;
+  }
+
+  .tools h3 {
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 -64px 28px -20px rgba(0, 0, 0, 0.8) inset;
+    color: #fff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 1);
+  }
+  h3 {
+    font-size: 23px !important;
+    line-height: 1em;
+  }
+</style>
+
+<Page layout="hm fixed" title="Campus Life | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>Welcome Students</div>
+      </div>
+    </section>
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+        <h1 class="heading">Student Tools</h1>
+        <div class="paddingReg">
+          <ul class="flex tools">
+            <li class="shadow flex column margin">
+              <a href="https://office.com">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/book.jpeg);"
+                >
+                </div>
+                <h3 class="h3">Student Portal</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <a href="/catalogs">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/catalog.jpeg);"
+                >
+                </div>
+                <h3 class="h3">Catalog</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <a href="/services/careers">
+                <div
+                  class="bg"
+                  style="background-image: url(https://cdn-e9de.kxcdn.com/images/careers.jpg);"
+                >
+                </div>
+                <div class="hiddenBG"></div>
+                <h3 class="h3">Career Services</h3>
+              </a>
+            </li>
+            <!-- <li class="shadow flex column margin">
+               <a href="calculator.html">
+                <div class="bg" style="background-image: url(/images/calendar.jpg);"></div>
+                <h3 class="h3">Estimate Tuition</h3>
+                </a>
+              </li> -->
+          </ul>
+        </div>
+        <!-- <div class="flex">
+                  <a href="calculator.html" class="button" style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);">Estimate Tuition</a>
+              </div> -->
+      </div>
+    </ul>
+    <!--
+<ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+  <div>
+     <h1 class="heading content">Student Tools</h1>
+      <div class="paddingReg content">
+          
+      </div>
+  </div>
+</ul>
+-->
+    <ul class="section">
+      <div>
+        <h1 class="heading">Tuition Calculator</h1>
+        <div class="paddingReg">
+          <div class="calc shadow">
+            <div class="colOne">
+              <div class="dropMenu">
+                <div class="drop">BACHELORS</div>
+                <ul class="menu">
+                  <li>BACHELORS</li>
+                  <li>MASTERS</li>
+                </ul>
+              </div>
+              <div class="rowTitle">PER CREDIT HOUR</div>
+              <div class="rowTitle">PER QUARTER</div>
+              <div class="rowTitle">REQUIRED CREDITS</div>
+              <div class="rowTitle">CUSTOM CREDITS</div>
+            </div>
+            <div class="colTwo">
+              <div class="colTitle">CREDITS</div>
+              <div class="rowD odd">1</div>
+              <div class="rowD">15</div>
+              <div class="rowD odd">180</div>
+              <div class="rowD">
+                <input
+                  placeholder="Input #"
+                  id="custom"
+                  maxlength="5"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="colThree">
+              <div class="colTitle">COST</div>
+              <div class="rowD odd">$ 300</div>
+              <div class="rowD">$ 4,500</div>
+              <div class="rowD odd">$ 54,000</div>
+              <div class="rowD" id="cOutput">$ 0</div>
+            </div>
+          </div>
+          <div class="warning">Estimated total tuition, subject to change.</div>
+        </div>
+      </div>
+    </ul>
+    <ul class="section" style="--bg-color:#fff;">
+      <div>
+        <h1 class="heading">Student Resources</h1>
+        <div class="paddingReg">
+          <ul class="flex tools">
+            <li class="shadow flex column margin">
+              <a href="/services/esports">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/esports@400.jpg);"
+                >
+                </div>
+                <h3 class="h3">Esports</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <a href="/services">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/services.jpg);"
+                >
+                </div>
+                <h3 class="h3">Student Services</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <a href="/services/documents">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/web/id.jpg);"
+                >
+                </div>
+                <h3 class="h3">Replacement ID</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <a href="/services/documents">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/web/transcript.jpg);"
+                >
+                </div>
+                <h3 class="h3">Request Transcript</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <a href="/forms">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/money.jpg);"
+                >
+                </div>
+                <h3 class="h3">Scholarship Forms</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <a href="/services/graduation">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/grad.jpg);"
+                >
+                </div>
+                <h3 class="h3">Graduation Fee</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <!-- http://home.uona.edu/UoNA/pub/LIT_8.asp?ctyp=LITERATURE&pcatid=0&catid=2127&ctxid=2672&single=Y -->
+              <a href="/forms">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/forms.jpg);"
+                >
+                </div>
+                <h3 class="h3">Student Forms</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <!-- http://home.uona.edu/UoNA/pub/LIT_8.asp?ctyp=LITERATURE&pcatid=0&catid=2127&ctxid=2672&single=Y -->
+              <a href="/services/healthcare">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/healthcare.jpg);"
+                >
+                </div>
+                <h3 class="h3">Healthcare</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <!-- http://home.uona.edu/UoNA/pub/LIT_8.asp?ctyp=LITERATURE&pcatid=0&catid=2127&ctxid=2672&single=Y -->
+              <a
+                href="/files/uploads/documents/student%20responsibilities/student%20rights%20and%20responsibilities.pdf"
+                target="_blank"
+              >
+                <div
+                  class="bg"
+                  style="background-image: url(https://images.pexels.com/photos/3278770/pexels-photo-3278770.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"
+                >
+                </div>
+                <h3 class="h3">Student Responsibilities</h3>
+              </a>
+            </li>
+            <li class="shadow flex column margin">
+              <a
+                href="/files/uploads/documents/student%20appeals%20and%20complains%20policy/Procedures%20for%20student%20appeals%20and%20complaints.pdf"
+                target="_blank"
+              >
+                <div
+                  class="bg"
+                  style="background-image: url(https://images.pexels.com/photos/7735699/pexels-photo-7735699.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);"
+                >
+                </div>
+                <h3 class="h3">Appeals & Complaints</h3>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <div>
+        <h1 class="heading content">Visitors & Student Housing Options</h1>
+        <div class="paddingReg content">
+          <ul class="flex tools">
+            <li class="shadow flex column margin">
+              <a href="https://housing.uona.edu/">
+                <div
+                  class="bg"
+                  style="background-image: url(/images/room.jpg);"
+                >
+                </div>
+                <h3 class="h3">Off-Campus Housing</h3>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ul>
+
+    <ul class="section">
+      <div>
+        <h1 class="heading content">university news</h1>
+        <div class="paddingReg content" style="text-align:center;">
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fuona.edu%2F&tabs=timeline&width=300&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=478550432531385"
+            width="300"
+            height="500"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowTransparency="true"
+            allow="encrypted-media"
+            class="shadow"></iframe>
+        </div>
+      </div>
+    </ul>
+    <Footer />
+  </main>
+</Page>
+
+<script is:inline>
+  function classToggle(e) {
+    document.querySelector(e).classList.toggle("show");
+  }
+
+  function classAdd(e) {
+    document.querySelector(e).classList.add("show");
+  }
+
+  function classRemove(e) {
+    document.querySelector(e).classList.remove("show");
+  }
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  var creditHour = 350;
+  var colOne = document
+      .getElementsByClassName("colOne")[0]
+      .getElementsByClassName("rowTitle"),
+    colTwo = document
+      .getElementsByClassName("colTwo")[0]
+      .getElementsByClassName("rowD"),
+    colThree = document
+      .getElementsByClassName("colThree")[0]
+      .getElementsByClassName("rowD"),
+    drop = document.getElementsByClassName("drop")[0],
+    custom = document.getElementById("custom"),
+    cOutput = document.getElementById("cOutput");
+
+  function setCalc() {
+    var bachelors = [1, 13.5, 180];
+    var masters = [1, 9, 54];
+    var cost = [350, 390];
+    for (i = 0; i < colOne.length - 1; i++) {
+      if (drop.innerHTML == "BACHELORS") {
+        colTwo[i].innerHTML = bachelors[i];
+        creditHour = cost[0];
+      }
+      if (drop.innerHTML == "MASTERS") {
+        colTwo[i].innerHTML = masters[i];
+        creditHour = cost[1];
+      }
+      var out = colTwo[i].innerHTML * creditHour;
+      colThree[i].innerHTML = "$ " + numberWithCommas(out);
+    }
+  }
+  setCalc();
+
+  function menu() {
+    classToggle(".menu");
+  }
+
+  function hover() {
+    classAdd(".menu");
+  }
+
+  function end() {
+    classRemove(".menu");
+  }
+  document.querySelector(".drop").addEventListener("click", menu);
+  document.querySelector(".drop").addEventListener("mouseenter", hover);
+  document.querySelector(".menu").addEventListener("mouseleave", end);
+  var menuOptions = document
+    .getElementsByClassName("menu")[0]
+    .getElementsByTagName("li");
+  for (i = 0; i < menuOptions.length; i++) {
+    menuOptions[i].onclick = function () {
+      document.getElementsByClassName("drop")[0].innerHTML = this.innerHTML;
+      classToggle(".menu");
+      setCalc();
+      uOutput();
+    };
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function (e) {
+    if (!e.target.matches(".drop")) {
+      var myDropdown = document.getElementsByClassName("menu")[0];
+      if (myDropdown.classList.contains("show")) {
+        myDropdown.classList.remove("show");
+      }
+    }
+  };
+
+  function uOutput() {
+    cOutput.innerHTML =
+      "$" +
+      numberWithCommas(
+        custom.value *
+          parseInt(colThree[0].innerHTML.replace(",", "").replace("$", ""))
+      );
+  }
+
+  custom.onkeyup = function () {
+    uOutput();
+  };
+</script>
