@@ -19,7 +19,8 @@
     display: grid;
     grid-template-columns: max-content 1fr;
     justify-content: start;
-    align-content: center;
+    align-content: center !important;
+    align-items: center !important;
     justify-items: start;
 
     white-space: nowrap;
@@ -29,6 +30,7 @@
     user-select: none;
     transition:0.2s;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent; /* for removing the highlight */
 }
 .folder:hover{
     background: hsla(0, 0%, 100%, 0.05);
@@ -46,6 +48,7 @@
     transition:0.2s;
     cursor: pointer;
     border:2px solid transparent;
+    -webkit-tap-highlight-color: transparent; /* for removing the highlight */
     /* border:2px solid hsla(0, 0%, 100%, 0.45); */
 }
 .file:hover{

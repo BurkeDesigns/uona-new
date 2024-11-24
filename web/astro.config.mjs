@@ -3,6 +3,8 @@ import react from "@astrojs/react";
 
 import node from "@astrojs/node";
 
+import auth from "auth-astro";
+
 // https://astro.build/config
 export default defineConfig({
   experimental: {
@@ -19,7 +21,7 @@ export default defineConfig({
       exclude: ["bun:test"],
     },
   },
-  integrations: [react()],
+  integrations: [react(), auth()],
   output: "hybrid",
   // adapter: netlify(),
   adapter: node({
