@@ -1,9 +1,11 @@
 ---
 import { Image, Picture } from "astro:assets";
 const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
+
+const {...attrs} = Astro.props;
 ---
 
-<div class="slideshow">
+<div class="slideshow" {...attrs}>
   {
     imageFiles.map((img) => (
       <Picture

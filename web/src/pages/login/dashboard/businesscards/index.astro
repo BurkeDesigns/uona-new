@@ -1,0 +1,387 @@
+---
+---
+    <style is:inline>
+        @font-face {
+            font-family: 'Copperplate';
+            src: url('/assets/businesscards/COPRGTB.TTF'), url('/assets/businesscards/COPRGTL.TTF');
+            /*font-display: swap;*/
+        }
+
+        @font-face {
+            font-family: 'Segoe UI';
+            src: url('/assets/businesscards/segoeui.ttf'), url('/assets/businesscards/segoeuiz.ttf');
+            font-weight: normal;
+            /*font-display: swap; */
+        }
+
+        @font-face {
+            font-family: 'Segoe UI';
+            src: url('/assets/businesscards/segoeuiz.ttf');
+            font-weight: bold;
+            /*font-display: swap; */
+        }
+
+
+        .cardContainer {
+            box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+        }
+
+        canvas {
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+
+        }
+
+        .img {
+            opacity: 0;
+            position: absolute;
+            width: 300px;
+            z-index: -1;
+            top: 0;
+        }
+
+        #businesscards {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(50%, 1fr));
+            grid-auto-rows: minmax(calc(100svh - 200px), auto);
+            grid-template-areas: 'data card';
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        #businesscards>* {
+            padding: 48px;
+            background: #f1f1f1;
+            align-content: center;
+        }
+
+        .data {
+            grid-area: data;
+            display: grid;
+            justify-items: flex-end;
+            background: #fff;
+        }
+
+        .card {
+            display: grid;
+            justify-items: flex-start;
+            grid-area: card;
+            overflow: scroll;
+            box-shadow: 0 0 45px rgba(0, 0, 0, .3) inset;
+        }
+
+        .card>* {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 3.5in);
+            grid-template-rows: repeat(2, 2in);
+            grid-gap: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 360px;
+            justify-content: center;
+        }
+
+        form>* {
+            max-width: 360px;
+        }
+
+        form input {
+            border: 0;
+            padding: 8px 16px;
+            border-radius: 3px;
+            box-shadow: 0 0px 0px 1px rgba(0, 0, 0, .3);
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .download {
+            background-color: #4269af;
+            color: #fff;
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 3px;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .download:hover {
+            background-color: #000;
+        }
+
+        h1 {
+            margin-top: 0;
+            width: 100%;
+            font-size: 26px;
+            color: #4269af;
+            font-family: 'Copperplate';
+            font-weight: normal;
+        }
+
+        @media screen and (max-width: 800px) {
+            #businesscards {
+                grid-template-columns: 1fr;
+                grid-auto-rows: auto;
+                grid-template-areas: 'card''data';
+            }
+
+            #businesscards>* {
+                padding: 48px 0;
+            }
+
+            .card>* {
+                display: grid;
+                grid-template-columns: repeat(2, 3.5in);
+                grid-template-rows: 2in;
+                grid-gap: 20px;
+                padding: 0 20px;
+            }
+
+            .data {
+                justify-items: center;
+                padding: 48px 20px;
+                min-height: 100vh;
+                align-content: flex-start;
+            }
+        }
+
+    </style>
+
+    <div id="businesscards">
+        <section class="card">
+            <div>
+                <div class="cardContainer">
+                    <canvas class="frontSide" title="UoNA Business Card Front"></canvas>
+                </div>
+                <div class="cardContainer">
+                    <canvas class="backSide" title="UoNA Business Card Back"></canvas>
+                </div>
+            </div>
+        </section>
+        <section class="data">
+            <form action="#">
+                <h1>Business Card Generator</h1>
+                <input type="text" placeholder="Fullname, Title" class="title" value="Jill Martin, President">
+                <input type="text" placeholder="Phone #" class="phone" value="(571) 633-9651, D: (123) 456-7890">
+                <input type="text" placeholder="Fax" class="fax" value="FAX: (703) 229-8265, M: (123) 456-7890">
+                <input type="text" placeholder="Email" class="email" value="jill.martin@uona.edu">
+                <input type="text" placeholder="Address" class="address" value="12750 Fair Lakes Cir, Fairfax, VA 22033">
+                <div class="download">Download</div>
+            </form>
+        </section>
+    </div>
+    <img src="/assets/businesscards/blank_front.png" alt="" class="img">
+    <img src="/assets/businesscards/blank_back.png" alt="" class="img">
+
+<script is:inline>
+
+
+document.addEventListener('astro:page-load', () => {
+    if (window.location.path == '/login/dashboard/businesscards') {
+        init();
+        animate();
+    }
+  
+});
+    // JavaScript -----------------------------
+        function setupCanvas(canvas) {
+            // Get the device pixel ratio, falling back to 1.
+            //var dpr = window.devicePixelRatio || 1;
+            var dpr = 6;
+            // Get the size of the canvas in CSS pixels.
+            var rect = canvas.getBoundingClientRect();
+            // Give the canvas pixel dimensions of their CSS
+            // size * the device pixel ratio.
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            var c = canvas.getContext('2d');
+            // Scale all drawing operations by the dpr, so you
+            // don't have to worry about the difference.
+            c.scale(dpr, dpr);
+            return c;
+        }
+
+        // Now this line will be the same size on the page
+        // but will look sharper on high-DPI devices!
+
+        var containerFront = document.querySelectorAll('.cardContainer')[0],
+            canvasFront = document.querySelector('.frontSide'),
+            cFront = setupCanvas(canvasFront);
+
+        var containerBack = document.querySelectorAll('.cardContainer')[1],
+            canvasBack = document.querySelector('.backSide'),
+            cBack = setupCanvas(canvasBack);
+
+
+        function Text(c, text, font, weight = '', size, x, y, color, textShadow = '') {
+            this.x = x;
+            this.y = y;
+            this.font = font;
+            this.text = text;
+            this.color = color;
+            this.size = size;
+            this.textShadow = textShadow;
+            if (this.weight != '') {
+                this.weight = weight + ' ';
+            }
+
+            this.update = () => {
+                this.draw();
+            };
+
+            this.draw = () => {
+                c.beginPath();
+                if (this.textShadow == 'true') {
+                    c.shadowOffsetX = 0;
+                    c.shadowOffsetY = 8;
+                    c.shadowBlur = 20;
+                    c.shadowColor = "rgba(0, 0, 0, 0.4)";
+                }
+
+                c.font = this.weight + this.size + " " + this.font;
+                c.fillStyle = this.color;
+                c.textAlign = "left";
+                c.fillText(this.text, this.x, this.y);
+                c.shadowOffsetY = 0;
+                c.shadowBlur = 0;
+                c.closePath();
+            };
+        }
+
+        function URLimage(c, url, x, y, width, height) {
+            this.x = x;
+            this.y = y;
+            this.url = url;
+            this.width = width;
+            this.height = height;
+
+            this.image = new Image();
+
+            this.image.onload = () => {
+                this.loaded = true;
+                this.update(); // Redraw when the image is loaded
+                animate();
+            };
+            this.image.src = this.url;
+
+            this.update = () => {
+                if (this.loaded) {
+                    this.draw();
+                }
+            };
+
+            this.draw = () => {
+                c.beginPath();
+                c.drawImage(this.image, this.x, this.y, this.width, this.height);
+                c.closePath();
+            };
+        }
+
+        var circle,
+            text = {},
+            frontBG,
+            backBG;
+
+        function init() {
+
+            //circle = new Circle(50, 50, 30, 'yellow');
+            frontBG = new URLimage(cFront, '/assets/businesscards/blank_front.png', 0, 0, containerFront.offsetWidth, containerFront.offsetHeight);
+            backBG = new URLimage(cBack, '/assets/businesscards/blank_back.png', 0, 0, containerBack.offsetWidth, containerBack.offsetHeight);
+            //text.fullName = new Text(cFront, 'Jill Martin', 'Copperplate', '', '12.55pt', 31, 27, 'white', 'true');
+            text.title = new Text(cFront, 'Jill Martin, President', 'Segoe UI', 'bold', '10.11pt', 31.5, 45, '#fccc11', 'true');
+            //#4269af
+            text.phone = new Text(cFront, '(571) 633-9651, D: (123) 456-7890', 'Segoe UI', '', '6.48pt', 52, 101.5, '#4269af');
+            text.fax = new Text(cFront, 'FAX: (703) 229-8265, M: (123) 456-7890', 'Segoe UI', '', '6.48pt', 52, 118.5, '#4269af');
+            text.email = new Text(cFront, 'jill.martin@uona.edu', 'Segoe UI', '', '6.48pt', 52, 135.5, '#4269af');
+            text.address = new Text(cFront, '12750 Fair Lakes Cir, Fairfax, VA 22033', 'Segoe UI', '', '6.48pt', 52, 152.5, '#4269af');
+
+
+        }
+
+        async function animate() {
+            //requestAnimationFrame(animate);
+            cFront.clearRect(0, 0, innerWidth, innerHeight);
+            cBack.clearRect(0, 0, innerWidth, innerHeight);
+
+            frontBG.update();
+            backBG.update();
+            for (var key in text) {
+                text[key].update();
+            }
+
+            /*            
+            c.beginPath();
+            c.moveTo(shortestPoint.x, shortestPoint.y);
+            c.lineTo(circle.x, circle.y);
+            c.lineWidth = 2;
+            c.strokeStyle = 'red';
+            c.stroke();
+            c.closePath();
+            */
+        }
+
+        function updateText(t, dataLocation) {
+            dataLocation = t;
+            animate();
+        }
+
+        var title = document.querySelector('.title'),
+            phone = document.querySelector('.phone'),
+            email = document.querySelector('.email'),
+            address = document.querySelector('.address'),
+            fax = document.querySelector('.fax');
+
+        title.addEventListener('keyup', function() {
+            //console.log(this.value);
+            text.title.text = this.value;
+            animate();
+        });
+        phone.addEventListener('keyup', function() {
+            //console.log(this.value);
+            text.phone.text = this.value;
+            animate();
+        });
+        email.addEventListener('keyup', function() {
+            //console.log(this.value);
+            text.email.text = this.value;
+            animate();
+        });
+        address.addEventListener('keyup', function() {
+            //console.log(this.value);
+            text.address.text = this.value;
+            animate();
+        });
+        fax.addEventListener('keyup', function() {
+            //console.log(this.value);
+            text.fax.text = this.value;
+            animate();
+        });
+
+        init();
+        animate();
+        //window.addEventListener('keypress', animate);
+
+
+
+
+        function canvasDownloads() {
+            var imgFront = canvasFront.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
+            var link = document.createElement('a');
+            link.download = title.value.split(',')[0].toLowerCase().trim().replace(' ', '_') + "_uona_business_card_front.png";
+            link.href = imgFront;
+            link.click();
+
+            var imgBack = canvasBack.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
+            link.download = title.value.split(',')[0].toLowerCase().trim().replace(' ', '_') + "_uona_business_card_back.png";
+            link.href = imgBack;
+            link.click();
+        }
+
+        document.querySelector('.download').addEventListener('click', canvasDownloads);
+
+</script>

@@ -6,6 +6,7 @@ import "../theme/uona/styles.css";
 import "./styles.css";
 import "./uona.css";
 import Layout from "@components/Layout";
+import Posthog from "@components/posthog.astro";
 ---
 
 <!doctype html>
@@ -188,6 +189,8 @@ import Layout from "@components/Layout";
         display: none;
       }
     </style>
+    <!-- Analytics -->
+    <Posthog />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script
       type="text/javascript"

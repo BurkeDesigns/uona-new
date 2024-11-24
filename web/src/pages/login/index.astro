@@ -1,0 +1,66 @@
+---
+// import { SignIn, SignOut } from "auth-astro/components";
+// import { getSession } from "auth-astro/server";
+import List from "@components/List";
+import Btn from "@components/Button";
+import Page from "@layouts/page.astro";
+import Icon from "@components/Icon";
+import { post } from "@util/fetch";
+import { to } from "@util/navigation";
+import Slideshow from "@components/Slideshow/Slideshow.astro";
+import Link from "@components/Link";
+
+// const session = await getSession(Astro.request);
+
+// if (session != null) {
+// 	let user = await post(`http://localhost:3003/users/info`, {
+// 		email: session?.user?.email,
+// 	});
+// 	if (!user.email) return Astro.redirect("/signup");
+// 	session.user = {
+// 		...session.user,
+// 		...user,
+// 	};
+// 	return Astro.redirect("/test/api/generator");
+// }
+---
+
+<Page layout="hm">
+	<!-- <SignIn provider="google">Google Sign In</SignIn> -->
+	<header el="header"></header>
+	<main el="main" class="login">
+		<!-- <Slideshow style={{height: '100svh', position: 'absolute', zIndex: -1}} /> -->
+		<List el="md center" style={{ paddingTop: 200 }}>
+			<Link href="/">
+				<Icon name="logo" size={390} client:only="react" customStyle={{height: 100}} />
+			</Link>
+			<!-- <img src="/assets/logo/litpix_logo_light.svg" class="logo" /> -->
+			<!-- <SignIn provider="google" style={{ all: "unset" }}> -->
+				<Btn
+					client:only="react"
+					leftIcon="google"
+					variant="secondaryWhite"
+					url="/login/dashboard"
+					>Google Sign In</Btn
+				>
+			<!-- </SignIn> -->
+		</List>
+	</main>
+</Page>
+
+<style>
+	main{
+		min-height: calc(100svh - 80px);
+	}
+	.login .logo {
+		height: 100px;
+		width: auto;
+	}
+	body {
+		background-image: url(/assets/img/background.avif);
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		background-blend-mode: color-dodge;
+	}
+</style>

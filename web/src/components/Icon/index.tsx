@@ -1,27 +1,40 @@
 import React, { useState, useEffect } from "react";
 type SvgProps = React.SVGProps<SVGSVGElement>;
 import "./styles.css";
+// useful icons resource: https://ionic.io/ionicons
 
 export type IconNames =
 	| "logo"
+	| "bug"
+	| "badge"
+	| "server"
+	| "person"
+	| "trending-up"
+	| "folder"
+	| "brandmark"
 	| "home"
 	| "settings"
 	| "play-circle"
+	| "play"
 	| "upload"
 	| "logout"
 	| "image"
 	| "file"
+	| "archive-outline"
+	| "archive"
 	| "chevron-left"
 	| "chevron-right"
 	| "chevron-up"
 	| "chevron-down"
 	| "close"
 	| "fax"
+	| "filter"
 	| "menu"
 	| "minus"
 	| "phone"
 	| "plus"
 	| "search"
+	| "google"
 	| "facebook"
 	| "instagram"
 	| "linkedin"
@@ -33,9 +46,11 @@ export type IconNames =
 interface InlineSVGProps {
 	name: IconNames;
 	size?: "sm" | "md" | number;
+	variant?: "white" | "white-hover" | "primary-hover";
 	disabled?: any;
 	onClick?: any;
 	className?: string;
+	customStyle?: React.CSSProperties;
 }
 
 const InlineSVG: React.FC<InlineSVGProps> = ({
@@ -44,6 +59,8 @@ const InlineSVG: React.FC<InlineSVGProps> = ({
 	disabled,
 	className,
 	onClick,
+	variant,
+	customStyle
 }) => {
 	const [svgContent, setSvgContent] = useState<unknown | null>(null);
 
@@ -63,10 +80,11 @@ const InlineSVG: React.FC<InlineSVGProps> = ({
 
 	// Create a style object for custom size
 	const style =
-		size && typeof size === "number" ? { "--size": `${size}px` } : {};
+		size && typeof size === "number" ? { "--size": `${size}px`, ...customStyle } : {customStyle};
 
 	let classValue = "icon";
 	if (className) classValue += ` ${className}`;
+	if (variant) classValue += ` ${variant}`;
 	if (size != null && typeof size === "string") classValue += ` ${size}`;
 	if (disabled) classValue += ` disabled`;
 
