@@ -1,0 +1,29 @@
+.folders{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.folder{
+    height:45px;
+    padding: 0px 12px;
+    padding-right:20px;
+    border:2px solid hsla(0, 0%, 100%, 0.45);
+    border-radius: 10px;
+    display: inline-flex;
+    user-select: none;
+    transition:0.2s;
+    cursor: pointer;
+    width:190px;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    justify-content: start;
+    align-content: center;
+    justify-items: start;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.folder:hover{
+    background: hsla(0, 0%, 100%, 0.05);
+}

@@ -12,23 +12,30 @@ import { to } from "@util/navigation";
 ---
 
 <Page layout="am fixed">
-	<Aside client:only="react"/>
-    <!-- <Aside currentPage="ui" client:only="react"/> -->
-	<main el="main" id="analytics">
-		<List el="xsm p-lg" style={{ paddingLeft: 16, color: 'white' }}>
-			<Text as="h4" color="currentColor">Analytics</Text>
-		</List>
-		<iframe width="100%" height="400" frameborder="0" allowfullscreen src="https://us.posthog.com/embedded/MohhNhjUBXJiizryDkb-f9OPCnRDqA"></iframe>
-	</main>
+  <Aside client:only="react" />
+  <!-- <Aside currentPage="ui" client:only="react"/> -->
+  <main el="main" id="analytics">
+    <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
+      <Text as="h4" color="currentColor">Analytics</Text>
+    </List>
+    <iframe
+      width="100%"
+      height="400"
+      frameborder="0"
+      allowfullscreen
+      src="https://us.posthog.com/embedded/MohhNhjUBXJiizryDkb-f9OPCnRDqA"
+    ></iframe>
+  </main>
 </Page>
 
 <style>
-#analytics iframe{
-	height: calc(100svh - 200px);
-	border-radius: 10px;
-	border: 0;
-	overflow: hidden;
-	border:5px solid #ccc;
-	background-color: #fff;
-}
+  #analytics iframe {
+    height: calc(100svh - 200px);
+    border-radius: 10px;
+    border: 0;
+    overflow: hidden;
+    border: 5px solid #ccc;
+    background-color: #fff;
+    max-width: 1600px;
+  }
 </style>

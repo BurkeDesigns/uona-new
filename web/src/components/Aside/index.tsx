@@ -62,6 +62,11 @@ const component = (props: Props) => {
 								onClick={() => to("/login/dashboard/cards")}
 								variant="white-hover"
 							/>
+							<Icon
+								name="newspaper"
+								onClick={() => to("/login/dashboard/news")}
+								variant="white-hover"
+							/>
 							</List>
 						</List>
 						<List el="md center">

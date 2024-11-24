@@ -9,7 +9,6 @@ import { post } from "@util/fetch";
 // import { getSession } from "auth-astro/server";
 import { to } from "@util/navigation";
 // import GenerateTestPage from "@components/Pages/generator/ui";
-import FilesExplorer from "@components/FileExplorer";
 ---
 
 <Page layout="am fixed">
@@ -17,8 +16,7 @@ import FilesExplorer from "@components/FileExplorer";
   <!-- <Aside currentPage="ui" client:only="react"/> -->
   <main el="main">
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
-      <Text as="h4" color="currentColor">Files</Text>
-      <FilesExplorer client:load="react" />
+      <Text as="h4" color="currentColor">News</Text>
     </List>
   </main>
 </Page>

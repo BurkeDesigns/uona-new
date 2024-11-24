@@ -9,6 +9,7 @@ export type IconNames =
 	| "badge"
 	| "server"
 	| "person"
+	| "newspaper"
 	| "trending-up"
 	| "folder"
 	| "brandmark"
