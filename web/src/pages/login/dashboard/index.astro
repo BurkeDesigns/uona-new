@@ -1,14 +1,30 @@
 ---
-import Page from "@layouts/page.astro";
+import Page from "@layouts/dashboard.astro";
 import Aside from "@components/Aside";
 import List from "@components/List";
 import Text from "@components/Text";
 import Btn from "@components/Button";
 import Accordion from "@components/Accordion";
 import { post } from "@util/fetch";
-// import { getSession } from "auth-astro/server";
 import { to } from "@util/navigation";
 // import GenerateTestPage from "@components/Pages/generator/ui";
+
+import { getSession } from "auth-astro/server";
+export const prerender = false;
+let session = await getSession(Astro.request);
+if (session != null) {
+	// let user = await post(`http://localhost:3003/users/info`, {
+	// 	email: session?.user?.email,
+	// });
+	// if (!user.email) return Astro.redirect("/signup");
+	// session.user = {
+	// 	...session.user,
+	// 	...user,
+	// };
+	console.log(session);
+} else {
+	return Astro.redirect("/login");
+}
 ---
 
 <Page layout="am fixed">

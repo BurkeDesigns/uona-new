@@ -77,6 +77,7 @@ const component = (props: Props) => {
 							<Icon
 								name="logout"
 								onClick={() => {
+									window.signOut();
 									window.location.href = "/login";
 								}}
 							/>

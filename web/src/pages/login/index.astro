@@ -1,28 +1,31 @@
 ---
-// import { SignIn, SignOut } from "auth-astro/components";
-// import { getSession } from "auth-astro/server";
+import { SignIn, SignOut } from "auth-astro/components";
+import { getSession } from "auth-astro/server";
 import List from "@components/List";
 import Btn from "@components/Button";
-import Page from "@layouts/page.astro";
+import Page from "@layouts/dashboard.astro";
 import Icon from "@components/Icon";
 import { post } from "@util/fetch";
 import { to } from "@util/navigation";
 import Slideshow from "@components/Slideshow/Slideshow.astro";
 import Link from "@components/Link";
 
-// const session = await getSession(Astro.request);
+export const prerender = false;
 
-// if (session != null) {
-// 	let user = await post(`http://localhost:3003/users/info`, {
-// 		email: session?.user?.email,
-// 	});
-// 	if (!user.email) return Astro.redirect("/signup");
-// 	session.user = {
-// 		...session.user,
-// 		...user,
-// 	};
-// 	return Astro.redirect("/test/api/generator");
-// }
+const session = await getSession(Astro.request);
+
+if (session != null) {
+	// let user = await post(`http://localhost:3003/users/info`, {
+	// 	email: session?.user?.email,
+	// });
+	// if (!user.email) return Astro.redirect("/signup");
+	// session.user = {
+	// 	...session.user,
+	// 	...user,
+	// };
+	console.log(session);
+	return Astro.redirect("/login/dashboard");
+}
 ---
 
 <Page layout="hm">
@@ -35,7 +38,7 @@ import Link from "@components/Link";
 				<Icon name="logo" size={390} client:only="react" customStyle={{height: 100}} />
 			</Link>
 			<!-- <img src="/assets/logo/litpix_logo_light.svg" class="logo" /> -->
-			<!-- <SignIn provider="google" style={{ all: "unset" }}> -->
+			<SignIn provider="google" style={{ all: "unset" }}>
 				<Btn
 					client:only="react"
 					leftIcon="google"
@@ -43,7 +46,7 @@ import Link from "@components/Link";
 					url="/login/dashboard"
 					>Google Sign In</Btn
 				>
-			<!-- </SignIn> -->
+			</SignIn>
 		</List>
 	</main>
 </Page>

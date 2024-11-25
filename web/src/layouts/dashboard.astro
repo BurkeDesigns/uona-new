@@ -2,7 +2,8 @@
 const { title, schema, description, layout } = Astro.props;
 // import Footer from "@components/Footer";
 import { ViewTransitions } from "astro:transitions";
-import "../theme/autodesk/styles.css";
+// import "../theme/autodesk/styles.css";
+import "../theme/uona/styles.css";
 import "./styles.css"; // Global Styles are here
 import Layout from "@components/Layout";
 ---
@@ -82,9 +83,9 @@ import Layout from "@components/Layout";
 	<body>
 		<Layout el={layout}><slot /></Layout>
 		<script>
-			// const { signIn, signOut } = await import("auth-astro/client");
-			// window.signIn = signIn;
-			// window.signOut = signOut;
+			const { signIn, signOut } = await import("auth-astro/client");
+			window.signIn = signIn;
+			window.signOut = signOut;
 			import gsap from "gsap";
 			import ScrollToPlugin from "gsap/ScrollToPlugin";
 			import ScrollTrigger from "gsap/ScrollTrigger";

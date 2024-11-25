@@ -1,9 +1,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
-
 import node from "@astrojs/node";
-
-// import auth from "auth-astro";
+import auth from "auth-astro";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,7 +22,7 @@ export default defineConfig({
   },
   integrations: [
     react(), 
-    // auth()
+    auth()
   ],
   output: "hybrid",
   // adapter: netlify(),
