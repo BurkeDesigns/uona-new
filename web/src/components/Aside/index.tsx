@@ -78,7 +78,7 @@ const component = (props: Props) => {
 								name="logout"
 								onClick={() => {
 									window.signOut();
-									window.location.href = "/login";
+									// window.location.href = "/login";
 								}}
 							/>
 						</List>
