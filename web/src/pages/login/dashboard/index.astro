@@ -13,26 +13,26 @@ import { getSession } from "auth-astro/server";
 export const prerender = false;
 let session = await getSession(Astro.request);
 if (session != null) {
-	// let user = await post(`http://localhost:3003/users/info`, {
-	// 	email: session?.user?.email,
-	// });
-	// if (!user.email) return Astro.redirect("/signup");
-	// session.user = {
-	// 	...session.user,
-	// 	...user,
-	// };
-	console.log(session);
+  // let user = await post(`http://localhost:3003/users/info`, {
+  // 	email: session?.user?.email,
+  // });
+  // if (!user.email) return Astro.redirect("/signup");
+  // session.user = {
+  // 	...session.user,
+  // 	...user,
+  // };
+  console.log(session);
 } else {
-	return Astro.redirect("/login");
+  return Astro.redirect("/login");
 }
 ---
 
 <Page layout="am fixed">
-	<Aside client:only="react"/>
-    <!-- <Aside currentPage="ui" client:only="react"/> -->
-	<main el="main">
-		<List el="xsm p-lg" style={{ paddingLeft: 16, color: 'white' }}>
-			<Text as="h4" color="currentColor">University of North America</Text>
-		</List>
-	</main>
+  <Aside client:only="react" />
+  <!-- <Aside currentPage="ui" client:only="react"/> -->
+  <main el="main">
+    <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
+      <Text as="h4" color="currentColor">University of North America</Text>
+    </List>
+  </main>
 </Page>
