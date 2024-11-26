@@ -5,7 +5,7 @@ import auth from "auth-astro";
 
 // https://astro.build/config
 export default defineConfig({
-  site:'https://uona.edu',
+  site: "https://uona.edu",
   experimental: {
     contentLayer: true,
   },
@@ -20,10 +20,7 @@ export default defineConfig({
       exclude: ["bun:test"],
     },
   },
-  integrations: [
-    react(), 
-    auth()
-  ],
+  integrations: [react(), auth()],
   output: "hybrid",
   // adapter: netlify(),
   adapter: node({

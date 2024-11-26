@@ -2,7 +2,7 @@
 import { Image, Picture } from "astro:assets";
 const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
 
-const {...attrs} = Astro.props;
+const { ...attrs } = Astro.props;
 ---
 
 <div class="slideshow" {...attrs}>
