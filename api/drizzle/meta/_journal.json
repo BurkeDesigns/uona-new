@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1732724827612,
+      "tag": "0000_worthless_reptil",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1732807937242,
+      "tag": "0001_true_spirit",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1732808541257,
+      "tag": "0002_smiling_morbius",
+      "breakpoints": true
+    }
+  ]
+}

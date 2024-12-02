@@ -29,6 +29,7 @@
       "@config/*": ["./config/*"],
       "@config": ["./config/index.ts"],
       "@data/*": ["./data/*"],
+      "@db/*": ["./db/*"],
       // repo paths
     }
   }

@@ -12,16 +12,25 @@ import { to } from "@util/navigation";
 
 export const prerender = false;
 import { getSession } from "auth-astro/server";
+import API from "@util/api";
 let session = await getSession(Astro.request);
-if (session == null) return Astro.redirect("/login");
+// if (session == null) return Astro.redirect("/login");
+
+if (session != null) {
+  let api = new API();
+  let user = await api.users.info(session.user.email);
+  if (user.email == null) Astro.redirect("/login");
+} else {
+  return Astro.redirect("/login");
+}
 ---
 
 <Page layout="am fixed">
-	<Aside client:only="react"/>
-    <!-- <Aside currentPage="ui" client:only="react"/> -->
-	<main el="main">
-		<List el="xsm p-lg" style={{ paddingLeft: 16, color: 'white' }}>
-			<Text as="h4" color="currentColor">Users</Text>
-		</List>
-	</main>
+  <Aside client:only="react" />
+  <!-- <Aside currentPage="ui" client:only="react"/> -->
+  <main el="main">
+    <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
+      <Text as="h4" color="currentColor">Users</Text>
+    </List>
+  </main>
 </Page>

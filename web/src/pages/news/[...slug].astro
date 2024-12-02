@@ -5,122 +5,125 @@ import Footer from "@components/Footer/index.astro";
 
 import { marked } from "marked";
 
+import API from "@util/api";
+
 export async function getStaticPaths() {
-  const pages = [
-    // {
-    //   slug: undefined,
-    //   title: "Astro Store",
-    //   text: "Welcome to the Astro store!",
-    // },
-    {
-      _type: "markdown-news-page",
-      slug: "example",
-      title: "Example Page",
-      timestamp: "2012-04-23T18:25:43.511Z",
-      description: "Random page description",
-      author: "Jill Martin",
-      content: `
-# Wanderlust Adventures
+  let api = new API();
+  let pageList = await api.pages.list();
+  console.log(pageList);
 
-*Exploring the world one step at a time.*
+  const pages = pageList.pages;
 
-![Mountain Sunrise](https://via.placeholder.com/1200x400?text=Mountain+Sunrise)
+  //   const pages = [
+  //     {
+  //       _type: "markdown-news-page",
+  //       slug: "example",
+  //       title: "Example Page",
+  //       timestamp: "2012-04-23T18:25:43.511Z",
+  //       description: "Random page description",
+  //       author: "Jill Martin",
+  //       content: `
+  // # Wanderlust Adventures
 
-## About Us
+  // *Exploring the world one step at a time.*
 
-Welcome to **Wanderlust Adventures**, your ultimate guide to exploring the most breathtaking destinations around the globe. Whether you're a seasoned traveler or planning your first adventure, our mission is to inspire and equip you with the knowledge to make your journeys unforgettable.
+  // ![Mountain Sunrise](https://via.placeholder.com/1200x400?text=Mountain+Sunrise)
 
-### Our Mission
+  // ## About Us
 
-At Wanderlust Adventures, we believe that travel enriches the soul and broadens the mind. Our mission is to:
+  // Welcome to **Wanderlust Adventures**, your ultimate guide to exploring the most breathtaking destinations around the globe. Whether you're a seasoned traveler or planning your first adventure, our mission is to inspire and equip you with the knowledge to make your journeys unforgettable.
 
-- **Inspire** you to explore new destinations.
-- **Inform** you with detailed guides and tips.
-- **Connect** you with a community of fellow travelers.
+  // ### Our Mission
 
-## Top Destinations
+  // At Wanderlust Adventures, we believe that travel enriches the soul and broadens the mind. Our mission is to:
 
-### 1. **Santorini, Greece**
+  // - **Inspire** you to explore new destinations.
+  // - **Inform** you with detailed guides and tips.
+  // - **Connect** you with a community of fellow travelers.
 
-![Santorini Sunset](https://images.pexels.com/photos/40546/soldiers-military-attention-salute-40546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
+  // ## Top Destinations
 
-Experience the stunning sunsets, white-washed buildings, and crystal-clear waters that make Santorini a paradise on Earth.
+  // ### 1. **Santorini, Greece**
 
-- **Best Time to Visit:** May to October
-- **Must-See:** Oia Village, Red Beach, Ancient Thira
+  // ![Santorini Sunset](https://images.pexels.com/photos/40546/soldiers-military-attention-salute-40546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 
-[Learn More](https://www.example.com/santorini)
+  // Experience the stunning sunsets, white-washed buildings, and crystal-clear waters that make Santorini a paradise on Earth.
 
-### 2. **Kyoto, Japan**
+  // - **Best Time to Visit:** May to October
+  // - **Must-See:** Oia Village, Red Beach, Ancient Thira
 
-![Kyoto Temples](https://images.pexels.com/photos/40546/soldiers-military-attention-salute-40546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
+  // [Learn More](https://www.example.com/santorini)
 
-Discover the serene temples, beautiful gardens, and rich cultural heritage of Kyoto.
+  // ### 2. **Kyoto, Japan**
 
-- **Best Time to Visit:** March to May (Cherry Blossom Season)
-- **Must-See:** Fushimi Inari Shrine, Kinkaku-ji, Arashiyama Bamboo Grove
+  // ![Kyoto Temples](https://images.pexels.com/photos/40546/soldiers-military-attention-salute-40546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 
-[Learn More](https://www.example.com/kyoto)
+  // Discover the serene temples, beautiful gardens, and rich cultural heritage of Kyoto.
 
-### 3. **Banff National Park, Canada**
+  // - **Best Time to Visit:** March to May (Cherry Blossom Season)
+  // - **Must-See:** Fushimi Inari Shrine, Kinkaku-ji, Arashiyama Bamboo Grove
 
-![Banff Lake](https://images.pexels.com/photos/40546/soldiers-military-attention-salute-40546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
+  // [Learn More](https://www.example.com/kyoto)
 
-Explore the majestic mountains, turquoise lakes, and abundant wildlife of Banff National Park.
+  // ### 3. **Banff National Park, Canada**
 
-- **Best Time to Visit:** June to September
-- **Must-See:** Lake Louise, Moraine Lake, Icefields Parkway
+  // ![Banff Lake](https://images.pexels.com/photos/40546/soldiers-military-attention-salute-40546.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 
-[Learn More](https://www.example.com/banff)
+  // Explore the majestic mountains, turquoise lakes, and abundant wildlife of Banff National Park.
 
-## Travel Tips
+  // - **Best Time to Visit:** June to September
+  // - **Must-See:** Lake Louise, Moraine Lake, Icefields Parkway
 
-### Packing Essentials
+  // [Learn More](https://www.example.com/banff)
 
-Preparing for your trip? Here's a checklist of essentials you shouldn't forget:
+  // ## Travel Tips
 
-- **Travel Documents:** Passport, visa, travel insurance
-- **Clothing:** Weather-appropriate attire, comfortable shoes
-- **Tech Gear:** Smartphone, charger, power bank, camera
-- **Health Kit:** Medications, first aid kit, hand sanitizer
+  // ### Packing Essentials
 
-### Budgeting Your Trip
+  // Preparing for your trip? Here's a checklist of essentials you shouldn't forget:
 
-Traveling on a budget? Consider these tips to save money without compromising your experience:
+  // - **Travel Documents:** Passport, visa, travel insurance
+  // - **Clothing:** Weather-appropriate attire, comfortable shoes
+  // - **Tech Gear:** Smartphone, charger, power bank, camera
+  // - **Health Kit:** Medications, first aid kit, hand sanitizer
 
-1. **Plan Ahead:** Book flights and accommodations early to get the best deals.
-2. **Use Public Transport:** Opt for buses, trains, or subways instead of taxis.
-3. **Eat Local:** Enjoy authentic cuisine at local eateries instead of tourist spots.
-4. **Free Attractions:** Explore parks, museums with free entry days, and local festivals.
+  // ### Budgeting Your Trip
 
-## Join Our Community
+  // Traveling on a budget? Consider these tips to save money without compromising your experience:
 
-Stay updated with the latest travel stories, tips, and exclusive offers by subscribing to our newsletter.
+  // 1. **Plan Ahead:** Book flights and accommodations early to get the best deals.
+  // 2. **Use Public Transport:** Opt for buses, trains, or subways instead of taxis.
+  // 3. **Eat Local:** Enjoy authentic cuisine at local eateries instead of tourist spots.
+  // 4. **Free Attractions:** Explore parks, museums with free entry days, and local festivals.
 
-[Subscribe Now](https://www.example.com/subscribe)
+  // ## Join Our Community
 
-Follow us on social media:
+  // Stay updated with the latest travel stories, tips, and exclusive offers by subscribing to our newsletter.
 
-- [Facebook](https://facebook.com/wanderlustadventures)
-- [Instagram](https://instagram.com/wanderlustadventures)
-- [Twitter](https://twitter.com/wanderlustadventure)
+  // [Subscribe Now](https://www.example.com/subscribe)
 
-## Contact Us
+  // Follow us on social media:
 
-Have questions or suggestions? We'd love to hear from you!
+  // - [Facebook](https://facebook.com/wanderlustadventures)
+  // - [Instagram](https://instagram.com/wanderlustadventures)
+  // - [Twitter](https://twitter.com/wanderlustadventure)
 
-- **Email:** [contact@wanderlustadventures.com](mailto:contact@wanderlustadventures.com)
-- **Phone:** +1 (234) 567-8901
-- **Address:** 123 Adventure Lane, Travel City, TC 45678
+  // ## Contact Us
 
----
+  // Have questions or suggestions? We'd love to hear from you!
 
-© 2024 Wanderlust Adventures. All rights reserved.
+  // - **Email:** [contact@wanderlustadventures.com](mailto:contact@wanderlustadventures.com)
+  // - **Phone:** +1 (234) 567-8901
+  // - **Address:** 123 Adventure Lane, Travel City, TC 45678
 
-      `,
-    },
-    {},
-  ];
+  // ---
+
+  // © 2024 Wanderlust Adventures. All rights reserved.
+
+  //       `,
+  //     },
+  //     {},
+  //   ];
   return pages.map(({ slug, title, description, content }) => {
     return {
       params: { slug },

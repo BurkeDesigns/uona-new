@@ -9,12 +9,16 @@ import { post } from "@util/fetch";
 import { to } from "@util/navigation";
 import Slideshow from "@components/Slideshow/Slideshow.astro";
 import Link from "@components/Link";
+// import API from "@util/api";
 
 export const prerender = false;
 
 const session = await getSession(Astro.request);
 
 if (session != null) {
+//   let api = new API();
+//   let users = await api.users.list();
+  //   console.log("USERS ----", users);
   // let user = await post(`http://localhost:3003/users/info`, {
   // 	email: session?.user?.email,
   // });

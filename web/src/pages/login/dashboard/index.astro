@@ -12,16 +12,13 @@ import { to } from "@util/navigation";
 import { getSession } from "auth-astro/server";
 export const prerender = false;
 let session = await getSession(Astro.request);
+
+import API from "@util/api";
+
 if (session != null) {
-  // let user = await post(`http://localhost:3003/users/info`, {
-  // 	email: session?.user?.email,
-  // });
-  // if (!user.email) return Astro.redirect("/signup");
-  // session.user = {
-  // 	...session.user,
-  // 	...user,
-  // };
-  console.log(session);
+  let api = new API();
+  let user = await api.users.info(session.user.email);
+  if (user.email == null) Astro.redirect("/login");
 } else {
   return Astro.redirect("/login");
 }

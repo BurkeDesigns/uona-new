@@ -13,8 +13,16 @@ import FilesExplorer from "@components/FileExplorer";
 
 export const prerender = false;
 import { getSession } from "auth-astro/server";
+import API from "@util/api";
 let session = await getSession(Astro.request);
-if (session == null) return Astro.redirect("/login");
+// if (session == null) return Astro.redirect("/login");
+if (session != null) {
+  let api = new API();
+  let user = await api.users.info(session.user.email);
+  if (user.email == null) Astro.redirect("/login");
+} else {
+  return Astro.redirect("/login");
+}
 ---
 
 <Page layout="am fixed">
