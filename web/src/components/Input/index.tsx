@@ -82,6 +82,7 @@ const Input = (props: Props) => {
 						style={{ margin: 0, marginBottom: "4px" }}
 						font="bodyMBold"
 						content={label}
+						color="currentColor"
 					/>
 					<textarea
 						onChange={handleInputChange}
@@ -102,6 +103,7 @@ const Input = (props: Props) => {
 						style={{ margin: 0, marginBottom: "4px" }}
 						font="bodyMBold"
 						content={label}
+						color="currentColor"
 					/>
 					<select
 						onChange={handleInputChange}
@@ -139,6 +141,7 @@ const Input = (props: Props) => {
 							}}
 							font="bodyM"
 							content={label}
+							color="currentColor"
 						/>
 					</div>
 					<Text
@@ -154,6 +157,7 @@ const Input = (props: Props) => {
 						style={{ margin: 0, marginBottom: "10px" }}
 						font="bodyMBold"
 						content={label}
+						color="currentColor"
 					/>
 					<input
 						onChange={handleInputChange}

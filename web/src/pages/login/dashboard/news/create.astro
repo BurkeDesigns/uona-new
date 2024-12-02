@@ -12,7 +12,7 @@ import { to } from "@util/navigation";
 
 export const prerender = false;
 import { getSession } from "auth-astro/server";
-import NewsPages from "@components/NewsPages";
+import CreateNewsPage from "@components/NewsPage";
 import API from "@util/api";
 
 let session = await getSession(Astro.request);
@@ -25,11 +25,11 @@ if (session != null) {
   return Astro.redirect("/login");
 }
 
-let api = new API();
-let pageList = await api.pages.list();
-console.log(pageList);
+// let api = new API();
+// let pageList = await api.pages.list();
+// console.log(pageList);
 
-const data = pageList.pages;
+// const data = pageList.pages;
 ---
 
 <Page layout="am fixed">
@@ -41,7 +41,7 @@ const data = pageList.pages;
         <Text as="h4" color="currentColor">News</Text>
         <Btn>Create</Btn>
       </List>
-      <NewsPages {data} client:only="react" />
+      <CreateNewsPage client:only="react" />
     </List>
   </main>
 </Page>

@@ -49,7 +49,7 @@ export const pages = sqliteTable('pages', {
     id: integer().primaryKey({ autoIncrement: true }),
     uid: integer().notNull().references(() => users.id), // Foreign key to users
     ...timestamps,
-    status: text().default('draft'), // draft, final
+    status: text().default('draft'), // draft, published
     type: text().notNull(), // markdown-news-page
     slug: text().notNull(),
     group: text(),
