@@ -12,6 +12,10 @@ import { pickRandom } from "@util/arr";
 
 const routes = new Hono();
 
+routes.get("/", async (c) => {
+  return res(c, { msg: "hello world" });
+});
+
 routes.get("/test", async (c) => {
   return res(c, { msg: "hello world" });
 });

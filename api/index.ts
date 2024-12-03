@@ -12,7 +12,13 @@ import pagesRoutes from "./routes/pages";
 const app = new Hono();
 
 // add cors to all endpoints
-app.use("*", cors());
+app.use("*", cors({
+    origin: (origin, c) => {
+        // console.log("ORIGIN", origin);
+        return origin;
+      },
+    credentials: true,
+}));
 app.onError(handleError);
 
 // middleware to inject context
