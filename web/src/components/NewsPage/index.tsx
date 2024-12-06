@@ -36,7 +36,7 @@ const component = (props: FormData) => {
 	const [errorState, setErrorState]:any = useState({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
-	let api = new API('http://localhost:3008');
+	let api = new API();
 
 	// useEffect(() => {
 	// 	// errors.current = {};

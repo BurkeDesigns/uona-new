@@ -31,9 +31,9 @@ if (session != null) {
 
 // const data = pageList.pages;
 
-const {id} = Astro.params;
+const { id } = Astro.params;
 let api = new API();
-let pageData = await api.pages.get(id || '');
+let pageData = await api.pages.get(id || "");
 ---
 
 <Page layout="am fixed">
