@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "syncBlocks": "bun scripts/watchComponents.bun.js",
     "start": "astro dev",
-    "build": "astro build && bunx pm2 reload uona-new",
+    "build": "astro build && bunx pm2 reload uona-new && bunx pm2 reload uona-new-api",
     "preview": "astro preview",
     "pm2Serve": "PORT=4002 bunx pm2 start ./dist/server/entry.mjs -i 2 --name \"uona-new\"",
     "astro": "astro",
