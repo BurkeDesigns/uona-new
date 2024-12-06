@@ -1,10 +1,10 @@
 import {deleteRequest, patch, post} from '@util/fetch'
-import type {NewUser} from '../../../../api/db/types'
+import type {NewPage, NewUser} from '../../../../api/db/types'
 
 export default class API {
   private _url: string;
 
-  constructor(url = 'https://uona-api.swaggear.life') {
+  constructor(url = import.meta.env.API_DOMAIN || 'https://uona-api.swaggear.life') {
     this._url = url;
   }
 
@@ -15,6 +15,11 @@ export default class API {
     info: async (email:string) => {
       return await post(`${this._url}/users/info`,{
         email,
+      });
+    },
+    get: async (id:string) => {
+      return await post(`${this._url}/users/get`,{
+        id,
       });
     },
     create: async (data: NewUser) => {
@@ -34,12 +39,17 @@ export default class API {
     list: async () => {
       return await post(`${this._url}/pages/list`);
     },
-    info: async (email:string) => {
-      return await post(`${this._url}/pages/info`,{
-        email,
+    getBySlug: async (slug:string) => {
+      return await post(`${this._url}/pages/get`,{
+        slug,
       });
     },
-    create: async (data: NewUser) => {
+    get: async (id:string) => {
+      return await post(`${this._url}/pages/get`,{
+        id,
+      });
+    },
+    create: async (data: NewPage) => {
       return await post(`${this._url}/pages/create`, data);
     },
     update: async (data: any) => {

@@ -41,31 +41,36 @@ const component = (props: Props) => {
 								name="server"
 								onClick={() => to("/login/dashboard/website")}
 								variant="white-hover"
+								title="Sitemap"
 							/>
 							<Icon
+								name="newspaper"
+								onClick={() => to("/login/dashboard/pages")}
+								variant="white-hover"
+								title="Website Pages"
+							/>
+							{/* <Icon
 								name="folder"
 								onClick={() => to("/login/dashboard/files")}
 								variant="white-hover"
-							/>
+							/> */}
 							<Icon
 								name="trending-up"
 								onClick={() => to("/login/dashboard/analytics")}
 								variant="white-hover"
-							/>
-							<Icon
-								name="person"
-								onClick={() => to("/login/dashboard/users")}
-								variant="white-hover"
+								title="Analytics"
 							/>
 							<Icon
 								name="badge"
 								onClick={() => to("/login/dashboard/cards")}
 								variant="white-hover"
+								title="Business Cards"
 							/>
 							<Icon
-								name="newspaper"
-								onClick={() => to("/login/dashboard/news")}
+								name="person"
+								onClick={() => to("/login/dashboard/users")}
 								variant="white-hover"
+								title="User Management"
 							/>
 							</List>
 						</List>
@@ -73,9 +78,11 @@ const component = (props: Props) => {
 							<Icon
 								name="settings"
 								onClick={() => to("/login/dashboard/settings")}
+								title="Settings"
 							/>
 							<Icon
 								name="logout"
+								title="Logout"
 								onClick={() => {
 									window.signOut();
 									// window.location.href = "/login";

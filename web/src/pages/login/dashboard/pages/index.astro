@@ -12,7 +12,7 @@ import { to } from "@util/navigation";
 
 export const prerender = false;
 import { getSession } from "auth-astro/server";
-import NewsPages from "@components/NewsPages";
+import PagesList from "@components/NewsPages";
 import API from "@util/api";
 
 let session = await getSession(Astro.request);
@@ -38,10 +38,10 @@ const data = pageList.pages;
   <main el="main">
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
       <List el="column-between center xsm" style={{ maxWidth: 1200 }}>
-        <Text as="h4" color="currentColor">News</Text>
-        <Btn url="/login/dashboard/news/create">Create</Btn>
+        <Text as="h4" color="currentColor">Pages</Text>
+        <Btn url="/login/dashboard/pages/create">Create</Btn>
       </List>
-      <NewsPages {data} client:only="react" />
+      <PagesList {data} client:only="react" />
     </List>
   </main>
 </Page>

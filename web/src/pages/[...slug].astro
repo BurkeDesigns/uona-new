@@ -1,0 +1,84 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import { marked } from "marked";
+
+import API from "@util/api";
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+const preview = Astro.url.searchParams.get('preview') || '';
+
+let api = new API();
+const page = await api.pages.getBySlug(slug || '');
+if (!page || page.id == null) return Astro.redirect("/404");
+if(preview != 'true' && page.status != 'published') return Astro.redirect("/404");
+const { title, description, blocks } = page;
+const markdown = marked.parse(blocks[0].content);
+---
+
+<style>
+  #video {
+    background-image: url("/images/web/building.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    background-attachment: unset;
+  }
+
+  @media (max-width: 520px) {
+    #video {
+      height: 300px;
+    }
+  }
+</style>
+
+<style is:global>
+  :where(.markdown h1, .markdown h2, .markdown h3, .markdown h4, .markdown h5) {
+    /* font-family: trade-gothic-next, sans-serif; */
+    font-weight: 800;
+    /* text-align: center; */
+    font-weight: normal;
+    text-transform: uppercase;
+    font-family: "Oswald";
+    /* font-size: var(--size); */
+    /* line-height: var(--size); */
+    /* color: black; */
+    /* margin:0; */
+  }
+  :where(.markdown ol, .markdown ul, .markdown li, .markdown p) {
+    line-height: 1.5em !important;
+    font-size: 18px;
+  }
+  .markdown img {
+    width: 100%;
+    border-radius: 8px;
+  }
+</style>
+
+<Page layout="hm fixed" title={title} description={description}>
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle">
+        <div>
+          <p>{title}</p>
+        </div>
+      </div>
+    </section>
+    <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+      <!-- <div>
+        <h1 class="heading">{title}</h1>
+      </div> -->
+    </ul>
+    <ul class="section" style="--bg-color:#fff;">
+      <div class="paddingReg content">
+        <article class="markdown" set:html={markdown} />
+      </div>
+    </ul>
+    <Footer />
+  </main>
+</Page>

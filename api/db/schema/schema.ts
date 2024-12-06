@@ -51,12 +51,13 @@ export const pages = sqliteTable('pages', {
     ...timestamps,
     status: text().default('draft'), // draft, published
     type: text().notNull(), // markdown-news-page
-    slug: text().notNull(),
+    slug: text().notNull().unique(),
     group: text(),
+    tags: text({ mode: 'json' }),
     author: text().notNull(),
     title: text().notNull(),
     description: text().notNull(),
-    content: text().notNull(),
+    blocks: text({ mode: 'json' }),
     expires: text(),
 });
 

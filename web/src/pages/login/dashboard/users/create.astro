@@ -12,7 +12,7 @@ import { to } from "@util/navigation";
 
 export const prerender = false;
 import { getSession } from "auth-astro/server";
-import CreateNewsPage from "@components/NewsPage";
+import CreateUser from "@components/Users/create";
 import API from "@util/api";
 
 let session = await getSession(Astro.request);
@@ -25,11 +25,11 @@ if (session != null) {
   return Astro.redirect("/login");
 }
 
-// let api = new API();
-// let pageList = await api.pages.list();
-// console.log(pageList);
+let api = new API();
+let usersList = await api.users.list();
+console.log('USERS', usersList);
 
-// const data = pageList.pages;
+const data = usersList.users;
 ---
 
 <Page layout="am fixed">
@@ -38,10 +38,10 @@ if (session != null) {
   <main el="main">
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
       <List el="column-between center xsm" style={{ maxWidth: 1200 }}>
-        <Text as="h4" color="currentColor">News</Text>
-        <Btn>Create</Btn>
+        <Text as="h4" color="currentColor">New User</Text>
+        <!-- <Btn url="/login/dashboard/users/create">Create</Btn> -->
       </List>
-      <CreateNewsPage client:only="react" />
+      <CreateUser client:only="react" />
     </List>
   </main>
 </Page>

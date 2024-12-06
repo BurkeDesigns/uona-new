@@ -12,6 +12,11 @@ export const get = async (id: number) =>{
     return result;
 }
 
+export const getBySlug = async (slug: string) =>{
+    const result = await db.select().from(pages).where(eq(pages.slug, slug));
+    return result;
+}
+
 export const update = async (id: number, data: any) =>{
     let result = await db.update(pages).set(data).where(eq(pages.id, id)).returning()
     return result;

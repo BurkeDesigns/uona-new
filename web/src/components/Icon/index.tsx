@@ -52,6 +52,7 @@ interface InlineSVGProps {
 	onClick?: any;
 	className?: string;
 	customStyle?: React.CSSProperties;
+	title?: string;
 }
 
 const InlineSVG: React.FC<InlineSVGProps> = ({
@@ -61,7 +62,8 @@ const InlineSVG: React.FC<InlineSVGProps> = ({
 	className,
 	onClick,
 	variant,
-	customStyle
+	customStyle,
+	title
 }) => {
 	const [svgContent, setSvgContent] = useState<unknown | null>(null);
 
@@ -95,6 +97,7 @@ const InlineSVG: React.FC<InlineSVGProps> = ({
 			style={style as React.CSSProperties}
 			dangerouslySetInnerHTML={{ __html: svgContent || `${name}` }}
 			onClick={onClick}
+			{...{ title }}
 		/>
 	);
 };

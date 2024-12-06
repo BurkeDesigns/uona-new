@@ -9,11 +9,11 @@ import { post } from "@util/fetch";
 // import { getSession } from "auth-astro/server";
 import { to } from "@util/navigation";
 // import GenerateTestPage from "@components/Pages/generator/ui";
+import SiteMap from "@components/SiteMap";
 
 export const prerender = false;
 import { getSession } from "auth-astro/server";
 import API from "@util/api";
-import SiteMap from "@components/SiteMap";
 let session = await getSession(Astro.request);
 // if (session == null) return Astro.redirect("/login");
 
@@ -31,8 +31,8 @@ if (session != null) {
   <!-- <Aside currentPage="ui" client:only="react"/> -->
   <main el="main">
     <!-- <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
-      <Text as="h4" color="currentColor">Website</Text>
+      <Text as="h4" color="currentColor">SiteMap</Text>
     </List> -->
-	<SiteMap client:only="react" />
+    <SiteMap client:only="react" />
   </main>
 </Page>

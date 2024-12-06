@@ -15,26 +15,22 @@ const component = (props: Props) => {
 	console.log('Data:', data);
 	
 	return <>
-		{data.length > 0 && <table class="newsPages">
+		{data.length > 0 && <table class="userList">
 			<thead>
-				<th>Date</th>
-				<th>Slug</th>
-				<th>Title</th>
-				<th>Author</th>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Group</th>
+				<th>Email</th>
+				<th>Created At</th>
 				{/* <th>Actions</th> */}
 			</thead>
 			<tbody>
-				{data.map(item=> (<tr key={item.id} onClick={()=> to(`/login/dashboard/pages/edit/${item.id}`)}>
+				{data.map(item=> (<tr key={item.id} onClick={()=> to(`/login/dashboard/users/edit/${item.id}`)}>
+					{item.name && <td>{item.name}</td>}
+					{item.type && <td>{item.type}</td>}
+					{item.group && <td>{item.group}</td>}
+					{item.email && <td>{item.email}</td>}
 					{item.created_at && <td>{formatTimeAgo(item.created_at)}</td>}
-					{item.slug && <td>{item.slug}</td>}
-					{item.title && <td>
-						<List el="column xsm center">
-							{item.title}
-							{item.status == 'draft' && <div class="status-badge status-inactive">{item.status}</div>}
-							{item.status == 'published' && <div class="status-badge status-active">{item.status}</div>}
-						</List>
-					</td>}
-					{item.author && <td>{item.author}</td>}
 					{/* <td>
 						<List el="column center xsm">
 							<Icon name="file" />
@@ -45,7 +41,7 @@ const component = (props: Props) => {
 		</table>}
 		{data.length == 0 && <>
 			<br />
-			<Text content="No pages found. Create a new page to get started!" color="white" />
+			<Text content="No users found. Create a new user to get started!" color="white" />
 		</>}
 	</>
 };

@@ -1,0 +1,20 @@
+.createUsers{
+    display:grid;
+    grid-template-columns: 400px 1fr;
+    height:100%;
+    width:100%;
+    position: relative;
+    gap:32px;
+    height: calc(100svh - 96px);
+}
+
+.createUsers * {
+    overflow: auto;
+}
+/* .pageEditor iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid hsla(0, 0%, 100%, 0.65);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.13);
+} */

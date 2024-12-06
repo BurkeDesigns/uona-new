@@ -42,7 +42,6 @@ thead th {
 tbody tr {
   transition: background-color 0.2s ease;
   border-bottom: 1px solid var(--color-gray-200);
-  cursor: pointer;
 }
 
 tbody tr:hover {
@@ -71,8 +70,8 @@ tbody td {
 }
 
 .status-inactive {
-  background-color: var(--color-gray-200);
-  color: var(--color-gray-700);
+  background-color: var(--color-red-100);
+  color: var(--color-red-800);
 }
 
 /* Responsive Adjustments */

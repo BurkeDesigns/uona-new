@@ -25,15 +25,11 @@ routes.post("/list", async (c) => {
   return res(c, { pages: allPages });
 });
 
-routes.post("/info", async (c) => {
-  const body = await c.req.json();
-  let page = await pages.getByEmail(body.email);
-  return res(c, { ...page[0] });
-});
-
 routes.post("/get", async (c) => {
   const body = await c.req.json();
-  let page = await pages.get(body.id);
+  let page;
+  if (body.id) page = await pages.get(body.id);
+  if (body.slug) page = await pages.getBySlug(body.slug);
   return res(c, { ...page[0] });
 });
 
