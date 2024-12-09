@@ -90,38 +90,48 @@ const component = (props: FormData) => {
 	// 	});
 	// };
 
-	const handleSubmit = async () => {
-		// if (formData.slug == null || formData.slug == '') errors.current.slug = "Slug is required";
-		// if (formData.status == null || formData.status == '') errors.current.status = "Status is required";
-		// if (formData.author == null || formData.author == '') errors.current.author = "author is required";
-		// if (formData.title == null || formData.title == '') errors.current.title = "title is required";
-		// if (formData.description == null || formData.description == '') errors.current.description = "description is required";
-		// if (formData.blocks == null || formData.blocks == '') errors.current.blocks = "content is required";
-
-		console.log("Errors:", errors.current);
+	const handleSubmit = () => {
+		errors.current = {};
+		if ([undefined, null, ''].includes(formData.user?.name)) errors.current.name = "Name is required";
+		if ([undefined, null, ''].includes(formData.user?.email)) errors.current.email = "Email is required";
+		if ([undefined, null, ''].includes(formData.user?.type)) errors.current.type = "Type is required";
+		if ([undefined, null, ''].includes(formData.user?.group)) errors.current.group = "Group is required";
+		if ([undefined, null, ''].includes(formData.user?.job_title)) errors.current.job_title = "Job title is required";
+		if ([undefined, null, ''].includes(formData.user?.phone)) errors.current.phone = "Phone number is required";
+		
 	};
 
 	const createUser = async () => {
 		handleSubmit();
 
+		const toastId = toast.loading("Creating user...");
+
 		if (Object.keys(errors.current).length === 0) {
 			// setIsSubmitting(true);
 			// // Here you would typically send the form data to your backend
-			// let data:any = structuredClone(formData);
-			// if(Object.keys(data).includes('children')) delete data.children;
-			// console.log("Form submitted:", data);
+			let data:any = structuredClone(formData.user);
+			if(Object.keys(data).includes('children')) delete data.children;
+			console.log("Form submitted:", data);
 			// // Reset form after submission
 			// // setFormData({});
 			// // let result = await api.pages.list();
-			// let result = await api.pages.create(data);
-			// console.log('Result:', result);
-			// window.location.href = '/login/dashboard/pages/edit/' + result.page[0].id;
+			let result = await api.users.create(data);
+			console.log('Result:', result);
+			if(result.success == true && result.user[0].id != null){
+				toast.update(toastId, { render: "Created user!", type: "success", isLoading: false, autoClose: 1500 });
+				window.location.href = '/login/dashboard/users/edit/' + result.user[0].id;
+			}else{
+				toast.update(toastId, { render: "Create user failed", type: "error", isLoading: false, autoClose: 3000 });
+			}
 			// setIsSubmitting(false);
+			
+		}else{
+			toast.update(toastId, { render: "Create user failed", type: "error", isLoading: false, autoClose: 3000 });
 		}
 	};
 
 	const updateUser = async () => {
-		handleSubmit();
+		// handleSubmit();
 
 		if (Object.keys(errors.current).length === 0) {
 			setIsSubmitting(true);
@@ -155,7 +165,7 @@ const component = (props: FormData) => {
 	};
 
 	const checkAccess = (type: string) => {
-		return access.list.some(obj => obj.type == type);
+		return access?.list?.some(obj => obj.type == type) || false;
 	};
 
 	const toggleAccess = async (type: string, enable: boolean) => {
@@ -355,8 +365,8 @@ const component = (props: FormData) => {
 			</div>
 		<div>
 			<List el="sm">
-				<Text color="white" font="bodyLBold">User Permissions</Text>
-				<List el="xsm">
+				{user!= null && <Text color="white" font="bodyLBold">User Permissions</Text>}
+				{user != null && <List el="xsm">
 					<Input
 						as="checkbox"
 						label="View Sitemap"
@@ -390,13 +400,13 @@ const component = (props: FormData) => {
 						defaultChecked={checkAccess('users')}
 						// checked={formData.user?.type == 'admin'}
 					/>
-				</List>
+				</List>}
 				{props.user?.id != null && <List el="column xsm">
 					<Btn variant="secondaryWhite" onClick={deleteUser}>Delete</Btn>
 					<Btn onClick={updateUser}>Update</Btn>
 				</List>}
 				{props.user?.id == null && <List el="column xsm">
-					<Btn>Create User</Btn>
+					<Btn onClick={createUser}>Create User</Btn>
 				</List>}
 			</List>
 		</div>

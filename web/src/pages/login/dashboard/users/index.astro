@@ -48,7 +48,7 @@ const data = usersList.users;
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
       <List el="column-between center xsm" style={{ maxWidth: 1200 }}>
         <Text as="h4" color="currentColor">Users</Text>
-        <!-- <Btn url="/login/dashboard/users/create">Create</Btn> -->
+        <Btn url="/login/dashboard/users/create">Create</Btn>
       </List>
       <UsersList {data} client:only="react" />
     </List>
