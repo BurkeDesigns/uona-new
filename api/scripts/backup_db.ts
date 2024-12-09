@@ -1,6 +1,7 @@
 import { $ } from "bun"
 import { Glob } from "bun";
 import { stat, unlink } from "fs/promises";
+import cron from 'node-cron';
 
 // export const db_source = Bun.env.DATABASE_URL || './data/db/sqlite.db';
 export const db_source = Bun.env.DATABASE_URL;
@@ -130,6 +131,11 @@ export const everySecond = 1000;
 
 export const maxFiles = 30;
 
-scheduleTask(every24Hours, () => {
+// Schedule a task to run at 3:00 AM every day
+cron.schedule('0 0 3 * * *', () => {
   performBackupProcess(maxFiles);
 });
+
+// scheduleTask(every24Hours, () => {
+//   performBackupProcess(maxFiles);
+// });
