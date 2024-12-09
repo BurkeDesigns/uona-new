@@ -21,7 +21,7 @@ let session = await getSession(Astro.request);
 if (session != null) {
   let api = new API();
   let user = await api.users.info(session.user?.email || "");
-  if (user.email == null) Astro.redirect("/login");
+  if (user.email == null) return Astro.redirect("/login");
 
   // check user access
   const userAccess = await api.access.get({

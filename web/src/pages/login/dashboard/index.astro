@@ -18,16 +18,7 @@ import API from "@util/api";
 if (session != null) {
   let api = new API();
   let user = await api.users.info(session.user?.email || "");
-  if (user.id == null) {
-    let createUser = await api.users.create({
-      name: session.user?.name || "",
-      email: session.user?.email || "",
-      image: session.user?.image || "",
-      type: "admin",
-    });
-    user = await api.users.info(session.user?.email || "");
-  }
-  if (user.email == null) Astro.redirect("/login");
+  if (user.email == null) return Astro.redirect("/login");
 } else {
   return Astro.redirect("/login");
 }

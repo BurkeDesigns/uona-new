@@ -20,7 +20,7 @@ let api = new API();
 
 if (session != null) {
   let user = await api.users.info(session.user?.email || "");
-  if (user.email == null) Astro.redirect("/login");
+  if (user.email == null) return Astro.redirect("/login");
 } else {
   return Astro.redirect("/login");
 }
