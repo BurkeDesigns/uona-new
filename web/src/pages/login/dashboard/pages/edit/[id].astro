@@ -19,7 +19,7 @@ let session = await getSession(Astro.request);
 // if (session == null) return Astro.redirect("/login");
 if (session != null) {
   let api = new API();
-  let user = await api.users.info(session.user.email);
+  let user = await api.users.info(session.user?.email || "");
   if (user.email == null) Astro.redirect("/login");
 
   // check user access
@@ -46,7 +46,7 @@ let pageData = await api.pages.get(id || "");
 ---
 
 <Page layout="am fixed">
-  <Aside client:only="react" />
+  <Aside {session} client:only="react" />
   <!-- <Aside currentPage="ui" client:only="react"/> -->
   <main el="main">
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>

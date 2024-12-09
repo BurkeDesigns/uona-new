@@ -11,12 +11,13 @@ import { Avatar } from "@components/BlockMapper/_BlockList";
 type Props = {
 	children?: ReactNode;
 	currentPage?: string;
+	session?: any;
 };
 
 const component = (props: Props) => {
-	const { children, currentPage } = props;
+	const { children, currentPage, session } = props;
 	// let [logOut, setLogOut]: any = useState(null);
-	// console.log("SESSION", session.user);
+	console.log("SESSION", session);
 
 	return (
 		<>
@@ -34,7 +35,7 @@ const component = (props: Props) => {
 								size={65}
 								onClick={() => to("/theme")}
 							/> */}
-							<Avatar shape="circle" url="/login/dashboard" />
+							<Avatar shape="circle" url="/login/dashboard" src={session?.user?.image} name={session?.user?.name} />
 							{/* <Icon name="home" onClick={() => to("/")} /> */}
 							<List el="md">
 							<Icon

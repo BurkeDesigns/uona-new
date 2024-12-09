@@ -11,6 +11,8 @@ import API from "@util/api";
 import Link from "@components/Link";
 import { nanoid } from "nanoid";
 import type { NewUser } from "../../../../api/db/types";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 type FormData = {
 	user?: NewUser;
@@ -130,23 +132,26 @@ const component = (props: FormData) => {
 			data.updated_at = (new Date()).toISOString();
 			// // Reset form after submission
 			// // setFormData({});
+			const toastId = toast.loading("Updating user...");
 			let result = await api.users.update(data);
 			// let result = await api.pages.update(data);
 			console.log('Updated user result:', result);
+			
 			// setIframeSlug(`/${data.slug}?v=${new Date().getTime()}&preview=true`);
 			// window.location.href = '/login/dashboard/users';
 			setIsSubmitting(false);
-			if(result.success == true && result.user[0].id!= null) alert('User has been updated!');
-			else alert('Unable to update user account.')
+
+			if(result.success == true && result.user[0].id!= null) toast.update(toastId, { render: "Updated User!", type: "success", isLoading: false, autoClose: 1500 });
+			else toast.update(toastId, { render: "Update user failed", type: "error", isLoading: false, autoClose: 3000 });
 		}
 	};
 
 	const deleteUser = async () => {
-		// const confirmed = confirm("Are you sure you want to delete this page?");
-  		// if (!confirmed) return;
-		// let result = await api.pages.delete(Number(formData.id));
-		// console.log('Result:', result);
-		// window.location.href = '/login/dashboard/pages';
+		const confirmed = confirm("Are you sure you want to delete this user?");
+  		if (!confirmed) return;
+		let result = await api.users.delete(Number(formData.user?.id));
+		console.log('Result:', result);
+		window.location.href = '/login/dashboard/users';
 	};
 
 	const checkAccess = (type: string) => {
@@ -162,6 +167,7 @@ const component = (props: FormData) => {
 			type,
 		});
 		console.log('existingAccess', existingAccess);
+		const toastId = toast.loading("Updating access...");
 		if(existingAccess.success == true && (existingAccess.access == null || existingAccess.access.length == 0)){
 			// create new access if not found
 			let newAccess = await api.access.create({
@@ -170,6 +176,8 @@ const component = (props: FormData) => {
 				access_level: 'admin'
 			});
 			console.log('New Access', newAccess);
+			if(newAccess.success == true) toast.update(toastId, { render: "Access Updated!", type: "success", isLoading: false, autoClose: 1500 });
+			else toast.update(toastId, { render: "Access update failed", type: "error", isLoading: false, autoClose: 3000 });
 		} else {
 			// delete access
 			let removed = await api.access.delete({
@@ -177,6 +185,8 @@ const component = (props: FormData) => {
 				type,
 			});
 			console.log('Deleted Access', removed);
+			if(removed.success == true) toast.update(toastId, { render: "Access Updated!", type: "success", isLoading: false, autoClose: 1500 });
+			else toast.update(toastId, { render: "Access update failed", type: "error", isLoading: false, autoClose: 3000 });
 		}
 		// let exists = await ap
 		// const confirmed = confirm("Are you sure you want to delete this page?");
@@ -382,7 +392,7 @@ const component = (props: FormData) => {
 					/>
 				</List>
 				{props.user?.id != null && <List el="column xsm">
-					<Btn variant="secondaryWhite">Delete</Btn>
+					<Btn variant="secondaryWhite" onClick={deleteUser}>Delete</Btn>
 					<Btn onClick={updateUser}>Update</Btn>
 				</List>}
 				{props.user?.id == null && <List el="column xsm">
@@ -391,7 +401,18 @@ const component = (props: FormData) => {
 			</List>
 		</div>
 	</div>
-		
+	<ToastContainer
+		position="bottom-right"
+		autoClose={4000}
+		hideProgressBar={false}
+		newestOnTop={false}
+		closeOnClick
+		rtl={false}
+		pauseOnFocusLoss
+		draggable
+		pauseOnHover
+		theme="dark"
+		/>
 	</>
 };
 

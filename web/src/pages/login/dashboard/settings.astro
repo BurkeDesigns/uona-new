@@ -29,7 +29,7 @@ const data = (await api.backups.list()).backups || [];
 ---
 
 <Page layout="am fixed">
-  <Aside client:only="react" />
+  <Aside {session} client:only="react" />
   <!-- <Aside currentPage="ui" client:only="react"/> -->
   <main el="main">
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>

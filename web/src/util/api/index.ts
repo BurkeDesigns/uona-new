@@ -102,6 +102,12 @@ export default class API {
     },
   };
 
+  ai = {
+    chat: async (data: any) => {
+      return await post(`${this._url}/ai/chat`, data);
+    },
+  };
+
   comments = {
     list: async () => {
       return await post(`${this._url}/comments/list`);

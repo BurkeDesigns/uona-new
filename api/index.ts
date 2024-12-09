@@ -10,6 +10,7 @@ import usersRoutes from "./routes/users";
 import pagesRoutes from "./routes/pages";
 import backupsRoutes from "./routes/backups";
 import accessRoutes from "./routes/access";
+import aiRoutes from "./routes/ai";
 
 const app = new Hono();
 
@@ -34,6 +35,7 @@ app.route("/users", usersRoutes);
 app.route("/pages", pagesRoutes);
 app.route("/backups", backupsRoutes);
 app.route("/access", accessRoutes);
+app.route("/ai", aiRoutes);
 
 app.get('/', (c) => c.text('API is running!'))
 

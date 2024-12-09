@@ -29,11 +29,12 @@ const component = (props: Props) => {
 							typeof radius === "number" ? `${radius}px` : radius,
 					}}
 				>
-					{src && <img src={src} alt={"avatar"} loading="lazy" />}
+					{src && <img src={src} alt={"avatar"} loading="lazy" referrerpolicy="no-referrer" />}
 					{!src && (
 						<img
 							src="https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png"
 							loading="lazy"
+							referrerpolicy="no-referrer"
 						/>
 					)}
 				</div>

@@ -7,6 +7,7 @@ export type IconNames =
 	| "logo"
 	| "bug"
 	| "badge"
+	| "draw"
 	| "server"
 	| "person"
 	| "newspaper"

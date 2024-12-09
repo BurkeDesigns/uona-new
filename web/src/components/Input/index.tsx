@@ -83,6 +83,7 @@ const Input = (props: Props) => {
             onChange={handleInputChange}
             className={`textarea bodyM ${inputError ? "error" : ""}`}
             placeholder={placeholder}
+            ref={ref}
             {...restProps} // Includes `value`
           />
           <Text

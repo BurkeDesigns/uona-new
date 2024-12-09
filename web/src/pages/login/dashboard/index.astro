@@ -34,7 +34,7 @@ if (session != null) {
 ---
 
 <Page layout="am fixed">
-  <Aside client:only="react" />
+  <Aside {session} client:only="react" />
   <!-- <Aside currentPage="ui" client:only="react"/> -->
   <main el="main">
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
@@ -45,7 +45,9 @@ if (session != null) {
       >
       <ul>
         <li>Create, edit, delete, save drafts, and publish pages</li>
-        <li>Manage user accounts</li>
+        <li>AI rewrite with instructions for page content</li>
+        <li>Edit, create, and delete user accounts</li>
+        <li>Edit user permissions</li>
         <li>View website analytics</li>
         <li>Create business cards</li>
         <li>View the website sitemap</li>
@@ -55,7 +57,6 @@ if (session != null) {
       <Text color="white">Upcoming features:</Text>
 
       <ul>
-        <li>Edit user permissions</li>
         <li>Upload, delete, and rename files</li>
         <li>Edit navigation using sitemap</li>
         <li>Change settings</li>
