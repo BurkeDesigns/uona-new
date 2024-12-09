@@ -20,18 +20,27 @@ if (session != null) {
   let api = new API();
   let user = await api.users.info(session.user.email);
   if (user.email == null) Astro.redirect("/login");
+
+  // check user access
+  const userAccess = await api.access.get({
+    uid: user.id,
+    type: "business cards",
+  });
+  const hasAccess = userAccess.access[0]?.access_level == "admin";
+  if (hasAccess == false && user.type != "admin")
+    return Astro.redirect("/login/dashboard/unauthorized");
 } else {
   return Astro.redirect("/login");
 }
 ---
 
 <Page layout="am fixed">
-	<Aside client:only="react"/>
-    <!-- <Aside currentPage="ui" client:only="react"/> -->
-	<main el="main">
-		<List el="xsm p-lg" style={{ paddingLeft: 16, color: 'white' }}>
-			<Text as="h4" color="currentColor">Business Cards</Text>
-			<BusinessCards  />
-		</List>
-	</main>
+  <Aside client:only="react" />
+  <!-- <Aside currentPage="ui" client:only="react"/> -->
+  <main el="main">
+    <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
+      <Text as="h4" color="currentColor">Business Cards</Text>
+      <BusinessCards />
+    </List>
+  </main>
 </Page>

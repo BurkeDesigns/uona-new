@@ -19,8 +19,17 @@ let session = await getSession(Astro.request);
 
 if (session != null) {
   let api = new API();
-  let user = await api.users.info(session.user.email);
+  let user = await api.users.info(session.user?.email || "");
   if (user.email == null) Astro.redirect("/login");
+
+  // check user access
+  const userAccess = await api.access.get({
+    uid: user.id,
+    type: "sitemap",
+  });
+  const hasAccess = userAccess.access[0]?.access_level == "admin";
+  if (hasAccess == false && user.type != "admin")
+    return Astro.redirect("/login/dashboard/unauthorized");
 } else {
   return Astro.redirect("/login");
 }
@@ -33,6 +42,6 @@ if (session != null) {
     <!-- <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
       <Text as="h4" color="currentColor">Website</Text>
     </List> -->
-	<SiteMap client:only="react" />
+    <SiteMap client:only="react" />
   </main>
 </Page>

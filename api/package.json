@@ -30,6 +30,7 @@
     "db:executeMigration": "bun run ./db/migrate.ts",
     "db:pushToProd": "bunx drizzle-kit push",
     "db:seed": "bun run ./db/seed.ts",
-    "db:studio": "bunx drizzle-kit studio"
+    "db:studio": "bunx drizzle-kit studio",
+    "pm2BackupDB": "bunx pm2 start ./scripts/backup_db.ts --name \"uona-db-backup\" --interpreter bun"
   }
 }

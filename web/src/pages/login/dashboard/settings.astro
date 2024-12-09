@@ -13,16 +13,19 @@ import { to } from "@util/navigation";
 export const prerender = false;
 import { getSession } from "auth-astro/server";
 import API from "@util/api";
+import Backups from "@components/Backups";
 let session = await getSession(Astro.request);
 // if (session == null) return Astro.redirect("/login");
 
+let api = new API();
+
 if (session != null) {
-  let api = new API();
-  let user = await api.users.info(session.user.email);
+  let user = await api.users.info(session.user?.email || "");
   if (user.email == null) Astro.redirect("/login");
 } else {
   return Astro.redirect("/login");
 }
+const data = (await api.backups.list()).backups || [];
 ---
 
 <Page layout="am fixed">
@@ -31,6 +34,12 @@ if (session != null) {
   <main el="main">
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
       <Text as="h4" color="currentColor">Settings</Text>
+    </List>
+    <List el="xsm">
+      <Text color="white"
+        >Contact Wesley Burke @ 571-232-7661 to restore any backup.</Text
+      >
+      <Backups {data} client:only="react" />
     </List>
   </main>
 </Page>

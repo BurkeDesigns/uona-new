@@ -46,6 +46,8 @@ const Input = (props: Props) => {
   const handleInputChange = (e: React.ChangeEvent<any>) => {
     if (e.target == null) return;
 
+    
+    let value = e.target.value;
     // Validation logic
     switch (e.target.type) {
       case "select-one":
@@ -53,6 +55,9 @@ const Input = (props: Props) => {
           setInputError(error || "Please select one option");
         else setInputError(null);
         break;
+        case "checkbox":
+          value = e.target.checked;
+          break;
       default:
         if (e.target.value === "")
           setInputError(error || "Please provide a value");
@@ -61,7 +66,7 @@ const Input = (props: Props) => {
     }
 
     // Call the parent's onChange function with the event
-    if (typeof onChange === "function") onChange(e.target.value);
+    if (typeof onChange === "function") onChange(value);
   };
 
   switch (as) {

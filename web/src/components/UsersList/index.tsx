@@ -26,11 +26,11 @@ const component = (props: Props) => {
 			</thead>
 			<tbody>
 				{data.map(item=> (<tr key={item.id} onClick={()=> to(`/login/dashboard/users/edit/${item.id}`)}>
-					{item.name && <td>{item.name}</td>}
-					{item.type && <td>{item.type}</td>}
-					{item.group && <td>{item.group}</td>}
-					{item.email && <td>{item.email}</td>}
-					{item.created_at && <td>{formatTimeAgo(item.created_at)}</td>}
+					<td>{item.name || ''}</td>
+					<td>{item.type || ''}</td>
+					<td>{item.group || ''}</td>
+					<td>{item.email || ''}</td>
+					<td>{formatTimeAgo(item.created_at) || ''}</td>
 					{/* <td>
 						<List el="column center xsm">
 							<Icon name="file" />

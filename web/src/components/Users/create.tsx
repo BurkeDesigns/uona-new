@@ -14,12 +14,13 @@ import type { NewUser } from "../../../../api/db/types";
 
 type FormData = {
 	user?: NewUser;
+	access?: any;
 };
 
 const component = (props: FormData) => {
-	const { user } = props;
+	const { user, access } = props;
 
-	console.log('User Data:', user);
+	console.log('User Data:', user, access);
 
 	const [formData, setFormData] = useState(props);
 
@@ -121,24 +122,63 @@ const component = (props: FormData) => {
 		handleSubmit();
 
 		if (Object.keys(errors.current).length === 0) {
-			// setIsSubmitting(true);
+			setIsSubmitting(true);
 			// // Here you would typically send the form data to your backend
-			// let data:any = structuredClone(formData);
-			// if(Object.keys(data).includes('children')) delete data.children;
-			// console.log("Form submitted:", data);
-			// data.updated_at = (new Date()).toISOString();
+			let data:any = structuredClone(formData.user);
+			if(Object.keys(data).includes('children')) delete data.children;
+			console.log("Form submitted:", data);
+			data.updated_at = (new Date()).toISOString();
 			// // Reset form after submission
 			// // setFormData({});
-			// // let result = await api.pages.list();
+			let result = await api.users.update(data);
 			// let result = await api.pages.update(data);
-			// console.log('Result:', result);
+			console.log('Updated user result:', result);
 			// setIframeSlug(`/${data.slug}?v=${new Date().getTime()}&preview=true`);
-			// // window.location.href = '/login/dashboard/pages';
-			// setIsSubmitting(false);
+			// window.location.href = '/login/dashboard/users';
+			setIsSubmitting(false);
+			if(result.success == true && result.user[0].id!= null) alert('User has been updated!');
+			else alert('Unable to update user account.')
 		}
 	};
 
 	const deleteUser = async () => {
+		// const confirmed = confirm("Are you sure you want to delete this page?");
+  		// if (!confirmed) return;
+		// let result = await api.pages.delete(Number(formData.id));
+		// console.log('Result:', result);
+		// window.location.href = '/login/dashboard/pages';
+	};
+
+	const checkAccess = (type: string) => {
+		return access.list.some(obj => obj.type == type);
+	};
+
+	const toggleAccess = async (type: string, enable: boolean) => {
+		if(user?.id == null) return;
+		// check if exists
+		console.log(type, enable);
+		let existingAccess = await api.access.get({
+			uid: user?.id,
+			type,
+		});
+		console.log('existingAccess', existingAccess);
+		if(existingAccess.success == true && (existingAccess.access == null || existingAccess.access.length == 0)){
+			// create new access if not found
+			let newAccess = await api.access.create({
+				uid: user?.id,
+				type,
+				access_level: 'admin'
+			});
+			console.log('New Access', newAccess);
+		} else {
+			// delete access
+			let removed = await api.access.delete({
+				uid: user?.id,
+				type,
+			});
+			console.log('Deleted Access', removed);
+		}
+		// let exists = await ap
 		// const confirmed = confirm("Are you sure you want to delete this page?");
   		// if (!confirmed) return;
 		// let result = await api.pages.delete(Number(formData.id));
@@ -177,6 +217,7 @@ const component = (props: FormData) => {
 						>
 							<option value="">Select one</option>
 							<option value="admin">admin</option>
+							<option value="staff">staff</option>
 							<option value="student">student</option>
 						</Input>
 					<Input
@@ -188,12 +229,20 @@ const component = (props: FormData) => {
 							required
 						>
 							<option value="">Select one</option>
-							<option value="IT">IT</option>
-							<option value="faculty">Faculty</option>
-							<option value="staff">Staff</option>
-							<option value="student">Student</option>
+							<option value="accounting">Accounting</option>
 							<option value="admission">Admission</option>
 							<option value="board of directors">Board of Directors</option>
+							<option value="campus">Campus</option>
+							<option value="ceo">CEO</option>
+							<option value="esol">ESOL</option>
+							<option value="faculty">Faculty</option>
+							<option value="leadership">Leadership</option>
+							<option value="library">Library</option>
+							<option value="outreach">Outreach</option>
+							<option value="other">Other</option>
+							<option value="IT">IT</option>
+							<option value="staff">Staff</option>
+							<option value="student">Student</option>
 						</Input>
 					<Input
 						label="Job Title"
@@ -301,32 +350,40 @@ const component = (props: FormData) => {
 					<Input
 						as="checkbox"
 						label="View Sitemap"
-						// checked={formData.user?.type == 'admin'}
+						onChange={(val) => toggleAccess("sitemap", val)}
+						defaultChecked={checkAccess('sitemap')}
 					/>
 					<Input
 						as="checkbox"
 						label="Create Pages"
-						// checked={formData.user?.type == 'admin'}
+						onChange={(val) => toggleAccess("pages", val)}
+						defaultChecked={checkAccess('pages')}
 					/>
 					<Input
 						as="checkbox"
 						label="View Analytics"
+						onChange={(val) => toggleAccess("analytics", val)}
+						defaultChecked={checkAccess('analytics')}
 						// checked={formData.user?.type == 'admin'}
 					/>
 					<Input
 						as="checkbox"
 						label="Create Business Cards"
+						onChange={(val) => toggleAccess("business cards", val)}
+						defaultChecked={checkAccess('business cards')}
 						// checked={formData.user?.type == 'admin'}
 					/>
 					<Input
 						as="checkbox"
 						label="Manage Users"
+						onChange={(val) => toggleAccess("users", val)}
+						defaultChecked={checkAccess('users')}
 						// checked={formData.user?.type == 'admin'}
 					/>
 				</List>
 				{props.user?.id != null && <List el="column xsm">
 					<Btn variant="secondaryWhite">Delete</Btn>
-					<Btn>Update</Btn>
+					<Btn onClick={updateUser}>Update</Btn>
 				</List>}
 				{props.user?.id == null && <List el="column xsm">
 					<Btn>Create User</Btn>

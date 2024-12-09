@@ -239,6 +239,7 @@ const component = (props: FormData) => {
 						{isSubmitting == true && <Btn disabled>Updating...</Btn>}
 					</List>}
 					<Link href="https://www.markdownguide.org/basic-syntax/" style={{color:'#2facee'}}>Markdown Guide HERE</Link>
+					<Link href={`https://uona.swaggear.life/${formData.slug}`} style={{color:'#2facee'}}>Open Public Page</Link>
 			</List>
 			</div>
 		<iframe src={iframeSlug} frameBorder="0"></iframe>

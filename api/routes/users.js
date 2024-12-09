@@ -33,21 +33,27 @@ routes.post("/get", async (c) => {
   return res(c, { ...user[0] });
 });
 
+routes.post("/access", async (c) => {
+  const body = await c.req.json();
+  let list = await users.getAccess(body.id);
+  return res(c, { list });
+});
+
 routes.post("/create", async (c) => {
   let body = await c.req.json();
 
-  let photos = [
-    "/assets/photos/images (1).jpeg",
-    "/assets/photos/images (2).jpeg",
-    "/assets/photos/images (3).jpeg",
-    "/assets/photos/images (4).jpeg",
-    "/assets/photos/images (5).jpeg",
-    "/assets/photos/images (6).jpeg",
-    "/assets/photos/images (7).jpeg",
-    "/assets/photos/images (8).jpeg",
-  ];
+  // let photos = [
+  //   "/assets/photos/images (1).jpeg",
+  //   "/assets/photos/images (2).jpeg",
+  //   "/assets/photos/images (3).jpeg",
+  //   "/assets/photos/images (4).jpeg",
+  //   "/assets/photos/images (5).jpeg",
+  //   "/assets/photos/images (6).jpeg",
+  //   "/assets/photos/images (7).jpeg",
+  //   "/assets/photos/images (8).jpeg",
+  // ];
 
-  body.image = pickRandom(photos);
+  // body.image = pickRandom(photos);
   let user = await users.insert(body);
   return res(c, { user });
 });

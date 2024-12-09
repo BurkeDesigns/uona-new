@@ -5,9 +5,11 @@ import { cors } from "hono/cors";
 import { handleError, res } from "./util/response";
 
 // endpoints
-import photoRoutes from "./routes/photos";
+// import photoRoutes from "./routes/photos";
 import usersRoutes from "./routes/users";
 import pagesRoutes from "./routes/pages";
+import backupsRoutes from "./routes/backups";
+import accessRoutes from "./routes/access";
 
 const app = new Hono();
 
@@ -16,7 +18,7 @@ app.use("*", cors({
     origin: (origin, c) => {
         // console.log("ORIGIN", origin);
         return origin;
-      },
+    },
     credentials: true,
 }));
 app.onError(handleError);
@@ -30,6 +32,8 @@ app.onError(handleError);
 // app.route("/photos", photoRoutes);
 app.route("/users", usersRoutes);
 app.route("/pages", pagesRoutes);
+app.route("/backups", backupsRoutes);
+app.route("/access", accessRoutes);
 
 app.get('/', (c) => c.text('API is running!'))
 

@@ -1,7 +1,13 @@
 import { access } from "@db/schema/schema";
 import type { Access, NewAccess } from "@db/types";
 import { db } from "@util/db";
-import { eq, sql, desc } from "drizzle-orm";
+import { eq, sql, desc, and } from "drizzle-orm";
+
+type GetProps = {
+    id?: string
+    type?: string
+    uid?: string
+}
 
 export const all = async () =>{
     const result = await db.select().from(access);
@@ -13,9 +19,15 @@ export const list = async (uid: number) =>{
     return result;
 }
 
-export const get = async (id: number) =>{
-    const result = await db.select().from(access).where(eq(access.id, id));
-    return result;
+export const get = async (data: GetProps) =>{
+    if(data.id != null) return await db.select().from(access).where(eq(access.id, Number(data.id)));
+    if(data.uid != null && data.type != null) return await db.select().from(access).where(and(
+        eq(access.uid, Number(data.uid)),
+        eq(access.type, data.type),
+    ));
+    if(data.uid != null) return await db.select().from(access).where(eq(access.uid, Number(data.uid)));
+    if(data.type != null) return await db.select().from(access).where(eq(access.type, data.type));
+    return null;
 }
 
 export const update = async (data: Access) =>{
@@ -28,9 +40,15 @@ export const insert = async (data: NewAccess) =>{
     return result;
 }
 
-export const remove = async (id: number) =>{
-    let result = await db.delete(access).where(eq(access.id, id)).returning()
-    return result;
+export const remove = async (data: GetProps) =>{
+    if(data.id != null) return await db.delete(access).where(eq(access.id, Number(data.id)));
+    if(data.uid != null && data.type != null) return await db.delete(access).where(and(
+        eq(access.uid, Number(data.uid)),
+        eq(access.type, data.type),
+    ));
+    if(data.uid != null) return await db.delete(access).where(eq(access.uid, Number(data.uid)));
+    if(data.type != null) return await db.delete(access).where(eq(access.type, data.type));
+    return null;
 }
 
 // ---

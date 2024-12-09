@@ -64,7 +64,7 @@ export const pages = sqliteTable('pages', {
 export const access = sqliteTable('access', {
     id: integer().primaryKey({ autoIncrement: true }),
     uid: integer().references(() => users.id),
-    type: text(), // type of resource (project or file)
+    type: text(), // type of resource (project, file, feature)
     resource_id: text(), // type of resource (project id or file id)
     access_level: text(), // access level (view, read, edit, or admin)
     ...timestamps,

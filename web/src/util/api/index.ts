@@ -1,5 +1,11 @@
-import {deleteRequest, patch, post} from '@util/fetch'
-import type {NewPage, NewUser} from '../../../../api/db/types'
+import {deleteRequest, get, patch, post} from '@util/fetch'
+import type {NewPage, NewUser, NewAccess} from '../../../../api/db/types'
+
+type AccessGetProps = {
+  id?: string | number
+  uid?:string | number
+  type?: string
+};
 
 export default class API {
   private _url: string;
@@ -15,6 +21,11 @@ export default class API {
     info: async (email:string) => {
       return await post(`${this._url}/users/info`,{
         email,
+      });
+    },
+    access: async (id:string) => {
+      return await post(`${this._url}/users/access`,{
+        id,
       });
     },
     get: async (id:string) => {
@@ -59,6 +70,35 @@ export default class API {
       return await deleteRequest(`${this._url}/pages/delete`, {
         id,
       });
+    },
+  };
+
+  backups = {
+    list: async () => {
+      return await get(`${this._url}/backups/list`);
+    },
+  };
+
+  access = {
+    list: async () => {
+      return await post(`${this._url}/access/list`);
+    },
+    info: async (id:string) => {
+      return await post(`${this._url}/access/info`,{
+        id,
+      });
+    },
+    get: async (data: AccessGetProps) => {
+      return await post(`${this._url}/access/get`, data);
+    },
+    create: async (data: NewAccess) => {
+      return await post(`${this._url}/access/create`, data);
+    },
+    update: async (data: any) => {
+      return await patch(`${this._url}/access/update`, data);
+    },
+    delete: async (data: AccessGetProps) => {
+      return await deleteRequest(`${this._url}/access/delete`, data);
     },
   };
 

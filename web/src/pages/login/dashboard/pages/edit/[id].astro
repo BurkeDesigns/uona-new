@@ -21,6 +21,15 @@ if (session != null) {
   let api = new API();
   let user = await api.users.info(session.user.email);
   if (user.email == null) Astro.redirect("/login");
+
+  // check user access
+  const userAccess = await api.access.get({
+    uid: user.id,
+    type: "pages",
+  });
+  const hasAccess = userAccess.access[0]?.access_level == "admin";
+  if (hasAccess == false && user.type != "admin")
+    return Astro.redirect("/login/dashboard/unauthorized");
 } else {
   return Astro.redirect("/login");
 }

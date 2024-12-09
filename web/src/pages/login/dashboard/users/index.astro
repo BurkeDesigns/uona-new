@@ -19,15 +19,24 @@ let session = await getSession(Astro.request);
 // if (session == null) return Astro.redirect("/login");
 if (session != null) {
   let api = new API();
-  let user = await api.users.info(session.user.email);
+  let user = await api.users.info(session.user?.email || "");
   if (user.email == null) Astro.redirect("/login");
+
+  // check user access
+  const userAccess = await api.access.get({
+    uid: user.id,
+    type: "users",
+  });
+  const hasAccess = userAccess.access[0]?.access_level == "admin";
+  if (hasAccess == false && user.type != "admin")
+    return Astro.redirect("/login/dashboard/unauthorized");
 } else {
   return Astro.redirect("/login");
 }
 
 let api = new API();
 let usersList = await api.users.list();
-console.log('USERS', usersList);
+console.log("USERS", usersList);
 
 const data = usersList.users;
 ---
@@ -39,7 +48,7 @@ const data = usersList.users;
     <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
       <List el="column-between center xsm" style={{ maxWidth: 1200 }}>
         <Text as="h4" color="currentColor">Users</Text>
-        <Btn url="/login/dashboard/users/create">Create</Btn>
+        <!-- <Btn url="/login/dashboard/users/create">Create</Btn> -->
       </List>
       <UsersList {data} client:only="react" />
     </List>
