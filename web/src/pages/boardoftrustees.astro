@@ -37,7 +37,7 @@ let team = {
     //     desc: ''
     // },
     {
-      firstname: "Jie",
+      firstname: "Dr. Jie",
       lastname: "Liu",
       title: "Chief",
       email: "liudr@outlook.com",
@@ -54,13 +54,13 @@ let team = {
         },
       ],
       img: "",
-      order: 2,
+      order: 5,
       type: "trustee",
       desc: "",
     },
     {
       firstname: "Alan",
-      lastname: "Krishnan",
+      lastname: "Krishnan - Secretary of BOT",
       title: "President",
       email: "alank@teamupcorp.com",
       company: "BSDC, Inc.",
@@ -81,7 +81,7 @@ let team = {
     },
     {
       firstname: "Rod",
-      lastname: "Woodruff",
+      lastname: "Woodruff - Vice Chair of BOT",
       title: "IT Manager",
       email: "rwcbcmail@gmail.com",
       company: "Exxon/Mobile",
@@ -96,12 +96,12 @@ let team = {
         },
       ],
       img: "",
-      order: 4,
+      order: 2,
       type: "trustee",
       desc: "",
     },
     {
-      firstname: "Yu-li",
+      firstname: "Dr. Yu-li (Lily)",
       lastname: "Liu",
       title: "Head of Dept of Media and Communication",
       email: "yuliliu@cityu.edu.hk",
@@ -152,7 +152,7 @@ let team = {
         },
       ],
       img: "",
-      order: 6,
+      order: 1,
       type: "trustee",
       desc: "",
     },
@@ -183,7 +183,7 @@ let team = {
         },
       ],
       img: "",
-      order: 7,
+      order: 4,
       type: "trustee",
       desc: "",
     },
@@ -193,7 +193,8 @@ let team = {
 // team.staff.sort(function(a, b) {
 //     return a.lastname - b.lastname;
 // });
-team.staff = team.staff.sort((a, b) => a.lastname.localeCompare(b.lastname));
+// team.staff = team.staff.sort((a, b) => a.lastname.localeCompare(b.lastname));
+team.staff = team.staff.sort((a, b) => a.order - b.order);
 team.staff = team.staff.filter((item) => item.type == "trustee");
 ---
 
@@ -294,7 +295,7 @@ team.staff = team.staff.filter((item) => item.type == "trustee");
                   )}
                   <div>
                     <h2 class="infoTitle">
-                      {item.firstname} {item.lastname}
+                      {`${item.firstname} ${item.lastname}`}
                     </h2>
                     <p>
                       <i>

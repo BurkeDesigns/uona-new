@@ -1,0 +1,258 @@
+---
+import Page from "@layouts/uona.astro";
+import Header from "@components/Header/index.astro";
+import Footer from "@components/Footer/index.astro";
+
+import Gallery from "@components/Gallery/index.astro";
+import Tools from "@components/Tools/index.astro";
+// import Aside from "@components/Aside";
+// import List from "@components/List";
+import Text from "@components/Text";
+// import Btn from "@components/Button";
+// import Accordion from "@components/Accordion";
+// import ContactForm from "@components/ContactForm";
+---
+
+<style>
+  #video {
+    background-image: url(/images/hospitality.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+  }
+  .course {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0;
+  }
+  .course p {
+    margin: 0;
+  }
+  .course li {
+    display: flex;
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    box-sizing: border-box;
+    margin: 5px;
+    box-shadow:
+      0 16px 24px 2px rgba(0, 0, 0, 0.04),
+      0 6px 30px 5px rgba(0, 0, 0, 0.02),
+      0 8px 10px -5px rgba(0, 0, 0, 0.1);
+  }
+  .course li div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+  }
+  .course li div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 32px;
+    background: #4067b1;
+    font-size: 18px;
+    color: #fff;
+  }
+  .full {
+    box-sizing: border-box;
+  }
+  #catagory {
+    background: transparent;
+    box-shadow: 0 0 0;
+  }
+  #catagory div {
+    background: transparent;
+    max-width: inherit;
+    color: #4067b1;
+    font-weight: bold;
+    padding: 0 15px;
+    font-size: 20px;
+  }
+  #catagory div:nth-child(2) {
+    align-items: flex-end;
+  }
+</style>
+
+<Page layout="hm fixed" title="MSHM | University of North America">
+  <Header />
+  <main el="main">
+    <section id="video">
+      <div class="maintitle"><div><p>Hospitality Management</p></div></div>
+    </section>
+    <section>
+      <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
+        <div>
+          <h1 class="heading">Master of Science in Hospitality Management (MSHM)</h1>
+          <div class="paddingReg">
+            <span class="bold">CIP Code: 52.0901</span><br /><br />
+            <!-- <span class="bold"
+              >This program qualifies for the STEM designation.</span
+            ><br /><br /> -->
+            The goal of the Master of Science in Hospitality Management is a business-focused hospitality
+degree designed to help students with hospitality industry experience rise to new levels. It
+provides the executive management, leadership and analytical skills needed to advance within
+the industry. The curriculum is designed to be experiential, and project orientated. There is a
+strong focus on the business side of the hospitality industry to prepare students to solve the real
+challenges of working at an advanced level as managers in a range of hospitality environments. <br> <br>
+Managers must be able to express themselves clearly and compellingly if they are to serve as
+leaders in business, government entities, and not-for-profit organizations. Thus, the program
+has a strong emphasis on the development and demonstration of the ability to communicate
+effectively in both written and oral formats. Students are provided with opportunities in each
+course to develop and improve these skills. <br><br>
+On completion of the program, the graduate will be able to identify problems within an
+organization, specify the causes of the problems, develop an appropriate solution, and
+implement the change required. Further, graduates will be able to articulate their approach and
+findings clearly and effectively to both a technical and lay audience in both written and oral
+forms.
+          </div>
+          <div class="flex">
+            <a
+              class="button"
+              href="/graduate"
+              style="--box-shadow:0 0 0 2px var(--color);">More Programs</a
+            >
+            <a
+              href="https://una-web.scansoftware.com/cafeweb/tapestry?page=Degree%20Application"
+              class="button"
+              style="--bg-color:#fff;--color:#4067b1;--box-shadow:0 0 0 2px var(--bg-color);"
+              >apply today</a
+            >
+          </div>
+        </div>
+      </ul>
+      <ul class="section" style="--bg-color:#fff;">
+        <div>
+          <h1 class="heading">Program Objectives</h1>
+          <div class="paddingReg">
+            Of the 12 required courses to earn an MSHM, 2 common core master’s courses provide a survey
+of contemporary management and the inclusion of technology within every aspect of today’s
+workplace, 5 program core courses provide the tools necessary to address problems that face
+managers in a range of hospitality industry organizations, 4 elective courses comprise required
+and student-selected courses in a specific discipline or across disciplines, and 1 capstone
+course enables each student to develop an integrated final project.
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Credit Requirements</h1>
+          <div class="paddingReg">
+            It is expected that full-time students will take two courses per
+            term throughout their programs. Due to the fact that most students
+            opt to take one vacation term per year during their program, the
+            normal program length is 24 months, and the maximum time students
+            are given to complete the program is 36 months.
+          </div>
+        </div>
+      </ul>
+      <ul class="section">
+        <div>
+          <h1 class="heading">Curriculum</h1>
+          <div class="paddingReg">
+            <h1 class="subtitledesc">Common Core (2 Courses)</h1>
+            <ul class="course">
+              <li id="catagory"><div>Course</div><div>Credit Hrs</div></li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">MGMT515</span> - Management that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">TECH515</span> - Technology that Transforms
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Program Core (5 Courses)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">ACCT 520</span> - Accounting for Decision Making
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">MGMT 560</span> - Human Resource Management
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">MKTG 571</span> - Marketing Management
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">MGMT 582</span> - Legal Issues in the Hospitality Industry
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+              <li>
+                <div>
+                  <p>
+                    <span class="bold">TECH 582</span> - Technology for the Hospitality Industry
+                  </p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Elective (4 Courses)</h1>
+            <ul class="flex">
+              <p>
+                Students may choose from the various graduate core or elective
+                courses offered in this and other programs. A sample selection
+                of electives is listed as follows.
+              </p>
+            </ul>
+            <ul class="course">
+              <li>
+                <div><p><span class="bold"></span> - Elective 1</p></div><div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div><p><span class="bold"></span> - Elective 2</p></div><div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div><p><span class="bold"></span> - Elective 3</p></div><div>
+                  <p>4.5</p>
+                </div>
+              </li>
+              <li>
+                <div><p><span class="bold"></span> - Elective 4</p></div><div>
+                  <p>4.5</p>
+                </div>
+              </li>
+            </ul>
+            <h1 class="subtitledesc">Capstone (1 Course)</h1>
+            <ul class="course">
+              <li>
+                <div>
+                  <p><span class="bold">CAPS600</span> - Graduate Capstone</p>
+                </div><div><p>4.5</p></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ul>
+    </section>
+    <Footer />
+  </main>
+</Page>
