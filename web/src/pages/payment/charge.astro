@@ -81,7 +81,7 @@ const amount = Astro.url.searchParams.get("p");
         // them to Checkout.
         stripe
           .redirectToCheckout({
-            items: [{ sku: "sku_GZbBonhuXg9CtY", quantity: amount * 100 }],
+            items: [{ sku: "sku_GZbBonhuXg9CtY", quantity: Number(amount) }],
 
             // Do not rely on the redirect to the successUrl for fulfilling
             // purchases, customers may not always reach the success_url after
