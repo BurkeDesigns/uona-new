@@ -236,7 +236,7 @@ body * {
   font-weight: bold;
 }
 
-.button {
+.button:not(button .button) {
     --bg-color:#4067b1;
     --color:#fff;
   position: relative;
@@ -261,7 +261,7 @@ padding: 0;
     margin:5px;
 }
 
-.button:hover {
+.button:not(button .button):hover {
   background: #fbd504;
   color: rgba(0, 0, 0, .7);
   box-shadow: 0 10px 0 -5px rgb(172, 146, 0);

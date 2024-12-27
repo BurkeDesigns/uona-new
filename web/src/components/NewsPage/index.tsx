@@ -264,6 +264,18 @@ const component = (props: FormData) => {
 					</div>}
 					{formData.blocks && formData.blocks.map((block:any, index:number) => <>
 						{block.type == 'markdown' && <>
+							{/* <Input
+								as="select"
+								label="variant"
+								value={block.variant}
+								onChange={(val) => handleBlockChange(index, "variant", val)}
+								error={errors.current.blocks}
+								required
+							>
+								<option value="">Select one</option>
+								<option value="blue">Blue Background</option>
+								<option value="yellow">Yellow Background</option>
+							</Input> */}
 							<Input
 								as="textarea"
 								label="Markdown Content"
