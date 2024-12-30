@@ -10,7 +10,9 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
+    "@auth/core": "^0.37.4",
     "@babel/parser": "^7.26.2",
+    "@hono/auth-js": "^1.0.15",
     "@libsql/client": "^0.14.0",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.37.0",
@@ -21,6 +23,7 @@
     "nanoid-dictionary": "^4.3.0",
     "node-cron": "^3.0.3",
     "openai": "^4.76.0",
+    "papaparse": "^5.4.1",
     "sharp": "^0.33.5"
   },
   "scripts": {

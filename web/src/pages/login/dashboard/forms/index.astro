@@ -1,0 +1,63 @@
+---
+import Page from "@layouts/dashboard.astro";
+import Aside from "@components/Aside";
+import List from "@components/List";
+import Text from "@components/Text";
+import Link from "@components/Link";
+import Btn from "@components/Button";
+import Accordion from "@components/Accordion";
+import { post } from "@util/fetch";
+// import { getSession } from "auth-astro/server";
+import { to } from "@util/navigation";
+// import GenerateTestPage from "@components/Pages/generator/ui";
+
+export const prerender = false;
+import { getSession } from "auth-astro/server";
+import FormsList from "@components/FormsList";
+import API from "@util/api";
+
+let session = await getSession(Astro.request);
+// if (session == null) return Astro.redirect("/login");
+
+if (session != null) {
+  let api = new API();
+  let user = await api.users.info(session.user?.email || "");
+  if (user.email == null) return Astro.redirect("/login");
+
+  // check user access
+  const userAccess = await api.access.get({
+    uid: user.id,
+    type: "forms",
+  });
+  const hasAccess = userAccess.access[0]?.access_level == "admin";
+  if (hasAccess == false && user.type != "admin")
+    return Astro.redirect("/login/dashboard/unauthorized");
+} else {
+  return Astro.redirect("/login");
+}
+
+let api = new API();
+let result = await api.formResponse.list();
+// console.log(pageList);
+
+const data = result.list;
+---
+
+<Page layout="am fixed">
+  <Aside {session} client:only="react" />
+  <!-- <Aside currentPage="ui" client:only="react"/> -->
+  <main el="main">
+    <List el="xsm p-lg" style={{ paddingLeft: 16, color: "white" }}>
+      <List el="column-between center xsm" style={{ maxWidth: 1200 }}>
+        <Text as="h4" color="currentColor">Form Responses</Text>
+        <Link
+          href="https://uona-api.swaggear.life/form-response/export/csv"
+          style={{ color: "#2facee" }}
+          download>Download CSV</Link
+        >
+        <!-- <Btn url="/login/dashboard/pages/create">Create</Btn> -->
+      </List>
+      <FormsList {data} client:only="react" />
+    </List>
+  </main>
+</Page>

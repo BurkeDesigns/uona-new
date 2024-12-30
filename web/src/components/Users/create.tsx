@@ -400,6 +400,13 @@ const component = (props: FormData) => {
 						defaultChecked={checkAccess('users')}
 						// checked={formData.user?.type == 'admin'}
 					/>
+					<Input
+						as="checkbox"
+						label="Manage Forms"
+						onChange={(val) => toggleAccess("forms", val)}
+						defaultChecked={checkAccess('forms')}
+						// checked={formData.user?.type == 'admin'}
+					/>
 				</List>}
 				{props.user?.id != null && <List el="column xsm">
 					<Btn variant="secondaryWhite" onClick={deleteUser}>Delete</Btn>

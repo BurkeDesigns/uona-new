@@ -1,11 +1,22 @@
-import {deleteRequest, get, patch, post} from '@util/fetch'
-import type {NewPage, NewUser, NewAccess} from '../../../../api/db/types'
+import {deleteRequest, get, patch, post, postForm} from '@util/fetch'
+import type {NewPage, NewUser, NewAccess, NewFormResponse} from '../../../../api/db/types'
 
 type AccessGetProps = {
   id?: string | number
   uid?:string | number
   type?: string
 };
+
+type RecapachaProps = {
+  token: string
+  action?: string
+}
+
+type GetFormResponse = {
+  id?: string | number
+  column?: string
+  value?: string | number
+}
 
 export default class API {
   private _url: string;
@@ -73,6 +84,29 @@ export default class API {
     },
   };
 
+  formResponse = {
+    list: async () => {
+      return await post(`${this._url}/form-response/list`);
+    },
+    get: async (data: GetFormResponse) => {
+      return await post(`${this._url}/form-response/get`, data);
+    },
+    create: async (data: NewFormResponse) => {
+      return await post(`${this._url}/form-response/create`, data);
+    },
+    update: async (data: any) => {
+      return await patch(`${this._url}/form-response/update`, data);
+    },
+    uploadFile: async (data: any) => {
+      return await postForm(`${this._url}/form-response/upload`, data);
+    },
+    delete: async (id: number) => {
+      return await deleteRequest(`${this._url}/form-response/delete`, {
+        id,
+      });
+    },
+  };
+
   backups = {
     list: async () => {
       return await get(`${this._url}/backups/list`);
@@ -105,6 +139,17 @@ export default class API {
   ai = {
     chat: async (data: any) => {
       return await post(`${this._url}/ai/chat`, data);
+    },
+  };
+
+  test = {
+    protected: async () => {
+      return await get(`${this._url}/api/protected`);
+    },
+    headers: async () => {
+      return await get(`${this._url}/headers`, {
+        credentials: 'include',
+      });
     },
   };
 
@@ -173,4 +218,8 @@ export default class API {
       });
     },
   };
+
+  verifyRecapacha = async (data: RecapachaProps) => {
+    return await post(`${this._url}/recapacha/verify`, data);
+  }
 }

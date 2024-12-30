@@ -32,6 +32,7 @@ const component = (props: Props) => {
 							{item.title}
 							{item.status == 'draft' && <div class="status-badge status-inactive">{item.status}</div>}
 							{item.status == 'published' && <div class="status-badge status-active">{item.status}</div>}
+							{item.status == 'archived' && <div class="status-badge status-archived">{item.status}</div>}
 						</List>
 					</td>}
 					{item.author && <td>{item.author}</td>}

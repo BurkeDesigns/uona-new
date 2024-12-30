@@ -40,13 +40,48 @@ routes.post("/list", async (c) => {
 	return res(c, { list });
 });
 
+// routes.post("/upload", async (c) => {
+// 	const body = await c.req.parseBody();
+// 	const { name, size, type } = body;
+// 	const path = `./data/photos/${name}`;
+// 	await Bun.write(path, body.file);
+// 	return res(c);
+// });
+
 routes.post("/upload", async (c) => {
 	const body = await c.req.parseBody();
-	const { name, size, type } = body;
-	const path = `./data/photos/${name}`;
+	if (!body.project_id) return throwErr(c, "Must have project_id");
+	const { name, size, type, project_id } = body;
+	const path = `./data/photos/${project_id}/${name}`;
 	await Bun.write(path, body.file);
-	return res(c);
+	let matches = await dbFiles.getProjectFile(project_id, name);
+	let file;
+	console.log("matches", matches);
+	if (matches.length == 0) {
+		file = await dbFiles.insert({
+			project_id: project_id,
+			created_by: body.uid,
+			path: path,
+			name,
+			size,
+			type,
+		});
+		console.log("created file", name);
+	} else {
+		file = await dbFiles.update(matches[0].id, {
+			project_id: project_id,
+			created_by: body.uid,
+			path: path,
+			name,
+			size,
+			type,
+		});
+		console.log("updated file", name);
+	}
+	return res(c, { file });
 });
+
+
 
 routes.get("/get/:filename/:size", async (c) => {
 	const filename = c.req.param("filename");

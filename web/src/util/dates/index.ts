@@ -59,3 +59,8 @@ export function msToMins(milliseconds) {
     const minutes = milliseconds / (1000 * 60);
     return Math.round(minutes);
 }
+
+export function parseBirthday(dateString:string){
+    const [year, month, day] = dateString.split('-').map(Number);
+    return new Date(year, month - 1, day);
+}

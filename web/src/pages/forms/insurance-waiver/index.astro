@@ -68,9 +68,14 @@ import InsuranceForm from "@components/Forms/insurance";
     </section>
     <section>
       <ul class="section" style="--bg-color:#222;--color:#fff;">
-        <InsuranceForm />
+        <InsuranceForm client:only />
       </ul>
     </section>
     <Footer />
   </main>
 </Page>
+
+<script
+  is:inline
+  src="https://www.google.com/recaptcha/api.js?render=6LeDe6cqAAAAAPk9JEI0RyumaEmaO4Efd_zQm2cP"
+></script>

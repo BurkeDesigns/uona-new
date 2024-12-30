@@ -7,6 +7,9 @@ import { Avatar } from "@components/BlockMapper/_BlockList";
 // import { Avatar } from "@components/BlockMapper/_BlockList";
 // import { useEffect } from "react";
 // import { useState } from "react";
+import API from "@util/api";
+import {deleteRequest, get, patch, post} from '@util/fetch'
+
 
 type Props = {
 	children?: ReactNode;
@@ -18,6 +21,16 @@ const component = (props: Props) => {
 	const { children, currentPage, session } = props;
 	// let [logOut, setLogOut]: any = useState(null);
 	console.log("SESSION", session);
+
+	// let api = new API('http://localhost:3008');
+
+	(async ()=> {
+		let base = 'http://localhost:3008';
+		let test = await get(`${base}/users/test`);
+
+		console.log('TEST', test);
+	})();
+
 
 	return (
 		<>
@@ -72,6 +85,12 @@ const component = (props: Props) => {
 								onClick={() => to("/login/dashboard/users")}
 								variant="white-hover"
 								title="User Management"
+							/>
+							<Icon
+								name="edit-note"
+								onClick={() => to("/login/dashboard/forms")}
+								variant="white-hover"
+								title="Forms"
 							/>
 							</List>
 						</List>
