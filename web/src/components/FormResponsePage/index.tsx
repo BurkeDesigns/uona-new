@@ -119,7 +119,7 @@ const component = (props: FormData) => {
   		if (!confirmed) return;
 		let result = await api.formResponse.delete(Number(formData.id));
 		console.log('Result:', result);
-		// window.location.href = '/login/dashboard/forms';
+		window.location.href = '/login/dashboard/forms';
 	};
 
 	console.log('Form Data:', formData);
