@@ -22,7 +22,7 @@ const component = (props: Props) => {
 				<th>Student ID</th>
 				<th>Name</th>
 				<th>Birthday</th>
-				<th>Waived</th>
+				<th>Reason For Waiver</th>
 				{/* <th>Files</th> */}
 				{/* <th>Actions</th> */}
 			</thead>
@@ -44,7 +44,7 @@ const component = (props: Props) => {
 					{item.data.student_id && <td>{item.data.student_id}</td>}
 					{item.data.name && <td>{item.data.name}</td>}
 					{item.data.birthday && <td>{item.data.birthday}</td>}
-					{item.data.confirm_waiver && <td>{item.data.confirm_waiver}</td>}
+					{item.data.reason_for_waiver && <td>{item.data.reason_for_waiver}</td>}
 					{/* {item.data.uploaded_files && <td>{item.data.uploaded_files.join(', ')}</td>} */}
 					{/* <td>
 						<List el="column center xsm">

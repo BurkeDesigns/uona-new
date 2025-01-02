@@ -71,14 +71,16 @@ const component = (props: FormData) => {
 		errors.current = {};
 		setErrorState(errors.current);
 
-		let files = fileInput.current.files;
+		let files = [];
+		if(fileInput.current != null) files = fileInput.current.files;
 		let uploadCount = Array.from(files).length;
 
 		if ([undefined, null, ''].includes(data.name)) errors.current.name = "Name is required";
 		if ([undefined, null, ''].includes(data.student_id)) errors.current.student_id = "Student ID is required";
 		if ([undefined, null, ''].includes(data.birthday)) errors.current.birthday = "Birthday is required";
-		if ([undefined, null, ''].includes(data.confirm_waiver)) errors.current.confirm_waiver = "Confirm Waiver is required";
-		if (data.confirm_waiver == 'yes' && uploadCount == 0) {
+		if ([undefined, null, ''].includes(data.reason_for_waiver)) errors.current.reason_for_waiver = "Reason is required";
+		
+		if (data.reason_for_waiver == 'I have insurance' && uploadCount == 0) {
 			errors.current.uploaded_files = "Uploading proof of insurance is required";
 			toast("Error: Uploading proof of insurance is required", {type:'error'});
 		}
@@ -93,11 +95,12 @@ const component = (props: FormData) => {
 	const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
 		setFormStatus('submitting');
 		const toastId = toast.loading("Validating form...");
+		event.preventDefault(); // Explicitly prevent page reload
+		const formData = new FormData(event.currentTarget);
+		// const query = formData.get("query");
+		console.log('FORM DATA', formData);
 		try {
-			event.preventDefault(); // Explicitly prevent page reload
-		
-			const formData = new FormData(event.currentTarget);
-			// const query = formData.get("query");
+			
 
 			let obj:any = {};
 			for (const pair of formData.entries()) {
@@ -105,8 +108,8 @@ const component = (props: FormData) => {
 				obj[key] = val;
 				console.log(key, val);
 			}
-			console.log(obj);
 			let isValid = validateFields(obj);
+			console.log('OBJECT DATA', obj, isValid);
 
 			if(isValid == false) {
 				setFormStatus('');
@@ -141,6 +144,8 @@ const component = (props: FormData) => {
 				data: obj,
 			});
 
+			console.log('RESULT', result);
+
 			if(result.success == false || result.data[0].id == null) {
 				setFormStatus('');
 				return toast.update(toastId, { render: "An error occured: please notify the staff", type: "error", isLoading: false, autoClose: 3000 });
@@ -153,11 +158,12 @@ const component = (props: FormData) => {
 			// console.log('RESULT', result);
 			// console.log('TOKEN',token, test);
 		} catch (error) {
+			console.log(error);
 			setFormStatus('');
 			return toast.update(toastId, { render: "An error occured: please notify the staff", type: "error", isLoading: false, autoClose: 3000 });
 		}
 
-		setFormStatus('');
+		setFormStatus('thank you');
 		return toast.update(toastId, { render: "Submitted form!", type: "success", isLoading: false, autoClose: 1500 });
 	};
 
@@ -225,7 +231,7 @@ const component = (props: FormData) => {
 	};
 	
 	return <>
-	<form onSubmit={handleSubmit} className="studentForm">
+	{formStatus != 'thank you' &&<form onSubmit={handleSubmit} className="studentForm">
 			<List el="xsm" style={{color: 'white'}}>
 					<Input
 						name="name"
@@ -254,18 +260,18 @@ const component = (props: FormData) => {
 					/>
 						<Input
 							as="select"
-							name="confirm_waiver"
-							label="Confirm Waiver"
-							value={formData.confirm_waiver || ''}
-							onChange={(val) => handleChange("confirm_waiver", val)}
-							error={errorState.confirm_waiver}
+							name="reason_for_waiver"
+							label="Reason For Waiver"
+							value={formData.reason_for_waiver || ''}
+							onChange={(val) => handleChange("reason_for_waiver", val)}
+							error={errorState.reason_for_waiver}
 							required
 						>
 							<option value="">Select one</option>
-							<option value="yes">Yes</option>
-							<option value="no">No</option>
+							<option value="I have insurance">I have insurance</option>
+							<option value="I want to stay uninsured">I want to stay uninsured</option>
 						</Input>
-						<label>
+						{formData.reason_for_waiver == "I have insurance" && <label>
 							<Text color="white" font="bodyMBold">Upload proof of insurance *</Text>
 							{/* <input type="file" name="uploaded_files" /> */}
 							<input
@@ -277,13 +283,27 @@ const component = (props: FormData) => {
 								accept=".jpg,.jpeg,.svg,.png,.webp,.avif,.gif,.webp,.pdf,.docx"
 								multiple
 							/>
-						</label>
+						</label>}
+						{(formData.reason_for_waiver == "I want to stay uninsured" || formData.reason_for_waiver == "I have insurance") && <>
+							<Text color="white" font="bodyLBold" content="Your Agreement" />
+							<Text color="white">
+								I voluntarily waive the health insurance coverage offered by the University of North America. I assume full responsibility for any medical expenses incurred during my enrollment and hereby release the University, including its trustees, officers, employees, and agents, from all liability regarding my healthcare costs.
+							</Text>
+						</>}
 						<div>
 						{formStatus == '' && <Btn type="submit">Submit Waiver</Btn>}
 						{formStatus == 'submitting' && <Btn disabled>Submitting form...</Btn>}
 						</div>
 			</List>
-	</form>
+	</form>}
+	{formStatus == 'thank you' && <>
+		<hr style={{background: 'white'}} />
+		<br />
+		<List el="xsm">
+			<Text as="h4" color="white" style={{textAlign: 'center'}}>Form Successfully Submitted!</Text>
+			<Text color="white" style={{textAlign: 'center'}}>Thank you for submitting the UoNA Student Health Insurance Waiver</Text>
+		</List>
+	</>}
 	<ToastContainer
 		position="bottom-right"
 		autoClose={4000}

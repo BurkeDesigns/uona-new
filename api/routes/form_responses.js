@@ -91,7 +91,7 @@ routes.get("/export/csv", async (c) => {
       name: item.data.name,
       student_id: item.data.student_id,
       birthday: item.data.birthday,
-      confirm_waiver: item.data.confirm_waiver,
+      reason_for_waiver: item.data.reason_for_waiver,
     };
   });
 
@@ -121,17 +121,23 @@ routes.post("/get", async (c) => {
   if (body.column)
     data = await formResponses.getByColumn(body.column, body.value);
 
-  // console.log(data);
-  const uploadPromises = data[0].data.uploaded_files.map(async (id) => {
-    let fileData = await dbFiles.get(id);
-    console.log("fileData", fileData);
-    return fileData[0]; // Return the response to include in the promise array
-  });
-  let result = await Promise.all(uploadPromises);
+  let uploaded_files = [];
+
+  if (
+    data[0].data.uploaded_files != null &&
+    data[0].data.uploaded_files.length > 0
+  ) {
+    const uploadPromises = data[0].data.uploaded_files.map(async (id) => {
+      let fileData = await dbFiles.get(id);
+      console.log("fileData", fileData);
+      return fileData[0]; // Return the response to include in the promise array
+    });
+    uploaded_files = await Promise.all(uploadPromises);
+  }
 
   return res(c, {
     ...data[0],
-    uploaded_files: result,
+    uploaded_files,
   });
 });
 

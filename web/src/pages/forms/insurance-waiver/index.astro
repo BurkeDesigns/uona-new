@@ -40,22 +40,29 @@ import InsuranceForm from "@components/Forms/insurance";
     <section>
       <ul class="section" style="--bg-color:#4067b1;--color:#fff;">
         <div>
-          <h1 class="heading">STUDENT HEALTH INSURANCE *WAIVER* FORM</h1>
+          <h1 class="heading">STUDENT HEALTH INSURANCE</h1>
           <div class="paddingReg">
             <!-- <Forms /> -->
             <p>
               The University of North America is offering an Essential Coverage
-              PPO plan to all students for only $180 per quarter (paid through
-              Campus Cafe).
+              PPO plan to all students for only $180 per quarter (pay below for
+              immediate coverage).
             </p>
             <p>
-              We will waive the benefits to all who complete and return this
-              form, with proof of insurance. If you do not submit a waiver, you
-              will be automatically enrolled in the University of North America
-              Student Health Insurance plan.
+              Students with existing health insurance can also enroll in the
+              UoNA plan for additional coverage. Email any questions to: <a
+                href="mailto:healthinsurance@uona.edu"
+                >healthinsurance@uona.edu</a
+              >
             </p>
           </div>
           <div class="flex">
+            <a
+              href="/files/uploads/documents/student health insurance/UNIVERSITY OF NORTH AMERICA STUDENT HEALTH PLAN ANNOUNCMENT_2025.docx"
+              class="button"
+              style="--bg-color:#fbd504;--color:#000;--box-shadow:0 0 0 2px var(--bg-color);"
+              >Insurance Announcment</a
+            >
             <a
               href="/files/uploads/documents/student health insurance/Student Benefit Booklet University of North America 2024.pdf"
               class="button"
@@ -66,9 +73,64 @@ import InsuranceForm from "@components/Forms/insurance";
         </div>
       </ul>
     </section>
+
+    <section>
+      <ul class="section" style="--bg-color:#f1f1f1;">
+        <div>
+          <h1 class="heading">STUDENT HEALTH INSURANCE PAYMENT</h1>
+          <div class="paddingReg">
+            <!-- <Forms /> -->
+            <p style="text-align: center;">
+              Click the link below to pay for UoNA provided health insurance
+              from January - March 2025.
+            </p>
+            <p style="text-align: center;">
+              You must pay by <b>Jan 13th, 2025</b> to start coverage. Once paid,
+              your policy will be effective immediately.
+            </p>
+          </div>
+          <div class="flex">
+            <a
+              href="https://buy.stripe.com/aEU29S0cbfaqgwM289"
+              class="button"
+              target="_blank"
+              style="--bg-color:#4067b1;--color:white;--box-shadow:0 0 0 2px var(--bg-color);"
+              >Pay Now</a
+            >
+          </div>
+        </div>
+      </ul>
+    </section>
     <section>
       <ul class="section" style="--bg-color:#222;--color:#fff;">
-        <InsuranceForm client:only />
+        <div class="paddingReg">
+          <h1 class="heading">STUDENT HEALTH INSURANCE FORM</h1>
+          <br />
+          <p style="max-width:600px;margin:auto;">
+            If you are already covered by another health insurance policy,
+            complete the form below. You must provide proof of insurance to
+            waive your benefits. If you do not submit a waiver, you will be
+            automatically enrolled in the University of North America Student
+            Health Insurance plan and be charged the quarterly insurance fee.
+          </p>
+          <br />
+          <Text
+            color="white"
+            font="bodyLBold"
+            style={{
+              textTransform: "uppercase",
+              textAlign: "center",
+              background: "darkred",
+              borderRadius: 8,
+              display: "block",
+              padding: 10,
+              margin: "auto",
+              maxWidth: 600,
+            }}>You have until <b>Jan 10th, 2025</b> to submit this waiver.</Text
+          >
+          <br />
+          <InsuranceForm client:only />
+        </div>
       </ul>
     </section>
     <Footer />

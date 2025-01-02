@@ -3,6 +3,8 @@ import { Image, Picture } from "astro:assets";
 const imageFiles = await Astro.glob("/public/files/uploads/slideshow/*");
 
 const { ...attrs } = Astro.props;
+
+// sort by newest to oldest
 ---
 
 <div class="slideshow" {...attrs}>

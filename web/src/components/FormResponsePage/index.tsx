@@ -172,14 +172,14 @@ const component = (props: FormData) => {
 					/>
 					<Input
 							as="select"
-							label="Confirm Waiver"
-							value={formData.data.confirm_waiver}
-							onChange={(val) => handleDataChange("confirm_waiver", val)}
-							error={errors.current.confirm_waiver}
+							label="Reason For Waiver"
+							value={formData.data.reason_for_waiver}
+							onChange={(val) => handleDataChange("reason_for_waiver", val)}
+							error={errors.current.reason_for_waiver}
 							required
 						>
-							<option value="yes">Yes</option>
-							<option value="no">No</option>
+							<option value="I have insurance">I have insurance</option>
+							<option value="I want to stay uninsured">I want to stay uninsured</option>
 							{/* <option value="published">Published</option>
 							<option value="archived">Archived</option> */}
 						</Input>
@@ -203,11 +203,7 @@ const component = (props: FormData) => {
 					{!item.type.startsWith('image') && <Link href={`https://uona-api.swaggear.life/form-response/files/${item.id}/original`} style={{color:'#2facee'}}>Attachment {index+1}</Link>}
 					{item.type.startsWith('image') && <img src={`https://uona-api.swaggear.life/form-response/files/${item.id}/720`} style={{width:500}} alt="image" />}
 				</>)}
-				{/* <Link href="https://uona-api.swaggear.life/form-response/files/11/720" style={{color:'#2facee'}}>Attachment</Link> */}
-				{/* <img src="http://localhost:3008/form-response/files/11/720" style={{width:500}} alt="image" /> */}
 			</List>
-			{/* <iframe src="" frameborder="0"></iframe> */}
-		{/* <iframe src={iframeSlug} frameBorder="0"></iframe> */}
 	</div>
 	<ToastContainer
 		position="bottom-right"
