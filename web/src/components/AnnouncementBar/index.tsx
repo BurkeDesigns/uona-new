@@ -16,10 +16,11 @@ type Props = {
 	icon?: IconNames;
 	iconPos?: "left" | "right";
 	color?: Colors;
+	font?: Typography
 };
 
 const component = (props: Props) => {
-	const { body, children, icon, iconPos = "left", url, color } = props;
+	const { body, children, icon, iconPos = "left", url, color, font = "bodyMBold" } = props;
 
 	return (
 		<>
@@ -29,7 +30,7 @@ const component = (props: Props) => {
 					style={{ background: color ? `var(--${color})` : "black" }}
 				>
 					{icon && iconPos == "left" && <Icon name={icon} />}
-					<Text content={body} color="currentColor" />
+					<Text content={body} font={font} color="currentColor" />
 					{icon && iconPos == "right" && <Icon name={icon} />}
 				</div>
 			</Link>

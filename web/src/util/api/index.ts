@@ -21,7 +21,7 @@ type GetFormResponse = {
 export default class API {
   private _url: string;
 
-  constructor(url = import.meta.env.API_DOMAIN || 'https://uona-api.swaggear.life') {
+  constructor(url = import.meta.env.API_DOMAIN || 'https://api.uona.edu') {
     this._url = url;
   }
 
@@ -30,7 +30,7 @@ export default class API {
       return await post(`${this._url}/users/list`);
     },
     info: async (email:string) => {
-      return await post(`${this._url}/users/info`,{
+      return await post(`${this._url}/users/info`, {
         email,
       });
     },
@@ -142,6 +142,12 @@ export default class API {
     },
   };
 
+  stats = {
+    usage: async () => {
+      return await get(`${this._url}/usage`);
+    },
+  };
+
   test = {
     protected: async () => {
       return await get(`${this._url}/api/protected`);
@@ -149,72 +155,6 @@ export default class API {
     headers: async () => {
       return await get(`${this._url}/headers`, {
         credentials: 'include',
-      });
-    },
-  };
-
-  comments = {
-    list: async () => {
-      return await post(`${this._url}/comments/list`);
-    },
-    info: async (id:string) => {
-      return await post(`${this._url}/comments/info`,{
-        id,
-      });
-    },
-    create: async (data: NewUser) => {
-      return await post(`${this._url}/comments/create`, data);
-    },
-    update: async (data: any) => {
-      return await patch(`${this._url}/comments/update`, data);
-    },
-    delete: async (id: number) => {
-      return await deleteRequest(`${this._url}/comments/delete`, {
-        id,
-      });
-    },
-  };
-
-  tuition = {
-    list: async () => {
-      return await post(`${this._url}/tuition/list`);
-    },
-    info: async (id:string) => {
-      return await post(`${this._url}/tuition/info`,{
-        id,
-      });
-    },
-    create: async (data: NewUser) => {
-      return await post(`${this._url}/tuition/create`, data);
-    },
-    update: async (data: any) => {
-      return await patch(`${this._url}/tuition/update`, data);
-    },
-    delete: async (id: number) => {
-      return await deleteRequest(`${this._url}/tuition/delete`, {
-        id,
-      });
-    },
-  };
-
-  bugs = {
-    list: async () => {
-      return await post(`${this._url}/bugs/list`);
-    },
-    info: async (email:string) => {
-      return await post(`${this._url}/bugs/info`,{
-        email,
-      });
-    },
-    create: async (data: NewUser) => {
-      return await post(`${this._url}/bugs/create`, data);
-    },
-    update: async (data: any) => {
-      return await patch(`${this._url}/bugs/update`, data);
-    },
-    delete: async (id: number) => {
-      return await deleteRequest(`${this._url}/bugs/delete`, {
-        id,
       });
     },
   };

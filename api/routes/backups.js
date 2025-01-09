@@ -2,7 +2,8 @@ import { Hono } from "hono";
 
 // utils
 import { handleError, res, throwErr } from "@util/response";
-import { backupDatabase, listBackups } from "../scripts/backup_db";
+import { backupDatabase, listBackups, db_backup } from "../scripts/backup_db";
+import { $ } from "bun";
 
 const routes = new Hono();
 

@@ -25,8 +25,10 @@ const component = (props: Props) => {
 	// let api = new API('http://localhost:3008');
 
 	(async ()=> {
-		let base = 'http://localhost:3008';
-		let test = await get(`${base}/users/test`);
+		let base = 'http://localhost:3006';
+		let test = await post(`${base}/api/protected`, {
+			test: 'hello world!',
+		});
 
 		console.log('TEST', test);
 	})();

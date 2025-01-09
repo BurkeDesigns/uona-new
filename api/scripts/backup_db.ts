@@ -5,7 +5,7 @@ import cron from 'node-cron';
 
 // export const db_source = Bun.env.DATABASE_URL || './data/db/sqlite.db';
 export const db_source = Bun.env.DATABASE_URL;
-const db_backup = '/home/wesley/Documents/Data/UoNA/Database/Backups';
+export const db_backup = '/home/wesley/Documents/Data/UoNA/Database/Backups';
 
 export function scheduleTask(intervalMs: number, task:any) {
     setInterval(() => {

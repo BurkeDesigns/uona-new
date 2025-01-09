@@ -200,8 +200,8 @@ const component = (props: FormData) => {
 				<Text color="currentColor" font="bodyLBold">Attachments</Text>
 				{formData.uploaded_files.length == 0 && <Text color="currentColor">No attachments were provided.</Text>}
 				{formData.uploaded_files.map((item, index)=><>
-					{!item.type.startsWith('image') && <Link href={`https://uona-api.swaggear.life/form-response/files/${item.id}/original`} style={{color:'#2facee'}}>Attachment {index+1}</Link>}
-					{item.type.startsWith('image') && <img src={`https://uona-api.swaggear.life/form-response/files/${item.id}/720`} style={{width:500}} alt="image" />}
+					{!item.type.startsWith('image') && <Link href={`https://api.uona.edu/form-response/files/${item.id}/original`} style={{color:'#2facee'}}>Attachment {index+1}</Link>}
+					{item.type.startsWith('image') && <img src={`https://api.uona.edu/form-response/files/${item.id}/720`} style={{width:500}} alt="image" />}
 				</>)}
 			</List>
 	</div>

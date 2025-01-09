@@ -217,7 +217,10 @@ routes.delete("/delete", async (c) => {
     return throwErr(c, "Unable to delete. Form response not found.");
 
   // console.log(data);
-  if (data[0].data.uploaded_files.length > 0) {
+  if (
+    data[0].data.uploaded_files != null &&
+    data[0].data.uploaded_files.length > 0
+  ) {
     const uploadPromises = data[0].data.uploaded_files.map(async (id) => {
       let fileData = await dbFiles.get(id);
       return fileData[0]; // Return the response to include in the promise array

@@ -4,6 +4,8 @@ import { cors } from "hono/cors";
 // auth
 // import { authHandler, initAuthConfig, verifyAuth } from '@hono/auth-js'
 // import Google from '@auth/core/providers/google'
+import { authHandler, initAuthConfig, verifyAuth } from "@hono/auth-js"
+import { getAuthConfig } from "@util/auth";
 
 // utils
 import { handleError, res, throwErr } from "./util/response";
@@ -17,6 +19,8 @@ import accessRoutes from "./routes/access";
 import aiRoutes from "./routes/ai";
 import recapachaRoutes from "./routes/recapacha";
 import formResponseRoutes from "./routes/form_responses";
+import Google from "@auth/core/providers/google";
+import { $ } from "bun";
 
 const app = new Hono();
 
@@ -43,15 +47,82 @@ const app = new Hono();
 // })
 
 // add cors to all endpoints
-app.use("*", cors({
-    origin: (origin, c) => {
-        // console.log("ORIGIN", origin);
-        return origin;
-    },
-    credentials: true,
+app.use('*', cors({
+  origin: (origin, callback) => {
+      // console.log("ORIGIN", origin);
+      return origin;
+  },
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowHeaders: ['Content-Type', 'Authorization', '*'],
+  credentials: true,
 }));
 
+app.options('*', (c) => {
+return c.text('', 204)
+});
+
+// error handling
+// app.use(async (c, next) => {
+//   await next()
+//   if (c.error) {
+//     // do something...
+//     return throwErr(c, c.error);
+//   }
+// });
 app.onError(handleError);
+
+// app.use("*", initAuthConfig(getAuthConfig))
+app.use('*', initAuthConfig((c) => ({
+      secret: c.env.AUTH_SECRET,
+      providers: [
+        Google({
+          clientId: c.env.GOOGLE_CLIENT_ID,
+          clientSecret: c.env.GOOGLE_CLIENT_SECRET
+        }),
+      ],
+      trustHost: true,
+      // cookies:{
+      //   sessionToken:{
+      //     name: "__Host-next-auth.session-token",
+      //     options: {
+      //       httpOnly: true,
+      //       sameSite: "lax",
+      //       // path: "/",
+      //       secure: true,
+      //       // This is key:
+      //       domain: ".uona.edu",
+      //     },
+      //   },
+      //   callbackUrl: {
+      //     name: "__Secure-next-auth.callback-url",
+      //     options: {
+      //       sameSite: "lax",
+      //       //   path: "/",
+      //       secure: true,
+      //       domain: ".uona.edu",
+      //     },
+      //   },
+      //   csrfToken: {
+      //     name: "__Host-next-auth.csrf-token",
+      //     options: {
+      //       httpOnly: true,
+      //       sameSite: "lax",
+      //       //   path: "/",
+      //       secure: true,
+      //       domain: ".uona.edu",
+      //     },
+      //   },
+      // }
+    })));
+
+app.use("/api/auth/*", authHandler())
+app.use('/api/*', verifyAuth())
+
+app.post('/api/protected', (c) => {
+  const auth = c.get("authUser");
+  console.log(auth);
+  return res(c, {auth});
+})
 
 // middleware to inject context
 // app.use("*", async (c, next) => {
@@ -85,6 +156,16 @@ app.get('/headers', (c) => {
     return c.json(headersObject);
   });
 
+
+app.get("/usage", async (c) => {
+  let dataStorageUsed = await $`du -s /home/wesley/Documents/Data`;
+  const dataSize = parseInt(dataStorageUsed.text().split("/")[0]);
+
+  let websiteStorageUsed =
+    await $`du -s /home/wesley/Documents/GitHub/uona-new`;
+  const websiteSize = parseInt(websiteStorageUsed.text().split("/")[0]);
+  return res(c, { allBytesUsed: (dataSize + websiteSize)*1000 });
+});
 
 // export default app;
 export default {

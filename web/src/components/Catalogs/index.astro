@@ -63,20 +63,78 @@ let data = {
     {
       file: "Catalog 2018.1.pdf",
     },
+    {
+      file: "Catalog.2025V.1.pdf",
+    },
   ],
 };
-function getMostRecentCalendar(data) {
-  return data.files.reduce(
-    (latest, fileObj) => {
-      const years = (fileObj.file.match(/\b\d{4}\b/g) || []).map(Number);
-      const year = Math.max(...years, 0);
-      return year > latest.year ? { file: fileObj.file, year } : latest;
-    },
-    { file: null, year: 0 }
-  ).file;
+
+function sortDataByYearAndVersion(data) {
+  // Helper: Parse a single filename to extract year and numeric version array
+  function parseFileName(fileName) {
+    // 1) Extract year (the first 4-digit sequence)
+    const yearMatch = fileName.match(/(\d{4})/);
+    const year = yearMatch ? parseInt(yearMatch[1], 10) : 0;
+
+    // 2) Extract the portion after the year up to ".pdf"
+    //    Example: "Catalog 2020.v2.1.pdf" => after year "2020" => ".v2.1"
+    //    We'll remove letters (except digits and periods) to get numeric version parts.
+    let versionStr = "";
+    const afterYearRegex = new RegExp(`${year}([^]*)\\.pdf`, "i");
+    const afterYearMatch = fileName.match(afterYearRegex);
+    if (afterYearMatch && afterYearMatch[1]) {
+      versionStr = afterYearMatch[1];
+    }
+
+    // Remove all non-digit and non-dot characters to simplify numeric version parsing
+    // e.g. "v2.1", "4r" => keep digits and dots => "2.1", "4"
+    versionStr = versionStr.replace(/[^\d.]/g, "");
+
+    // Trim leading/trailing dots and split into numeric parts
+    versionStr = versionStr.replace(/^\.+|\.+$/g, ""); // remove leading/trailing dots
+    const versionParts = versionStr
+      ? versionStr.split(".").map((part) => parseFloat(part) || 0)
+      : [];
+
+    return {
+      year,
+      versionParts,
+    };
+  }
+
+  // Custom compare function
+  function compareFiles(a, b) {
+    const A = parseFileName(a.file);
+    const B = parseFileName(b.file);
+
+    // 1) Compare by year (descending)
+    if (A.year !== B.year) {
+      return B.year - A.year;
+    }
+
+    // 2) Compare by version parts (descending)
+    //    Compare each corresponding numeric part
+    const maxLen = Math.max(A.versionParts.length, B.versionParts.length);
+    for (let i = 0; i < maxLen; i++) {
+      const aVal = A.versionParts[i] || 0;
+      const bVal = B.versionParts[i] || 0;
+      if (aVal !== bVal) {
+        return bVal - aVal; // descending
+      }
+    }
+    // If versions are effectively the same, keep original order
+    return 0;
+  }
+
+  // Sort data.files in-place
+  data.files.sort(compareFiles);
+
+  return data; // return the updated data object
 }
 
-const mostRecentCalendar = getMostRecentCalendar(data);
+sortDataByYearAndVersion(data);
+
+const mostRecentCalendar = data.files[0].file;
 ---
 
 <style>

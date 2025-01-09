@@ -6,6 +6,7 @@ import "./styles.css";
 export type IconNames =
 	| "logo"
 	| "bug"
+	| "warning"
 	| "badge"
 	| "draw"
 	| "server"
