@@ -6,6 +6,7 @@ import { Hono } from "hono";
 // import { nanoid } from "nanoid";
 
 // utils
+import { authOnly } from "@util/auth";
 import { handleError, res, throwErr } from "@util/response";
 import * as users from "@util/db/users";
 import { pickRandom } from "@util/arr";
@@ -16,30 +17,30 @@ routes.get("/test", async (c) => {
   return res(c, { msg: "hello world" });
 });
 
-routes.post("/list", async (c) => {
+routes.post("/list", authOnly, async (c) => {
   let allUsers = await users.all();
   return res(c, { users: allUsers });
 });
 
-routes.post("/info", async (c) => {
+routes.post("/info", authOnly, async (c) => {
   const body = await c.req.json();
   let user = await users.getByEmail(body.email);
   return res(c, { ...user[0] });
 });
 
-routes.post("/get", async (c) => {
+routes.post("/get", authOnly, async (c) => {
   const body = await c.req.json();
   let user = await users.get(body.id);
   return res(c, { ...user[0] });
 });
 
-routes.post("/access", async (c) => {
+routes.post("/access", authOnly, async (c) => {
   const body = await c.req.json();
   let list = await users.getAccess(body.id);
   return res(c, { list });
 });
 
-routes.post("/create", async (c) => {
+routes.post("/create", authOnly, async (c) => {
   let body = await c.req.json();
 
   // let photos = [
@@ -58,18 +59,18 @@ routes.post("/create", async (c) => {
   return res(c, { user });
 });
 
-routes.patch("/update", async (c) => {
+routes.patch("/update", authOnly, async (c) => {
   const body = await c.req.json();
   let user = await users.update(body.id, body);
   return res(c, { user });
 });
-routes.post("/update", async (c) => {
+routes.post("/update", authOnly, async (c) => {
   const body = await c.req.json();
   let user = await users.update(body.id, body);
   return res(c, { user });
 });
 
-routes.delete("/delete", async (c) => {
+routes.delete("/delete", authOnly, async (c) => {
   const body = await c.req.json();
   let user = await users.remove(body.id);
   return res(c, { user });

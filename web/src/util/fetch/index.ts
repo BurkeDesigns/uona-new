@@ -4,62 +4,103 @@ export const toUrlParams = (params = {}) => {
   return qArr.join('&');
 }
 
-export const post = async (url, data = {}) => {
+export const post = async (url, data:any = {}) => {
+
+    let headers = {
+      "Content-Type": "application/json",
+    };
+    if(typeof window !== 'undefined') {
+      headers["token"] = data.token || localStorage.token || '';
+      headers["publicKey"] = data.publicKey || localStorage.publicKey || '';
+    } else {
+      headers["token"] = data.token || '';
+    }
     const res = await fetch(url, {
       method: "POST",
       credentials: 'include',
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify(data),
     });
     return res.json();
 }
-export const patch = async (url, data = {}) => {
+export const patch = async (url, data:any = {}) => {
+    let headers = {
+      "Content-Type": "application/json",
+    };
+    if(typeof window !== 'undefined') {
+      headers["token"] = data.token || localStorage.token || '';
+      headers["publicKey"] = data.publicKey || localStorage.publicKey || '';
+    } else {
+      headers["token"] = data.token || '';
+    }
     const res = await fetch(url, {
       method: "PATCH",
       credentials: 'include',
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify(data),
     });
     return res.json();
 }
 export const put = async (url, data) => {
+    let headers = {};
+    if(typeof window !== 'undefined') {
+      headers["token"] = data.token || localStorage.token || '';
+      headers["publicKey"] = data.publicKey || localStorage.publicKey || '';
+    } else {
+      headers["token"] = data.token || '';
+    }
     const res = await fetch(url, {
       method: "PUT",
       credentials: 'include',
+      headers,
       body: data,
     });
     return res.json();
 }
-export const deleteRequest = async (url, data = {}) => {
+export const deleteRequest = async (url, data:any = {}) => {
+    let headers = {
+      "Content-Type": "application/json",
+    };
+    if(typeof window !== 'undefined') {
+      headers["token"] = data.token || localStorage.token || '';
+      headers["publicKey"] = data.publicKey || localStorage.publicKey || '';
+    } else {
+      headers["token"] = data.token || '';
+    }
     const res = await fetch(url, {
       method: "DELETE",
       credentials: 'include',
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers,
       body: JSON.stringify(data),
     });
     return res.json();
 }
 
 export const postForm = async (url, form) => {
+    let headers = {};
+    if(typeof window !== 'undefined') {
+      headers["token"] = localStorage.token ?? '';
+      headers["publicKey"] = localStorage.publicKey ?? '';
+    }
     const res = await fetch(url, {
       method: "POST",
+      headers,
       body: form,
     });
     return res.json();
 }
 
-export const get = async (url, options = {}) => {
+export const get = async (url, options:any = {}) => {
+  let headers = {};
+  if(typeof window !== 'undefined') {
+    headers["token"] = options.token || localStorage.token || '';
+    headers["publicKey"] = options.publicKey || localStorage.publicKey || '';
+  } else {
+    headers["token"] = options.token || '';
+  }
   const res = await fetch(url, {
       ...options,
-      // headers: {
-      //   "Authorization": `token ${token}`
-      // },
+      headers,
   });
   if (!res.ok) throw new Error(`HTTP error ${res.status}: ${res.statusText}`);
   return res.json();

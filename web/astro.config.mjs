@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
 import auth from "auth-astro";
+import sitemap from "@astrojs/sitemap";
 // import honoAstro from "hono-astro-adapter";
 
 // https://astro.build/config
@@ -21,7 +22,13 @@ export default defineConfig({
       exclude: ["bun:test"],
     },
   },
-  integrations: [react(), auth()],
+  integrations: [
+    react(),
+    auth(),
+    sitemap({
+      filter: (page) => page.search("/login") == -1,
+    }),
+  ],
   output: "hybrid",
   // adapter: netlify(),
   adapter: node({

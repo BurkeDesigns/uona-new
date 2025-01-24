@@ -24,6 +24,7 @@
     "node-cron": "^3.0.3",
     "openai": "^4.76.0",
     "papaparse": "^5.4.1",
+    "paseto-ts": "^1.5.7",
     "sharp": "^0.33.5"
   },
   "scripts": {

@@ -1,0 +1,100 @@
+---
+import Page from "@layouts/page.astro";
+import { H1, H4 } from "@components/Text";
+import CircleIcon from "@components/Icon/circle";
+import {
+  Aside,
+  List,
+  Pagination,
+  Text,
+  Button,
+  Icon,
+  Input,
+  Accordion,
+  ImageBlock,
+} from "@blocks";
+import ImageAndTextBlock from "@components/ImageAndTextBlock/bilateral";
+import StaggeredImageAndTextBlock from "@components/ImageAndTextBlock/staggered";
+import Avatar from "@components/Avatar";
+import AnnouncementBar from "@components/AnnouncementBar";
+
+import ThemePage from "@components/Pages/theme";
+
+export const prerender = true;
+---
+
+<Page title="Theme Designs" layout="am fixed">
+  <Aside client:only="react" />
+  <main el="main" class="main">
+    <ThemePage client:only="react" />
+  </main>
+</Page>
+
+<style>
+  body * {
+    box-sizing: border-box;
+  }
+  .main {
+    background: white !important;
+  }
+  .container {
+    display: grid;
+    grid-gap: 48px;
+    width: 100%;
+    margin-top: 64px;
+    padding-top: 96px;
+    padding-bottom: 96px;
+    background: white;
+  }
+  .pageTitle {
+    display: grid;
+    width: 100%;
+    margin: auto;
+  }
+  .pageTitle * {
+    margin-bottom: 0;
+  }
+  .section {
+    display: grid;
+    grid-gap: 10px;
+    padding: 32px;
+    width: 100%;
+    margin: auto;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+  }
+  .section > * {
+    margin: 0;
+  }
+  .listHorz {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: start;
+    grid-gap: 10px;
+  }
+  .list {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 10px;
+    justify-items: center;
+  }
+  .list > * {
+    margin: 0;
+  }
+  .circle {
+    --size: 80px;
+    background-color: var(--bg, black);
+    height: var(--size);
+    width: var(--size);
+    border-radius: 100%;
+    border: 1px solid #222;
+  }
+  .boxes > * {
+    min-height: var(--size, 50px);
+    min-width: var(--size, 50px);
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

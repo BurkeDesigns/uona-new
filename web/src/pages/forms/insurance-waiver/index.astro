@@ -15,6 +15,7 @@ import Text from "@components/Text";
 // import ContactForm from "@components/ContactForm";
 
 import InsuranceForm from "@components/Forms/insurance";
+import InsurancePayment from "@components/Forms/insurance/payment";
 ---
 
 <style>
@@ -89,15 +90,7 @@ import InsuranceForm from "@components/Forms/insurance";
               your policy will be effective immediately.
             </p>
           </div>
-          <div class="flex">
-            <a
-              href="https://buy.stripe.com/aEU29S0cbfaqgwM289"
-              class="button"
-              target="_blank"
-              style="--bg-color:#4067b1;--color:white;--box-shadow:0 0 0 2px var(--bg-color);"
-              >Pay Now</a
-            >
-          </div>
+          <InsurancePayment client:only />
         </div>
       </ul>
     </section>

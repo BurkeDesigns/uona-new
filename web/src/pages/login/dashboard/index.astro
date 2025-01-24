@@ -16,7 +16,9 @@ let session = await getSession(Astro.request);
 import API from "@util/api";
 
 if (session != null) {
-  let api = new API();
+  let api = new API({
+    token: "EhlxdhOjKCpI6lJL4M2e4",
+  });
   let user = await api.users.info(session.user?.email || "");
   if (user.email == null) return Astro.redirect("/login");
 } else {

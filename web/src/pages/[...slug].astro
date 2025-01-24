@@ -10,12 +10,15 @@ import API from "@util/api";
 export const prerender = false;
 
 const { slug } = Astro.params;
-const preview = Astro.url.searchParams.get('preview') || '';
+const preview = Astro.url.searchParams.get("preview") || "";
 
-let api = new API();
-const page = await api.pages.getBySlug(slug || '');
+let api = new API({
+  token: "EhlxdhOjKCpI6lJL4M2e4",
+});
+const page = await api.pages.getBySlug(slug || "");
 if (!page || page.id == null) return Astro.redirect("/404");
-if(preview != 'true' && page.status != 'published') return Astro.redirect("/404");
+if (preview != "true" && page.status != "published")
+  return Astro.redirect("/404");
 const { title, description, blocks } = page;
 const markdown = marked.parse(blocks[0].content);
 ---

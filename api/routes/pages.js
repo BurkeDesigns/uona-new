@@ -9,6 +9,7 @@ import { Hono } from "hono";
 import { handleError, res, throwErr } from "@util/response";
 import * as pages from "@util/db/pages";
 import { pickRandom } from "@util/arr";
+import { authOnly } from "@util/auth";
 
 const routes = new Hono();
 
@@ -20,12 +21,12 @@ routes.get("/test", async (c) => {
   return res(c, { msg: "hello world" });
 });
 
-routes.post("/list", async (c) => {
+routes.post("/list", authOnly, async (c) => {
   let allPages = await pages.all();
   return res(c, { pages: allPages });
 });
 
-routes.post("/get", async (c) => {
+routes.post("/get", authOnly, async (c) => {
   const body = await c.req.json();
   let page;
   if (body.id) page = await pages.get(body.id);
@@ -33,7 +34,7 @@ routes.post("/get", async (c) => {
   return res(c, { ...page[0] });
 });
 
-routes.post("/create", async (c) => {
+routes.post("/create", authOnly, async (c) => {
   let body = await c.req.json();
 
   let photos = [
@@ -52,18 +53,18 @@ routes.post("/create", async (c) => {
   return res(c, { page });
 });
 
-routes.patch("/update", async (c) => {
+routes.patch("/update", authOnly, async (c) => {
   const body = await c.req.json();
   let page = await pages.update(body.id, body);
   return res(c, { page });
 });
-routes.post("/update", async (c) => {
+routes.post("/update", authOnly, async (c) => {
   const body = await c.req.json();
   let page = await pages.update(body.id, body);
   return res(c, { page });
 });
 
-routes.delete("/delete", async (c) => {
+routes.delete("/delete", authOnly, async (c) => {
   const body = await c.req.json();
   let page = await pages.remove(body.id);
   return res(c, { page });

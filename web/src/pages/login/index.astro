@@ -3,6 +3,7 @@ import { SignIn, SignOut } from "auth-astro/components";
 import { getSession } from "auth-astro/server";
 import List from "@components/List";
 import Btn from "@components/Button";
+import Text from "@components/Text";
 import Page from "@layouts/dashboard.astro";
 import Icon from "@components/Icon";
 import { post } from "@util/fetch";
@@ -10,6 +11,7 @@ import { to } from "@util/navigation";
 import Slideshow from "@components/Slideshow/Slideshow.astro";
 import Link from "@components/Link";
 import API from "@util/api";
+import { generateKeys, encrypt, sign, verify } from "paseto-ts/v4";
 
 export const prerender = false;
 
@@ -17,10 +19,38 @@ const session = await getSession(Astro.request);
 
 console.log(session);
 
+let token;
+let pKey;
+
+let userExists = false;
+
 if (session != null) {
-  let api = new API();
+  let api = new API({
+    token: "EhlxdhOjKCpI6lJL4M2e4",
+  });
   let user = await api.users.info(session.user?.email || "");
-  if (user.email != null) return Astro.redirect("/login/dashboard");
+  // console.log();
+  if (user.email != null) {
+    userExists = true;
+    const { secretKey, publicKey } = generateKeys("public");
+    pKey = publicKey;
+    const payload = { ...user, key: "EhlxdhOjKCpI6lJL4M2e4" };
+    // create token
+    token = await sign(
+      // secretKey = k4.secret.xxx..
+      secretKey, // string | Uint8Array
+      payload, // Payload | string | Uint8Array
+      {
+        addExp: false, // to remove an expires time
+      }
+    );
+  } else {
+    token = "";
+    pKey = "";
+  }
+
+  // if (user.email != null) return Astro.redirect("/login/dashboard");
+
   //   let api = new API();
   //   let users = await api.users.list();
   //   console.log("USERS ----", users);
@@ -52,16 +82,56 @@ if (session != null) {
         />
       </Link>
       <!-- <img src="/assets/logo/litpix_logo_light.svg" class="logo" /> -->
-      <SignIn provider="google" style={{ all: "unset" }}>
-        <Btn client:only="react" leftIcon="google" variant="secondaryWhite"
-          >Google Sign In</Btn
-        >
-      </SignIn>
+      {
+        session?.user == null && (
+          <SignIn provider="google" style={{ all: "unset" }}>
+            <Btn client:only="react" leftIcon="google" variant="secondaryWhite">
+              Google Sign In
+            </Btn>
+          </SignIn>
+        )
+      }
+      {
+        session?.user != null && userExists == true && (
+          <List el="xxsm center">
+            <Btn
+              client:only="react"
+              variant="secondaryWhite"
+              url="/login/dashboard"
+            >
+              View Dashboard
+            </Btn>
+            <SignOut style={{ all: "unset" }}>
+              <Btn variant="tertiaryWhite" client:only>
+                Logout
+              </Btn>
+            </SignOut>
+          </List>
+        )
+      }
+      {
+        session?.user != null && userExists == false && (
+          <List el="md center">
+            <Text color="white">Unauthorized: No account found.</Text>
+            <SignOut style={{ all: "unset" }}>
+              <Btn variant="secondaryWhite" client:only>
+                Logout
+              </Btn>
+            </SignOut>
+          </List>
+        )
+      }
+
       <!-- <Btn variant="secondaryWhite" id="login">Login</Btn>
       <Btn variant="secondaryWhite" id="logout">logout</Btn> -->
     </List>
   </main>
 </Page>
+
+<script define:vars={{ token, pKey }}>
+  localStorage.token = token;
+  localStorage.publicKey = pKey;
+</script>
 
 <script>
   const { signIn, signOut } = await import("auth-astro/client");

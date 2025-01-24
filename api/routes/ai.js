@@ -14,10 +14,11 @@ import { chatGPT } from "@util/models/chatGPT";
 // import { Glob } from "bun";
 // import { extractTSXContent, getImports } from "@util/tsx";
 // import { parseJsonFile, parsePkgJsonFile } from "@util/files/parse";
+import { authOnly } from "@util/auth";
 
 const routes = new Hono();
 
-routes.post("/chat", async (c) => {
+routes.post("/chat", authOnly, async (c) => {
   const body = await c.req.json();
   const chat = await chatGPT({
     model: "gpt-4o-mini",

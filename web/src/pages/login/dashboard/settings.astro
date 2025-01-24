@@ -17,7 +17,9 @@ import Backups from "@components/Backups";
 let session = await getSession(Astro.request);
 // if (session == null) return Astro.redirect("/login");
 
-let api = new API();
+let api = new API({
+  token: "EhlxdhOjKCpI6lJL4M2e4",
+});
 
 if (session != null) {
   let user = await api.users.info(session.user?.email || "");

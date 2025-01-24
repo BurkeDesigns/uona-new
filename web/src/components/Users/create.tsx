@@ -3,13 +3,10 @@ import Btn from "@components/Button";
 import Text from "@components/Text";
 import "./styles.css";
 import "./pageEditor.css";
-import Icon from "@components/Icon";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Input from "@components/Input";
 import { useRef } from "react";
 import API from "@util/api";
-import Link from "@components/Link";
-import { nanoid } from "nanoid";
 import type { NewUser } from "../../../../api/db/types";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -210,6 +207,7 @@ const component = (props: FormData) => {
 
 	
 	return <>
+	<Text color="white">Paragraph</Text>
 	<div className="createUsers">
 			<div>
 			<List el="xsm" style={{color: 'white'}} >
@@ -286,81 +284,6 @@ const component = (props: FormData) => {
 							error={errors.current.blocks}
 							// style={{height: '300px'}}
 						/>
-					{/* <List el="column-stretch xsm">
-						<Input
-							as="select"
-							label="Status"
-							value={formData.status}
-							onChange={(val) => handleInputChange("status", val)}
-							error={errors.current.status}
-							required
-						>
-							<option value="">Select one</option>
-							<option value="draft">Draft</option>
-							<option value="published">Published</option>
-						</Input>
-
-						<Input
-							label="Author"
-							value={formData.author}
-							onChange={(val) => handleInputChange("author", val)}
-							error={errors.current.author}
-							required
-						/>
-					</List> */}
-
-					{/* <Input
-						label="Page Title"
-						value={formData.title}
-						onChange={(val) => handleInputChange("title", val)}
-						error={errors.current.title}
-						required
-					/>
-
-					<Input
-						label="Page Description"
-						value={formData.description}
-						onChange={(val) => handleInputChange("description", val)}
-						error={errors.current.description}
-						required
-					/>
-					<Text color="currentColor" font="bodyLBold">Page Content</Text>
-					{formData.blocks == null && <div>
-					<Btn variant="tertiaryWhite" leftIcon="plus" onClick={addMarkdown}>Add Markdown</Btn>
-					</div>}
-					{formData.blocks && formData.blocks.map((block:any, index:number) => <>
-						{block.type == 'markdown' && <Input
-							as="textarea"
-							label="Markdown Content"
-							value={block.content}
-							onChange={(val) => handleBlockChange(index, "content", val)}
-							error={errors.current.blocks}
-							style={{height: '300px'}}
-							required
-						/>}
-					</>
-					)} */}
-
-					
-
-					{/* <Input
-						label="First Name"
-						name="first_name"
-						value={formData.first_name}
-						onChange={() => handleInputChange("first_name")}
-						error={errors.first_name}
-						required
-					/> */}
-					{/* {props.id == null && <div>
-						{isSubmitting != true && <Btn onClick={createPage}>Create Page</Btn>}
-						{isSubmitting == true && <Btn disabled>Creating Page...</Btn>}
-					</div>} */}
-					{/* {props.id != null && <List el="column xxsm">
-						<Btn onClick={deletePage} variant="secondaryWhite">Delete</Btn>
-						{isSubmitting != true && <Btn onClick={updatePage}>Update Page</Btn>}
-						{isSubmitting == true && <Btn disabled>Updating...</Btn>}
-					</List>}
-					<Link href="https://www.markdownguide.org/basic-syntax/" style={{color:'#2facee'}}>Markdown Guide HERE</Link> */}
 			</List>
 			</div>
 		<div>

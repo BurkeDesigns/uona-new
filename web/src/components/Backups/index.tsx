@@ -22,6 +22,9 @@ const component = (props: Props) => {
 
 	useEffect(()=>{
 		(async ()=>{
+			let test = await api.test.auth();
+			console.log('TEST Response', test);
+
 			let usage = await api.stats.usage();
 			setTotalBytes(usage.allBytesUsed ?? 0);
 		})();

@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { bodyLimit } from "hono/body-limit";
 // import { env } from "hono/adapter";
 // import { Glob } from "bun";
 import sharp from "sharp";
@@ -12,6 +13,7 @@ import { handleError, res, throwErr } from "@util/response";
 import * as formResponses from "@util/db/form_responses";
 import { pickRandom } from "@util/arr";
 import * as dbFiles from "@util/db/files";
+import { authOnly } from "@util/auth";
 
 const routes = new Hono();
 
@@ -109,12 +111,12 @@ routes.get("/export/csv", async (c) => {
   // return res(c, { all });
 });
 
-routes.post("/list", async (c) => {
+routes.post("/list", authOnly, async (c) => {
   let all = await formResponses.allWithForm();
   return res(c, { list: all });
 });
 
-routes.post("/get", async (c) => {
+routes.post("/get", authOnly, async (c) => {
   const body = await c.req.json();
   let data;
   if (body.id) data = await formResponses.get(body.id);
@@ -168,36 +170,45 @@ routes.post("/create", async (c) => {
   return res(c, { data });
 });
 
-routes.patch("/update", async (c) => {
+routes.patch("/update", authOnly, async (c) => {
   const body = await c.req.json();
   let data = await formResponses.update(body.id, body);
   return res(c, { data });
 });
-routes.post("/update", async (c) => {
+routes.post("/update", authOnly, async (c) => {
   const body = await c.req.json();
   let data = await formResponses.update(body.id, body);
   return res(c, { data });
 });
 
-routes.post("/upload", async (c) => {
-  const body = await c.req.parseBody();
-  // if (!body.project_id) return throwErr(c, "Must have project_id");
-  const { name, size, type, group, uid } = body;
-  const fileId = nanoid();
-  const path = `/home/wesley/Documents/Data/UoNA/Files/${fileId}`;
-  await Bun.write(path, body.file);
-  // let matches = await dbFiles.getProjectFile(project_id, name);
-  let file = await dbFiles.insert({
-    group,
-    uid,
-    path,
-    name,
-    size,
-    type,
-  });
-  console.log("created file", name, fileId);
-  return res(c, { file });
-});
+routes.post(
+  "/upload",
+  bodyLimit({
+    maxSize: 1024 * 1024 * 50, // 50MB
+    onError: (c) => {
+      return c.text("overflow :(", 413);
+    },
+  }),
+  async (c) => {
+    const body = await c.req.parseBody();
+    // if (!body.project_id) return throwErr(c, "Must have project_id");
+    const { name, size, type, group, uid } = body;
+    const fileId = nanoid();
+    const path = `/home/wesley/Documents/Data/UoNA/Files/${fileId}`;
+    await Bun.write(path, body.file);
+    // let matches = await dbFiles.getProjectFile(project_id, name);
+    let file = await dbFiles.insert({
+      group,
+      uid,
+      path,
+      name,
+      size,
+      type,
+    });
+    console.log("created file", name, fileId);
+    return res(c, { file });
+  }
+);
 
 // routes.delete("/delete", async (c) => {
 //   const body = await c.req.json();
@@ -205,7 +216,7 @@ routes.post("/upload", async (c) => {
 //   return res(c, { data });
 // });
 
-routes.delete("/delete", async (c) => {
+routes.delete("/delete", authOnly, async (c) => {
   const body = await c.req.json();
 
   let data;

@@ -18,133 +18,256 @@ type GetFormResponse = {
   value?: string | number
 }
 
-export default class API {
-  private _url: string;
+type APIOptions = {
+  token?: string
+  publicKey?: string
+  url?: string
+}
 
-  constructor(url = import.meta.env.API_DOMAIN || 'https://api.uona.edu') {
-    this._url = url;
+export default class API {
+  private _url: string | null;
+  private _token: string | null;
+  private _publicKey: string | null;
+
+  constructor(options: APIOptions = {}) {
+    this._url = options.url || import.meta.env.API_DOMAIN || 'https://api.uona.edu';
+    this._token = options.token || ''
+    this._publicKey = options.publicKey || ''
   }
 
   users = {
     list: async () => {
-      return await post(`${this._url}/users/list`);
+      let data:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/users/list`, data);
     },
     info: async (email:string) => {
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
       return await post(`${this._url}/users/info`, {
         email,
+        ...auth
       });
     },
     access: async (id:string) => {
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
       return await post(`${this._url}/users/access`,{
         id,
+        ...auth
       });
     },
     get: async (id:string) => {
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
       return await post(`${this._url}/users/get`,{
         id,
+        ...auth
       });
     },
     create: async (data: NewUser) => {
-      return await post(`${this._url}/users/create`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/users/create`, {...data, ...auth});
     },
     update: async (data: any) => {
-      return await patch(`${this._url}/users/update`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await patch(`${this._url}/users/update`, {...data, ...auth});
     },
     delete: async (id: number) => {
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
       return await deleteRequest(`${this._url}/users/delete`, {
         id,
+        ...auth
       });
     },
   };
 
   pages = {
     list: async () => {
-      return await post(`${this._url}/pages/list`);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/pages/list`, auth);
     },
     getBySlug: async (slug:string) => {
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
       return await post(`${this._url}/pages/get`,{
         slug,
+        ...auth
       });
     },
     get: async (id:string) => {
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
       return await post(`${this._url}/pages/get`,{
         id,
+        ...auth
       });
     },
     create: async (data: NewPage) => {
-      return await post(`${this._url}/pages/create`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/pages/create`, {...data, ...auth});
     },
     update: async (data: any) => {
-      return await patch(`${this._url}/pages/update`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await patch(`${this._url}/pages/update`, {...data, ...auth});
     },
     delete: async (id: number) => {
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
       return await deleteRequest(`${this._url}/pages/delete`, {
         id,
+        ...auth
       });
     },
   };
 
   formResponse = {
     list: async () => {
-      return await post(`${this._url}/form-response/list`);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/form-response/list`, auth);
     },
     get: async (data: GetFormResponse) => {
-      return await post(`${this._url}/form-response/get`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/form-response/get`, {...data, ...auth});
     },
     create: async (data: NewFormResponse) => {
       return await post(`${this._url}/form-response/create`, data);
     },
     update: async (data: any) => {
-      return await patch(`${this._url}/form-response/update`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await patch(`${this._url}/form-response/update`, {...data, ...auth});
     },
     uploadFile: async (data: any) => {
       return await postForm(`${this._url}/form-response/upload`, data);
     },
     delete: async (id: number) => {
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
       return await deleteRequest(`${this._url}/form-response/delete`, {
         id,
+        ...auth
       });
     },
   };
 
   backups = {
     list: async () => {
-      return await get(`${this._url}/backups/list`);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await get(`${this._url}/backups/list`, auth);
     },
   };
 
   access = {
     list: async () => {
-      return await post(`${this._url}/access/list`);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/auth/access/list`, auth);
     },
     info: async (id:string) => {
-      return await post(`${this._url}/access/info`,{
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/auth/access/info`,{
         id,
+        ...auth
       });
     },
     get: async (data: AccessGetProps) => {
-      return await post(`${this._url}/access/get`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/access/get`, {...data, ...auth});
     },
     create: async (data: NewAccess) => {
-      return await post(`${this._url}/access/create`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/access/create`, {...data, ...auth});
     },
     update: async (data: any) => {
-      return await patch(`${this._url}/access/update`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await patch(`${this._url}/access/update`, {...data, ...auth});
     },
     delete: async (data: AccessGetProps) => {
-      return await deleteRequest(`${this._url}/access/delete`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await deleteRequest(`${this._url}/access/delete`, {...data, ...auth});
     },
   };
 
   ai = {
     chat: async (data: any) => {
-      return await post(`${this._url}/ai/chat`, data);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/auth/ai/chat`, {...data, ...auth});
     },
   };
 
   stats = {
     usage: async () => {
-      return await get(`${this._url}/usage`);
+      let auth:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await get(`${this._url}/usage`, auth);
     },
   };
 
@@ -156,6 +279,13 @@ export default class API {
       return await get(`${this._url}/headers`, {
         credentials: 'include',
       });
+    },
+    auth: async () => {
+      let data:any = {
+        token: this._token,
+        publicKey: this._publicKey,
+      };
+      return await post(`${this._url}/auth/test`, data);
     },
   };
 
